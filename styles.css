@@ -2194,7 +2194,7 @@ button, input, textarea, select {
 .trust {
   background-color: var(--color-dark);
   color: var(--color-light);
-  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-top: clamp(8rem, 14vw, 13rem);
   padding-bottom: 0;
 }
 
@@ -2437,7 +2437,7 @@ button, input, textarea, select {
    FINAL CTA SECTION
    ===================================================== */
 .final-cta {
-  background-color: var(--color-light);
+  background-color: #F3EFE0;
   color: var(--color-dark);
 }
 
