@@ -2789,32 +2789,22 @@ footer .logo-img-sm {
   z-index: 0;
 }
 
-/* Value-props — angolo in basso a destra */
+/* Value-props — angolo in basso a destra, piccola */
 .deco-paw--vp {
-  bottom: -20px;
-  right: -30px;
-  width: clamp(220px, 26vw, 360px);
-  opacity: 0.09;
+  bottom: -10px;
+  right: -20px;
+  width: clamp(100px, 11vw, 160px);
+  opacity: 0.08;
   transform: rotate(14deg) scaleX(-1);
   mix-blend-mode: multiply;
 }
 
-/* How-we-work — angolo in basso a destra, più in basso */
-.deco-paw--method {
-  bottom: -30px;
-  right: -30px;
-  width: clamp(200px, 24vw, 340px);
-  opacity: 0.08;
-  transform: rotate(10deg);
-  mix-blend-mode: multiply;
-}
-
-/* Benefits — angolo in basso a sinistra, specchiata */
+/* Benefits — angolo in basso a sinistra, piccola */
 .deco-paw--benefits {
-  bottom: -20px;
-  left: -30px;
-  width: clamp(220px, 26vw, 360px);
-  opacity: 0.09;
+  bottom: -10px;
+  left: -20px;
+  width: clamp(100px, 11vw, 160px);
+  opacity: 0.08;
   transform: rotate(-12deg) scaleX(-1);
   mix-blend-mode: multiply;
 }
