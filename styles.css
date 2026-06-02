@@ -1648,13 +1648,88 @@ button, input, textarea, select {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  transition: background-color var(--transition-base), border-color var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color var(--transition-base),
+    border-color     var(--transition-base);
   cursor: default;
 }
 
-.service-card:hover {
-  background-color: rgba(243, 239, 224, 0.07);
-  border-color: rgba(224, 24, 92, 0.25);
+/* Background image layer — fills card, scales on hover */
+.service-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity    0.5s ease,
+    transform  0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Gradient overlay — keeps text legible over any image */
+.service-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(28, 28, 28, 0.72) 0%,
+    rgba(28, 28, 28, 0.55) 50%,
+    rgba(28, 28, 28, 0.80) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* All content sits above bg + overlay */
+.service-card > *:not(.service-card__bg):not(.service-card__overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+/* When a data-bg image is present (set by JS) — activate layers */
+.service-card--has-bg {
+  background-color: rgba(28, 28, 28, 0.5);
+  border-color: rgba(243, 239, 224, 0.06);
+}
+
+.service-card--has-bg .service-card__bg {
+  opacity: 1;
+}
+
+.service-card--has-bg .service-card__overlay {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .service-card--has-bg:hover .service-card__bg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .service-card--has-bg:hover .service-card__overlay {
+    background: linear-gradient(
+      160deg,
+      rgba(28, 28, 28, 0.60) 0%,
+      rgba(28, 28, 28, 0.40) 50%,
+      rgba(28, 28, 28, 0.68) 100%
+    );
+  }
+
+  /* No image — standard hover */
+  .service-card:not(.service-card--has-bg):hover {
+    background-color: rgba(243, 239, 224, 0.07);
+    border-color: rgba(224, 24, 92, 0.25);
+  }
 }
 
 .service-card--featured {
@@ -1662,7 +1737,7 @@ button, input, textarea, select {
   border-color: rgba(224, 24, 92, 0.25);
 }
 
-.service-card--featured:hover {
+.service-card--featured:not(.service-card--has-bg):hover {
   background-color: rgba(224, 24, 92, 0.15);
   border-color: rgba(224, 24, 92, 0.4);
 }
@@ -2704,11 +2779,6 @@ button, input, textarea, select {
 }
 
 /* Service card: left accent on hover */
-.service-card {
-  position: relative;
-  overflow: hidden;
-}
-
 .service-card::before {
   content: '';
   position: absolute;

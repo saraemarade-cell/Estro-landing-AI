@@ -556,8 +556,10 @@
 
         <div class="services__grid" role="list">
 
-          <!-- Trending up (VI file 1, SVG 8) — performance-driven creative production -->
-          <article class="service-card service-card--featured animate-on-scroll delay-1" role="listitem">
+          <!-- data-bg="path/to/image.webp" — leave empty for solid fallback -->
+          <article class="service-card service-card--featured animate-on-scroll delay-1" role="listitem" data-bg="">
+            <div class="service-card__bg" aria-hidden="true"></div>
+            <div class="service-card__overlay" aria-hidden="true"></div>
             <div class="service-card__icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>
@@ -571,8 +573,9 @@
             </p>
           </article>
 
-          <!-- Share/network (VI file 1, SVG 9) — connected distribution of product assets -->
-          <article class="service-card animate-on-scroll delay-2" role="listitem">
+          <article class="service-card animate-on-scroll delay-2" role="listitem" data-bg="">
+            <div class="service-card__bg" aria-hidden="true"></div>
+            <div class="service-card__overlay" aria-hidden="true"></div>
             <div class="service-card__icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
@@ -586,8 +589,9 @@
             </p>
           </article>
 
-          <!-- Lightning bolt (VI file 2, SVG 6) — speed and rapid concept iteration -->
-          <article class="service-card animate-on-scroll delay-3" role="listitem">
+          <article class="service-card animate-on-scroll delay-3" role="listitem" data-bg="">
+            <div class="service-card__bg" aria-hidden="true"></div>
+            <div class="service-card__overlay" aria-hidden="true"></div>
             <div class="service-card__icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
@@ -601,8 +605,9 @@
             </p>
           </article>
 
-          <!-- Compass/globe (VI file 1, SVG 3) — direction and strategy -->
-          <article class="service-card animate-on-scroll delay-4" role="listitem">
+          <article class="service-card animate-on-scroll delay-4" role="listitem" data-bg="">
+            <div class="service-card__bg" aria-hidden="true"></div>
+            <div class="service-card__overlay" aria-hidden="true"></div>
             <div class="service-card__icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
@@ -1208,6 +1213,18 @@
   <script src="main.js"></script>
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+  /* ── Service card background images ──────────────────── */
+  (function () {
+    document.querySelectorAll('.service-card[data-bg]').forEach(card => {
+      const src = card.dataset.bg && card.dataset.bg.trim();
+      if (!src) return;                          // empty → solid fallback, no change
+      const bg = card.querySelector('.service-card__bg');
+      if (bg) bg.style.backgroundImage = `url('${src}')`;
+      card.classList.add('service-card--has-bg');
+    });
+  })();
   </script>
   <script>
   /* ── Timeline flow system ─────────────────────────────── */
