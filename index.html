@@ -887,68 +887,109 @@
     <!-- ================================================
          9. TRUST / PROOF
          ================================================ -->
-    <section class="section trust" id="trust" aria-labelledby="trust-title">
-      <div class="container">
+    <section class="trust" id="trust" aria-labelledby="trust-title">
 
+      <!-- Section header — full width, contained -->
+      <div class="container">
         <header class="trust__header animate-on-scroll">
           <p class="eyebrow trust__eyebrow">Referenze</p>
-          <h2 class="trust__title" id="trust-title">Esperienza con aziende strutturate</h2>
+          <h2 class="trust__title" id="trust-title">Esperienza con<br>aziende strutturate</h2>
         </header>
+      </div>
 
-        <div class="trust__cases" role="list" aria-label="Case study clienti">
+      <!-- Case study cards — bleed to edges -->
+      <div class="trust__deck" role="list" aria-label="Case study clienti">
 
-          <!-- Case 1 — Prada -->
-          <article class="trust__case animate-on-scroll delay-1" role="listitem">
-            <div class="trust__case-logo">
+        <!-- ─── Case 1: Prada ─── -->
+        <article class="trust__card animate-on-scroll" role="listitem">
+
+          <div class="trust__card-visual"
+               aria-label="Immagine caso Prada — da sostituire">
+            <!-- swap src for real project image -->
+            <div class="trust__card-img-slot"></div>
+            <div class="trust__card-visual-overlay"></div>
+            <!-- logo lives inside the visual -->
+            <div class="trust__card-logo-strip">
               <img src="LOGHI/prada-logo-svgrepo-com.svg"
-                   alt="Prada"
-                   class="trust__logo"
-                   loading="lazy" />
+                   alt="Prada" class="trust__card-logo" loading="lazy" />
             </div>
-            <div class="trust__case-body">
-              <p class="trust__case-tag"><!-- REPLACE: settore/tipo di progetto --></p>
-              <h3 class="trust__case-title">Content Production System</h3>
-              <p class="trust__case-desc">Centralizzazione del workflow creativo e produzione asset su scala.</p>
-            </div>
-            <div class="trust__case-metric">
-              <span class="trust__metric-value">+60%</span>
-              <span class="trust__metric-label">velocità di produzione</span>
-            </div>
-          </article>
+          </div>
 
-          <!-- Case 2 — Bravo -->
-          <article class="trust__case animate-on-scroll delay-2" role="listitem">
-            <div class="trust__case-logo">
+          <div class="trust__card-body">
+            <div class="trust__card-meta">
+              <span class="trust__card-index">01</span>
+              <span class="trust__card-tag">Fashion &amp; Luxury</span>
+            </div>
+            <h3 class="trust__card-title">Content Production System</h3>
+            <p class="trust__card-desc">Centralizzazione del workflow creativo e produzione asset su scala per un brand globale.</p>
+            <div class="trust__card-result">
+              <span class="trust__result-value" data-count="+60" data-suffix="%">+60%</span>
+              <span class="trust__result-label">velocità di produzione</span>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ─── Case 2: Bravo ─── (flipped) -->
+        <article class="trust__card trust__card--flip animate-on-scroll delay-1" role="listitem">
+
+          <div class="trust__card-visual"
+               aria-label="Immagine caso Bravo — da sostituire">
+            <div class="trust__card-img-slot"></div>
+            <div class="trust__card-visual-overlay"></div>
+            <div class="trust__card-logo-strip">
               <img src="LOGHI/LOGO-BRAVO-1-1-e1776784239203.png"
-                   alt="Bravo"
-                   class="trust__logo"
-                   loading="lazy" />
+                   alt="Bravo" class="trust__card-logo" loading="lazy" />
             </div>
-            <div class="trust__case-body">
-              <p class="trust__case-tag"><!-- REPLACE: settore/tipo di progetto --></p>
-              <h3 class="trust__case-title">AI Asset Generation</h3>
-              <p class="trust__case-desc">Creazione contenuti scalabile su canali multipli con pipeline AI-driven.</p>
-            </div>
-            <div class="trust__case-metric">
-              <span class="trust__metric-value">3×</span>
-              <span class="trust__metric-label">output contenuti</span>
-            </div>
-          </article>
+          </div>
 
-          <!-- Case 3 — Mestel -->
-          <article class="trust__case animate-on-scroll delay-3" role="listitem">
-            <div class="trust__case-logo">
+          <div class="trust__card-body">
+            <div class="trust__card-meta">
+              <span class="trust__card-index">02</span>
+              <span class="trust__card-tag">AI Workflow</span>
+            </div>
+            <h3 class="trust__card-title">AI Asset Generation</h3>
+            <p class="trust__card-desc">Creazione contenuti scalabile su canali multipli con pipeline AI-driven end-to-end.</p>
+            <div class="trust__card-result">
+              <span class="trust__result-value" data-count="3" data-suffix="×">3×</span>
+              <span class="trust__result-label">output contenuti</span>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ─── Case 3: Mestel ─── -->
+        <article class="trust__card animate-on-scroll delay-2" role="listitem">
+
+          <div class="trust__card-visual"
+               aria-label="Immagine caso Mestel — da sostituire">
+            <div class="trust__card-img-slot"></div>
+            <div class="trust__card-visual-overlay"></div>
+            <div class="trust__card-logo-strip">
               <img src="LOGHI/logo-white-hr-1024x533.png"
-                   alt="Mestel"
-                   class="trust__logo"
-                   loading="lazy" />
+                   alt="Mestel" class="trust__card-logo" loading="lazy" />
             </div>
-            <div class="trust__case-body">
-              <p class="trust__case-tag"><!-- REPLACE: settore/tipo di progetto --></p>
-              <h3 class="trust__case-title">Brand Visual System</h3>
-              <p class="trust__case-desc">Definizione direzione creativa e identità visiva per comunicazione integrata.</p>
+          </div>
+
+          <div class="trust__card-body">
+            <div class="trust__card-meta">
+              <span class="trust__card-index">03</span>
+              <span class="trust__card-tag">Brand Identity</span>
             </div>
-            <div class="trust__case-metric">
+            <h3 class="trust__card-title">Brand Visual System</h3>
+            <p class="trust__card-desc">Definizione direzione creativa e identità visiva coerente su tutti i touchpoint.</p>
+            <div class="trust__card-result">
+              <span class="trust__result-value" data-count="-40" data-suffix="%">−40%</span>
+              <span class="trust__result-label">costo per asset</span>
+            </div>
+          </div>
+
+        </article>
+
+      </div><!-- /.trust__deck -->
+
+    </section>
+
               <span class="trust__metric-value">−40%</span>
               <span class="trust__metric-label">costo per asset</span>
             </div>
@@ -1386,6 +1427,47 @@
         }
       }, 250);
     });
+  })();
+  </script>
+
+  <script>
+  /* ── Trust section: counter animation ── */
+  (function () {
+    const counters = document.querySelectorAll('.trust__result-value[data-count]');
+    if (!counters.length) return;
+
+    function animateCounter(el) {
+      const raw = el.dataset.count;
+      const suffix = el.dataset.suffix || '';
+      const negative = raw.startsWith('-');
+      const positive = raw.startsWith('+');
+      const target = parseFloat(raw.replace(/[^0-9.]/g, ''));
+      const isFloat = target !== Math.floor(target);
+      const duration = 1200;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = eased * target;
+        const formatted = isFloat ? current.toFixed(1) : Math.round(current);
+        el.textContent = (negative ? '−' : positive ? '+' : '') + formatted + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(el => io.observe(el));
   })();
   </script>
 
