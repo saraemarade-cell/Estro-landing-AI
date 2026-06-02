@@ -1082,15 +1082,7 @@ button, input, textarea, select {
   overflow: visible;
 }
 
-/*
-  Result cards — default: clean editorial rectangle.
-  Hover (pointer only): the actual zampa-nera3.webp silhouette replaces the
-  card background via an ::after layer with mix-blend-mode:multiply.
-  On the cream section bg: black paw × cream = dark (visible), white × cream
-  = cream (disappears). The card background fades out; text turns light so
-  it's readable on the dark paw silhouette. Each card is slightly rotated
-  so the three paw prints read as a directional visual sequence.
-*/
+/* Result cards */
 .problem__result-card {
   padding: var(--space-sm) var(--space-md);
   background-color: var(--color-light-dark);
