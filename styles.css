@@ -2777,6 +2777,48 @@ footer .logo-img-sm {
   .ft-cols { grid-template-columns: 1fr; gap: 32px; }
 }
 
+/* =====================================================
+   DECORATIVE PAW — background accent in light sections
+   mix-blend-mode: multiply rimuove il bianco dell'immagine
+   z-index: 0, container a z-index: 1 sopra
+   ===================================================== */
+.deco-paw {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Value-props — angolo in basso a destra */
+.deco-paw--vp {
+  bottom: -20px;
+  right: -30px;
+  width: clamp(220px, 26vw, 360px);
+  opacity: 0.09;
+  transform: rotate(14deg) scaleX(-1);
+  mix-blend-mode: multiply;
+}
+
+/* How-we-work — angolo in basso a destra, più in basso */
+.deco-paw--method {
+  bottom: -30px;
+  right: -30px;
+  width: clamp(200px, 24vw, 340px);
+  opacity: 0.08;
+  transform: rotate(10deg);
+  mix-blend-mode: multiply;
+}
+
+/* Benefits — angolo in basso a sinistra, specchiata */
+.deco-paw--benefits {
+  bottom: -20px;
+  left: -30px;
+  width: clamp(220px, 26vw, 360px);
+  opacity: 0.09;
+  transform: rotate(-12deg) scaleX(-1);
+  mix-blend-mode: multiply;
+}
+
 /* Ensure section content sits above decorative layers */
 .problem .container,
 .how-we-work .container {
