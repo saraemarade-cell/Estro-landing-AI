@@ -776,8 +776,8 @@ button, input, textarea, select {
 
 /* Form card on dark background */
 .form-card--hero {
-  background-color: rgba(243, 239, 224, 0.04);
-  border: 1px solid rgba(243, 239, 224, 0.1);
+  background-color: rgba(243, 239, 224, 0.08);
+  border: 1px solid rgba(243, 239, 224, 0.18);
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -795,21 +795,21 @@ button, input, textarea, select {
 
 .form-card--hero .form__input,
 .form-card--hero .form__textarea {
-  background-color: rgba(243, 239, 224, 0.06);
-  border-color: rgba(243, 239, 224, 0.1);
+  background-color: rgba(243, 239, 224, 0.12);
+  border-color: rgba(243, 239, 224, 0.25);
   color: var(--color-light);
 }
 
 .form-card--hero .form__input::placeholder,
 .form-card--hero .form__textarea::placeholder {
-  color: rgba(243, 239, 224, 0.5);
+  color: rgba(243, 239, 224, 0.6);
 }
 
 .form-card--hero .form__input:focus,
 .form-card--hero .form__textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(224, 24, 92, 0.15);
-  background-color: rgba(243, 239, 224, 0.08);
+  box-shadow: 0 0 0 3px rgba(224, 24, 92, 0.2);
+  background-color: rgba(243, 239, 224, 0.16);
 }
 
 .form-card--hero .form__optional {
