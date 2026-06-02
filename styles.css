@@ -402,6 +402,8 @@ button, input, textarea, select {
   min-height: 90vh;
   display: flex;
   align-items: stretch;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero__inner {
@@ -2499,6 +2501,8 @@ button, input, textarea, select {
 .final-cta {
   background-color: #F3EFE0;
   color: var(--color-dark);
+  position: relative;
+  overflow: hidden;
 }
 
 .final-cta__inner {
@@ -2726,6 +2730,41 @@ footer .logo-img-sm {
 
 @media (max-width: 560px) {
   .ft-cols { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* =====================================================
+   DECORATIVE TAIL
+   ===================================================== */
+
+/* Base: absolutely positioned, no interaction */
+.deco-tail {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+}
+
+/* Hero placement: bottom-left, clipped by section overflow:hidden
+   Rotate so the S-curve flows up and right from the corner.
+   On dark bg: low opacity keeps it as a ghost brand mark */
+.deco-tail--hero {
+  bottom: -60px;
+  left: -80px;
+  width: clamp(260px, 32vw, 460px);
+  opacity: 0.10;
+  transform: rotate(20deg) scaleX(-1);
+  filter: brightness(0) invert(1);   /* turn pink→white so it reads on dark */
+}
+
+/* Final-CTA placement: bottom-right, flows off edge.
+   mix-blend-mode: multiply removes the white bg, keeps the pink */
+.deco-tail--cta {
+  bottom: -40px;
+  right: -60px;
+  width: clamp(300px, 38vw, 520px);
+  opacity: 0.55;
+  transform: rotate(-10deg);
+  mix-blend-mode: multiply;
 }
 
 /* =====================================================
