@@ -2312,22 +2312,10 @@ button, input, textarea, select {
 .trust__card-img-slot {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg,
-      rgba(255,255,255,0.02) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255,255,255,0.02) 50%,
-      rgba(255,255,255,0.02) 75%,
-      transparent 75%,
-      transparent
-    ),
-    linear-gradient(
-      160deg,
-      #1a1a1a 0%,
-      #0d0d0d 100%
-    );
-  background-size: 40px 40px, 100% 100%;
+  background-color: #0d0d0d;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
