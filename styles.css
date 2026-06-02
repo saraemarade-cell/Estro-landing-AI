@@ -2194,6 +2194,7 @@ button, input, textarea, select {
 .trust {
   background-color: var(--color-dark);
   color: var(--color-light);
+  padding-top: clamp(5rem, 10vw, 9rem);
   padding-bottom: 0;
 }
 
@@ -2436,8 +2437,8 @@ button, input, textarea, select {
    FINAL CTA SECTION
    ===================================================== */
 .final-cta {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: var(--color-light);
+  color: var(--color-dark);
 }
 
 .final-cta__inner {
@@ -2450,12 +2451,12 @@ button, input, textarea, select {
 .final-cta__left {}
 
 .final-cta__title {
-  color: var(--color-light);
+  color: var(--color-dark);
   margin-bottom: var(--space-md);
 }
 
 .final-cta__copy {
-  color: rgba(243, 239, 224, 0.65);
+  color: rgba(28, 28, 28, 0.65);
   margin-bottom: var(--space-lg);
   font-size: 1.05rem;
   line-height: 1.7;
@@ -2480,12 +2481,17 @@ button, input, textarea, select {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.9375rem;
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(28, 28, 28, 0.65);
 }
 
 .final-cta__reassurance-item svg {
   color: var(--color-primary);
   flex-shrink: 0;
+}
+
+/* eyebrow on light bg inherits the default dark color */
+.final-cta .eyebrow {
+  color: rgba(28, 28, 28, 0.45);
 }
 
 /* =====================================================
