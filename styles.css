@@ -1065,6 +1065,19 @@ button, input, textarea, select {
   border-color: rgba(224, 24, 92, 0.4);
 }
 
+.service-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background-color: rgba(224, 24, 92, 0.1);
+  border: 1px solid rgba(224, 24, 92, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
 .service-card__number {
   font-size: 0.75rem;
   font-weight: 600;
