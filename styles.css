@@ -1258,14 +1258,28 @@ button, input, textarea, select {
 }
 
 /* Solution photo frame */
+/* Atmospheric outer glow — sits behind the frame */
+.solution__atmosphere {
+  position: absolute;
+  inset: -60px;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(224, 24, 92, 0.18) 0%, rgba(224, 24, 92, 0.06) 45%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+  animation: atm-breathe 4s ease-in-out infinite;
+}
+
+@keyframes atm-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.06); }
+}
+
 .solution__frame {
   position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
   background-color: var(--color-dark);
   aspect-ratio: 1 / 1;
   max-width: 520px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .solution__photo {
@@ -1274,8 +1288,9 @@ button, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: var(--radius-lg);
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 44%, black 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.35) 68%, transparent 85%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 44%, black 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.35) 68%, transparent 85%);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), mask-size 0.8s ease;
 }
 
 .solution__frame:hover .solution__photo {
@@ -1293,16 +1308,84 @@ button, input, textarea, select {
   z-index: 1;
 }
 
+/* Scanning line */
+.solution__scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(224, 24, 92, 0.5) 30%, rgba(224, 24, 92, 0.9) 50%, rgba(224, 24, 92, 0.5) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 6;
+  animation: sol-scan 3.5s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes sol-scan {
+  0%   { top: 5%;  opacity: 0; }
+  5%   { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  100% { top: 95%; opacity: 0; }
+}
+
 .solution__glow {
   position: absolute;
-  bottom: -40px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
-  height: 160px;
-  background: radial-gradient(ellipse at center bottom, rgba(224, 24, 92, 0.35) 0%, transparent 70%);
+  width: 80%;
+  height: 180px;
+  background: radial-gradient(ellipse at center bottom, rgba(224, 24, 92, 0.4) 0%, transparent 70%);
   pointer-events: none;
   z-index: 2;
+  animation: glow-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* Data marker crosshairs */
+.solution__marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.solution__marker::before,
+.solution__marker::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-primary);
+}
+
+.solution__marker::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.solution__marker::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.solution__marker--a { top: 28%; left: 20%; animation: marker-blink 2.2s ease-in-out infinite 0s; }
+.solution__marker--b { top: 55%; right: 22%; animation: marker-blink 2.2s ease-in-out infinite 0.7s; }
+.solution__marker--c { top: 72%; left: 38%; animation: marker-blink 2.2s ease-in-out infinite 1.4s; }
+
+@keyframes marker-blink {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.9; }
 }
 
 /* Corner brackets — same language as hero */

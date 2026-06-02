@@ -418,9 +418,13 @@
           </div>
 
           <div class="solution__visual animate-on-scroll delay-2" aria-hidden="true">
+
+            <!-- Outer atmospheric glow — extends into section bg -->
+            <div class="solution__atmosphere" aria-hidden="true"></div>
+
             <div class="solution__frame">
 
-              <!-- Photo -->
+              <!-- Photo with mask-based edge blending -->
               <img
                 class="solution__photo"
                 src="Foto/2-b.webp"
@@ -430,10 +434,13 @@
                 loading="lazy"
               />
 
-              <!-- Subtle crosshair grid overlay -->
+              <!-- Crosshair grid overlay -->
               <div class="solution__grid-overlay" aria-hidden="true"></div>
 
-              <!-- Radial glow -->
+              <!-- Scanning line -->
+              <div class="solution__scan" aria-hidden="true"></div>
+
+              <!-- Radial glow (bottom) -->
               <div class="solution__glow" aria-hidden="true"></div>
 
               <!-- Corner brackets -->
@@ -442,7 +449,12 @@
               <span class="solution__corner solution__corner--bl" aria-hidden="true"></span>
               <span class="solution__corner solution__corner--br" aria-hidden="true"></span>
 
-              <!-- Meta label top-left -->
+              <!-- Coordinate data markers -->
+              <div class="solution__marker solution__marker--a" aria-hidden="true"></div>
+              <div class="solution__marker solution__marker--b" aria-hidden="true"></div>
+              <div class="solution__marker solution__marker--c" aria-hidden="true"></div>
+
+              <!-- Meta label -->
               <div class="solution__meta-label" aria-hidden="true">
                 <span class="solution__meta-dot"></span>SISTEMA ATTIVO
               </div>
