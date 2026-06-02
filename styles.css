@@ -729,28 +729,15 @@ button, input, textarea, select {
 
 /* ---- Right column ---- */
 .hero__right {
-  position: relative;
+  position: sticky;
+  top: 80px;
   display: flex;
   flex-direction: column;
   background-color: var(--color-dark);
   border-left: 1px solid rgba(243, 239, 224, 0.06);
-  overflow-y: auto;
-  max-height: calc(90vh - 80px);
-  position: sticky;
-  top: 80px;
+  align-self: start;
 }
 
-/* Micro-grid behind the form */
-.hero__right-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(243,239,224,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(243,239,224,0.022) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
 
 /* Top accent bar with label */
 .hero__right-accent {
@@ -3158,15 +3145,6 @@ footer .logo-img-sm {
 }
 
 /* --- Services: bg grid + preview card + mini-card in featured --- */
-.services__bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(243, 239, 224, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(243, 239, 224, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
 
 /* srv-card--a: featured pulse ring */
 @keyframes srv-pulse {
