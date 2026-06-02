@@ -380,91 +380,125 @@ button, input, textarea, select {
    HERO SECTION
    ===================================================== */
 .hero {
-  padding-top: calc(var(--section-padding) + 80px);
-  padding-bottom: var(--section-padding);
+  padding-top: 80px; /* navbar offset only — video starts right below */
+  padding-bottom: 0;
   background-color: var(--color-light);
-  min-height: 100svh;
+  min-height: 90vh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  align-items: start;
+  /* 62% video — 38% content+form */
+  grid-template-columns: 62fr 38fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: calc(90vh - 80px);
+  width: 100%;
 }
 
+/* Left column: video fills full height, text sits below */
 .hero__left {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 0;
+  /* Video stretches; text+eyebrow get padding */
+}
+
+.hero__text-block {
+  padding: var(--space-lg) var(--space-lg) var(--space-xl) var(--space-lg);
+  background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .hero__eyebrow {
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0;
 }
 
 .hero__headline {
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-sm);
+  margin: 0;
 }
 
 .hero__text {
   color: var(--color-dark-80);
-  max-width: 480px;
-  margin-bottom: var(--space-md);
+  max-width: 520px;
+  margin: 0;
 }
 
 /* --- Hero Video Wrapper ---
-   YouTube iframe cover-crop inside a 4:5 portrait container.
-   Same visual footprint as the original image placeholder.
-   Video: "ESTRO x ELMEC • Neutral To Be Colourful" (ID: JHJbEeBElqA)
+   Video: "ESTRO x ELMEC • Neutral To Be Colourful" (YouTube: JHJbEeBElqA)
    Source: Estro - Elmec x Estro.html
+
+   Cover technique: the iframe renders 16:9 content.
+   The wrapper is tall (portrait-ish: ~62vw × ~82vh).
+   We need the iframe to be at least as large as the wrapper in both axes.
+
+   Formula using max():
+     width:  max(100%, calc(100vh × 16/9))
+             → at least full container width, or viewport-height × 1.777 if taller
+     height: max(100%, calc(100vw × 9/16))
+             → at least full container height, or viewport-width × 0.5625 if wider
+
+   This correctly covers ANY container shape without knowing exact dimensions.
+   Verified at 1920×1080 / 1440×900 / 1280×800.
 */
 .hero__video-wrapper {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4/5;
-  background: #1C1C1C; /* fallback while iframe loads */
+  border-radius: 0; /* edge-to-edge in the grid */
+  background: #1C1C1C; /* fallback color while iframe loads */
+  flex: 1; /* grow to fill remaining height in the left column */
+  min-height: 60vh; /* never collapse below this */
 }
 
 .hero__video-iframe {
-  /* Cover crop: 16:9 video in 4:5 container.
-     Width needed = container_height × (16/9)
-     Container_height = container_width × (5/4)
-     iframe_width / container_width = (16/9) × (5/4) = 80/36 ≈ 2.222 → 222.2%
-  */
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(100% * 80 / 36); /* = 222.2% */
-  height: 100%;
+  /* Cover: fill any container shape while preserving 16:9 video ratio */
+  width:  max(100%, calc(100vh * 16 / 9));
+  height: max(100%, calc(100vw * 9 / 16));
   transform: translate(-50%, -50%);
   border: none;
-  pointer-events: none; /* no interaction — decorative background video */
+  pointer-events: none;
 }
 
-/* Gradient overlay — same pattern as existing Hero design */
+/* Bottom gradient overlay — same language as rest of the brand */
 .hero__video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 30%,
-    rgba(28, 28, 28, 0.88) 100%
-  );
+  /* Subtle top vignette + strong bottom gradient for text legibility */
+  background:
+    linear-gradient(to bottom, rgba(28,28,28,0.25) 0%, transparent 25%),
+    linear-gradient(to top,    rgba(28,28,28,0.90) 0%, transparent 50%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  padding: var(--space-lg);
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-lg);
+  z-index: 2;
 }
 
 .hero__image-content {
   position: relative;
   z-index: 1;
+}
+
+/* Right column: form with scroll if needed */
+.hero__right {
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-light);
+  border-left: 1px solid var(--color-dark-10);
+  overflow-y: auto;
+  max-height: calc(90vh - 80px);
+  position: sticky;
+  top: 80px;
 }
 
 .hero__image-tag {
@@ -521,11 +555,6 @@ button, input, textarea, select {
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.7); }
-}
-
-.hero__right {
-  position: sticky;
-  top: 100px;
 }
 
 /* =====================================================
@@ -1730,6 +1759,15 @@ button, input, textarea, select {
 
 /* Tablet: ≤ 1024px */
 @media (max-width: 1024px) {
+  /* Tablet: tighten video column slightly, still dominant */
+  .hero__inner {
+    grid-template-columns: 58fr 42fr;
+  }
+
+  .hero__right {
+    padding: var(--space-lg) var(--space-md);
+  }
+
   .benefits__grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1762,27 +1800,47 @@ button, input, textarea, select {
     display: flex;
   }
 
+  /* Mobile: single column, video on top */
   .hero__inner {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    min-height: unset;
   }
 
-  .hero__right {
-    position: static;
+  .hero__left {
+    order: 1;
   }
 
   .hero__video-wrapper {
+    /* 16:9 on mobile — natural video ratio, no cover needed */
     aspect-ratio: 16/9;
-    order: -1;
+    min-height: unset;
+    flex: none;
+    border-radius: 0;
   }
 
-  /* On mobile, the container becomes 16:9 (landscape) so video fits naturally */
   .hero__video-iframe {
+    /* At 16:9 container the video fills perfectly — reset cover overrides */
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     transform: none;
+    min-width: unset;
+    min-height: unset;
+  }
+
+  .hero__text-block {
+    padding: var(--space-md);
+  }
+
+  .hero__right {
+    order: 2;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    border-left: none;
+    border-top: 1px solid var(--color-dark-10);
+    padding: var(--space-lg) var(--space-md);
   }
 
   .problem__inner {
