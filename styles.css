@@ -1174,8 +1174,8 @@ button, input, textarea, select {
 
 .solution__visual {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
 }
 
 .solution__diagram {
@@ -1251,6 +1251,149 @@ button, input, textarea, select {
   font-size: 0.85rem;
   color: white;
   text-align: center;
+}
+
+/* Solution photo frame */
+.solution__frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-dark);
+  aspect-ratio: 1 / 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.solution__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.solution__frame:hover .solution__photo {
+  transform: scale(1.03);
+}
+
+.solution__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(243, 239, 224, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 239, 224, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.solution__glow {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 160px;
+  background: radial-gradient(ellipse at center bottom, rgba(224, 24, 92, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Corner brackets — same language as hero */
+.solution__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.solution__corner--tl { top: 16px; left: 16px; border-top: 1.5px solid var(--color-primary); border-left: 1.5px solid var(--color-primary); }
+.solution__corner--tr { top: 16px; right: 16px; border-top: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
+.solution__corner--bl { bottom: 16px; left: 16px; border-bottom: 1.5px solid var(--color-primary); border-left: 1.5px solid var(--color-primary); }
+.solution__corner--br { bottom: 16px; right: 16px; border-bottom: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
+
+.solution__meta-label {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(243, 239, 224, 0.7);
+  z-index: 4;
+  white-space: nowrap;
+}
+
+.solution__meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  animation: solution-blink 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes solution-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Floating mini-card */
+.solution__mini-card {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background-color: rgba(28, 28, 28, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 24, 92, 0.25);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  z-index: 5;
+}
+
+.solution__mini-card-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(243, 239, 224, 0.5);
+  margin-bottom: 6px;
+}
+
+.solution__mini-card-flow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.solution__mini-node {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(243, 239, 224, 0.85);
+  white-space: nowrap;
+}
+
+.solution__mini-node--active {
+  color: var(--color-primary);
+}
+
+/* Entrance animation for solution__frame */
+.solution__visual.in-view .solution__frame {
+  animation: solution-frame-in 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes solution-frame-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* =====================================================
