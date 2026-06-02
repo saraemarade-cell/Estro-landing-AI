@@ -1100,14 +1100,15 @@ button, input, textarea, select {
 .problem__right {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 0.5rem;
   position: relative;
   overflow: visible;
+  justify-content: center;
 }
 
 /* Result cards */
 .problem__result-card {
-  padding: var(--space-sm) var(--space-md);
+  padding: 0.75rem var(--space-md);
   background-color: var(--color-light-dark);
   border: none;
   border-left: 2px solid rgba(28, 28, 28, 0.15);
@@ -1669,8 +1670,8 @@ button, input, textarea, select {
 .srv-bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: var(--space-xl);
+  gap: 10px;
+  margin-top: var(--space-lg);
 }
 
 /* card base */
@@ -1736,8 +1737,8 @@ button, input, textarea, select {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: clamp(1.5rem, 2.5vw, 2.2rem);
-  gap: 1.5rem;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  gap: 1rem;
 }
 
 .srv-card__top {
@@ -1748,7 +1749,7 @@ button, input, textarea, select {
 
 .srv-card__num {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -1825,7 +1826,7 @@ button, input, textarea, select {
 .srv-card--b,
 .srv-card--c,
 .srv-card--d {
-  min-height: 280px;
+  min-height: 200px;
 }
 
 /* card-a: featured accent */
@@ -2290,14 +2291,14 @@ button, input, textarea, select {
 .trust {
   background-color: var(--color-dark);
   color: var(--color-light);
-  padding-top: clamp(8rem, 14vw, 13rem);
+  padding-top: clamp(4rem, 7vw, 6rem);
   padding-bottom: 0;
   position: relative;
   overflow: hidden;
 }
 
 .trust__header {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .trust__eyebrow {
@@ -2320,14 +2321,14 @@ button, input, textarea, select {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-lg);
 }
 
 /* Each card: visual (image placeholder) + body */
 .trust__card {
   display: grid;
   grid-template-columns: 55% 45%;
-  min-height: 480px;
+  min-height: 320px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
@@ -2422,8 +2423,8 @@ button, input, textarea, select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(var(--space-xl), 5vw, var(--space-3xl));
-  gap: var(--space-lg);
+  padding: clamp(var(--space-lg), 3.5vw, var(--space-2xl));
+  gap: var(--space-md);
   position: relative;
   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.45);
 }
