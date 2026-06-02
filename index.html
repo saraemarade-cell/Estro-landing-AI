@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Estro — AI Creative Production. Un'unica regia per contenuti, campagne e produzione creativa. L'AI entra nel processo creativo per aumentare velocità e controllo." />
+  <meta property="og:title" content="Estro — AI Creative Production" />
+  <meta property="og:description" content="Un'unica regia per contenuti, campagne e produzione creativa. L'AI entra nel processo creativo per aumentare velocità e controllo." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <title>AI Creative Production — Estro</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+       ================================================ -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar__inner">
+
+        <a href="#hero" class="navbar__logo" aria-label="Estro — torna all'inizio">
+          <img
+            src="Logo-estro.webp"
+            alt="Estro logo"
+            width="120"
+            height="36"
+            loading="eager"
+          />
+        </a>
+
+        <nav class="navbar__nav" aria-label="Navigazione principale">
+          <a href="#solution" class="navbar__link">Soluzione</a>
+          <a href="#services" class="navbar__link">Servizi</a>
+          <a href="#how-we-work" class="navbar__link">Metodo</a>
+          <a href="#trust" class="navbar__link">Casi</a>
+          <a href="#final-cta" class="btn btn--primary navbar__cta">Richiedi consulenza</a>
+        </nav>
+
+        <button
+          class="navbar__hamburger"
+          aria-label="Apri menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="navbar__mobile" id="mobile-menu" role="dialog" aria-label="Menu mobile">
+    <a href="#solution" class="navbar__mobile-link">Soluzione</a>
+    <a href="#services" class="navbar__mobile-link">Servizi</a>
+    <a href="#how-we-work" class="navbar__mobile-link">Metodo</a>
+    <a href="#trust" class="navbar__mobile-link">Casi</a>
+    <a href="#final-cta" class="btn btn--primary btn--lg">Richiedi consulenza</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ================================================
+         1. HERO
+         ================================================ -->
+    <section class="hero section" id="hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <div class="hero__inner">
+
+          <!-- Left: visual block -->
+          <div class="hero__left animate-on-scroll">
+
+            <div class="hero__image-wrapper">
+              <div class="hero__image-grid" aria-hidden="true"></div>
+
+              <!-- AI activity indicator -->
+              <div class="hero__ai-dots" aria-hidden="true">
+                <span class="hero__ai-dot"></span>
+                <span class="hero__ai-dot"></span>
+                <span class="hero__ai-dot"></span>
+              </div>
+
+              <div class="hero__image-inner">
+                <div class="hero__image-content">
+                  <div class="hero__image-tag" aria-hidden="true">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" aria-hidden="true">
+                      <circle cx="4" cy="4" r="4"/>
+                    </svg>
+                    Live
+                  </div>
+                  <p class="hero__image-label">Regia unica.<br/>Output coerenti.</p>
+                  <p class="hero__image-sublabel">AI Creative Production</p>
+                </div>
+              </div>
+            </div>
+
+            <p class="eyebrow hero__eyebrow">AI Creative Production</p>
+
+            <h1 class="display-xl hero__headline" id="hero-headline">
+              Un'unica regia per contenuti, campagne e produzione creativa
+            </h1>
+
+            <p class="body-lg hero__text">
+              L'AI entra nel processo creativo per aumentare velocità e controllo.<br/>
+              La direzione resta centrale.
+            </p>
+
+          </div>
+
+          <!-- Right: form -->
+          <div class="hero__right animate-on-scroll delay-2">
+            <div class="form-card" role="region" aria-labelledby="hero-form-title">
+              <div class="form-card__header">
+                <h2 class="form-card__title" id="hero-form-title">Richiedi una consulenza</h2>
+                <p class="form-card__subtitle">Analizziamo il tuo contesto. Nessun impegno.</p>
+              </div>
+
+              <form
+                class="contact-form"
+                id="hero-form"
+                novalidate
+                aria-label="Form di contatto"
+              >
+                <div class="form__fields">
+                  <div class="form__row">
+                    <div class="form__group">
+                      <label class="form__label" for="hero-name">Nome e cognome</label>
+                      <input
+                        class="form__input"
+                        type="text"
+                        id="hero-name"
+                        name="name"
+                        placeholder="Mario Rossi"
+                        autocomplete="name"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                    <div class="form__group">
+                      <label class="form__label" for="hero-email">Email</label>
+                      <input
+                        class="form__input"
+                        type="email"
+                        id="hero-email"
+                        name="email"
+                        placeholder="mario@azienda.it"
+                        autocomplete="email"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form__row">
+                    <div class="form__group">
+                      <label class="form__label" for="hero-phone">Numero di telefono</label>
+                      <input
+                        class="form__input"
+                        type="tel"
+                        id="hero-phone"
+                        name="phone"
+                        placeholder="+39 02 1234567"
+                        autocomplete="tel"
+                        data-type="phone"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                    <div class="form__group">
+                      <label class="form__label" for="hero-company">Azienda</label>
+                      <input
+                        class="form__input"
+                        type="text"
+                        id="hero-company"
+                        name="company"
+                        placeholder="Nome Azienda S.r.l."
+                        autocomplete="organization"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form__group">
+                    <label class="form__label" for="hero-message">Messaggio</label>
+                    <textarea
+                      class="form__textarea"
+                      id="hero-message"
+                      name="message"
+                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
+                      rows="4"
+                      required
+                      aria-required="true"
+                    ></textarea>
+                    <span class="form__error-msg" role="alert"></span>
+                  </div>
+
+                  <div class="form__group">
+                    <label class="form__label" for="hero-website">
+                      Sito web <span class="form__optional">(facoltativo)</span>
+                    </label>
+                    <input
+                      class="form__input"
+                      type="url"
+                      id="hero-website"
+                      name="website"
+                      placeholder="https://www.tuodominio.it"
+                      autocomplete="url"
+                    />
+                  </div>
+
+                  <div class="form__submit">
+                    <button type="submit" class="btn btn--primary btn--full btn--lg">
+                      Richiedi una consulenza
+                    </button>
+                  </div>
+
+                  <p class="form__privacy">
+                    Inviando accetti la nostra
+                    <a href="#" tabindex="0">Privacy Policy</a>.
+                    I tuoi dati non verranno condivisi.
+                  </p>
+                </div>
+
+                <div class="form__success" aria-live="polite">
+                  <div class="form__success-icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <p class="form__success-title display-sm">Messaggio ricevuto</p>
+                  <p class="form__success-text">Ti risponderemo entro 24 ore lavorative. A presto.</p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         2. PROBLEM SECTION
+         ================================================ -->
+    <section class="section problem" id="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="problem__inner">
+
+          <div class="problem__left">
+            <p class="eyebrow animate-on-scroll">Il contesto</p>
+            <h2 class="display-lg problem__title animate-on-scroll delay-1" id="problem-title">
+              La produzione creativa è diventata complessa
+            </h2>
+
+            <ul class="problem__list" aria-label="Problemi principali">
+              <li class="problem__item animate-on-scroll delay-1">
+                <div class="problem__item-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/>
+                  </svg>
+                </div>
+                <div class="problem__item-text">
+                  <span class="problem__item-label">Più contenuti, più canali</span>
+                  <span class="problem__item-desc">La domanda di output creativo cresce senza sosta, su ogni piattaforma.</span>
+                </div>
+              </li>
+              <li class="problem__item animate-on-scroll delay-2">
+                <div class="problem__item-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="problem__item-text">
+                  <span class="problem__item-label">Meno tempo disponibile</span>
+                  <span class="problem__item-desc">I tempi si comprimono mentre la qualità attesa sale.</span>
+                </div>
+              </li>
+              <li class="problem__item animate-on-scroll delay-3">
+                <div class="problem__item-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+                  </svg>
+                </div>
+                <div class="problem__item-text">
+                  <span class="problem__item-label">Strumenti proliferano, controllo cala</span>
+                  <span class="problem__item-desc">Più tool non significa più coerenza. Spesso è il contrario.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="problem__right animate-on-scroll delay-2">
+            <div class="problem__result-card">
+              <span class="problem__result-label">Risultato 01</span>
+              <p class="problem__result-text">Attività scollegate tra strategia e produzione</p>
+            </div>
+            <div class="problem__result-card">
+              <span class="problem__result-label">Risultato 02</span>
+              <p class="problem__result-text">Direzione creativa poco chiara o assente</p>
+            </div>
+            <div class="problem__result-card">
+              <span class="problem__result-label">Risultato 03</span>
+              <p class="problem__result-text">Qualità difficile da mantenere nel tempo</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         3. SOLUTION
+         ================================================ -->
+    <section class="section solution" id="solution" aria-labelledby="solution-title">
+      <div class="container">
+        <div class="solution__inner">
+
+          <div class="solution__left">
+            <p class="eyebrow animate-on-scroll">La risposta</p>
+            <h2 class="display-lg solution__title animate-on-scroll delay-1" id="solution-title">
+              Un unico sistema per governare tutto
+            </h2>
+
+            <p class="body-lg solution__copy animate-on-scroll delay-1">
+              Non gestiamo singole produzioni.<br/>
+              Costruiamo e guidiamo un sistema integrato:
+            </p>
+
+            <ul class="solution__list animate-on-scroll delay-2" aria-label="Componenti del sistema">
+              <li class="solution__list-item">Direzione creativa</li>
+              <li class="solution__list-item">Produzione (AI + tradizionale)</li>
+              <li class="solution__list-item">Output coordinati su ogni canale</li>
+            </ul>
+
+            <p class="solution__closing animate-on-scroll delay-2">
+              Tutto sotto <strong>controllo</strong>.<br/>
+              Tutto <strong>coerente</strong>.
+            </p>
+
+            <div class="animate-on-scroll delay-3">
+              <a href="#final-cta" class="btn btn--outline">Parliamone</a>
+            </div>
+          </div>
+
+          <div class="solution__visual animate-on-scroll delay-2" aria-hidden="true">
+            <div class="solution__diagram">
+
+              <div class="solution__diagram-row">
+                <div class="solution__diagram-node solution__diagram-node--strategy">
+                  <p class="solution__diagram-node-label">Input</p>
+                  <p class="solution__diagram-node-title">Strategia &amp; Brief</p>
+                </div>
+                <svg class="solution__diagram-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+                <div class="solution__diagram-node solution__diagram-node--ai">
+                  <p class="solution__diagram-node-label">Produzione</p>
+                  <p class="solution__diagram-node-title">AI + Shooting</p>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:center;">
+                <svg width="20" height="32" viewBox="0 0 20 32" fill="none" stroke="#E0185C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <line x1="10" y1="0" x2="10" y2="26"/><polyline points="4 20 10 26 16 20"/>
+                </svg>
+              </div>
+
+              <div class="solution__diagram-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <p class="solution__diagram-center-text">Regia unica Estro</p>
+              </div>
+
+              <div style="display:flex;justify-content:center;">
+                <svg width="20" height="32" viewBox="0 0 20 32" fill="none" stroke="#E0185C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <line x1="10" y1="0" x2="10" y2="26"/><polyline points="4 20 10 26 16 20"/>
+                </svg>
+              </div>
+
+              <div class="solution__diagram-node solution__diagram-node--output">
+                <p class="solution__diagram-node-label">Output</p>
+                <p class="solution__diagram-node-title">Contenuti coerenti &amp; coordinati</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         4. VALUE PROPOSITIONS
+         ================================================ -->
+    <section class="section value-props" id="value-props" aria-labelledby="value-props-title">
+      <div class="container">
+
+        <header class="value-props__header animate-on-scroll">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Perché funziona</p>
+          <h2 class="display-lg value-props__title" id="value-props-title">Cosa cambia concretamente</h2>
+          <p class="body-lg value-props__subtitle">
+            Non uno strumento in più. Un sistema di lavoro diverso.
+          </p>
+        </header>
+
+        <div class="grid-3" role="list">
+
+          <article class="value-card animate-on-scroll delay-1" role="listitem">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Regia completa</h3>
+            <p class="value-card__text">
+              Un'unica direzione su tutta la produzione.
+              Strategia, creatività e output lavorano insieme, senza rimpalli.
+            </p>
+          </article>
+
+          <article class="value-card animate-on-scroll delay-2" role="listitem">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Integrazione reale</h3>
+            <p class="value-card__text">
+              AI e produzione tradizionale nello stesso flusso.
+              Nessuna frammentazione. Nessun rimpallo.
+            </p>
+          </article>
+
+          <article class="value-card animate-on-scroll delay-3" role="listitem">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Controllo e affidabilità</h3>
+            <p class="value-card__text">
+              Processi chiari. Output verificabili.
+              La qualità è progettata, non casuale.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="value-props__cta animate-on-scroll">
+          <a href="#final-cta" class="btn btn--primary btn--lg">Richiedi una consulenza</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         5. SERVICES
+         ================================================ -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+
+        <header class="services__header animate-on-scroll">
+          <p class="eyebrow" style="color:rgba(243,239,224,0.5);margin-bottom:0.5rem;">Aree di intervento</p>
+          <h2 class="display-lg services__title" id="services-title">Dove interveniamo</h2>
+          <p class="services__subtitle">
+            Quattro ambiti dove l'integrazione AI porta il massimo valore.
+          </p>
+        </header>
+
+        <div class="services__grid" role="list">
+
+          <article class="service-card service-card--featured animate-on-scroll delay-1" role="listitem">
+            <span class="service-card__number">01</span>
+            <h3 class="service-card__title">AI Creative Production</h3>
+            <p class="service-card__text">
+              Contenuti visivi e campagne con workflow AI-driven.
+              Velocità e coerenza su ogni formato e canale.
+            </p>
+          </article>
+
+          <article class="service-card animate-on-scroll delay-2" role="listitem">
+            <span class="service-card__number">02</span>
+            <h3 class="service-card__title">AI Product &amp; Ecommerce</h3>
+            <p class="service-card__text">
+              Asset prodotto scalabili e coerenti.
+              Dalla scheda prodotto alla campagna, tutto in un unico flusso.
+            </p>
+          </article>
+
+          <article class="service-card animate-on-scroll delay-3" role="listitem">
+            <span class="service-card__number">03</span>
+            <h3 class="service-card__title">AI Prototyping &amp; Concept</h3>
+            <p class="service-card__text">
+              Sviluppo rapido di direzioni creative.
+              Iterazione veloce prima di investire in produzione completa.
+            </p>
+          </article>
+
+          <article class="service-card animate-on-scroll delay-4" role="listitem">
+            <span class="service-card__number">04</span>
+            <h3 class="service-card__title">AI Ideation &amp; Strategy</h3>
+            <p class="service-card__text">
+              Integrazione dell'AI nei processi creativi e decisionali.
+              Non solo tool: metodo e cultura.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="services__cta animate-on-scroll">
+          <a href="#final-cta" class="btn btn--outline-light btn--lg">Scopri come applicarlo al tuo contesto</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         6. HOW WE WORK
+         ================================================ -->
+    <section class="section how-we-work" id="how-we-work" aria-labelledby="how-we-work-title">
+      <div class="container">
+
+        <header class="how-we-work__header animate-on-scroll">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Il metodo</p>
+          <h2 class="display-lg how-we-work__title" id="how-we-work-title">
+            Un metodo strutturato e controllabile
+          </h2>
+        </header>
+
+        <ol class="steps" aria-label="Fasi del metodo">
+
+          <li class="step-card animate-on-scroll delay-1">
+            <div class="step-card__number" aria-hidden="true">01</div>
+            <h3 class="step-card__title">Analisi e allineamento</h3>
+            <p class="step-card__text">
+              Comprendiamo il tuo contesto, i tuoi flussi e gli obiettivi reali prima di proporre qualsiasi cosa.
+            </p>
+          </li>
+
+          <li class="step-card animate-on-scroll delay-2">
+            <div class="step-card__number" aria-hidden="true">02</div>
+            <h3 class="step-card__title">Definizione direzione creativa</h3>
+            <p class="step-card__text">
+              Stabiliamo tono, visual identity, linee guida. La regia prende forma prima della produzione.
+            </p>
+          </li>
+
+          <li class="step-card animate-on-scroll delay-3">
+            <div class="step-card__number" aria-hidden="true">03</div>
+            <h3 class="step-card__title">Produzione (AI + shooting)</h3>
+            <p class="step-card__text">
+              Eseguiamo con il mix giusto: AI dove porta valore, produzione tradizionale quando necessario.
+            </p>
+          </li>
+
+          <li class="step-card animate-on-scroll delay-4">
+            <div class="step-card__number" aria-hidden="true">04</div>
+            <h3 class="step-card__title">Iterazione e ottimizzazione</h3>
+            <p class="step-card__text">
+              Misuriamo, aggiustiamo, miglioriamo. Il sistema si affina nel tempo.
+            </p>
+          </li>
+
+        </ol>
+
+        <div class="how-we-work__closing animate-on-scroll">
+          <p class="how-we-work__closing-text">
+            <em>Regia unica.</em><br/>
+            Output coerenti.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         7. APPROACH
+         ================================================ -->
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="container">
+        <div class="approach__inner">
+
+          <div class="approach__left">
+            <p class="eyebrow" style="color:rgba(243,239,224,0.5);margin-bottom:0.5rem;" aria-hidden="true">Approccio ibrido</p>
+            <h2 class="display-lg approach__title animate-on-scroll" id="approach-title">
+              AI dove serve.<br/>Produzione reale quando necessario
+            </h2>
+
+            <p class="body-lg approach__copy animate-on-scroll delay-1">
+              L'AI è molto efficace su immagini e prototipi.
+              Non sempre lo è sul video complesso.
+              Per questo lavoriamo in modo ibrido:
+            </p>
+
+            <ul class="approach__list animate-on-scroll delay-2" aria-label="Componenti dell'approccio ibrido">
+              <li class="approach__list-item">
+                <div class="approach__list-icon approach__list-icon--ai" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <div class="approach__list-text">
+                  <span class="approach__list-label">AI per velocità e iterazione</span>
+                  <span class="approach__list-desc">Immagini, concept, varianti, prototipi — rapidi e scalabili.</span>
+                </div>
+              </li>
+              <li class="approach__list-item">
+                <div class="approach__list-icon approach__list-icon--human" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                  </svg>
+                </div>
+                <div class="approach__list-text">
+                  <span class="approach__list-label">Produzione reale per precisione</span>
+                  <span class="approach__list-desc">Shooting, video complesso, regia — dove l'AI non basta.</span>
+                </div>
+              </li>
+            </ul>
+
+            <p class="approach__closing animate-on-scroll delay-3">
+              Qualità senza compromessi.
+            </p>
+
+            <div class="animate-on-scroll delay-3" style="margin-top: 2rem;">
+              <a href="#final-cta" class="btn btn--outline-light">Valutiamo insieme il modello giusto</a>
+            </div>
+          </div>
+
+          <div class="approach__visual animate-on-scroll delay-2" aria-hidden="true">
+            <div class="approach__split">
+              <div class="approach__split-card approach__split-card--ai">
+                <span class="approach__split-label">AI</span>
+                <p class="approach__split-title">Velocità &amp; iterazione</p>
+                <ul class="approach__split-items">
+                  <li class="approach__split-item">Immagini generative</li>
+                  <li class="approach__split-item">Prototipi visivi</li>
+                  <li class="approach__split-item">Varianti di concept</li>
+                  <li class="approach__split-item">Asset scalabili</li>
+                </ul>
+              </div>
+              <div class="approach__split-card approach__split-card--human">
+                <span class="approach__split-label">Produzione reale</span>
+                <p class="approach__split-title">Precisione &amp; controllo</p>
+                <ul class="approach__split-items">
+                  <li class="approach__split-item">Shooting fotografico</li>
+                  <li class="approach__split-item">Video complesso</li>
+                  <li class="approach__split-item">Regia e direzione</li>
+                  <li class="approach__split-item">Post-produzione</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         8. BENEFITS
+         ================================================ -->
+    <section class="section benefits" id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+
+        <header class="benefits__header animate-on-scroll">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Risultati</p>
+          <h2 class="display-lg benefits__title" id="benefits-title">Cosa ottieni concretamente</h2>
+        </header>
+
+        <div class="benefits__grid" role="list">
+
+          <div class="benefit-item animate-on-scroll delay-1" role="listitem">
+            <div class="benefit-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <p class="benefit-item__text">Regia unica sulla produzione</p>
+          </div>
+
+          <div class="benefit-item animate-on-scroll delay-2" role="listitem">
+            <div class="benefit-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <p class="benefit-item__text">Più controllo su qualità e output</p>
+          </div>
+
+          <div class="benefit-item animate-on-scroll delay-3" role="listitem">
+            <div class="benefit-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+              </svg>
+            </div>
+            <p class="benefit-item__text">Meno dispersione operativa</p>
+          </div>
+
+          <div class="benefit-item animate-on-scroll delay-1" role="listitem">
+            <div class="benefit-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <p class="benefit-item__text">Maggiore velocità decisionale</p>
+          </div>
+
+          <div class="benefit-item animate-on-scroll delay-2" role="listitem">
+            <div class="benefit-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <p class="benefit-item__text">Più libertà creativa</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         9. TRUST / PROOF
+         ================================================ -->
+    <section class="section trust" id="trust" aria-labelledby="trust-title">
+      <div class="container">
+
+        <header class="trust__header animate-on-scroll">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Referenze</p>
+          <h2 class="display-lg trust__title" id="trust-title">Esperienza con aziende strutturate</h2>
+          <p class="body-lg trust__subtitle">
+            Lavoriamo con realtà che hanno bisogno di processo, non solo di prodotto.
+          </p>
+        </header>
+
+        <!-- Client logos — replace placeholders with actual logos -->
+        <div class="trust__logos animate-on-scroll" role="list" aria-label="Loghi clienti">
+          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
+            <span>Cliente</span>
+          </div>
+          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
+            <span>Cliente</span>
+          </div>
+          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
+            <span>Cliente</span>
+          </div>
+          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
+            <span>Cliente</span>
+          </div>
+          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
+            <span>Cliente</span>
+          </div>
+        </div>
+
+        <!-- Case study cards — replace with real data -->
+        <div class="trust__cases" role="list">
+
+          <article class="trust__case-card animate-on-scroll delay-1" role="listitem">
+            <span class="trust__case-tag">AI Creative Production</span>
+            <p class="trust__case-result">—</p>
+            <p class="trust__case-desc">
+              Integrazione workflow AI per brand strutturato.
+              Risultati e case study disponibili su richiesta.
+            </p>
+          </article>
+
+          <article class="trust__case-card animate-on-scroll delay-2" role="listitem">
+            <span class="trust__case-tag">AI Product Ecommerce</span>
+            <p class="trust__case-result">—</p>
+            <p class="trust__case-desc">
+              Asset prodotto scalabili per catalogo e-commerce di grandi dimensioni.
+              Dettagli disponibili su richiesta.
+            </p>
+          </article>
+
+          <article class="trust__case-card animate-on-scroll delay-3" role="listitem">
+            <span class="trust__case-tag">AI Strategy</span>
+            <p class="trust__case-result">—</p>
+            <p class="trust__case-desc">
+              Definizione strategia AI per team creativo interno.
+              Percorso su misura, risultati misurabili.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         10. FINAL CTA
+         ================================================ -->
+    <section class="section final-cta" id="final-cta" aria-labelledby="final-cta-title">
+      <div class="container">
+        <div class="final-cta__inner">
+
+          <div class="final-cta__left animate-on-scroll">
+            <p class="eyebrow" style="color:rgba(243,239,224,0.5);margin-bottom:0.5rem;">Inizia</p>
+            <h2 class="display-lg final-cta__title" id="final-cta-title">
+              Integrare l'AI è una scelta di processo
+            </h2>
+
+            <div class="final-cta__divider" aria-hidden="true"></div>
+
+            <p class="final-cta__copy">
+              Non esiste un modello standard.<br/>
+              Va progettato sul tuo contesto, sui tuoi obiettivi e sui tuoi flussi.
+            </p>
+
+            <ul class="final-cta__reassurance" aria-label="Rassicurazioni">
+              <li class="final-cta__reassurance-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Prima consulenza gratuita
+              </li>
+              <li class="final-cta__reassurance-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Nessun impegno iniziale
+              </li>
+              <li class="final-cta__reassurance-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Risposta entro 24 ore
+              </li>
+            </ul>
+          </div>
+
+          <div class="final-cta__right animate-on-scroll delay-2">
+            <div class="form-card form-card--dark" role="region" aria-labelledby="final-form-title">
+              <div class="form-card__header">
+                <h3 class="form-card__title" id="final-form-title">Richiedi una consulenza strategica</h3>
+                <p class="form-card__subtitle">Analizziamo il tuo contesto insieme.</p>
+              </div>
+
+              <form
+                class="contact-form"
+                id="final-form"
+                novalidate
+                aria-label="Form di contatto finale"
+              >
+                <div class="form__fields">
+                  <div class="form__row">
+                    <div class="form__group">
+                      <label class="form__label" for="final-name">Nome e cognome</label>
+                      <input
+                        class="form__input"
+                        type="text"
+                        id="final-name"
+                        name="name"
+                        placeholder="Mario Rossi"
+                        autocomplete="name"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                    <div class="form__group">
+                      <label class="form__label" for="final-email">Email</label>
+                      <input
+                        class="form__input"
+                        type="email"
+                        id="final-email"
+                        name="email"
+                        placeholder="mario@azienda.it"
+                        autocomplete="email"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form__row">
+                    <div class="form__group">
+                      <label class="form__label" for="final-phone">Numero di telefono</label>
+                      <input
+                        class="form__input"
+                        type="tel"
+                        id="final-phone"
+                        name="phone"
+                        placeholder="+39 02 1234567"
+                        autocomplete="tel"
+                        data-type="phone"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                    <div class="form__group">
+                      <label class="form__label" for="final-company">Azienda</label>
+                      <input
+                        class="form__input"
+                        type="text"
+                        id="final-company"
+                        name="company"
+                        placeholder="Nome Azienda S.r.l."
+                        autocomplete="organization"
+                        required
+                        aria-required="true"
+                      />
+                      <span class="form__error-msg" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form__group">
+                    <label class="form__label" for="final-message">Messaggio</label>
+                    <textarea
+                      class="form__textarea"
+                      id="final-message"
+                      name="message"
+                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
+                      rows="4"
+                      required
+                      aria-required="true"
+                    ></textarea>
+                    <span class="form__error-msg" role="alert"></span>
+                  </div>
+
+                  <div class="form__group">
+                    <label class="form__label" for="final-website">
+                      Sito web <span class="form__optional">(facoltativo)</span>
+                    </label>
+                    <input
+                      class="form__input"
+                      type="url"
+                      id="final-website"
+                      name="website"
+                      placeholder="https://www.tuodominio.it"
+                      autocomplete="url"
+                    />
+                  </div>
+
+                  <div class="form__submit">
+                    <button type="submit" class="btn btn--primary btn--full btn--lg">
+                      Richiedi una consulenza strategica
+                    </button>
+                  </div>
+
+                  <p class="form__privacy">
+                    Inviando accetti la nostra
+                    <a href="#" tabindex="0">Privacy Policy</a>.
+                    I tuoi dati non verranno condivisi.
+                  </p>
+                </div>
+
+                <div class="form__success" aria-live="polite">
+                  <div class="form__success-icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <p class="form__success-title display-sm" style="color:var(--color-light);">Messaggio ricevuto</p>
+                  <p class="form__success-text" style="color:rgba(243,239,224,0.65);">Ti risponderemo entro 24 ore lavorative. A presto.</p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================
+       FOOTER
+       ================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__top">
+
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo" aria-label="Estro — torna all'inizio">
+            <img
+              src="Logo-estro.webp"
+              alt="Estro logo"
+              width="100"
+              height="30"
+              loading="lazy"
+            />
+          </a>
+          <p class="footer__tagline">
+            Regia unica per contenuti, campagne e produzione creativa.
+            L'AI entra nel processo quando porta valore reale.
+          </p>
+          <nav class="footer__social" aria-label="Social media">
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </nav>
+        </div>
+
+        <nav aria-label="Servizi">
+          <p class="footer__col-title">Servizi</p>
+          <ul class="footer__col-links">
+            <li><a href="#services" class="footer__col-link">AI Creative Production</a></li>
+            <li><a href="#services" class="footer__col-link">AI Product &amp; Ecommerce</a></li>
+            <li><a href="#services" class="footer__col-link">AI Prototyping &amp; Concept</a></li>
+            <li><a href="#services" class="footer__col-link">AI Ideation &amp; Strategy</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Metodo">
+          <p class="footer__col-title">Metodo</p>
+          <ul class="footer__col-links">
+            <li><a href="#solution" class="footer__col-link">La soluzione</a></li>
+            <li><a href="#how-we-work" class="footer__col-link">Come lavoriamo</a></li>
+            <li><a href="#approach" class="footer__col-link">Approccio ibrido</a></li>
+            <li><a href="#trust" class="footer__col-link">Referenze</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="footer__col-title">Contatti</p>
+          <ul class="footer__col-links">
+            <li><a href="#final-cta" class="footer__col-link">Richiedi consulenza</a></li>
+            <li><a href="mailto:info@estro.it" class="footer__col-link">info@estro.it</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="current-year">2024</span> Estro. Tutti i diritti riservati.
+        </p>
+        <nav class="footer__legal" aria-label="Link legali">
+          <a href="#" class="footer__legal-link">Privacy Policy</a>
+          <a href="#" class="footer__legal-link">Cookie Policy</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
