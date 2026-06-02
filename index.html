@@ -1202,25 +1202,6 @@
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- SVG clip-path definitions for paw morph hover interaction -->
-  <svg width="0" height="0" aria-hidden="true" focusable="false"
-       style="position:absolute;overflow:hidden;pointer-events:none">
-    <defs>
-      <!--
-        Paw silhouette in objectBoundingBox space (0–1).
-        ::after pseudo-element extends 20% above the card (top:-20%),
-        so the actual card area occupies y ≈ 0.167–1.0 in this space.
-        Three toe ellipses sit in the top ~16% (y 0–0.16),
-        the main pad rectangle fills the rest.
-      -->
-      <clipPath id="paw-clip" clipPathUnits="objectBoundingBox">
-        <ellipse cx="0.21" cy="0.085" rx="0.088" ry="0.095"/>
-        <ellipse cx="0.50" cy="0.050" rx="0.088" ry="0.095"/>
-        <ellipse cx="0.79" cy="0.085" rx="0.088" ry="0.095"/>
-        <rect x="0.055" y="0.185" width="0.89" height="0.80" rx="0.43" ry="0.43"/>
-      </clipPath>
-    </defs>
-  </svg>
 
 </body>
 </html>
