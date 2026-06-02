@@ -413,6 +413,8 @@ button, input, textarea, select {
   align-items: stretch;
   min-height: calc(90vh - 80px);
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* ---- Left column ---- */
@@ -2498,6 +2500,8 @@ button, input, textarea, select {
   grid-template-columns: 1fr 1fr;
   gap: var(--space-xl);
   align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
 .final-cta__left {}
@@ -2730,6 +2734,7 @@ footer .logo-img-sm {
   pointer-events: none;
   user-select: none;
   display: block;
+  z-index: 0;
 }
 
 /* Hero placement: bottom-left, clipped by section overflow:hidden
