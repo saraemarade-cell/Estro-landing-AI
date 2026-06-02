@@ -1074,13 +1074,27 @@ button, input, textarea, select {
 }
 
 .problem__result-card {
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
+  padding: var(--space-md) calc(var(--space-md) * 1.25);
   background-color: var(--color-light-dark);
-  border: 1px solid rgba(28, 28, 28, 0.08);
+  border: 1px solid rgba(28, 28, 28, 0.07);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition:
+    border-radius 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s ease;
+}
+
+/* Feline-curve shapes — sinuous tail movement across the three cards */
+.problem__result-card:nth-child(1) {
+  border-radius: 8px 8px 64px 8px;
+}
+.problem__result-card:nth-child(2) {
+  border-radius: 8px 64px 8px 8px;
+}
+.problem__result-card:nth-child(3) {
+  border-radius: 64px 8px 8px 8px;
 }
 
 .problem__result-label {
@@ -2388,53 +2402,65 @@ button, input, textarea, select {
    BRAND ASSET DECORATIONS & ENHANCED INTERACTIONS
    ===================================================== */
 
-/* --- Problem: hover-stamp paw on result cards --- */
+/* --- Problem: hover-stamp paw — each stamp anchors to the curved corner --- */
 .problem__result-stamp {
   position: absolute;
-  right: -8px;
-  bottom: -8px;
-  width: 64px;
+  width: 56px;
   height: auto;
   opacity: 0;
-  transform: rotate(-18deg) scale(0.75);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
   user-select: none;
   filter: grayscale(1);
 }
 
-.problem__result-card:hover .problem__result-stamp {
+/* Card 1: curved bottom-right → stamp there */
+.problem__result-card:nth-child(1) .problem__result-stamp {
+  right: 6px;
+  bottom: 6px;
+  transform: rotate(-20deg) scale(0.7);
+}
+.problem__result-card:nth-child(1):hover .problem__result-stamp {
   opacity: 0.18;
-  transform: rotate(-18deg) scale(1);
+  transform: rotate(-20deg) scale(1);
+}
+
+/* Card 2: curved top-right → stamp there */
+.problem__result-card:nth-child(2) .problem__result-stamp {
+  right: 6px;
+  top: 6px;
+  transform: rotate(15deg) scale(0.7);
+}
+.problem__result-card:nth-child(2):hover .problem__result-stamp {
+  opacity: 0.18;
+  transform: rotate(15deg) scale(1);
+}
+
+/* Card 3: curved top-left → stamp there */
+.problem__result-card:nth-child(3) .problem__result-stamp {
+  left: 6px;
+  top: 6px;
+  transform: rotate(-10deg) scale(0.7);
+}
+.problem__result-card:nth-child(3):hover .problem__result-stamp {
+  opacity: 0.18;
+  transform: rotate(-10deg) scale(1);
 }
 
 .problem__result-card {
   position: relative;
   overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.problem__result-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: var(--color-primary);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .problem__result-card:hover {
-  transform: translateX(6px);
-  box-shadow: 0 4px 24px rgba(28, 28, 28, 0.1);
+  transform: translateX(5px);
+  box-shadow: 0 8px 32px rgba(28, 28, 28, 0.12);
 }
 
-.problem__result-card:hover::before {
-  transform: scaleY(1);
-}
+/* Shape deepens on hover — shape feels alive */
+.problem__result-card:nth-child(1):hover { border-radius: 8px 8px 88px 8px; }
+.problem__result-card:nth-child(2):hover { border-radius: 8px 88px 8px 8px; }
+.problem__result-card:nth-child(3):hover { border-radius: 88px 8px 8px 8px; }
 
 .problem__item {
   transition: transform var(--transition-fast);
