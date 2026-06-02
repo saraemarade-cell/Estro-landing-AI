@@ -638,41 +638,79 @@
           </h2>
         </header>
 
-        <ol class="steps" aria-label="Fasi del metodo">
+        <div class="steps-system" aria-label="Fasi del metodo">
 
-          <li class="step-card animate-on-scroll delay-1">
-            <div class="step-card__number" aria-hidden="true">01</div>
-            <h3 class="step-card__title">Analisi e allineamento</h3>
-            <p class="step-card__text">
-              Comprendiamo il tuo contesto, i tuoi flussi e gli obiettivi reali prima di proporre qualsiasi cosa.
-            </p>
-          </li>
+          <!-- SVG flow path — drawn by JS on scroll -->
+          <svg class="steps-flow" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#E0185C" stop-opacity="1"/>
+                <stop offset="60%"  stop-color="#E0185C" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#E0185C" stop-opacity="0.2"/>
+              </linearGradient>
+              <filter id="flow-glow">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- ghost track -->
+            <path class="steps-flow__track" />
+            <!-- animated fill -->
+            <path class="steps-flow__fill" filter="url(#flow-glow)" />
+            <!-- travelling particles -->
+            <circle class="steps-flow__particle steps-flow__particle--a" r="2.5"/>
+            <circle class="steps-flow__particle steps-flow__particle--b" r="1.8"/>
+          </svg>
 
-          <li class="step-card animate-on-scroll delay-2">
-            <div class="step-card__number" aria-hidden="true">02</div>
-            <h3 class="step-card__title">Definizione direzione creativa</h3>
-            <p class="step-card__text">
-              Stabiliamo tono, visual identity, linee guida. La regia prende forma prima della produzione.
-            </p>
-          </li>
+          <ol class="steps" aria-label="Fasi del metodo">
 
-          <li class="step-card animate-on-scroll delay-3">
-            <div class="step-card__number" aria-hidden="true">03</div>
-            <h3 class="step-card__title">Produzione (AI + shooting)</h3>
-            <p class="step-card__text">
-              Eseguiamo con il mix giusto: AI dove porta valore, produzione tradizionale quando necessario.
-            </p>
-          </li>
+            <li class="step-card animate-on-scroll delay-1" data-step="0">
+              <div class="step-card__node" aria-hidden="true">
+                <span class="step-card__node-ring"></span>
+                <span class="step-card__number">01</span>
+              </div>
+              <h3 class="step-card__title">Analisi e allineamento</h3>
+              <p class="step-card__text">
+                Comprendiamo il tuo contesto, i tuoi flussi e gli obiettivi reali prima di proporre qualsiasi cosa.
+              </p>
+            </li>
 
-          <li class="step-card animate-on-scroll delay-4">
-            <div class="step-card__number" aria-hidden="true">04</div>
-            <h3 class="step-card__title">Iterazione e ottimizzazione</h3>
-            <p class="step-card__text">
-              Misuriamo, aggiustiamo, miglioriamo. Il sistema si affina nel tempo.
-            </p>
-          </li>
+            <li class="step-card animate-on-scroll delay-2" data-step="1">
+              <div class="step-card__node" aria-hidden="true">
+                <span class="step-card__node-ring"></span>
+                <span class="step-card__number">02</span>
+              </div>
+              <h3 class="step-card__title">Definizione direzione creativa</h3>
+              <p class="step-card__text">
+                Stabiliamo tono, visual identity, linee guida. La regia prende forma prima della produzione.
+              </p>
+            </li>
 
-        </ol>
+            <li class="step-card animate-on-scroll delay-3" data-step="2">
+              <div class="step-card__node" aria-hidden="true">
+                <span class="step-card__node-ring"></span>
+                <span class="step-card__number">03</span>
+              </div>
+              <h3 class="step-card__title">Produzione (AI + shooting)</h3>
+              <p class="step-card__text">
+                Eseguiamo con il mix giusto: AI dove porta valore, produzione tradizionale quando necessario.
+              </p>
+            </li>
+
+            <li class="step-card animate-on-scroll delay-4" data-step="3">
+              <div class="step-card__node" aria-hidden="true">
+                <span class="step-card__node-ring"></span>
+                <span class="step-card__number">04</span>
+              </div>
+              <h3 class="step-card__title">Iterazione e ottimizzazione</h3>
+              <p class="step-card__text">
+                Misuriamo, aggiustiamo, miglioriamo. Il sistema si affina nel tempo.
+              </p>
+            </li>
+
+          </ol>
+
+        </div>
 
         <div class="how-we-work__closing animate-on-scroll">
           <img class="how-we-work__brand-seal" src="gattino-estro-favicon.png" alt="" aria-hidden="true" loading="lazy" />
@@ -1170,6 +1208,161 @@
   <script src="main.js"></script>
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+  /* ── Timeline flow system ─────────────────────────────── */
+  (function () {
+    const system   = document.querySelector('.steps-system');
+    const svg      = system && system.querySelector('.steps-flow');
+    if (!svg) return;
+
+    const track    = svg.querySelector('.steps-flow__track');
+    const fill     = svg.querySelector('.steps-flow__fill');
+    const pA       = svg.querySelector('.steps-flow__particle--a');
+    const pB       = svg.querySelector('.steps-flow__particle--b');
+    const cards    = Array.from(system.querySelectorAll('.step-card'));
+
+    let pathD = '', totalLen = 0, activated = false, rafId = null;
+
+    /* Build the organic S-curve path through node centres */
+    function buildPath () {
+      const svgRect = svg.getBoundingClientRect();
+
+      const centres = cards.map(card => {
+        const node = card.querySelector('.step-card__node');
+        const r    = node.getBoundingClientRect();
+        return {
+          x: r.left + r.width  / 2 - svgRect.left,
+          y: r.top  + r.height / 2 - svgRect.top
+        };
+      });
+
+      if (centres.length < 2) return;
+
+      /* Organic cubic bezier — slight vertical wave for each segment */
+      let d = `M ${centres[0].x} ${centres[0].y}`;
+      for (let i = 0; i < centres.length - 1; i++) {
+        const a = centres[i], b = centres[i + 1];
+        const mx = (a.x + b.x) / 2;
+        const wave = (i % 2 === 0 ? -18 : 18);
+        d += ` C ${mx} ${a.y + wave}, ${mx} ${b.y - wave}, ${b.x} ${b.y}`;
+      }
+
+      pathD = d;
+      track.setAttribute('d', d);
+      fill.setAttribute('d', d);
+
+      totalLen = fill.getTotalLength();
+      fill.style.strokeDasharray  = totalLen;
+      fill.style.strokeDashoffset = totalLen;
+      track.style.strokeDasharray = 'none';
+    }
+
+    /* Animate fill draw + particles */
+    function activate () {
+      if (activated) return;
+      activated = true;
+
+      fill.classList.add('steps-flow__fill--drawing');
+
+      let start = null;
+      const DRAW_MS = 1400;
+
+      function tick (ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / DRAW_MS, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        fill.style.strokeDashoffset = totalLen * (1 - ease);
+
+        /* particle A — leads the front */
+        const ptA = fill.getPointAtLength(totalLen * Math.min(ease + 0.02, 1));
+        pA.setAttribute('cx', ptA.x);
+        pA.setAttribute('cy', ptA.y);
+        pA.style.opacity = progress < 0.95 ? '1' : `${1 - (progress - 0.95) / 0.05}`;
+
+        /* particle B — trails slightly behind */
+        const bPos = Math.max(ease - 0.18, 0);
+        const ptB  = fill.getPointAtLength(totalLen * bPos);
+        pB.setAttribute('cx', ptB.x);
+        pB.setAttribute('cy', ptB.y);
+        pB.style.opacity = bPos > 0.01 ? '0.55' : '0';
+
+        if (progress < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          pA.style.opacity = '0';
+          pB.style.opacity = '0';
+          startPulse();
+        }
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    /* After draw: send one particle per loop */
+    function startPulse () {
+      let t = null;
+      const PULSE_MS = 3200;
+      const DELAY_MS = 2000;
+
+      function loop (ts) {
+        if (!t) t = ts;
+        const phase = ((ts - t) % (PULSE_MS + DELAY_MS)) / PULSE_MS;
+        if (phase <= 1) {
+          const ease = phase < 0.5
+            ? 2 * phase * phase
+            : 1 - Math.pow(-2 * phase + 2, 2) / 2;
+          const pt = fill.getPointAtLength(totalLen * ease);
+          pA.setAttribute('cx', pt.x);
+          pA.setAttribute('cy', pt.y);
+          pA.style.opacity = phase < 0.9 ? '0.9' : `${(1 - phase) / 0.1 * 0.9}`;
+        } else {
+          pA.style.opacity = '0';
+        }
+        rafId = requestAnimationFrame(loop);
+      }
+
+      rafId = requestAnimationFrame(loop);
+    }
+
+    /* Hover: highlight entire path + dim others */
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        system.classList.add('steps-system--hovered');
+        card.classList.add('step-card--active');
+      });
+      card.addEventListener('mouseleave', () => {
+        system.classList.remove('steps-system--hovered');
+        card.classList.remove('step-card--active');
+      });
+    });
+
+    /* Scroll activation */
+    const io = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        buildPath();
+        setTimeout(activate, 300);
+        io.disconnect();
+      }
+    }, { threshold: 0.35 });
+
+    io.observe(system);
+
+    /* Rebuild on resize */
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (activated) {
+          cancelAnimationFrame(rafId);
+          activated = false;
+          buildPath();
+          setTimeout(activate, 100);
+        }
+      }, 250);
+    });
+  })();
   </script>
 
 

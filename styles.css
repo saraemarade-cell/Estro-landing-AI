@@ -1727,23 +1727,53 @@ button, input, textarea, select {
   margin-bottom: var(--space-sm);
 }
 
+/* ── Timeline system wrapper ── */
+.steps-system {
+  position: relative;
+}
+
+/* SVG canvas — absolutely overlaid, pointer-events off so cards stay clickable */
+.steps-flow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.steps-flow__track {
+  fill: none;
+  stroke: rgba(28, 28, 28, 0.08);
+  stroke-width: 1.5;
+}
+
+.steps-flow__fill {
+  fill: none;
+  stroke: url(#flow-gradient);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  transition: none;
+}
+
+.steps-flow__particle {
+  fill: var(--color-primary);
+  opacity: 0;
+}
+
+/* ── Steps grid ── */
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-sm);
   position: relative;
+  z-index: 1;
 }
 
-.steps::before {
-  content: '';
-  position: absolute;
-  top: 28px;
-  left: calc(12.5% + 28px);
-  right: calc(12.5% + 28px);
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-primary) 0%, rgba(224, 24, 92, 0.15) 100%);
-}
-
+/* ── Step card ── */
 .step-card {
   display: flex;
   flex-direction: column;
@@ -1752,27 +1782,90 @@ button, input, textarea, select {
   padding: var(--space-md);
   border-radius: var(--radius-lg);
   background-color: transparent;
-  transition: background-color var(--transition-base);
+  transition:
+    background-color 0.3s ease,
+    transform        0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.step-card:hover {
-  background-color: var(--color-light-dark);
+@media (hover: hover) {
+  .step-card:hover {
+    background-color: var(--color-light-dark);
+    transform: translateY(-3px);
+  }
+
+  /* Dim non-hovered cards when one is active */
+  .steps-system--hovered .step-card:not(.step-card--active) {
+    opacity: 0.4;
+    transform: none;
+  }
+
+  .steps-system--hovered .step-card--active .step-card__node-ring {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+
+  .steps-system--hovered .step-card--active .step-card__number {
+    box-shadow: 0 0 0 8px rgba(224, 24, 92, 0.15), 0 4px 20px rgba(224, 24, 92, 0.3);
+  }
+}
+
+.step-card {
+  transition:
+    background-color 0.3s ease,
+    transform        0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity          0.3s ease;
+}
+
+/* ── Node (number circle + ripple ring) ── */
+.step-card__node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-card__node-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(224, 24, 92, 0.35);
+  opacity: 0;
+  transform: scale(1);
+  transition:
+    opacity   0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .step-card__number {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background-color: var(--color-primary);
   color: white;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  transition:
+    transform  0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+  .step-card:hover .step-card__number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 6px rgba(224, 24, 92, 0.12);
+  }
+  .step-card:hover .step-card__node-ring {
+    opacity: 1;
+    transform: scale(1.5);
+  }
 }
 
 .step-card__title {
@@ -2354,8 +2447,8 @@ button, input, textarea, select {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .steps::before {
-    display: none;
+  .steps-flow {
+    display: none; /* path geometry doesn't map to 2-col layout */
   }
 
   .trust__cases {
@@ -2491,6 +2584,10 @@ button, input, textarea, select {
 
   .steps {
     grid-template-columns: 1fr;
+  }
+
+  .steps-flow {
+    display: none;
   }
 }
 
@@ -2662,26 +2759,6 @@ button, input, textarea, select {
 @keyframes seal-pulse {
   0%, 100% { opacity: 0.55; transform: scale(1); }
   50%       { opacity: 0.8;  transform: scale(1.08); }
-}
-
-/* Animated step connector */
-@keyframes connector-draw {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-.steps::before {
-  transform-origin: left;
-  animation: connector-draw 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
-}
-
-.step-card__number {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition-base);
-}
-
-.step-card:hover .step-card__number {
-  transform: scale(1.12);
-  box-shadow: 0 0 0 6px rgba(224, 24, 92, 0.15);
 }
 
 /* --- Approach: coda-gatto connector between split cards --- */
