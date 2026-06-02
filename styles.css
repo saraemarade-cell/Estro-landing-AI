@@ -263,6 +263,18 @@ button, input, textarea, select {
   box-shadow: 0 2px 20px rgba(28, 28, 28, 0.08);
 }
 
+.navbar.scrolled .navbar__link {
+  color: var(--color-dark);
+}
+
+.navbar.scrolled .navbar__link:hover {
+  color: var(--color-primary);
+}
+
+.navbar.scrolled .navbar__hamburger span {
+  background-color: var(--color-dark);
+}
+
 .navbar__inner {
   display: flex;
   align-items: center;
@@ -289,9 +301,13 @@ button, input, textarea, select {
 .navbar__link {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--color-dark);
+  color: var(--color-light);
   transition: color var(--transition-fast);
   position: relative;
+}
+
+.navbar__link:hover {
+  color: rgba(243, 239, 224, 0.75);
 }
 
 .navbar__link::after {
@@ -329,7 +345,7 @@ button, input, textarea, select {
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--color-dark);
+  background-color: var(--color-light);
   transition: all var(--transition-base);
   transform-origin: center;
 }
@@ -770,11 +786,11 @@ button, input, textarea, select {
 }
 
 .form-card--hero .form-card__subtitle {
-  color: rgba(243, 239, 224, 0.5);
+  color: rgba(243, 239, 224, 0.75);
 }
 
 .form-card--hero .form__label {
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.9);
 }
 
 .form-card--hero .form__input,
@@ -786,7 +802,7 @@ button, input, textarea, select {
 
 .form-card--hero .form__input::placeholder,
 .form-card--hero .form__textarea::placeholder {
-  color: rgba(243, 239, 224, 0.25);
+  color: rgba(243, 239, 224, 0.5);
 }
 
 .form-card--hero .form__input:focus,
@@ -797,11 +813,11 @@ button, input, textarea, select {
 }
 
 .form-card--hero .form__optional {
-  color: rgba(243, 239, 224, 0.35);
+  color: rgba(243, 239, 224, 0.6);
 }
 
 .form-card--hero .form__privacy {
-  color: rgba(243, 239, 224, 0.3);
+  color: rgba(243, 239, 224, 0.6);
 }
 
 /* AI dots animation */
@@ -867,7 +883,7 @@ button, input, textarea, select {
 }
 
 .form-card--dark .form-card__subtitle {
-  color: rgba(243, 239, 224, 0.6);
+  color: rgba(243, 239, 224, 0.8);
 }
 
 .form__row {
@@ -916,7 +932,7 @@ button, input, textarea, select {
 
 .form-card--dark .form__input::placeholder,
 .form-card--dark .form__textarea::placeholder {
-  color: rgba(243, 239, 224, 0.35);
+  color: rgba(243, 239, 224, 0.5);
 }
 
 .form__input:focus,
@@ -953,7 +969,7 @@ button, input, textarea, select {
 }
 
 .form-card--dark .form__optional {
-  color: rgba(243, 239, 224, 0.4);
+  color: rgba(243, 239, 224, 0.6);
 }
 
 .form__submit {
@@ -968,7 +984,7 @@ button, input, textarea, select {
 }
 
 .form-card--dark .form__privacy {
-  color: rgba(243, 239, 224, 0.4);
+  color: rgba(243, 239, 224, 0.65);
 }
 
 .form__privacy a {
