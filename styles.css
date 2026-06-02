@@ -1558,11 +1558,13 @@ button, input, textarea, select {
   background-color: var(--color-light-dark);
   position: relative;
   overflow: hidden;
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 .value-props__header {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .value-props__title {
@@ -1618,7 +1620,7 @@ button, input, textarea, select {
 
 .value-props__cta {
   text-align: center;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
 }
 
 
@@ -1633,7 +1635,7 @@ button, input, textarea, select {
 }
 
 .services__header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .services__title {
@@ -2207,11 +2209,13 @@ button, input, textarea, select {
   background-color: var(--color-light-dark);
   position: relative;
   overflow: hidden;
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 .benefits__header {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .benefits__title {
@@ -3509,4 +3513,63 @@ footer .logo-img-sm {
 .final-cta .container {
   position: relative;
   z-index: 1;
+}
+
+/* Promote approach, value-props, benefits containers too */
+.approach .container,
+.value-props .container,
+.benefits .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================
+   GRAIN TEXTURE — film-grain feel across the whole page
+   SVG feTurbulence as data URI, fixed overlay at very
+   low opacity with mix-blend-mode:overlay so it reads
+   naturally on both dark and light backgrounds.
+   ===================================================== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* =====================================================
+   DOT MATRIX — delicate dot pattern on select sections
+   Adds tactile depth without competing with content.
+   ===================================================== */
+
+/* Light sections: warm dark dots */
+.value-props::before,
+.benefits::before {
+  background-image:
+    radial-gradient(circle, rgba(28,28,92,0.07) 1px, transparent 1px),
+    radial-gradient(ellipse 55% 50% at 90% 68%, rgba(224,24,92,0.045) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 55% at 8%  28%, rgba(28,28,28,0.030) 0%, transparent 58%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
+}
+
+/* Dark sections: faint warm-toned dots */
+.services::before {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(ellipse 55% 55% at 12% 38%, rgba(224,24,92,0.08) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 50% at 88% 78%, rgba(224,24,92,0.05) 0%, transparent 58%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
+}
+
+/* how-we-work light dots (::after already handles the glow) */
+.how-we-work::after {
+  background-image:
+    radial-gradient(circle, rgba(28,28,28,0.055) 1px, transparent 1px),
+    radial-gradient(ellipse 55% 50% at 90% 68%, rgba(224,24,92,0.045) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 55% at 8%  28%, rgba(28,28,28,0.030) 0%, transparent 58%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
 }
