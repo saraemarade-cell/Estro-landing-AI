@@ -2777,39 +2777,7 @@ footer .logo-img-sm {
   .ft-cols { grid-template-columns: 1fr; gap: 32px; }
 }
 
-/* =====================================================
-   DECORATIVE PAW
-   ===================================================== */
-
-.deco-paw {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  display: block;
-  z-index: 0;
-}
-
-/* Problem — angolo in basso a destra, quasi tutto fuori frame */
-.deco-paw--problem {
-  bottom: -30px;
-  right: -50px;
-  width: clamp(160px, 18vw, 240px);
-  opacity: 0.09;
-  transform: rotate(14deg) scaleX(-1);
-  mix-blend-mode: multiply;
-}
-
-/* How-we-work — angolo in basso a sinistra, quasi tutto fuori frame */
-.deco-paw--method {
-  bottom: -30px;
-  left: -50px;
-  width: clamp(160px, 18vw, 240px);
-  opacity: 0.08;
-  transform: rotate(-12deg) scaleX(-1);
-  mix-blend-mode: multiply;
-}
-
-/* Ensure section content sits above the paw */
+/* Ensure section content sits above decorative layers */
 .problem .container,
 .how-we-work .container {
   position: relative;
