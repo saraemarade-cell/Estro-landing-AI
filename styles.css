@@ -1854,8 +1854,8 @@ button, input, textarea, select {
   }
 }
 
-/* scroll-in animation */
-.srv-card {
+/* scroll-in — uses the page's existing animate-on-scroll / in-view system */
+.srv-card.animate-on-scroll {
   opacity: 0;
   transform: translateY(32px);
   transition:
@@ -1864,15 +1864,10 @@ button, input, textarea, select {
     border-color 0.4s ease;
 }
 
-.srv-card.srv-visible {
+.srv-card.animate-on-scroll.in-view {
   opacity: 1;
   transform: translateY(0);
 }
-
-.srv-card--a { transition-delay: 0.05s; }
-.srv-card--b { transition-delay: 0.15s; }
-.srv-card--c { transition-delay: 0.25s; }
-.srv-card--d { transition-delay: 0.35s; }
 
 .services__cta {
   margin-top: var(--space-xl);

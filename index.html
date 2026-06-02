@@ -556,7 +556,7 @@
 
         <div class="srv-bento" role="list">
 
-          <article class="srv-card srv-card--a" role="listitem" data-index="01">
+          <article class="srv-card srv-card--a animate-on-scroll delay-1" role="listitem" data-index="01">
             <div class="srv-card__border" aria-hidden="true"></div>
             <div class="srv-card__glow" aria-hidden="true"></div>
             <div class="srv-card__inner">
@@ -579,7 +579,7 @@
             </div>
           </article>
 
-          <article class="srv-card srv-card--b" role="listitem" data-index="02">
+          <article class="srv-card srv-card--b animate-on-scroll delay-2" role="listitem" data-index="02">
             <div class="srv-card__border" aria-hidden="true"></div>
             <div class="srv-card__glow" aria-hidden="true"></div>
             <div class="srv-card__inner">
@@ -602,7 +602,7 @@
             </div>
           </article>
 
-          <article class="srv-card srv-card--c" role="listitem" data-index="03">
+          <article class="srv-card srv-card--c animate-on-scroll delay-3" role="listitem" data-index="03">
             <div class="srv-card__border" aria-hidden="true"></div>
             <div class="srv-card__glow" aria-hidden="true"></div>
             <div class="srv-card__inner">
@@ -625,7 +625,7 @@
             </div>
           </article>
 
-          <article class="srv-card srv-card--d" role="listitem" data-index="04">
+          <article class="srv-card srv-card--d animate-on-scroll delay-4" role="listitem" data-index="04">
             <div class="srv-card__border" aria-hidden="true"></div>
             <div class="srv-card__glow" aria-hidden="true"></div>
             <div class="srv-card__inner">
@@ -1473,23 +1473,12 @@
   </script>
 
   <script>
-  /* ── Service cards: scroll-in + 3D tilt + magnetic glow ── */
+  /* ── Service cards: 3D tilt + magnetic glow ── */
   (function () {
     const cards = document.querySelectorAll('.srv-card');
     if (!cards.length) return;
 
-    /* 1. Scroll-in reveal */
-    const revealIO = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('srv-visible');
-          revealIO.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    cards.forEach(c => revealIO.observe(c));
-
-    /* 2. 3D tilt + glow (desktop only) */
+    /* 3D tilt + glow (desktop only) */
     if (!window.matchMedia('(hover: hover)').matches) return;
 
     const MAX_TILT = 7; // degrees
