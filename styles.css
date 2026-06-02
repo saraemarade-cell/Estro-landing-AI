@@ -729,13 +729,10 @@ button, input, textarea, select {
 
 /* ---- Right column ---- */
 .hero__right {
-  position: sticky;
-  top: 80px;
   display: flex;
   flex-direction: column;
   background-color: var(--color-dark);
   border-left: 1px solid rgba(243, 239, 224, 0.06);
-  align-self: start;
 }
 
 
