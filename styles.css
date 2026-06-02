@@ -1617,6 +1617,19 @@ button, input, textarea, select {
   margin-top: var(--space-xl);
 }
 
+.value-props__bg-cat {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+
+.value-props__bg-cat img {
+  width: clamp(180px, 28vw, 320px);
+  height: auto;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
+
 /* =====================================================
    SERVICES SECTION
    ===================================================== */
