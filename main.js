@@ -38,7 +38,7 @@
   }
 
   /* --- Scroll animations --- */
-  const animatedEls = document.querySelectorAll('.animate-on-scroll');
+  const animatedEls = document.querySelectorAll('.animate-on-scroll, .problem__item');
 
   if ('IntersectionObserver' in window && animatedEls.length) {
     const observer = new IntersectionObserver(

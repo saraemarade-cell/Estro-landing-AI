@@ -1033,6 +1033,10 @@ button, input, textarea, select {
 .problem {
   background-color: var(--color-light);
   color: var(--color-dark);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+  padding-bottom: calc(var(--space-2xl) + 40px);
 }
 
 .problem__inner {
@@ -1420,6 +1424,8 @@ button, input, textarea, select {
    ===================================================== */
 .value-props {
   background-color: var(--color-light-dark);
+  position: relative;
+  overflow: hidden;
 }
 
 .value-props__header {
@@ -1489,6 +1495,8 @@ button, input, textarea, select {
 .services {
   background-color: var(--color-dark);
   color: var(--color-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .services__header {
@@ -1581,6 +1589,8 @@ button, input, textarea, select {
    ===================================================== */
 .how-we-work {
   background-color: var(--color-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .how-we-work__header {
@@ -1678,6 +1688,8 @@ button, input, textarea, select {
 .approach {
   background-color: var(--color-dark);
   color: var(--color-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .approach__inner {
@@ -1833,6 +1845,8 @@ button, input, textarea, select {
    ===================================================== */
 .benefits {
   background-color: var(--color-light-dark);
+  position: relative;
+  overflow: hidden;
 }
 
 .benefits__header {
@@ -2407,6 +2421,356 @@ button, input, textarea, select {
   border-width: 0;
 }
 
+/* =====================================================
+   BRAND ASSET DECORATIONS & ENHANCED INTERACTIONS
+   ===================================================== */
+
+/* --- Problem section: paw print --- */
+.problem__deco-paw {
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  width: 320px;
+  height: auto;
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(-15deg);
+  filter: grayscale(1);
+}
+
+.problem__result-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.problem__result-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-primary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.problem__result-card:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 24px rgba(28, 28, 28, 0.1);
+}
+
+.problem__result-card:hover::before {
+  transform: scaleY(1);
+}
+
+.problem__item {
+  transition: transform var(--transition-fast);
+}
+
+.problem__item:hover {
+  transform: translateX(4px);
+}
+
+/* --- Value Props: cat decoration + coord marker --- */
+.value-props__deco-cat {
+  position: absolute;
+  top: -30px;
+  right: -40px;
+  width: 220px;
+  height: auto;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1);
+}
+
+.value-props__coord {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Value card enhancements */
+.value-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.value-card:hover::after {
+  transform: scaleX(1);
+}
+
+.value-card__icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--transition-base);
+}
+
+.value-card:hover .value-card__icon {
+  transform: scale(1.12) rotate(-5deg);
+  background-color: rgba(224, 24, 92, 0.14);
+}
+
+/* --- Services: bg grid + cover image accent --- */
+.services__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(243, 239, 224, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 239, 224, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.services__deco-cover {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 180px;
+  height: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1) invert(1);
+  border-radius: var(--radius-md);
+}
+
+/* Service card: left accent on hover */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Featured card: pulsing glow */
+@keyframes featured-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224, 24, 92, 0); }
+  50%       { box-shadow: 0 0 32px 4px rgba(224, 24, 92, 0.12); }
+}
+
+.service-card--featured {
+  animation: featured-pulse 3.5s ease-in-out infinite;
+}
+
+.service-card__text {
+  color: rgba(243, 239, 224, 0.75);
+}
+
+/* --- How We Work: cat stamp + animated connector --- */
+.how-we-work__deco-cat {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 80px;
+  height: auto;
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1);
+}
+
+/* Animated step connector */
+@keyframes connector-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.steps::before {
+  transform-origin: left;
+  animation: connector-draw 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+
+.step-card__number {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition-base);
+}
+
+.step-card:hover .step-card__number {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 6px rgba(224, 24, 92, 0.15);
+}
+
+/* --- Approach: tail decoration + AI scan line --- */
+.approach__deco-tail {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1) invert(1);
+}
+
+/* AI card scan line */
+.approach__split-card--ai {
+  position: relative;
+  overflow: hidden;
+}
+
+.approach__split-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224, 24, 92, 0.6), transparent);
+  animation: approach-scan 3.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes approach-scan {
+  0%   { top: 0; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Human card: corner brackets via pseudo-elements */
+.approach__split-card--human {
+  position: relative;
+}
+
+.approach__split-card--human::before,
+.approach__split-card--human::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(243, 239, 224, 0.25);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.approach__split-card--human::before {
+  top: 10px;
+  left: 10px;
+  border-width: 1px 0 0 1px;
+}
+
+.approach__split-card--human::after {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 1px 1px 0;
+}
+
+.approach__split-item {
+  color: rgba(243, 239, 224, 0.7);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.approach__split-card:hover .approach__split-item {
+  color: rgba(243, 239, 224, 0.9);
+}
+
+/* --- Benefits: scan line + paw + icon bounce --- */
+.benefits__scan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224, 24, 92, 0.3), transparent);
+  animation: benefits-scan-h 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes benefits-scan-h {
+  0%, 100% { opacity: 0; transform: translateX(-100%); }
+  10%       { opacity: 1; }
+  90%       { opacity: 1; }
+  100%      { opacity: 0; transform: translateX(100%); }
+}
+
+.benefits__deco-paw {
+  position: absolute;
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%) rotate(20deg);
+  width: 200px;
+  height: auto;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1);
+}
+
+.benefit-item__icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--transition-base);
+}
+
+.benefit-item:hover .benefit-item__icon {
+  transform: scale(1.2);
+  background-color: rgba(224, 24, 92, 0.14);
+}
+
+/* =====================================================
+   SECTION TOP BORDER ACCENTS (visual rhythm without clip-path)
+   ===================================================== */
+.value-props::before,
+.how-we-work::before,
+.benefits::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0.35;
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   STAGGER SLIDE-IN FROM LEFT (problem items)
+   ===================================================== */
+.problem__item {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.problem__item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
