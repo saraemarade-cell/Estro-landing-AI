@@ -2323,6 +2323,12 @@ button, input, textarea, select {
   transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
+/* Prada logo is wider/smaller by design — boost it */
+.trust__card:first-child .trust__card-logo {
+  height: clamp(64px, 8vw, 110px);
+  max-width: 280px;
+}
+
 /* ── Body (text) side ── */
 .trust__card-body {
   background-color: #131313;
