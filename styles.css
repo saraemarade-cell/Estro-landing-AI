@@ -1031,8 +1031,8 @@ button, input, textarea, select {
    PROBLEM SECTION
    ===================================================== */
 .problem {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: var(--color-light);
+  color: var(--color-dark);
 }
 
 .problem__inner {
@@ -1045,7 +1045,7 @@ button, input, textarea, select {
 .problem__left {}
 
 .problem__title {
-  color: var(--color-light);
+  color: var(--color-dark);
   margin-bottom: var(--space-md);
 }
 
@@ -1088,12 +1088,12 @@ button, input, textarea, select {
 .problem__item-label {
   font-weight: 600;
   font-size: 1rem;
-  color: var(--color-light);
+  color: var(--color-dark);
 }
 
 .problem__item-desc {
   font-size: 0.875rem;
-  color: rgba(243, 239, 224, 0.6);
+  color: var(--color-dark-60);
 }
 
 .problem__right {
@@ -1105,8 +1105,8 @@ button, input, textarea, select {
 .problem__result-card {
   padding: var(--space-md);
   border-radius: var(--radius-md);
-  background-color: rgba(243, 239, 224, 0.04);
-  border: 1px solid rgba(243, 239, 224, 0.08);
+  background-color: var(--color-light-dark);
+  border: 1px solid rgba(28, 28, 28, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1123,7 +1123,7 @@ button, input, textarea, select {
 .problem__result-text {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  color: var(--color-light);
+  color: var(--color-dark);
   line-height: 1.3;
 }
 
