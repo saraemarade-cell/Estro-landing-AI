@@ -1187,6 +1187,8 @@ button, input, textarea, select {
 .solution {
   background-color: var(--color-dark);
   color: var(--color-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .solution__inner {
@@ -2272,6 +2274,8 @@ button, input, textarea, select {
   color: var(--color-light);
   padding-top: clamp(8rem, 14vw, 13rem);
   padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .trust__header {
@@ -3331,4 +3335,181 @@ footer .logo-img-sm {
     opacity: 1;
     transform: none;
   }
+}
+
+/* =====================================================
+   DECORATIVE DEPTH — radial glows + ring outlines
+   Delicate atmospheric shapes that add visual depth
+   without competing with content. All pointer-events:none,
+   z-index: 0, below all content.
+   ===================================================== */
+
+/* --- HERO (dark) --- */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 60% at 88% 8%,  rgba(224,24,92,0.10) 0%, transparent 62%),
+    radial-gradient(ellipse 35% 45% at 4%  88%, rgba(224,24,92,0.06) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* large faint ring, top-right */
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(224,24,92,0.07);
+  top: -260px;
+  right: -180px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- PROBLEM (light) --- */
+.problem::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 55% at 88% 18%, rgba(224,24,92,0.05) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 40% at 8%  72%, rgba(28,28,28,0.03)  0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* large faint ring, bottom-left */
+.problem::after {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  border: 1px solid rgba(28,28,28,0.04);
+  bottom: -380px;
+  left: -240px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- SOLUTION (dark) --- */
+.solution::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 95% 50%, rgba(224,24,92,0.07) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 50% at 4%  25%, rgba(224,24,92,0.04) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+.solution::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(224,24,92,0.06);
+  bottom: -220px;
+  right: -160px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- SERVICES (dark) --- */
+.services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 55% at 12% 38%, rgba(224,24,92,0.08) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 50% at 88% 78%, rgba(224,24,92,0.05) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+.services::after {
+  content: '';
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  border: 1px solid rgba(224,24,92,0.06);
+  top: -200px;
+  right: -180px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- HOW-WE-WORK (light) — ::before used for border accent, use ::after --- */
+.how-we-work::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 90% 68%, rgba(224,24,92,0.045) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 55% at 8%  28%, rgba(28,28,28,0.030) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- TRUST (dark) --- */
+.trust::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 84% 12%, rgba(224,24,92,0.08) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 45% at 8%  80%, rgba(224,24,92,0.05) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+.trust::after {
+  content: '';
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  border: 1px solid rgba(224,24,92,0.06);
+  top: -300px;
+  left: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- FINAL-CTA (light) --- */
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 88% 40%, rgba(224,24,92,0.06) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 50% at 12% 82%, rgba(28,28,28,0.04) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
+.final-cta::after {
+  content: '';
+  position: absolute;
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  border: 1px solid rgba(28,28,28,0.04);
+  top: -280px;
+  left: -180px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure all content inside sections sits above the decorative layer */
+.hero__inner,
+.problem .container,
+.solution .container,
+.services .container,
+.how-we-work .container,
+.trust .container,
+.final-cta .container {
+  position: relative;
+  z-index: 1;
 }
