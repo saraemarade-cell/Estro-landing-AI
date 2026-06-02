@@ -40,8 +40,8 @@
   --transition-base: 0.28s ease;
   --transition-slow: 0.45s ease;
 
-  --shadow-card: 0 2px 20px rgba(28, 28, 28, 0.08);
-  --shadow-card-hover: 0 8px 40px rgba(28, 28, 28, 0.14);
+  --shadow-card:        0 4px 24px rgba(28, 28, 28, 0.13), 0 1px 4px rgba(28, 28, 28, 0.08);
+  --shadow-card-hover:  0 16px 56px rgba(28, 28, 28, 0.22), 0 4px 12px rgba(28, 28, 28, 0.12);
 }
 
 /* --- Reset & Base --- */
@@ -149,6 +149,16 @@ button, input, textarea, select {
 .section {
   padding-top: var(--section-padding);
   padding-bottom: var(--section-padding);
+  position: relative;
+}
+
+/* Section depth: dark sections cast a downward shadow onto the next section */
+.section--dark,
+.services,
+.trust,
+.problem,
+.hero {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
 }
 
 .section--dark {
@@ -813,12 +823,19 @@ button, input, textarea, select {
   background-color: #ffffff;
   border-radius: var(--radius-lg);
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  box-shadow: var(--shadow-card);
+  box-shadow:
+    0 0 0 1px rgba(28,28,28,0.05),
+    0 8px 32px rgba(28, 28, 28, 0.12),
+    0 32px 80px rgba(28, 28, 28, 0.1);
 }
 
 .form-card--dark {
   background-color: #1a1a1a;
   border: 1px solid rgba(243, 239, 224, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    0 32px 80px rgba(0, 0, 0, 0.35);
 }
 
 .form-card__header {
@@ -1662,6 +1679,20 @@ button, input, textarea, select {
   transform-style: preserve-3d;
   will-change: transform;
   transition: border-color 0.4s ease;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.04) inset,
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+@media (hover: hover) {
+  .srv-card:hover {
+    box-shadow:
+      0 2px 0 rgba(255,255,255,0.06) inset,
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(224, 24, 92, 0.15);
+  }
 }
 
 /* animated SVG border on hover */
@@ -2290,6 +2321,7 @@ button, input, textarea, select {
   min-height: 480px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .trust__card--flip {
@@ -2327,8 +2359,8 @@ button, input, textarea, select {
   background: linear-gradient(
     100deg,
     rgba(28, 28, 28, 0) 0%,
-    rgba(28, 28, 28, 0.15) 60%,
-    rgba(28, 28, 28, 0.55) 100%
+    rgba(28, 28, 28, 0.28) 55%,
+    rgba(28, 28, 28, 0.78) 100%
   );
   z-index: 1;
   transition: opacity 0.5s ease;
@@ -2338,8 +2370,8 @@ button, input, textarea, select {
   background: linear-gradient(
     -100deg,
     rgba(28, 28, 28, 0) 0%,
-    rgba(28, 28, 28, 0.15) 60%,
-    rgba(28, 28, 28, 0.55) 100%
+    rgba(28, 28, 28, 0.28) 55%,
+    rgba(28, 28, 28, 0.78) 100%
   );
 }
 
@@ -2384,6 +2416,7 @@ button, input, textarea, select {
   padding: clamp(var(--space-xl), 5vw, var(--space-3xl));
   gap: var(--space-lg);
   position: relative;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.45);
 }
 
 .trust__card-body::before {
