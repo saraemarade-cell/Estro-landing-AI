@@ -2628,6 +2628,35 @@ button, input, textarea, select {
   pointer-events: none;
 }
 
+/*
+  Atmospheric background cat — screen blend makes the black image body invisible,
+  leaving only the white eyes and markings as a ghosted brand watermark.
+  Radial gradient mask fades the edges so there are no hard boundaries.
+*/
+.services__bg-cat {
+  position: absolute;
+  width: clamp(480px, 55vw, 780px);
+  height: auto;
+  top: 50%;
+  right: -8%;
+  transform: translateY(-52%);
+  opacity: 0.13;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 58% 50%,
+    black 20%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0.2) 65%, transparent 80%);
+  mask-image: radial-gradient(ellipse 72% 72% at 58% 50%,
+    black 20%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0.2) 65%, transparent 80%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: services-cat-drift 12s ease-in-out infinite;
+}
+
+@keyframes services-cat-drift {
+  0%, 100% { transform: translateY(-52%) translateY(0px);   }
+  50%       { transform: translateY(-52%) translateY(-14px); }
+}
+
 /* Mini preview inside featured service card */
 .service-card__preview {
   position: relative;
