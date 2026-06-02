@@ -2189,94 +2189,130 @@ button, input, textarea, select {
    TRUST / PROOF SECTION
    ===================================================== */
 .trust {
-  background-color: var(--color-light);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .trust__header {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.trust__header .eyebrow {
+  color: rgba(243, 239, 224, 0.45);
+  margin-bottom: 0.5rem;
 }
 
 .trust__title {
-  margin-bottom: var(--space-sm);
+  color: var(--color-light);
+  margin-bottom: 0;
 }
 
-.trust__subtitle {
-  color: var(--color-dark-60);
-  max-width: 560px;
-  margin: 0 auto;
+/* ── Editorial logo wall ── */
+.trust__wall {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border-top: 1px solid rgba(243, 239, 224, 0.07);
+  border-bottom: 1px solid rgba(243, 239, 224, 0.07);
 }
 
-.trust__logos {
+/* Brand item — base */
+.trust__brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-  padding: var(--space-lg) 0;
-  border-top: 1px solid var(--color-dark-10);
-  border-bottom: 1px solid var(--color-dark-10);
-  margin-bottom: var(--space-xl);
+  padding: var(--space-2xl) clamp(var(--space-xl), 5vw, 80px);
+  position: relative;
+  cursor: default;
+  transition: background-color 0.35s ease;
+  flex: 1;
 }
 
-.trust__logo-placeholder {
-  width: 120px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  background-color: var(--color-light-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
+.trust__brand + .trust__brand {
+  border-left: 1px solid rgba(243, 239, 224, 0.07);
 }
 
-.trust__logo-placeholder span {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--color-dark-60);
-  text-transform: uppercase;
+/* Size variants — editorial hierarchy */
+.trust__brand--lg {
+  flex: 1.6;
 }
 
-.trust__cases {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+.trust__brand--md {
+  flex: 1;
 }
 
-.trust__case-card {
-  padding: var(--space-md);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-light-dark);
-  border: 1px solid rgba(28, 28, 28, 0.06);
+/* Inner wrapper holds logo + label */
+.trust__brand-inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
 }
 
-.trust__case-tag {
-  display: inline-flex;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-pill);
-  background-color: rgba(224, 24, 92, 0.08);
-  color: var(--color-primary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+/* Logo image — normalised to white on dark bg */
+.trust__brand-logo {
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+  transition:
+    opacity   0.35s ease,
+    filter    0.35s ease,
+    transform 0.4s  cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.trust__brand--lg .trust__brand-logo {
+  height: 44px;
+  max-width: 200px;
+}
+
+.trust__brand--md .trust__brand-logo {
+  height: 30px;
+  max-width: 140px;
+}
+
+/* Case-study label — hidden by default, slides up on hover */
+.trust__brand-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  width: fit-content;
+  color: var(--color-primary);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity   0.28s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+  position: absolute;
+  bottom: -1.4rem;
+  left: 50%;
+  translate: -50% 0;
+  pointer-events: none;
 }
 
-.trust__case-result {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-dark);
-}
+/* Hover interactions */
+@media (hover: hover) {
+  .trust__brand:hover .trust__brand-logo {
+    opacity: 1;
+    transform: translateY(-3px);
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(224, 24, 92, 0.4));
+  }
 
-.trust__case-desc {
-  font-size: 0.875rem;
-  color: var(--color-dark-60);
-  line-height: 1.6;
+  .trust__brand:hover .trust__brand-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .trust__brand:hover {
+    background-color: rgba(243, 239, 224, 0.02);
+  }
 }
 
 /* =====================================================
@@ -2522,8 +2558,8 @@ button, input, textarea, select {
     display: none; /* path geometry doesn't map to 2-col layout */
   }
 
-  .trust__cases {
-    grid-template-columns: 1fr 1fr;
+  .trust__brand {
+    padding: var(--space-lg) var(--space-xl);
   }
 }
 
@@ -2630,8 +2666,13 @@ button, input, textarea, select {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .trust__cases {
-    grid-template-columns: 1fr;
+  .trust__brand--lg,
+  .trust__brand--md {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .trust__brand-label {
+    display: none;
   }
 
   .form__row {
@@ -2668,13 +2709,16 @@ button, input, textarea, select {
     grid-template-columns: 1fr;
   }
 
-  .trust__logos {
-    gap: var(--space-md);
+  .trust__wall {
+    gap: 0;
   }
 
-  .trust__logo-placeholder {
-    width: 90px;
-    height: 40px;
+  .trust__brand--lg .trust__brand-logo {
+    height: 32px;
+  }
+
+  .trust__brand--md .trust__brand-logo {
+    height: 22px;
   }
 
   .grid-2 {
