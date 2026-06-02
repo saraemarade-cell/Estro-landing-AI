@@ -2330,8 +2330,8 @@ button, input, textarea, select {
 
 /* Prada logo is wider/smaller by design — boost it */
 .trust__card:first-child .trust__card-logo {
-  height: clamp(64px, 8vw, 110px);
-  max-width: 280px;
+  height: clamp(80px, 11vw, 150px);
+  max-width: 360px;
 }
 
 /* ── Body (text) side ── */
@@ -2556,9 +2556,9 @@ footer .logo {
 }
 
 footer .logo-img-sm {
-  height: 32px;
+  height: 36px;
   width: auto;
-  filter: brightness(0) invert(1);
+  object-fit: contain;
 }
 
 /* Column headers */
