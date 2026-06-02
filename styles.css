@@ -1069,10 +1069,6 @@ button, input, textarea, select {
 
 /*
   Problem right column — 3 result cards.
-  On hover (pointer devices only) each card morphs from a rectangle into a
-  paw-pad shape via 8-value border-radius. A ::before pseudo-element creates
-  3 toe beans via box-shadow cloning, positioned at a different corner per
-  card so the three paw prints feel directionally varied. No image used.
 */
 .problem__right {
   display: flex;
@@ -2852,7 +2848,7 @@ button, input, textarea, select {
   color: rgba(243, 239, 224, 0.9);
 }
 
-/* --- Benefits: scan line + paw + icon bounce --- */
+/* --- Benefits: scan line + icon bounce --- */
 .benefits__scan {
   position: absolute;
   top: 0;
