@@ -416,34 +416,50 @@ button, input, textarea, select {
   margin-bottom: var(--space-md);
 }
 
-.hero__image-wrapper {
+/* --- Hero Video Wrapper ---
+   YouTube iframe cover-crop inside a 4:5 portrait container.
+   Same visual footprint as the original image placeholder.
+   Video: "ESTRO x ELMEC • Neutral To Be Colourful" (ID: JHJbEeBElqA)
+   Source: Estro - Elmec x Estro.html
+*/
+.hero__video-wrapper {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1C1C1C 100%);
+  background: #1C1C1C; /* fallback while iframe loads */
 }
 
-.hero__image-inner {
-  width: 100%;
+.hero__video-iframe {
+  /* Cover crop: 16:9 video in 4:5 container.
+     Width needed = container_height × (16/9)
+     Container_height = container_width × (5/4)
+     iframe_width / container_width = (16/9) × (5/4) = 80/36 ≈ 2.222 → 222.2%
+  */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% * 80 / 36); /* = 222.2% */
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: var(--space-lg);
-  position: relative;
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none; /* no interaction — decorative background video */
 }
 
-.hero__image-inner::before {
-  content: '';
+/* Gradient overlay — same pattern as existing Hero design */
+.hero__video-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
     transparent 30%,
-    rgba(28, 28, 28, 0.85) 100%
+    rgba(28, 28, 28, 0.88) 100%
   );
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--space-lg);
 }
 
 .hero__image-content {
@@ -479,15 +495,7 @@ button, input, textarea, select {
   color: rgba(243, 239, 224, 0.7);
 }
 
-/* Grid pattern overlay */
-.hero__image-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(243,239,224,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(243,239,224,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
+/* .hero__image-grid removed — replaced by video background */
 
 /* AI dots animation */
 .hero__ai-dots {
@@ -1763,9 +1771,18 @@ button, input, textarea, select {
     position: static;
   }
 
-  .hero__image-wrapper {
+  .hero__video-wrapper {
     aspect-ratio: 16/9;
     order: -1;
+  }
+
+  /* On mobile, the container becomes 16:9 (landscape) so video fits naturally */
+  .hero__video-iframe {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 
   .problem__inner {

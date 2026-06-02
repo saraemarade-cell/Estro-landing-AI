@@ -78,26 +78,54 @@
           <!-- Left: visual block -->
           <div class="hero__left animate-on-scroll">
 
-            <div class="hero__image-wrapper">
-              <div class="hero__image-grid" aria-hidden="true"></div>
+            <!--
+              VIDEO: "ESTRO x ELMEC • Neutral To Be Colourful" (YouTube ID: JHJbEeBElqA)
+              Source: Estro - Elmec x Estro.html → elementor-widget-video → JHJbEeBElqA.html
+              Embed with autoplay, mute, loop, no controls — cover-cropped in 4:5 container.
+            -->
+            <div class="hero__video-wrapper" aria-label="Video case study Estro x Elmec">
 
-              <!-- AI activity indicator -->
+              <!-- Pulsing dots — same position and style as original -->
               <div class="hero__ai-dots" aria-hidden="true">
                 <span class="hero__ai-dot"></span>
                 <span class="hero__ai-dot"></span>
                 <span class="hero__ai-dot"></span>
               </div>
 
-              <div class="hero__image-inner">
+              <!-- YouTube iframe:
+                   autoplay=1     → parte subito
+                   mute=1         → senza audio (requisito browser per autoplay)
+                   loop=1         → loop infinito
+                   playlist=...   → necessario per loop su video singolo
+                   controls=0     → nessun controllo visibile
+                   playsinline=1  → inline su mobile (no fullscreen forzato iOS)
+                   rel=0          → nessun video correlato
+                   modestbranding=1 → branding YouTube minimale
+                   disablekb=1    → disabilita scorciatoie tastiera
+                   iv_load_policy=3 → nessuna annotation
+              -->
+              <iframe
+                class="hero__video-iframe"
+                src="https://www.youtube.com/embed/JHJbEeBElqA?autoplay=1&mute=1&loop=1&playlist=JHJbEeBElqA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&enablejsapi=0"
+                title="ESTRO x ELMEC • Neutral To Be Colourful"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                frameborder="0"
+                loading="lazy"
+                aria-hidden="true"
+              ></iframe>
+
+              <!-- Gradient overlay — same pattern del design esistente nella Hero -->
+              <div class="hero__video-overlay" aria-hidden="true">
                 <div class="hero__image-content">
-                  <div class="hero__image-tag" aria-hidden="true">
+                  <div class="hero__image-tag">
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" aria-hidden="true"><circle cx="4" cy="4" r="4"/></svg>
-                    Live
+                    Case study
                   </div>
-                  <p class="hero__image-label">Regia unica.<br/>Output coerenti.</p>
+                  <p class="hero__image-label">ESTRO × ELMEC<br/>Neutral To Be Colourful</p>
                   <p class="hero__image-sublabel">AI Creative Production</p>
                 </div>
               </div>
+
             </div>
 
             <p class="eyebrow hero__eyebrow">AI Creative Production</p>
