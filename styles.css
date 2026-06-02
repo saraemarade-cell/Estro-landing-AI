@@ -1131,7 +1131,8 @@ button, input, textarea, select {
    SOLUTION SECTION
    ===================================================== */
 .solution {
-  background-color: var(--color-light);
+  background-color: var(--color-dark);
+  color: var(--color-light);
 }
 
 .solution__inner {
@@ -1144,11 +1145,12 @@ button, input, textarea, select {
 .solution__left {}
 
 .solution__title {
+  color: var(--color-light);
   margin-bottom: var(--space-md);
 }
 
 .solution__copy {
-  color: var(--color-dark-80);
+  color: rgba(243, 239, 224, 0.8);
   margin-bottom: var(--space-sm);
 }
 
@@ -1165,6 +1167,7 @@ button, input, textarea, select {
   gap: 0.75rem;
   font-size: 1rem;
   font-weight: 500;
+  color: var(--color-light);
 }
 
 .solution__list-item::before {
@@ -1179,7 +1182,7 @@ button, input, textarea, select {
 .solution__closing {
   font-size: 1.05rem;
   font-weight: 500;
-  color: var(--color-dark);
+  color: rgba(243, 239, 224, 0.85);
   line-height: 1.7;
   margin-bottom: var(--space-md);
 }
