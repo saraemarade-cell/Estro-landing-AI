@@ -733,6 +733,23 @@ button, input, textarea, select {
   flex-direction: column;
   background-color: var(--color-dark);
   border-left: 1px solid rgba(243, 239, 224, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Texture behind the form — layered on top of the dark bg */
+.hero__right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(224,24,92,0.07) 0%, transparent 70%);
+  background-size: 260px 260px, 100% 100%;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
 }
 
 
@@ -764,10 +781,10 @@ button, input, textarea, select {
 
 .hero__right-inner {
   flex: 1;
-  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  padding: var(--space-xs) var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   z-index: 1;
 }
