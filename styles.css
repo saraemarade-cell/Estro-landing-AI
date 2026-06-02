@@ -2819,6 +2819,25 @@ footer .logo-img-sm {
   mix-blend-mode: multiply;
 }
 
+/* =====================================================
+   DECORATIVE CAT FACE — watermark in how-we-work
+   ===================================================== */
+.deco-cat {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.deco-cat--method {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(420px, 58vw, 720px);
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
 /* Ensure section content sits above decorative layers */
 .problem .container,
 .how-we-work .container {
