@@ -84,27 +84,9 @@
             Cover technique: max(100%, calc(100vh×16/9)) × max(100%, calc(100vw×9/16))
             ensures correct cover for any container proportion without knowing exact dimensions.
           -->
-          <div class="hero__video-wrapper animate-on-scroll" aria-label="Video case study Estro x Elmec">
+          <div class="hero__video-wrapper" aria-label="Video case study Estro x Elmec">
 
-            <!-- Pulsing live indicator -->
-            <div class="hero__ai-dots" aria-hidden="true">
-              <span class="hero__ai-dot"></span>
-              <span class="hero__ai-dot"></span>
-              <span class="hero__ai-dot"></span>
-            </div>
-
-            <!--
-              autoplay=1        → autoplay
-              mute=1            → muted (required for autoplay in browsers)
-              loop=1            → infinite loop
-              playlist=ID       → required by YouTube for single-video loop
-              controls=0        → no controls shown
-              playsinline=1     → inline on mobile, no forced fullscreen on iOS
-              rel=0             → no related videos at end
-              modestbranding=1  → minimal YouTube logo
-              disablekb=1       → no keyboard shortcuts
-              iv_load_policy=3  → no video annotations
-            -->
+            <!-- Layer 0: YouTube iframe (background) -->
             <iframe
               class="hero__video-iframe"
               src="https://www.youtube.com/embed/JHJbEeBElqA?autoplay=1&mute=1&loop=1&playlist=JHJbEeBElqA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
@@ -115,7 +97,36 @@
               aria-hidden="true"
             ></iframe>
 
-            <!-- Dual gradient: top vignette + bottom overlay for text readability -->
+            <!-- Layer 1: subtle crosshair grid -->
+            <div class="hero__grid-layer" aria-hidden="true"></div>
+
+            <!-- Layer 2: scanning line (continuous sweep) -->
+            <div class="hero__scan-line" aria-hidden="true"></div>
+
+            <!-- Layer 3: corner brackets (production frame corners) -->
+            <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+            <div class="hero__corner hero__corner--tr" aria-hidden="true"></div>
+            <div class="hero__corner hero__corner--bl" aria-hidden="true"></div>
+            <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+
+            <!-- Layer 4: top meta bar -->
+            <div class="hero__meta-top" aria-hidden="true">
+              <span class="hero__meta-label">AI CREATIVE PRODUCTION</span>
+              <span class="hero__meta-rec">
+                <span class="hero__meta-rec-dot"></span>REC
+              </span>
+            </div>
+
+            <!-- Layer 5: right-side coordinate ruler -->
+            <div class="hero__ruler" aria-hidden="true">
+              <span class="hero__ruler-tick"></span>
+              <span class="hero__ruler-tick"></span>
+              <span class="hero__ruler-tick"></span>
+              <span class="hero__ruler-tick"></span>
+              <span class="hero__ruler-tick"></span>
+            </div>
+
+            <!-- Layer 6: bottom glow + gradient + production info -->
             <div class="hero__video-overlay" aria-hidden="true">
               <div class="hero__image-content">
                 <div class="hero__image-tag">
@@ -123,29 +134,45 @@
                   Case study
                 </div>
                 <p class="hero__image-label">ESTRO × ELMEC<br/>Neutral To Be Colourful</p>
-                <p class="hero__image-sublabel">AI Creative Production</p>
+                <p class="hero__image-sublabel">AI Creative Production — 2025</p>
               </div>
             </div>
 
           </div>
 
           <!-- Text block below the video, same column -->
-          <div class="hero__text-block animate-on-scroll delay-1">
-            <p class="eyebrow hero__eyebrow">AI Creative Production</p>
-            <h1 class="display-xl hero__headline" id="hero-headline">
-              Un'unica regia per contenuti, campagne e produzione creativa
-            </h1>
-            <p class="body-lg hero__text">
-              L'AI entra nel processo creativo per aumentare velocità e controllo.<br/>
-              La direzione resta centrale.
-            </p>
+          <div class="hero__text-block">
+            <div class="hero__text-block-inner">
+              <p class="eyebrow hero__eyebrow">AI Creative Production</p>
+              <h1 class="display-xl hero__headline" id="hero-headline">
+                Un'unica regia per contenuti, campagne e produzione creativa
+              </h1>
+              <p class="body-lg hero__text">
+                L'AI entra nel processo creativo per aumentare velocità e controllo.<br/>
+                La direzione resta centrale.
+              </p>
+            </div>
+            <!-- Decorative horizontal rule with accent -->
+            <div class="hero__text-rule" aria-hidden="true">
+              <span class="hero__text-rule-line"></span>
+              <span class="hero__text-rule-dot"></span>
+              <span class="hero__text-rule-label">AI × Production</span>
+            </div>
           </div>
 
         </div>
 
         <!-- Right column: form (38%) -->
-        <div class="hero__right animate-on-scroll delay-2">
-            <div class="form-card" role="region" aria-labelledby="hero-form-title">
+        <div class="hero__right">
+          <!-- Micro-grid background layer -->
+          <div class="hero__right-grid" aria-hidden="true"></div>
+          <!-- Accent marker top -->
+          <div class="hero__right-accent" aria-hidden="true">
+            <span class="hero__right-accent-line"></span>
+            <span class="hero__right-accent-label">Consulenza</span>
+          </div>
+          <div class="hero__right-inner animate-on-scroll delay-2">
+            <div class="form-card form-card--hero" role="region" aria-labelledby="hero-form-title">
               <div class="form-card__header">
                 <h2 class="form-card__title" id="hero-form-title">Richiedi una consulenza</h2>
                 <p class="form-card__subtitle">Analizziamo il tuo contesto. Nessun impegno.</p>
@@ -273,9 +300,11 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div><!-- /.hero__right-inner -->
 
-        </div>
+        </div><!-- /.hero__right -->
+
+      </div><!-- /.hero__inner -->
     </section>
 
     <!-- ================================================
