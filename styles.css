@@ -3428,7 +3428,25 @@ footer .logo-img-sm {
     display: none;
   }
 
-  /* Trust card: stacked — no lateral shadow, top shadow instead */
+  /* Hero video overlay: move case study tag to top-left, hide text below */
+  .hero__video-overlay {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: var(--space-sm);
+  }
+
+  .hero__image-label,
+  .hero__image-sublabel {
+    display: none;
+  }
+
+  .hero__image-tag {
+    margin-bottom: 0;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+
   .trust__card-body {
     box-shadow: 0 -6px 24px rgba(0,0,0,0.3);
     padding: var(--space-md);
