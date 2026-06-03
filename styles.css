@@ -257,6 +257,20 @@ button, input, textarea, select {
 /* =====================================================
    NAVBAR
    ===================================================== */
+/* ── Scroll progress bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, rgba(224,24,92,0.6) 100%);
+  z-index: 200;
+  transform-origin: left;
+  transition: width 0.05s linear;
+  pointer-events: none;
+}
+
 .navbar {
   position: fixed;
   top: 0;
