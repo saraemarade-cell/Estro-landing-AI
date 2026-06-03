@@ -2631,7 +2631,7 @@ footer {
   bottom: -12%;
   transform: translateX(-50%);
   font-family: var(--font-display);
-  font-size: clamp(180px, 30vw, 460px);
+  font-size: clamp(60px, 30vw, 460px);
   line-height: 0.85;
   color: rgba(243, 239, 224, 0.035);
   letter-spacing: -10px;
