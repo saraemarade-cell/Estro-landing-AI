@@ -3370,6 +3370,229 @@ footer .logo-img-sm {
 }
 
 /* =====================================================
+   RESPONSIVE — comprehensive mobile-friendly additions
+   Breakpoints: 1024 / 768 / 640 / 480
+   ===================================================== */
+
+/* ── 1024px: tablet landscape ── */
+@media (max-width: 1024px) {
+  /* Hero: remove fixed min-height so form doesn't overflow */
+  .hero {
+    min-height: unset;
+  }
+
+  /* Solution: reduce visual area */
+  .solution__frame {
+    max-width: 100%;
+  }
+
+  /* Trust: reduce body padding */
+  .trust__card-body {
+    padding: var(--space-lg);
+    gap: var(--space-sm);
+  }
+
+  /* Approach: tighter gap */
+  .approach__inner {
+    gap: var(--space-lg);
+  }
+}
+
+/* ── 768px: tablet portrait ── */
+@media (max-width: 768px) {
+  /* Section padding — tighter on mobile */
+  .section {
+    padding-top: clamp(2.5rem, 7vw, 4rem);
+    padding-bottom: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  /* Keep compact sections consistent */
+  .value-props,
+  .benefits {
+    padding-top: clamp(2rem, 6vw, 3rem);
+    padding-bottom: clamp(2rem, 6vw, 3rem);
+  }
+
+  /* Trust: large top padding becomes normal section padding */
+  .trust {
+    padding-top: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  /* Solution visual: constrain height when stacked */
+  .solution__visual {
+    max-height: 420px;
+    overflow: hidden;
+  }
+
+  .solution__atmosphere {
+    display: none;
+  }
+
+  /* Trust card: stacked — no lateral shadow, top shadow instead */
+  .trust__card-body {
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.3);
+    padding: var(--space-md);
+  }
+
+  /* Trust card: visual shorter on stack */
+  .trust__card-visual {
+    min-height: 240px;
+  }
+
+  /* Approach visual: center and limit size */
+  .approach__visual {
+    justify-content: center;
+  }
+
+  .approach__split {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* How-we-work closing */
+  .how-we-work__closing {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+  }
+
+  /* Final-cta: reduce gap when stacked */
+  .final-cta__inner {
+    gap: var(--space-md);
+  }
+
+  /* Services CTA */
+  .services__cta {
+    margin-top: var(--space-lg);
+  }
+
+  /* Value-props CTA */
+  .value-props__cta {
+    margin-top: var(--space-md);
+  }
+
+  /* Deco elements: hide on small screens to avoid layout confusion */
+  .deco-paw,
+  .deco-cat,
+  .deco-tail {
+    display: none;
+  }
+
+  /* Footer columns */
+  .ft-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+/* ── 640px: large phone ── */
+@media (max-width: 640px) {
+  /* Typography — extra push down at narrow viewport */
+  .display-xl {
+    font-size: clamp(1.9rem, 8vw, 2.4rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.55rem, 6.5vw, 1.9rem);
+  }
+
+  /* Hero text block */
+  .hero__text-block-inner {
+    padding: var(--space-md) var(--space-sm) var(--space-sm);
+  }
+
+  /* Services: 1 col with less padding */
+  .srv-card__inner {
+    padding: var(--space-md);
+  }
+
+  /* Steps: reduce node + text */
+  .step-card__number {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .step-card {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  /* Trust title */
+  .trust__title {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+  }
+
+  /* Trust card result value */
+  .trust__result-value {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  /* Final-cta title */
+  .final-cta__title {
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+  }
+
+  /* Form: single column already, reduce padding */
+  .form-card {
+    padding: var(--space-md);
+  }
+
+  /* Footer: single column */
+  .ft-cols {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Footer legal */
+  .ft-legal {
+    gap: var(--space-sm);
+  }
+
+  /* Benefit items: 2 col keeps well at 640 */
+  .benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── 480px: small phone ── */
+@media (max-width: 480px) {
+  /* Hero: full width form with smaller padding */
+  .hero__right-inner {
+    padding: var(--space-sm);
+  }
+
+  /* Services: remove border-radius on mobile */
+  .srv-card {
+    border-radius: 14px;
+  }
+
+  /* Trust: logo adjustments */
+  .trust__card:first-child .trust__card-logo {
+    height: clamp(50px, 12vw, 80px);
+    max-width: 200px;
+  }
+
+  /* Approach split: stack vertically */
+  .approach__split {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .approach__split-connector {
+    display: none;
+  }
+
+  /* How-we-work closing text size */
+  .how-we-work__closing-text {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  /* Problem result cards */
+  .problem__result-card {
+    padding: 0.6rem var(--space-sm);
+  }
+}
+
+/* =====================================================
    REDUCED MOTION
    ===================================================== */
 @media (prefers-reduced-motion: reduce) {
