@@ -3455,9 +3455,7 @@ footer .logo-img-sm {
   }
 
   .hero__image-tag {
-    margin-bottom: 0;
-    font-size: 0.65rem;
-    padding: 0.25rem 0.65rem;
+    display: none;
   }
 
 
