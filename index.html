@@ -556,11 +556,13 @@
           <p class="services__subtitle">Quattro aree di produzione AI integrate nel nostro processo. Ogni area ha un workflow definito e un output misurabile.</p>
         </div>
 
-        <div class="srv-tabs animate-on-scroll delay-1">
-          <button class="srv-tab on" onclick="switchSrv(0,this)"><span class="srv-tab-n">01</span>E-commerce e contenuti</button>
-          <button class="srv-tab" onclick="switchSrv(1,this)"><span class="srv-tab-n">02</span>Prototipazione creativa</button>
-          <button class="srv-tab" onclick="switchSrv(2,this)"><span class="srv-tab-n">03</span>Campagne foto e video</button>
-          <button class="srv-tab" onclick="switchSrv(3,this)"><span class="srv-tab-n">04</span>AI Ideation Strategy</button>
+        <div class="srv-tabs-wrap animate-on-scroll delay-1">
+          <div class="srv-tabs">
+            <button class="srv-tab on" onclick="switchSrv(0,this)"><span class="srv-tab-n">01</span>E-commerce e contenuti</button>
+            <button class="srv-tab" onclick="switchSrv(1,this)"><span class="srv-tab-n">02</span>Prototipazione creativa</button>
+            <button class="srv-tab" onclick="switchSrv(2,this)"><span class="srv-tab-n">03</span>Campagne foto e video</button>
+            <button class="srv-tab" onclick="switchSrv(3,this)"><span class="srv-tab-n">04</span>AI Ideation Strategy</button>
+          </div>
         </div>
 
         <div class="srv-panels" id="srv-panels"></div>
@@ -1433,6 +1435,7 @@
       const srvData = [
         {
           eye: "ECOMMERCE E CONTENUTI",
+          ph: "PRODUCT VISUAL · AI",
           title: "E-commerce e contenuti prodotto",
           desc: "Partendo da semplici still life e fotografie, ricontestualizziamo il prodotto in ambienti, scene e contesti diversi. Creiamo varianti modelli, ambientazioni e formati ADV pronti per ogni canale.",
           tags: ["FOTO PRODOTTO", "MODELLI VIRTUALI", "ADV", "CATALOGO"],
@@ -1440,6 +1443,7 @@
         },
         {
           eye: "PROTOTIPAZIONE VISIVA",
+          ph: "PROTOTYPE VISUAL · AI",
           title: "Prototipazione e sviluppo creativo",
           desc: "Prototipi visivi, varianti colore e materiali, concept di prodotto generati in AI prima di investire in produzione fisica. Validazione rapida delle direzioni creative con output di alta qualità.",
           tags: ["PROTOTIPI", "VARIANTI COLORE", "CONCEPT", "MATERIALI"],
@@ -1447,6 +1451,7 @@
         },
         {
           eye: "CAMPAGNE FOTOGRAFICHE E VIDEO",
+          ph: "CAMPAIGN VISUAL · AI",
           title: "Campagne fotografiche e video",
           desc: "Campagne fotografiche e video, contenuti digitali per ADV e comunicazione multicanale. Dal concept alla produzione finale, con workflow AI che abbatte i tempi e mantiene la coerenza di brand.",
           tags: ["CAMPAGNE", "VIDEO", "ADV", "MULTICANALE"],
@@ -1454,6 +1459,7 @@
         },
         {
           eye: "AI IDEATION AND STRATEGY",
+          ph: "STRATEGY VISUAL · AI",
           title: "AI Ideation and Strategy",
           desc: "Storyboard, moodboard evoluti, concept creativi, supporto progettuale avanzato. Integriamo l'AI nei processi decisionali e creativi del team per accelerare l'ideazione e la direzione artistica.",
           tags: ["STORYBOARD", "MOODBOARD", "CONCEPT", "STRATEGIA"],
@@ -1468,8 +1474,9 @@
         d.innerHTML = `
           <div class="sp-vis">
             <div class="sp-ph-bg"></div>
+            <div class="sp-ph-grid"></div>
             <div class="sp-ph-glow"></div>
-            <div class="sp-ph-txt">${s.eye}</div>
+            <div class="sp-ph-txt">${s.ph}</div>
           </div>
           <div class="sp-body">
             <div class="sp-eye">${s.eye}</div>

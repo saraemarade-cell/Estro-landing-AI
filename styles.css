@@ -1706,18 +1706,17 @@ button, input, textarea, select {
 
 /* ── Tabs ── */
 .srv-tabs {
-  position: relative;
-  z-index: 1;
   display: flex;
   border-bottom: 1px solid rgba(255,255,255,0.07);
   margin-bottom: 0;
   overflow-x: auto;
   scrollbar-width: none;
+  position: relative;
 }
 .srv-tabs::-webkit-scrollbar { display: none; }
 
 .srv-tab {
-  padding: 13px 26px;
+  padding: 14px 24px;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 11px;
@@ -1731,6 +1730,11 @@ button, input, textarea, select {
   white-space: nowrap;
   background: none;
   transition: color 0.25s, border-color 0.25s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .srv-tab.on {
@@ -1738,10 +1742,37 @@ button, input, textarea, select {
   border-bottom-color: var(--color-primary);
 }
 
+@media (hover: hover) {
+  .srv-tab:hover:not(.on) {
+    color: rgba(243,239,224,0.65);
+  }
+}
+
 .srv-tab-n {
   color: var(--color-primary);
   font-size: 9px;
   margin-right: 6px;
+}
+
+/* Scroll-fade hint on right edge of tab strip */
+.srv-tabs-wrap {
+  position: relative;
+  z-index: 1;
+}
+.srv-tabs-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: calc(100% - 1px); /* stop above the border-bottom line */
+  background: linear-gradient(to left, var(--color-dark) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+  display: none; /* show only when tabs can overflow */
+}
+@media (max-width: 767px) {
+  .srv-tabs-wrap::after { display: block; }
 }
 
 /* ── Panels ── */
@@ -1769,6 +1800,15 @@ button, input, textarea, select {
   background: linear-gradient(145deg, #1A0812, #250E1C, #100718);
 }
 
+.sp-ph-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
 .sp-ph-glow {
   position: absolute;
   inset: 0;
@@ -1777,13 +1817,17 @@ button, input, textarea, select {
 
 .sp-ph-txt {
   position: absolute;
-  bottom: 28px;
-  left: 28px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: var(--font-display);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(243,239,224,0.2);
+  color: rgba(255,255,255,0.18);
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .sp-body {
@@ -1807,7 +1851,7 @@ button, input, textarea, select {
 .sp-h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(18px, 3vw, 28px);
   line-height: 1.1;
   color: var(--color-light);
   margin-bottom: 14px;
@@ -2939,6 +2983,14 @@ footer .logo-img-sm {
   .trust__card {
     min-height: 400px;
   }
+
+  /* Services: stack panel to single column at tablet */
+  .srv-panel.on { grid-template-columns: 1fr; }
+  .sp-vis { min-height: 300px; }
+  .sp-body {
+    border-left: none;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
 }
 
 /* Tablet: ≤ 768px */
@@ -3035,9 +3087,6 @@ footer .logo-img-sm {
   .grid-3 {
     grid-template-columns: 1fr;
   }
-
-  .srv-panel.on { grid-template-columns: 1fr; }
-  .sp-vis { min-height: 240px; }
 
   .benefits__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3459,6 +3508,13 @@ footer .logo-img-sm {
     gap: var(--space-md);
   }
 
+  /* Services — mobile refinements */
+  .sp-vis { min-height: 220px; }
+  .sp-body { padding: 24px 22px; }
+  .srv-tab { padding: 14px 16px; font-size: 10px; letter-spacing: 0.9px; }
+  .srv-orb { width: 300px; height: 300px; top: -60px; right: -80px; }
+  .services__cta .btn { width: 100%; justify-content: center; text-align: center; }
+
   /* Services CTA */
   .services__cta {
     margin-top: var(--space-lg);
@@ -3499,10 +3555,10 @@ footer .logo-img-sm {
     padding: var(--space-md) var(--space-sm) var(--space-sm);
   }
 
-  /* Services: 1 col with less padding */
-  .srv-card__inner {
-    padding: var(--space-md);
-  }
+  /* Services panel: tighter at small phone */
+  .sp-vis { min-height: 180px; }
+  .sp-body { padding: 20px 18px; }
+  .srv-tab { padding: 13px 12px; font-size: 9.5px; letter-spacing: 0.7px; }
 
   /* Steps: reduce node + text */
   .step-card__number {
@@ -3559,10 +3615,14 @@ footer .logo-img-sm {
     padding: var(--space-sm);
   }
 
-  /* Services: remove border-radius on mobile */
-  .srv-card {
-    border-radius: 14px;
-  }
+  /* Services: compact at smallest phones */
+  .sp-vis { min-height: 150px; }
+  .sp-body { padding: 18px 16px; }
+  .sp-h3 { font-size: 18px; }
+  .sp-desc { font-size: 13px; }
+  .sp-tags { gap: 5px; margin-bottom: 18px; }
+  .spt { padding: 5px 10px; font-size: 9px; }
+  .srv-tab { padding: 12px 10px; font-size: 9px; letter-spacing: 0.5px; }
 
   /* Trust: logo adjustments */
   .trust__card:first-child .trust__card-logo {
