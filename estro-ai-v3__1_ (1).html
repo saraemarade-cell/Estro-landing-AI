@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estro — AI Creative Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#060606;--ink2:#0E0E0E;--ink3:#161616;
+  --cream:#F0EDE4;
+  --light:#EAE6DC;--light2:#F2EFE6;--light3:#F7F4ED;
+  --pink:#E5005C;--pink2:#FF1A6E;
+  --grey:#6B7280;--grey-l:rgba(28,28,28,.5);
+  /* DM Sans as primary display font */
+  --fd:'DM Sans',sans-serif;
+  --fb:'DM Sans',sans-serif;
+  --sgeo:'Special Gothic Expanded One',sans-serif;
+  --rp:999px;--rl:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--ink);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--pink);border-radius:2px}
+.ctr{max-width:1280px;margin:0 auto;padding:0 52px}
+
+/* GRAIN */
+body::before{content:"";position:fixed;inset:0;z-index:500;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:400;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;border-bottom:1px solid transparent}
+.hdr.on{background:rgba(6,6,6,.92);backdrop-filter:blur(24px);border-color:rgba(255,255,255,.05)}
+.logo img{height:36px;display:block}
+.hnav{display:flex;gap:36px}
+.hnav a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(240,237,228,.4);text-decoration:none;font-weight:500;transition:color .2s}
+.hnav a:hover{color:var(--cream)}
+.hcta{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--pink);color:#fff;padding:11px 22px;border-radius:var(--rp);text-decoration:none;transition:all .25s}
+.hcta:hover{background:var(--pink2);box-shadow:0 8px 24px rgba(229,0,92,.4)}
+
+/* HERO — dark with pink orbs */
+.hero-wrap{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--ink)}
+.hero-orb{position:absolute;top:-10%;right:-5%;width:75vw;height:90vh;background:radial-gradient(ellipse at 60% 40%,rgba(229,0,92,.55) 0%,rgba(180,0,80,.3) 20%,rgba(100,0,50,.1) 50%,transparent 70%);filter:blur(80px);pointer-events:none;animation:orbF 10s ease-in-out infinite}
+.hero-orb2{position:absolute;top:30%;left:-10%;width:40vw;height:50vh;background:radial-gradient(ellipse,rgba(229,0,92,.18),transparent 65%);filter:blur(60px);pointer-events:none;animation:orbF2 13s ease-in-out infinite}
+@keyframes orbF{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(1.04) translate(-2%,2%)}66%{transform:scale(.97) translate(2%,-2%)}}
+@keyframes orbF2{0%,100%{transform:scale(1)}50%{transform:scale(1.08) translate(2%,-3%)}}
+.hero-ghost{position:absolute;bottom:-4%;right:-2%;font-family:var(--sgeo);font-size:clamp(100px,18vw,280px);color:transparent;-webkit-text-stroke:1px rgba(229,0,92,.09);letter-spacing:-8px;pointer-events:none;white-space:nowrap;line-height:1;user-select:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1280px;margin:0 auto;width:100%;padding:130px 52px 80px}
+
+.hero-eye{font-family:var(--sgeo);font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--pink);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eye::before{content:"";width:28px;height:1px;background:var(--pink)}
+.hero-h1{font-family:var(--fd);font-weight:700;font-size:clamp(38px,4.8vw,66px);line-height:1.05;color:var(--cream);margin-bottom:20px;letter-spacing:-1.5px}
+.hero-h1 .pk{color:var(--pink);font-style:italic}
+.hero-it{font-size:16px;font-style:italic;color:rgba(240,237,228,.42);margin-bottom:18px;font-weight:300}
+.hero-desc{font-size:15px;line-height:1.75;color:rgba(240,237,228,.5);max-width:460px;margin-bottom:36px}
+.hero-desc strong{color:var(--cream);font-weight:600}
+.hero-acts{display:flex;gap:16px;align-items:center;margin-bottom:52px}
+.btn-p{background:var(--pink);color:#fff;font-family:var(--fd);font-weight:700;font-size:14px;padding:14px 26px;border-radius:var(--rp);text-decoration:none;transition:all .25s;border:none;cursor:pointer;letter-spacing:.3px}
+.btn-p:hover{background:var(--pink2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(229,0,92,.35)}
+.btn-g{color:rgba(240,237,228,.52);font-size:14px;text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:8px;font-weight:500}
+.btn-g:hover{color:var(--cream)}
+.hero-stats{display:flex;gap:44px;border-top:1px solid rgba(255,255,255,.07);padding-top:26px}
+.hs-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:6px;font-weight:500}
+.hs-v{font-family:var(--fd);font-weight:700;font-size:16px;color:var(--pink);letter-spacing:-.3px}
+.hs-v.w{color:var(--cream)}
+
+/* Hero card */
+.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(229,0,92,.11),transparent 55%);pointer-events:none}
+.hc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.hc-dots{display:flex;gap:6px}
+.hc-dot{width:9px;height:9px;border-radius:50%}
+.hc-d1{background:#FF5F57}.hc-d2{background:#FEBC2E}.hc-d3{background:#28C840}
+.hc-url{font-size:10px;color:rgba(240,237,228,.3);background:rgba(255,255,255,.06);padding:4px 14px;border-radius:var(--rp);font-weight:500}
+.hc-ph{height:260px;border-radius:14px;background:linear-gradient(145deg,#1A0814,#280E1E,#120710);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:18px}
+.hc-ph-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(229,0,92,.2),transparent 60%)}
+.hc-ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px}
+.hc-ph-lbl{position:relative;z-index:2;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.18);text-align:center;font-weight:600}
+.hc-ph-lbl span{display:block;font-size:8px;letter-spacing:2px;margin-top:6px;color:rgba(255,255,255,.1)}
+.hc-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hcm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
+.hcm-v{font-family:var(--fd);font-weight:700;font-size:15px;letter-spacing:-.3px;margin-bottom:4px}
+.hcm-l{font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:1px;line-height:1.3;font-weight:500}
+.hero-badge{margin-top:14px;background:rgba(10,10,10,.85);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:8px;width:fit-content}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:dp 2s ease-in-out infinite;flex-shrink:0}
+@keyframes dp{0%,100%{opacity:1}50%{opacity:.3}}
+.badge-t{font-size:11px;color:var(--cream);font-weight:600;letter-spacing:.5px}
+.hero-scroll{position:fixed;right:22px;top:50%;transform:translateY(-50%) rotate(90deg);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,237,228,.18);z-index:3;font-weight:500}
+
+/* MARQUEE */
+.mq{background:var(--pink);padding:14px 0;overflow:hidden}
+.mq-track{display:flex;animation:mqs 26s linear infinite;width:max-content}
+.mq-item{display:flex;align-items:center;gap:36px;padding:0 36px}
+.mq-tx{font-family:var(--fd);font-weight:700;font-size:13px;color:#fff;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0}
+@keyframes mqs{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══ ANIMATED LIGHT SECTIONS ═══ */
+/* "White" sections = warm cream with animated floating orbs + subtle grid */
+.sec-light{position:relative;color:var(--ink);overflow:hidden;padding:100px 0;background:var(--light)}
+.lo{position:absolute;pointer-events:none;border-radius:50%;filter:blur(70px)}
+.lo1{top:-20%;left:-8%;width:55%;height:65%;background:radial-gradient(ellipse,rgba(229,0,92,.07),transparent 70%);animation:lo1a 14s ease-in-out infinite}
+.lo2{bottom:-20%;right:-8%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(229,0,92,.05),transparent 65%);animation:lo2a 17s ease-in-out infinite}
+.lo3{top:25%;left:35%;width:45%;height:55%;background:radial-gradient(ellipse,rgba(200,175,150,.12),transparent 60%);animation:lo3a 11s ease-in-out infinite}
+.lo4{top:-5%;right:15%;width:35%;height:45%;background:radial-gradient(ellipse,rgba(229,0,92,.04),transparent 60%);animation:lo4a 19s ease-in-out infinite}
+@keyframes lo1a{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(5%,-6%) scale(1.07)}70%{transform:translate(-3%,4%) scale(.96)}}
+@keyframes lo2a{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6%,5%) scale(1.09)}}
+@keyframes lo3a{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4%,-4%) scale(.93)}66%{transform:translate(-4%,5%) scale(1.05)}}
+@keyframes lo4a{0%,100%{transform:translate(0,0) scale(1)}60%{transform:translate(-5%,6%) scale(1.06)}}
+.light-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(28,28,28,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(28,28,28,.028) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.sec-light .ctr{position:relative;z-index:2}
+
+/* Typography for light sections */
+.sl-tag{font-family:var(--sgeo);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);display:block;margin-bottom:18px}
+.sl-h2{font-family:var(--fd);font-weight:700;font-size:clamp(28px,3.2vw,44px);line-height:1.06;letter-spacing:-1px;color:var(--ink);margin-bottom:18px}
+.sl-desc{font-size:15px;line-height:1.75;color:rgba(28,28,28,.6);margin-bottom:36px}
+
+/* DARK sections typography */
+.dk-tag{font-family:var(--sgeo);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);display:block;margin-bottom:16px}
+.dk-h2{font-family:var(--fd);font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-1.2px;color:var(--cream)}
+.dk-desc{font-size:15px;line-height:1.72;color:rgba(240,237,228,.44);max-width:460px;margin-top:14px}
+
+/* ─── Produzione creativa (light) ─── */
+.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.sc{background:rgba(28,28,28,.05);border:1px solid rgba(28,28,28,.08);border-radius:var(--rl);padding:22px 20px}
+.sc-ico{font-size:18px;margin-bottom:10px;color:var(--pink)}
+.sc-v{font-family:var(--fd);font-weight:700;font-size:22px;color:var(--pink);letter-spacing:-.5px}
+.sc-l{font-size:10px;color:rgba(28,28,28,.42);text-transform:uppercase;letter-spacing:1.2px;margin-top:5px;font-weight:500}
+.feat-list{display:flex;flex-direction:column}
+.feat{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid rgba(28,28,28,.08)}
+.feat:first-child{border-top:1px solid rgba(28,28,28,.08)}
+.feat-arr{color:var(--pink);font-size:14px;margin-top:4px;flex-shrink:0;font-weight:700}
+.feat-t{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:5px;letter-spacing:-.2px}
+.feat-d{font-size:14px;color:rgba(28,28,28,.55);line-height:1.58}
+
+/* ─── Feature strip — Novocode (dark) ─── */
+.feat-strip{background:var(--ink2);padding:80px 0;border-top:1px solid rgba(255,255,255,.04)}
+.feat-strip-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
+.fstrip-card{padding:36px 32px;border-right:1px solid rgba(255,255,255,.06);transition:background .3s}
+.fstrip-card:last-child{border-right:none}
+.fstrip-card:hover{background:rgba(255,255,255,.03)}
+.fstrip-ico{width:44px;height:44px;border-radius:12px;background:rgba(229,0,92,.1);border:1px solid rgba(229,0,92,.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.fstrip-ico svg{width:20px;height:20px;color:var(--pink)}
+.fstrip-t{font-family:var(--fd);font-weight:700;font-size:15px;color:var(--cream);margin-bottom:10px;letter-spacing:-.2px}
+.fstrip-d{font-size:14px;color:var(--grey);line-height:1.6}
+
+/* ─── Servizi (dark) ─── */
+.sec-dark{background:var(--ink2);padding:100px 0;position:relative;overflow:hidden}
+.sec-dark-orb{position:absolute;top:-20%;right:-10%;width:50%;height:80%;background:radial-gradient(ellipse,rgba(229,0,92,.06),transparent 65%);filter:blur(60px);pointer-events:none}
+.srv-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.06);margin-top:48px;overflow-x:auto}
+.st{padding:13px 26px;font-family:var(--fd);font-weight:600;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(240,237,228,.3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .25s;user-select:none;background:none;border-left:none;border-right:none;border-top:none}
+.st.on{color:var(--cream);border-bottom-color:var(--pink)}
+.st:hover:not(.on){color:rgba(240,237,228,.6)}
+.st .sn{color:var(--pink);font-size:9px;margin-right:6px;font-family:var(--sgeo)}
+.srv-panels{}
+.srv-panel{display:none;grid-template-columns:1fr 1fr}
+.srv-panel.on{display:grid}
+.sp-vis{min-height:400px;background:var(--ink3);position:relative;overflow:hidden}
+.sp-ph-bg{position:absolute;inset:0;background:linear-gradient(145deg,#1A0812,#250E1C,#100718)}
+.sp-ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:36px 36px}
+.sp-ph-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(229,0,92,.14),transparent 55%)}
+.sp-ph-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.18);text-align:center;white-space:nowrap;font-weight:600}
+.sp-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+.sp-eye{font-family:var(--sgeo);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);margin-bottom:14px}
+.sp-h3{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,30px);line-height:1.1;color:var(--cream);margin-bottom:14px;letter-spacing:-.4px}
+.sp-desc{font-size:14px;line-height:1.72;color:rgba(240,237,228,.48);margin-bottom:22px}
+.sp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
+.spt{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:var(--rp);border:1px solid rgba(240,237,228,.14);color:rgba(240,237,228,.42);font-weight:500}
+.sp-vanta{font-family:var(--sgeo);font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.sp-vl{list-style:none;display:flex;flex-direction:column;gap:8px}
+.sp-vl li{font-size:13px;color:rgba(240,237,228,.5);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.sp-vl li::before{content:"—";color:var(--pink);flex-shrink:0}
+
+/* ─── Approccio (light) ─── */
+.wa-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+.wa-quote{margin-top:34px;padding:18px 22px;border-left:3px solid var(--pink);background:rgba(229,0,92,.05);border-radius:0 8px 8px 0}
+.wa-quote p{font-size:14px;font-style:italic;color:rgba(28,28,28,.6);line-height:1.65}
+.wa-steps{display:flex;flex-direction:column}
+.wa-step{display:grid;grid-template-columns:52px 1fr 18px;gap:0 18px;align-items:start;padding:20px 0;border-bottom:1px solid rgba(28,28,28,.08);cursor:default;transition:.2s}
+.wa-step:first-child{border-top:1px solid rgba(28,28,28,.08)}
+.wa-step:hover .wa-st{color:var(--pink)}
+.wa-num{font-family:var(--sgeo);font-size:10.5px;color:var(--pink);letter-spacing:.8px;padding-top:3px}
+.wa-st{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;transition:color .2s;letter-spacing:-.2px}
+.wa-sd{font-size:13px;color:rgba(28,28,28,.52);line-height:1.55}
+.wa-arrow{color:rgba(28,28,28,.22);padding-top:3px}
+
+/* ─── Workflow (dark) + arc ─── */
+.sec-wf{background:var(--ink);padding:100px 0 120px;position:relative;overflow:hidden}
+.wf-arc-wrap{position:absolute;top:-8%;left:50%;transform:translateX(-50%);width:80%;max-width:900px;pointer-events:none;z-index:0}
+.wf-arc-wrap svg{width:100%;height:auto;opacity:.6}
+.wf-ghost{position:absolute;bottom:-2%;left:50%;transform:translateX(-50%);font-family:var(--sgeo);font-size:clamp(80px,12vw,180px);color:transparent;-webkit-text-stroke:1px rgba(229,0,92,.07);letter-spacing:-6px;pointer-events:none;white-space:nowrap;user-select:none}
+.wf-hdr{text-align:center;margin-bottom:60px;position:relative;z-index:2}
+.wf-switcher{display:flex;justify-content:center;margin-bottom:68px;position:relative;z-index:2}
+.wf-sw-inner{display:flex;border:1px solid rgba(255,255,255,.08);border-radius:var(--rp);overflow:hidden}
+.wf-tab{padding:11px 28px;font-family:var(--fd);font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(240,237,228,.35);cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:10px;background:none;border:none;user-select:none}
+.wf-tab svg{width:17px;height:17px;flex-shrink:0}
+.wf-tab.on{background:var(--pink);color:#fff}
+.wf-tab:hover:not(.on){color:rgba(240,237,228,.65);background:rgba(255,255,255,.04)}
+.wf-panel{display:none;position:relative;z-index:2}
+.wf-panel.on{display:block}
+.wf-tl{position:relative}
+.wf-bar{position:absolute;top:35px;left:calc(100%/14);right:calc(100%/14);height:1px;background:linear-gradient(90deg,transparent,rgba(229,0,92,.5) 10%,rgba(229,0,92,.5) 90%,transparent)}
+.wf-steps{display:flex;justify-content:space-between}
+.wf-step{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;padding:0 10px}
+.wf-circle{width:70px;height:70px;border-radius:50%;border:1px solid rgba(229,0,92,.28);background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;z-index:2;transition:all .35s;cursor:default}
+.wf-step:hover .wf-circle{background:var(--pink);border-color:var(--pink);box-shadow:0 0 30px rgba(229,0,92,.45)}
+.wf-circle svg{width:22px;height:22px;color:var(--pink);transition:color .35s}
+.wf-step:hover .wf-circle svg{color:#fff}
+.wf-st{font-family:var(--fd);font-weight:700;font-size:12px;color:var(--cream);margin-bottom:7px;line-height:1.2;letter-spacing:-.1px}
+.wf-sd{font-size:11px;color:var(--grey);line-height:1.55}
+
+/* ─── Aree (light) ─── */
+.areas-hdr{text-align:center;margin-bottom:54px}
+.areas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(28,28,28,.1);border-radius:20px;overflow:hidden}
+.area-card{background:var(--light3);padding:44px 40px;position:relative;overflow:hidden;transition:background .3s}
+.area-card:hover{background:var(--light2)}
+.area-n{position:absolute;top:28px;right:32px;font-family:var(--sgeo);font-size:72px;color:rgba(28,28,28,.04);line-height:1;letter-spacing:-3px}
+.area-tag{font-family:var(--sgeo);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);display:block;margin-bottom:14px}
+.area-h3{font-family:var(--fd);font-weight:700;font-size:clamp(17px,2vw,24px);line-height:1.12;color:var(--ink);margin-bottom:12px;letter-spacing:-.3px}
+.area-desc{font-size:13px;line-height:1.67;color:rgba(28,28,28,.54);max-width:360px}
+
+/* ─── CONTACT ─── */
+.contact-wrap{display:grid;grid-template-columns:5fr 7fr;min-height:700px}
+.c-left{background:var(--pink);padding:80px 54px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.c-left::before{content:"";position:absolute;top:-20%;right:-20%;width:70%;height:70%;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 60%);pointer-events:none}
+.c-left::after{content:"";position:absolute;bottom:-10%;left:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(0,0,0,.15),transparent 60%);pointer-events:none}
+.cl-tag{font-family:var(--sgeo);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:22px;position:relative;z-index:1}
+.cl-h2{font-family:var(--fd);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.06;color:#fff;margin-bottom:18px;position:relative;z-index:1;letter-spacing:-.8px}
+.cl-h2 em{font-style:italic;font-weight:400;color:rgba(255,255,255,.85)}
+.cl-desc{font-size:14px;line-height:1.72;color:rgba(255,255,255,.7);margin-bottom:36px;position:relative;z-index:1}
+.cl-perks{display:flex;flex-direction:column;gap:13px;margin-bottom:44px;position:relative;z-index:1}
+.cl-perk{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.84)}
+.cl-pico{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.cl-email-bl{border-top:1px solid rgba(255,255,255,.18);padding-top:22px;position:relative;z-index:1}
+.cl-email-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);margin-bottom:6px;font-weight:600}
+.cl-email-lnk{font-size:14px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;font-weight:600}
+.c-right{background:var(--ink2);padding:80px 54px;display:flex;align-items:center;position:relative;overflow:hidden}
+.c-right::before{content:"";position:absolute;top:-20%;right:-10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(229,0,92,.06),transparent 65%);filter:blur(40px);pointer-events:none}
+.cf-wrap{width:100%;max-width:500px;position:relative;z-index:1}
+.cf-h3{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2vw,26px);color:var(--cream);margin-bottom:6px;letter-spacing:-.4px}
+.cf-sub{font-size:13px;color:rgba(240,237,228,.35);margin-bottom:30px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-g{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
+.cf-g label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,237,228,.32);font-weight:600}
+.cf-g input,.cf-g select,.cf-g textarea{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:13px 15px;color:var(--cream);font-family:var(--fb);font-size:14px;outline:none;transition:border-color .2s,background .2s;width:100%;-webkit-appearance:none;appearance:none}
+.cf-g input::placeholder,.cf-g textarea::placeholder{color:rgba(240,237,228,.18)}
+.cf-g select{color:rgba(240,237,228,.4);background-color:rgba(255,255,255,.06)}
+.cf-g select option{background:#1a1a1a;color:var(--cream)}
+.cf-g input:focus,.cf-g select:focus,.cf-g textarea:focus{border-color:rgba(229,0,92,.5);background:rgba(255,255,255,.09)}
+.cf-g textarea{resize:vertical;min-height:86px}
+.cf-consent{display:flex;align-items:flex-start;gap:10px;margin:14px 0 20px}
+.cf-consent input[type=checkbox]{width:16px;height:16px;accent-color:var(--pink);flex-shrink:0;margin-top:2px}
+.cf-consent label{font-size:12px;color:rgba(240,237,228,.36);line-height:1.5}
+.cf-consent a{color:var(--pink);text-decoration:none}
+.cf-btn{width:100%;background:var(--pink);color:#fff;border:none;padding:15px 28px;border-radius:var(--rp);font-family:var(--fd);font-weight:700;font-size:12px;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:12px}
+.cf-btn:hover{background:var(--pink2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(229,0,92,.35)}
+.cf-ok{display:none;background:rgba(76,180,80,.07);border:1px solid rgba(76,180,80,.2);border-radius:var(--rl);padding:26px;text-align:center;color:#4CAF50;font-weight:700;margin-top:14px}
+
+/* FOOTER */
+footer{background:#020202;padding:58px 52px 22px}
+.ft-in{max-width:1280px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.ft-logo img{height:32px;display:block;margin-bottom:12px}
+.ft-brand-d{font-size:13px;color:rgba(240,237,228,.28);line-height:1.65;max-width:200px;margin-top:10px}
+.ft-col h4{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,237,228,.25);margin-bottom:16px}
+.ft-col a{display:block;font-size:13px;color:rgba(240,237,228,.3);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.ft-col a:hover{color:var(--cream)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(240,237,228,.18)}
+.ft-bot a{color:rgba(240,237,228,.2);text-decoration:none}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:1024px){
+  .hero-in,.sw-grid,.wa-grid,.contact-wrap{grid-template-columns:1fr;gap:40px}
+  .hero-vis-wrap{display:none}
+  .areas-grid{grid-template-columns:1fr}
+  .srv-panel.on{grid-template-columns:1fr}
+  .feat-strip-grid{grid-template-columns:1fr}
+  .fstrip-card{border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}
+  .ft-top{grid-template-columns:1fr 1fr;gap:28px}
+  .wf-steps{flex-wrap:wrap;gap:28px;justify-content:center}
+  .wf-bar{display:none}
+  .hnav{display:none}
+  .ctr{padding:0 24px}
+  .hero-in{padding-left:24px;padding-right:24px}
+  .c-left,.c-right{padding:50px 30px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <a href="#top" class="logo"><img src="data:image/webp;base64,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" alt="Estro Agency"></a>
+  <nav class="hnav">
+    <a href="#scenario">SCENARIO</a>
+    <a href="#servizi">SERVIZI AI</a>
+    <a href="#workflow">WORKFLOW</a>
+    <a href="#contatti">CONSULENZA</a>
+  </nav>
+  <a href="#contatti" class="hcta">CONSULENZA</a>
+</header>
+
+<!-- HERO — dark + pink orbs -->
+<div class="hero-wrap" id="top">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-ghost">ESTRO</div>
+  <div class="hero-in">
+    <div>
+      <div class="hero-eye">AI CREATIVE PRODUCTION</div>
+      <h1 class="hero-h1">Dalla creatività<br>alla <span class="pk">produzione</span></h1>
+      <p class="hero-it">L'intelligenza artificiale al servizio del tuo brand.</p>
+      <p class="hero-desc">In Estro integriamo l'intelligenza artificiale nei processi creativi, produttivi e strategici per supportare brand e aziende. Utilizziamo l'AI come estensione della direzione creativa per <strong>migliorare efficienza, qualità e velocità</strong>, mantenendo pieno controllo sul risultato finale.</p>
+      <div class="hero-acts">
+        <a href="#contatti" class="btn-p">Richiedi una consulenza</a>
+        <a href="#servizi" class="btn-g">Scopri i servizi →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-lbl">Velocità</div><div class="hs-v">↑ produzione</div></div>
+        <div><div class="hs-lbl">Costi</div><div class="hs-v w">↓ riduzione</div></div>
+        <div><div class="hs-lbl">Controllo</div><div class="hs-v w">∞ creativo</div></div>
+      </div>
+    </div>
+    <div class="hero-vis-wrap">
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-dots"><div class="hc-dot hc-d1"></div><div class="hc-dot hc-d2"></div><div class="hc-dot hc-d3"></div></div>
+          <div class="hc-url">estro.agency / studio</div>
+        </div>
+        <div class="hc-ph">
+          <div class="hc-ph-glow"></div>
+          <div class="hc-ph-grid"></div>
+          <div class="hc-ph-lbl">IMAGE PLACEHOLDER<span>AI CREATIVE VISUAL · 16:9</span></div>
+        </div>
+        <div class="hc-metrics">
+          <div class="hcm"><div class="hcm-v" style="color:var(--pink)">↑ velocità</div><div class="hcm-l">produzione</div></div>
+          <div class="hcm"><div class="hcm-v" style="color:var(--cream)">↓ costi</div><div class="hcm-l">per variante</div></div>
+          <div class="hcm"><div class="hcm-v" style="color:var(--cream)">∞ scala</div><div class="hcm-l">contenuti</div></div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <div class="badge-t">AI ACTIVE · 2025</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <div class="mq-item"><span class="mq-tx">AI Creative Production</span><span class="mq-dot"></span><span class="mq-tx">Brand Identity</span><span class="mq-dot"></span><span class="mq-tx">Campagne Video</span><span class="mq-dot"></span><span class="mq-tx">Foto Prodotto</span><span class="mq-dot"></span><span class="mq-tx">Prototipi Visivi</span><span class="mq-dot"></span><span class="mq-tx">AI Ideation Strategy</span><span class="mq-dot"></span></div>
+    <div class="mq-item" aria-hidden="true"><span class="mq-tx">AI Creative Production</span><span class="mq-dot"></span><span class="mq-tx">Brand Identity</span><span class="mq-dot"></span><span class="mq-tx">Campagne Video</span><span class="mq-dot"></span><span class="mq-tx">Foto Prodotto</span><span class="mq-dot"></span><span class="mq-tx">Prototipi Visivi</span><span class="mq-dot"></span><span class="mq-tx">AI Ideation Strategy</span><span class="mq-dot"></span></div>
+  </div>
+</div>
+
+<!-- LIGHT: La produzione creativa -->
+<section class="sec-light" id="scenario">
+  <div class="lo lo1"></div><div class="lo lo2"></div><div class="lo lo3"></div><div class="lo lo4"></div>
+  <div class="light-grid"></div>
+  <div class="ctr">
+    <div class="sw-grid">
+      <div class="rv">
+        <span class="sl-tag">Il nuovo scenario</span>
+        <h2 class="sl-h2">La produzione creativa è cambiata per sempre</h2>
+        <p class="sl-desc">L'intelligenza artificiale non sostituisce la creatività umana, la potenzia. Permette di esplorare più direzioni, produrre più varianti, muoversi più velocemente senza sacrificare qualità.</p>
+        <div class="stats-row">
+          <div class="sc"><div class="sc-ico">↑</div><div class="sc-v">Velocità</div><div class="sc-l">di produzione</div></div>
+          <div class="sc"><div class="sc-ico">↓</div><div class="sc-v">Costi</div><div class="sc-l">per variante</div></div>
+          <div class="sc"><div class="sc-ico">∞</div><div class="sc-v">Scala</div><div class="sc-l">dei contenuti</div></div>
+        </div>
+      </div>
+      <div class="feat-list rv d1">
+        <div class="feat"><span class="feat-arr">→</span><div><div class="feat-t">Più rapidi</div><div class="feat-d">I tempi di produzione si riducono drasticamente senza perdere il controllo creativo.</div></div></div>
+        <div class="feat"><span class="feat-arr">→</span><div><div class="feat-t">Più flessibili</div><div class="feat-d">Varianti, revisioni e adattamenti multi-formato diventano sostenibili ed efficienti.</div></div></div>
+        <div class="feat"><span class="feat-arr">→</span><div><div class="feat-t">Più scalabili</div><div class="feat-d">Volumi elevati di contenuti con coerenza di brand e qualità costante su tutti i canali.</div></div></div>
+        <div class="feat"><span class="feat-arr">→</span><div><div class="feat-t">Più controllabili</div><div class="feat-d">La direzione creativa umana rimane al centro, l'AI è lo strumento non il decisore.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK: Feature strip — Novocode style -->
+<section class="feat-strip">
+  <div class="ctr">
+    <div class="feat-strip-grid rv">
+      <div class="fstrip-card">
+        <div class="fstrip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="fstrip-t">Instant Setup</div>
+        <div class="fstrip-d">Nessuna attesa. Il workflow AI è operativo dal primo briefing, senza setup tecnico complesso.</div>
+      </div>
+      <div class="fstrip-card">
+        <div class="fstrip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="fstrip-t">Brand Safe Integration</div>
+        <div class="fstrip-d">L'AI lavora nel rispetto delle linee guida del brand. Ogni output è validato dalla direzione creativa.</div>
+      </div>
+      <div class="fstrip-card">
+        <div class="fstrip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="fstrip-t">Scalable Output</div>
+        <div class="fstrip-d">Da 1 a 1000 varianti con la stessa qualità. Scalabilità senza compromessi sulla coerenza visiva.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK: Cosa possiamo realizzare -->
+<section class="sec-dark" id="servizi">
+  <div class="sec-dark-orb"></div>
+  <div class="ctr">
+    <div class="rv">
+      <span class="dk-tag">I nostri servizi</span>
+      <h2 class="dk-h2">Cosa possiamo<br>realizzare in AI</h2>
+      <p class="dk-desc">Quattro aree di produzione AI integrate nel nostro processo. Ogni area ha un workflow definito e un output misurabile.</p>
+    </div>
+    <div class="srv-tabs rv d1">
+      <button class="st on" onclick="switchSrv(0,this)"><span class="sn">01</span>E-commerce e contenuti</button>
+      <button class="st" onclick="switchSrv(1,this)"><span class="sn">02</span>Prototipazione creativa</button>
+      <button class="st" onclick="switchSrv(2,this)"><span class="sn">03</span>Campagne foto e video</button>
+      <button class="st" onclick="switchSrv(3,this)"><span class="sn">04</span>AI Ideation Strategy</button>
+    </div>
+    <div class="srv-panels" id="panels"></div>
+  </div>
+</section>
+
+<!-- LIGHT: Approccio -->
+<section class="sec-light" id="metodo">
+  <div class="lo lo1"></div><div class="lo lo2"></div><div class="lo lo3"></div>
+  <div class="light-grid"></div>
+  <div class="ctr">
+    <div class="wa-grid">
+      <div class="rv">
+        <span class="sl-tag">Il nostro metodo</span>
+        <h2 class="sl-h2">Un approccio trasparente</h2>
+        <p class="sl-desc">Non vendiamo l'AI come magia. Lavoriamo con trasparenza mostrando possibilità, limiti e alternative.</p>
+        <p class="sl-desc" style="margin-bottom:0">Analizziamo insieme cosa è possibile realizzare, con quale livello di realismo, in quanto tempo e con quale approccio: solo AI, solo produzione tradizionale o combinazione ibrida.</p>
+        <div class="wa-quote"><p>La tecnologia è uno strumento. La strategia creativa è umana.</p></div>
+      </div>
+      <div class="wa-steps rv d1">
+        <div class="wa-step"><div class="wa-num">01</div><div><div class="wa-st">Obiettivi</div><div class="wa-sd">Definiamo insieme cosa si vuole ottenere: risultato finale, canali, formato, contesto d'uso.</div></div><div class="wa-arrow">→</div></div>
+        <div class="wa-step"><div class="wa-num">02</div><div><div class="wa-st">Fattibilità</div><div class="wa-sd">Valutiamo onestamente cosa è realizzabile con l'AI oggi e con quale livello di qualità.</div></div><div class="wa-arrow">→</div></div>
+        <div class="wa-step"><div class="wa-num">03</div><div><div class="wa-st">Livello di realismo</div><div class="wa-sd">Stabiliamo le aspettative sul risultato visivo, evitando sorprese in fase di delivery.</div></div><div class="wa-arrow">→</div></div>
+        <div class="wa-step"><div class="wa-num">04</div><div><div class="wa-st">Alternative produttive</div><div class="wa-sd">Proponiamo le opzioni migliori: AI pura, AI più produzione fisica, o workflow ibrido.</div></div><div class="wa-arrow">→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK: Workflow + arc -->
+<section class="sec-wf" id="workflow">
+  <div class="wf-arc-wrap">
+    <svg viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ag" cx="50%" cy="100%" r="60%"><stop offset="0%" stop-color="#E5005C" stop-opacity="0.22"/><stop offset="40%" stop-color="#8B0030" stop-opacity="0.14"/><stop offset="100%" stop-color="#E5005C" stop-opacity="0"/></radialGradient>
+        <radialGradient id="ag2" cx="50%" cy="100%" r="55%"><stop offset="0%" stop-color="#FF4D8F" stop-opacity="0.06"/><stop offset="100%" stop-color="#E5005C" stop-opacity="0"/></radialGradient>
+        <filter id="b1"><feGaussianBlur stdDeviation="2"/></filter>
+      </defs>
+      <path d="M 50 420 A 400 400 0 0 1 850 420 Z" fill="url(#ag)"/>
+      <path d="M 120 420 A 330 330 0 0 1 780 420 Z" fill="url(#ag2)"/>
+      <path d="M 50 420 A 400 400 0 0 1 850 420" stroke="rgba(229,0,92,0.3)" stroke-width="1" fill="none" filter="url(#b1)"/>
+      <path d="M 120 420 A 330 330 0 0 1 780 420" stroke="rgba(229,0,92,0.18)" stroke-width="1" fill="none"/>
+      <path d="M 200 420 A 250 250 0 0 1 700 420" stroke="rgba(229,0,92,0.1)" stroke-width="1" fill="none"/>
+      <circle cx="450" cy="420" r="6" fill="rgba(229,0,92,0.6)" filter="url(#b1)"/>
+      <circle cx="450" cy="420" r="3" fill="rgba(255,255,255,0.8)"/>
+      <line x1="450" y1="420" x2="50" y2="420" stroke="rgba(229,0,92,0.15)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="850" y2="420" stroke="rgba(229,0,92,0.15)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="155" y2="137" stroke="rgba(229,0,92,0.1)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="745" y2="137" stroke="rgba(229,0,92,0.1)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="250" y2="48" stroke="rgba(229,0,92,0.08)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="650" y2="48" stroke="rgba(229,0,92,0.08)" stroke-width="0.5"/>
+      <line x1="450" y1="420" x2="450" y2="20" stroke="rgba(229,0,92,0.12)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="wf-ghost">WORKFLOW</div>
+  <div class="ctr">
+    <div class="wf-hdr rv">
+      <span class="dk-tag" style="display:block;text-align:center;margin-bottom:14px">Il processo</span>
+      <h2 class="dk-h2" style="text-align:center">Il nostro workflow AI driven</h2>
+    </div>
+    <div class="wf-switcher rv d1">
+      <div class="wf-sw-inner">
+        <button class="wf-tab on" onclick="switchWf('img',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>WORKFLOW IMMAGINI</button>
+        <button class="wf-tab" onclick="switchWf('vid',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="2" x2="8" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/></svg>WORKFLOW VIDEO</button>
+      </div>
+    </div>
+    <div class="wf-panel on rv d2" id="wf-img">
+      <div class="wf-tl"><div class="wf-bar"></div><div class="wf-steps">
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="wf-st">Brief and Reference</div><div class="wf-sd">Raccolta obiettivi e riferimenti visivi.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div><div class="wf-st">Concept and Prompt</div><div class="wf-sd">Definizione concept e prompt engineering.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="wf-st">Generazione AI</div><div class="wf-sd">Produzione e iterazione immagini.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg></div><div class="wf-st">Selezione and Refine</div><div class="wf-sd">Scelta e raffinamento output.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="wf-st">Post-produzione</div><div class="wf-sd">Editing finale e color grading.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="wf-st">Delivery</div><div class="wf-sd">Consegna nei formati richiesti.</div></div>
+      </div></div>
+    </div>
+    <div class="wf-panel rv d2" id="wf-vid">
+      <div class="wf-tl"><div class="wf-bar"></div><div class="wf-steps">
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div><div class="wf-st">Storyboard AI</div><div class="wf-sd">Creazione storyboard e animatic.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></div><div class="wf-st">Asset Generation</div><div class="wf-sd">Generazione scene e ambientazioni.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l14 9-14 9V3z"/></svg></div><div class="wf-st">Animation and Motion</div><div class="wf-sd">Animazione e motion design.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div><div class="wf-st">Editing and Sound</div><div class="wf-sd">Montaggio e sound design.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="wf-st">Review and Iterations</div><div class="wf-sd">Revisioni e ottimizzazioni finali.</div></div>
+        <div class="wf-step"><div class="wf-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="wf-st">Delivery</div><div class="wf-sd">Export formati per canale.</div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-wrap" id="contatti">
+  <div class="c-left">
+    <div>
+      <span class="cl-tag">Parliamoci</span>
+      <h2 class="cl-h2">Contattaci per<br>una <em>consulenza</em></h2>
+      <p class="cl-desc">Raccontaci il tuo progetto e valutiamo insieme come l'AI può accelerare la tua produzione creativa mantenendo qualità e controllo.</p>
+      <div class="cl-perks">
+        <div class="cl-perk"><div class="cl-pico">✓</div>Risposta entro 24h lavorative</div>
+        <div class="cl-perk"><div class="cl-pico">✓</div>Prima consulenza gratuita</div>
+        <div class="cl-perk"><div class="cl-pico">✓</div>Approccio su misura per ogni progetto</div>
+      </div>
+    </div>
+    <div class="cl-email-bl">
+      <div class="cl-email-lbl">Oppure scrivici</div>
+      <a href="mailto:hello@estro.agency" class="cl-email-lnk">HELLO@ESTRO.AGENCY</a>
+    </div>
+  </div>
+  <div class="c-right">
+    <div class="cf-wrap">
+      <h3 class="cf-h3">Raccontaci il tuo progetto</h3>
+      <p class="cf-sub">Compila il form e ti risponderemo entro 24 ore lavorative.</p>
+      <form id="cf" onsubmit="return cfSub(event)">
+        <div class="cf-row">
+          <div class="cf-g"><label>NOME E COGNOME *</label><input type="text" placeholder="Mario Rossi" required></div>
+          <div class="cf-g"><label>AZIENDA</label><input type="text" placeholder="Acme Srl"></div>
+        </div>
+        <div class="cf-g"><label>EMAIL *</label><input type="email" placeholder="mario@acme.it" required></div>
+        <div class="cf-g"><label>TELEFONO</label><input type="tel" placeholder="+39 02 0000000"></div>
+        <div class="cf-g">
+          <label>AREA DI INTERESSE</label>
+          <select><option value="" disabled selected>Seleziona un'area</option><option>Campagne foto e video AI</option><option>Foto prodotto e ambientazioni</option><option>Prototipi visivi e concept</option><option>AI Ideation and Strategy</option><option>Altro</option></select>
+        </div>
+        <div class="cf-consent"><input type="checkbox" id="priv" required><label for="priv">Autorizzo il trattamento dei dati personali secondo la <a href="#">Privacy Policy</a></label></div>
+        <button type="submit" class="cf-btn">RICHIEDI INFORMAZIONI →</button>
+      </form>
+      <div class="cf-ok" id="cfok">✓ Ricevuto. Ti contatteremo presto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo"><img src="data:image/webp;base64,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" alt="Estro Agency"></div>
+        <p class="ft-brand-d">Studio digitale per brand che vogliono crescere con l'intelligenza artificiale.</p>
+      </div>
+      <div class="ft-col"><h4>Pagina</h4><a href="#scenario">Scenario</a><a href="#servizi">Servizi AI</a><a href="#workflow">Workflow</a><a href="#contatti">Consulenza</a></div>
+      <div class="ft-col"><h4>Servizi</h4><a href="#">Campagne foto e video</a><a href="#">Foto prodotto</a><a href="#">Prototipi visivi</a><a href="#">AI Strategy</a></div>
+      <div class="ft-col"><h4>Contatti</h4><a href="mailto:hello@estro.agency">hello@estro.agency</a><a href="#">Via X, Milano</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
+    </div>
+    <div class="ft-bot"><span>© 2025 Estro Agency · P.IVA IT00000000000</span><a href="#">Privacy · Cookie</a></div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("on",scrollY>40),{passive:true});
+const srvData=[
+  {eye:"ECOMMERCE E CONTENUTI",title:"E-commerce e contenuti prodotto",desc:"Partendo da semplici still life e fotografie, ricontestualizziamo il prodotto in alta definizione, lo inseriamo su modelli e avatar virtuali, creiamo contenuti editoriali pronti per catalogo, ADV e social.",tags:["FOTO PRODOTTO","MODELLI VIRTUALI","ADV","CATALOGO"],v:["Tempi e costi ridotti rispetto a shooting fisici","Varianti illimitate di ambientazione","Qualità professionale scalabile"],ph:"PRODUCT VISUAL · PLACEHOLDER"},
+  {eye:"PROTOTIPAZIONE VISIVA",title:"Prototipazione e sviluppo creativo",desc:"Prototipi visivi, varianti colore e materiali. Sviluppo concept e valutazione estetica prima della produzione fisica. Meno rischio, più velocità, decisioni migliori.",tags:["PROTOTIPI","VARIANTI COLORE","CONCEPT","MATERIALI"],v:["Validazione visiva prima della produzione","Esplorazione rapida di direzioni creative","Riduzione costi di sviluppo prodotto"],ph:"PROTOTYPE VISUAL · PLACEHOLDER"},
+  {eye:"CAMPAGNE FOTOGRAFICHE E VIDEO",title:"Campagne fotografiche e video",desc:"Campagne fotografiche e video, contenuti digitali per ADV e comunicazione multicanale. Produzione AI integrata nella direzione creativa del brand senza compromessi sulla qualità.",tags:["CAMPAGNE","VIDEO","ADV","MULTICANALE"],v:["Produzione campagne in tempi ridotti","Adattamenti multi-formato automatici","Coerenza brand su tutti i canali"],ph:"CAMPAIGN VISUAL · PLACEHOLDER"},
+  {eye:"AI IDEATION AND STRATEGY",title:"AI Ideation and Strategy",desc:"Storyboard, moodboard evoluti, concept creativi, supporto progettuale avanzato. L'AI come strumento di esplorazione creativa rapida.",tags:["STORYBOARD","MOODBOARD","CONCEPT","STRATEGIA"],v:["Esplorazione creativa rapida e iterativa","Moodboard e storyboard AI-generati","Supporto strategico alla direzione creativa"],ph:"STRATEGY VISUAL · PLACEHOLDER"}
+];
+const panelsEl=document.getElementById("panels");
+srvData.forEach((s,i)=>{
+  const d=document.createElement("div");
+  d.className="srv-panel"+(i===0?" on":"");
+  d.innerHTML=`<div class="sp-vis"><div class="sp-ph-bg"></div><div class="sp-ph-grid"></div><div class="sp-ph-glow"></div><div class="sp-ph-txt">${s.ph}</div></div><div class="sp-body"><div class="sp-eye">${s.eye}</div><h3 class="sp-h3">${s.title}</h3><p class="sp-desc">${s.desc}</p><div class="sp-tags">${s.tags.map(t=>`<span class="spt">${t}</span>`).join("")}</div><div class="sp-vanta">VANTAGGI</div><ul class="sp-vl">${s.v.map(v=>`<li>${v}</li>`).join("")}</ul></div>`;
+  panelsEl.appendChild(d);
+});
+function switchSrv(i,el){document.querySelectorAll(".st").forEach(t=>t.classList.remove("on"));el.classList.add("on");document.querySelectorAll(".srv-panel").forEach((p,j)=>p.classList.toggle("on",j===i));}
+function switchWf(t,el){document.querySelectorAll(".wf-tab").forEach(b=>b.classList.remove("on"));el.classList.add("on");document.getElementById("wf-img").classList.toggle("on",t==="img");document.getElementById("wf-vid").classList.toggle("on",t==="vid");}
+function cfSub(e){e.preventDefault();document.getElementById("cf").style.display="none";document.getElementById("cfok").style.display="block";return false;}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("vis")}),{threshold:.1});
+document.querySelectorAll(".rv").forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
