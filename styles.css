@@ -1179,69 +1179,69 @@ button, input, textarea, select {
   margin-bottom: 4px;
 }
 
-/* card — VI .sc (light section card) */
+/* consequence cards — white on cream, elevated */
 .prob-card {
   position: relative;
-  background: rgba(28,28,28,.045);
-  border: 1px solid rgba(28,28,28,.09);
+  background: #ffffff;
+  border: 1px solid rgba(28,28,28,.1);
   border-radius: 20px;
-  padding: 22px 22px 20px;
+  padding: 24px 24px 22px;
   overflow: hidden;
   cursor: default;
-  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  box-shadow: 0 2px 12px rgba(28,28,28,.06);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 
-/* VI .area-n — numero watermark */
+/* watermark number */
 .prob-card__n {
   position: absolute;
-  top: 18px;
-  right: 20px;
-  font-family: var(--font-display);
-  font-size: 56px;
+  bottom: 14px;
+  right: 18px;
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 52px;
   line-height: 1;
   letter-spacing: -3px;
-  color: rgba(28,28,28,.04);
+  color: rgba(28,28,28,.05);
   pointer-events: none;
   user-select: none;
 }
 
-/* VI .fstrip-ico (44×44, radius 12, pink) */
+/* icon */
 .prob-card__ico {
   width: 44px;
   height: 44px;
   border-radius: 12px;
   background: rgba(224,24,92,.08);
-  border: 1px solid rgba(224,24,92,.16);
+  border: 1px solid rgba(224,24,92,.18);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   transition: background .25s ease, border-color .25s ease;
 }
 
-/* VI .fstrip-t */
+/* card title */
 .prob-card__t {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--color-dark);
-  line-height: 1.4;
+  line-height: 1.45;
   letter-spacing: -.2px;
   margin: 0;
-  max-width: 28ch;
 }
 
 @media (hover: hover) {
   .prob-card:hover {
-    background: rgba(28,28,28,.07);
-    border-color: rgba(224,24,92,.2);
-    box-shadow: 0 4px 20px rgba(224,24,92,.08);
+    border-color: rgba(224,24,92,.25);
+    box-shadow: 0 6px 24px rgba(224,24,92,.1);
     transform: translateY(-2px);
   }
   .prob-card:hover .prob-card__ico {
-    background: rgba(224,24,92,.13);
-    border-color: rgba(224,24,92,.28);
+    background: rgba(224,24,92,.14);
+    border-color: rgba(224,24,92,.3);
   }
 }
 
