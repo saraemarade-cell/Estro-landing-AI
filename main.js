@@ -150,20 +150,51 @@
     });
   });
 
-  /* --- Solution slideshow auto-rotation --- */
+  /* --- Carousel ── */
   (() => {
-    const slides = document.querySelectorAll('.solution__slide');
-    const dots   = document.querySelectorAll('.solution__dot');
-    if (!slides.length) return;
+    const carousel = document.getElementById('solution-carousel');
+    if (!carousel) return;
+
+    const slides  = carousel.querySelectorAll('.carousel__slide');
+    const dots    = carousel.querySelectorAll('.carousel__dot');
+    const btnPrev = carousel.querySelector('.carousel__btn--prev');
+    const btnNext = carousel.querySelector('.carousel__btn--next');
+    const n = slides.length;
     let current = 0;
-    const advance = () => {
-      slides[current].classList.remove('solution__slide--active');
-      dots[current]?.classList.remove('solution__dot--active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('solution__slide--active');
-      dots[current]?.classList.add('solution__dot--active');
+    let timer;
+
+    const goTo = (idx) => {
+      slides[current].classList.remove('carousel__slide--active');
+      dots[current].classList.remove('carousel__dot--active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (idx + n) % n;
+      slides[current].classList.add('carousel__slide--active');
+      dots[current].classList.add('carousel__dot--active');
+      dots[current].setAttribute('aria-selected', 'true');
     };
-    setInterval(advance, 3500);
+
+    const next = () => goTo(current + 1);
+    const prev = () => goTo(current - 1);
+
+    const resetTimer = () => { clearInterval(timer); timer = setInterval(next, 4000); };
+
+    btnNext.addEventListener('click', () => { next(); resetTimer(); });
+    btnPrev.addEventListener('click', () => { prev(); resetTimer(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+
+    /* swipe touch */
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); resetTimer(); }
+    }, { passive: true });
+
+    /* pausa hover */
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', resetTimer);
+
+    resetTimer();
   })();
 
   /* --- Smooth scroll for anchor links --- */

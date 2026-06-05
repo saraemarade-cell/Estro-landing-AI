@@ -442,67 +442,47 @@
             </div>
           </div>
 
-          <div class="solution__visual animate-on-scroll delay-2" aria-hidden="true">
+          <!-- ── Image carousel ── -->
+          <div class="carousel animate-on-scroll delay-2" role="region" aria-label="Case studies visivi" id="solution-carousel">
 
-            <!-- Outer atmospheric glow — extends into section bg -->
-            <div class="solution__atmosphere" aria-hidden="true"></div>
-
-            <div class="solution__frame">
-
-              <!-- Slideshow of 4 client images -->
-              <div class="solution__slideshow" aria-label="Case studies visivi">
-                <img class="solution__slide solution__slide--active" src="La risposta/BUSTOMOTOR.webp"  alt="Bustomotor — AI Creative Production" loading="lazy" />
-                <img class="solution__slide" src="La risposta/FUOCOBRAVO.webp"  alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
-                <img class="solution__slide" src="La risposta/MIU MIU.webp"     alt="Miu Miu — AI Creative Production"    loading="lazy" />
-                <img class="solution__slide" src="La risposta/PRADA (1).webp"   alt="Prada — AI Creative Production"      loading="lazy" />
+            <!-- slides -->
+            <div class="carousel__track">
+              <div class="carousel__slide carousel__slide--active">
+                <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
               </div>
-
-              <!-- Slide indicator dots -->
-              <div class="solution__dots" aria-hidden="true">
-                <span class="solution__dot solution__dot--active"></span>
-                <span class="solution__dot"></span>
-                <span class="solution__dot"></span>
-                <span class="solution__dot"></span>
+              <div class="carousel__slide">
+                <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
               </div>
-
-              <!-- Crosshair grid overlay -->
-              <div class="solution__grid-overlay" aria-hidden="true"></div>
-
-              <!-- Scanning line -->
-              <div class="solution__scan" aria-hidden="true"></div>
-
-              <!-- Radial glow (bottom) -->
-              <div class="solution__glow" aria-hidden="true"></div>
-
-              <!-- Corner brackets -->
-              <span class="solution__corner solution__corner--tl" aria-hidden="true"></span>
-              <span class="solution__corner solution__corner--tr" aria-hidden="true"></span>
-              <span class="solution__corner solution__corner--bl" aria-hidden="true"></span>
-              <span class="solution__corner solution__corner--br" aria-hidden="true"></span>
-
-              <!-- Coordinate data markers -->
-              <div class="solution__marker solution__marker--a" aria-hidden="true"></div>
-              <div class="solution__marker solution__marker--b" aria-hidden="true"></div>
-              <div class="solution__marker solution__marker--c" aria-hidden="true"></div>
-
-              <!-- Meta label -->
-              <div class="solution__meta-label" aria-hidden="true">
-                <span class="solution__meta-dot"></span>SISTEMA ATTIVO
+              <div class="carousel__slide">
+                <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
               </div>
-
-              <!-- Floating workflow mini-card -->
-              <div class="solution__mini-card" aria-hidden="true">
-                <p class="solution__mini-card-label">Pipeline</p>
-                <div class="solution__mini-card-flow">
-                  <span class="solution__mini-node">Brief</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E0185C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                  <span class="solution__mini-node">AI</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E0185C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                  <span class="solution__mini-node solution__mini-node--active">Output</span>
-                </div>
+              <div class="carousel__slide">
+                <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
               </div>
-
             </div>
+
+            <!-- frecce -->
+            <button class="carousel__btn carousel__btn--prev" aria-label="Precedente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Successivo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <!-- dots -->
+            <div class="carousel__dots" role="tablist" aria-label="Slide">
+              <button class="carousel__dot carousel__dot--active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+              <button class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+              <button class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+              <button class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+            </div>
+
+            <!-- corner brackets decorativi -->
+            <span class="carousel__corner carousel__corner--tl" aria-hidden="true"></span>
+            <span class="carousel__corner carousel__corner--tr" aria-hidden="true"></span>
+            <span class="carousel__corner carousel__corner--bl" aria-hidden="true"></span>
+            <span class="carousel__corner carousel__corner--br" aria-hidden="true"></span>
+
           </div>
 
         </div>
