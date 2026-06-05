@@ -1292,6 +1292,7 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .solution__diagram {
@@ -1389,6 +1390,7 @@ button, input, textarea, select {
   position: relative;
   background-color: var(--color-dark);
   aspect-ratio: 1 / 1;
+  width: 100%;
   max-width: 520px;
   margin: 0 auto;
   z-index: 1;
