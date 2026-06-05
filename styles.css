@@ -2600,6 +2600,27 @@ button, input, textarea, select {
   transform: translateY(-2px);
 }
 
+/* text wordmark fallback (e.g. Mestel) */
+.cases__tab-wordmark {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--color-dark);
+  transition: color 0.25s;
+}
+.cases__tab--active .cases__tab-wordmark {
+  color: var(--color-light);
+}
+.cases__panel-wordmark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--color-dark);
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
 .cases__tab-logo {
   max-width: 100px;
   max-height: 36px;
