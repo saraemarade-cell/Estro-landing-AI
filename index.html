@@ -908,68 +908,131 @@
     <!-- ================================================
          9. TRUST / PROOF
          ================================================ -->
-    <section class="section trust" id="trust" aria-labelledby="trust-title">
+    <section class="section cases" id="trust" aria-labelledby="cases-title">
       <div class="container">
 
-        <header class="trust__header animate-on-scroll">
+        <header class="cases__header animate-on-scroll">
           <p class="eyebrow" style="margin-bottom:0.5rem;">Referenze</p>
-          <h2 class="display-lg trust__title" id="trust-title">Esperienza con aziende strutturate</h2>
-          <p class="body-lg trust__subtitle">
+          <h2 class="display-lg cases__title" id="cases-title">Esperienza con aziende strutturate</h2>
+          <p class="cases__subtitle">
             Lavoriamo con realtà che hanno bisogno di processo, non solo di prodotto.
           </p>
         </header>
 
-        <!-- Client logos — replace placeholders with actual logos -->
-        <div class="trust__logos animate-on-scroll" role="list" aria-label="Loghi clienti">
-          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
-            <span>Cliente</span>
-          </div>
-          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
-            <span>Cliente</span>
-          </div>
-          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
-            <span>Cliente</span>
-          </div>
-          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
-            <span>Cliente</span>
-          </div>
-          <div class="trust__logo-placeholder" role="listitem" aria-label="Cliente">
-            <span>Cliente</span>
-          </div>
-        </div>
+        <!-- Tab bar -->
+        <div class="cases__tabs animate-on-scroll" role="tablist" aria-label="Case study per brand">
 
-        <!-- Case study cards — replace with real data -->
-        <div class="trust__cases" role="list">
+          <button class="cases__tab cases__tab--active" role="tab" aria-selected="true"
+                  aria-controls="case-mestel" id="tab-mestel" data-case="mestel">
+            <img src="LOGHI/logo-white-hr-1024x533.png" alt="Mestel" class="cases__tab-logo" />
+          </button>
 
-          <article class="trust__case-card animate-on-scroll delay-1" role="listitem">
-            <span class="trust__case-tag">AI Creative Production</span>
-            <p class="trust__case-result">—</p>
-            <p class="trust__case-desc">
-              Integrazione workflow AI per brand strutturato.
-              Risultati e case study disponibili su richiesta.
-            </p>
-          </article>
+          <button class="cases__tab" role="tab" aria-selected="false"
+                  aria-controls="case-prada" id="tab-prada" data-case="prada">
+            <img src="LOGHI/prada-logo-svgrepo-com.svg" alt="Prada" class="cases__tab-logo" />
+          </button>
 
-          <article class="trust__case-card animate-on-scroll delay-2" role="listitem">
-            <span class="trust__case-tag">AI Product Ecommerce</span>
-            <p class="trust__case-result">—</p>
-            <p class="trust__case-desc">
-              Asset prodotto scalabili per catalogo e-commerce di grandi dimensioni.
-              Dettagli disponibili su richiesta.
-            </p>
-          </article>
-
-          <article class="trust__case-card animate-on-scroll delay-3" role="listitem">
-            <span class="trust__case-tag">AI Strategy</span>
-            <p class="trust__case-result">—</p>
-            <p class="trust__case-desc">
-              Definizione strategia AI per team creativo interno.
-              Percorso su misura, risultati misurabili.
-            </p>
-          </article>
+          <button class="cases__tab" role="tab" aria-selected="false"
+                  aria-controls="case-bravo" id="tab-bravo" data-case="bravo">
+            <img src="LOGHI/LOGO-BRAVO-1-1-e1776784239203.png" alt="Bravo" class="cases__tab-logo" />
+          </button>
 
         </div>
 
+        <!-- Case panels -->
+        <div class="cases__panels">
+
+          <!-- MESTEL -->
+          <div class="cases__panel cases__panel--active" id="case-mestel" role="tabpanel" aria-labelledby="tab-mestel">
+            <div class="cases__panel-inner">
+              <div class="cases__panel-media">
+                <img src="reference/Mestel.png" alt="Mestel — AI Creative Production" class="cases__panel-img" loading="lazy" />
+                <div class="cases__panel-badge">
+                  <img src="LOGHI/logo-white-hr-1024x533.png" alt="Mestel" />
+                </div>
+              </div>
+              <div class="cases__panel-content">
+                <p class="cases__panel-tag">AI Creative Production</p>
+                <h3 class="cases__panel-title">Prototipazione e sviluppo creativo</h3>
+                <p class="cases__panel-lead">
+                  L'intelligenza artificiale consente di accelerare i processi di concept e prototipazione, permettendo di testare rapidamente:
+                </p>
+                <ul class="cases__panel-list">
+                  <li>Varianti colore</li>
+                  <li>Materiali</li>
+                  <li>Finiture</li>
+                  <li>Configurazioni stilistiche</li>
+                </ul>
+                <p class="cases__panel-body">
+                  Partendo anche da un unico prototipo base, sviluppiamo render avanzati che consentono ai brand di validare le scelte creative prima della produzione fisica, riducendo tempi, costi e margine di errore.
+                </p>
+                <p class="cases__panel-note">
+                  Gestione facilitata di aggiornamenti e stagionalità
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRADA -->
+          <div class="cases__panel" id="case-prada" role="tabpanel" aria-labelledby="tab-prada" hidden>
+            <div class="cases__panel-inner">
+              <div class="cases__panel-media">
+                <img src="reference/Prada.avif" alt="Prada — Campagne AI" class="cases__panel-img" loading="lazy" />
+                <div class="cases__panel-badge">
+                  <img src="LOGHI/prada-logo-svgrepo-com.svg" alt="Prada" />
+                </div>
+              </div>
+              <div class="cases__panel-content">
+                <p class="cases__panel-tag">AI Campagne Foto &amp; Video</p>
+                <h3 class="cases__panel-title">Campagne fotografiche e video</h3>
+                <p class="cases__panel-lead">
+                  Progettiamo e realizziamo campagne foto e video generate con AI per:
+                </p>
+                <ul class="cases__panel-list">
+                  <li>Advertising</li>
+                  <li>Comunicazione digital</li>
+                  <li>Lancio prodotto</li>
+                  <li>Contenuti editoriali</li>
+                </ul>
+                <p class="cases__panel-body">
+                  Questo approccio consente di sviluppare concept visivi complessi, mantenendo elevato controllo creativo e riducendo i tempi produttivi. Nei progetti video, utilizziamo l'AI in modo strategico per pre-visualizzare concept, costruire storyboard visivi, validare scene e movimenti e produrre contenuti finali ad alto impatto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- BRAVO -->
+          <div class="cases__panel" id="case-bravo" role="tabpanel" aria-labelledby="tab-bravo" hidden>
+            <div class="cases__panel-inner">
+              <div class="cases__panel-media">
+                <img src="reference/Bravo.webp" alt="Bravo — Approccio ibrido" class="cases__panel-img" loading="lazy" />
+                <div class="cases__panel-badge">
+                  <img src="LOGHI/LOGO-BRAVO-1-1-e1776784239203.png" alt="Bravo" />
+                </div>
+              </div>
+              <div class="cases__panel-content">
+                <p class="cases__panel-tag">Approccio ibrido AI + Produzione</p>
+                <h3 class="cases__panel-title">Un approccio trasparente</h3>
+                <p class="cases__panel-lead">
+                  L'AI offre grandi opportunità, ma presenta ancora limiti tecnici, soprattutto nella produzione video ad altissimo realismo.
+                </p>
+                <ul class="cases__panel-list">
+                  <li>Obiettivi chiari fin dal briefing</li>
+                  <li>Fattibilità valutata prima di ogni progetto</li>
+                  <li>Livello di realismo definito insieme</li>
+                  <li>Alternative produttive sempre disponibili</li>
+                </ul>
+                <p class="cases__panel-body">
+                  Quando il progetto richiede massimo realismo, integriamo l'AI con produzione tradizionale, attivando shooting fotografici, riprese video e crew specializzate.
+                </p>
+                <p class="cases__panel-note">
+                  Far capire all'utente che l'AI ha ancora i suoi limiti e che potrebbe essere necessaria l'integrazione di shooting quando si vogliono contenuti iper realistici.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 

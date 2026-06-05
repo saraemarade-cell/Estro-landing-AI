@@ -197,6 +197,33 @@
     resetTimer();
   })();
 
+  /* --- Case study tabs --- */
+  (() => {
+    const tabs = document.querySelectorAll('.cases__tab');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.case;
+
+        tabs.forEach(t => {
+          t.classList.remove('cases__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('cases__tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        document.querySelectorAll('.cases__panel').forEach(panel => {
+          if (panel.id === 'case-' + target) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+  })();
+
   /* --- Smooth scroll for anchor links --- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
