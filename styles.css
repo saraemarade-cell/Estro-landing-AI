@@ -1006,166 +1006,201 @@ button, input, textarea, select {
   padding-bottom: calc(var(--space-2xl) + 40px);
 }
 
+/* ── grid 62 / 38 ── */
 .problem__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  align-items: center;
+  grid-template-columns: 62fr 38fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: start;
 }
 
-.problem__left {}
+/* ══════════════════════════════
+   COLONNA SINISTRA
+══════════════════════════════ */
+.problem__left > .eyebrow {
+  margin-bottom: 0.6rem;
+}
 
 .problem__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--color-dark);
-  margin-bottom: var(--space-md);
+  margin-bottom: 0.9rem;
 }
 
+.problem__subtitle {
+  font-size: 0.9375rem;
+  color: rgba(28,28,28,0.52);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  max-width: 42ch;
+}
+
+/* lista driver */
 .problem__list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
+  gap: 0;
+  border-top: 1px solid rgba(28,28,28,0.08);
 }
 
 .problem__item {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-sm);
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(28,28,28,0.08);
+  transition: padding-left 0.2s ease;
 }
 
-.problem__item-icon {
+/* cerchio accent con icona dentro */
+.problem__item-dot {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  background-color: rgba(224, 24, 92, 0.12);
-  border: 1px solid rgba(224, 24, 92, 0.2);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(28,28,28,0.12);
+  background: rgba(28,28,28,0.03);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
-}
-
-.problem__item-icon svg {
+  margin-top: 1px;
   color: var(--color-primary);
+  transition: border-color 0.2s, background 0.2s;
 }
 
-.problem__item-text {
+.problem__item-body {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 3px;
 }
 
 .problem__item-label {
+  font-size: 0.9rem;
   font-weight: 600;
-  font-size: 1rem;
   color: var(--color-dark);
+  line-height: 1.3;
 }
 
 .problem__item-desc {
-  font-size: 0.875rem;
-  color: var(--color-dark-60);
-}
-
-/*
-  Problem right column — 3 result cards.
-*/
-.problem__right {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  position: relative;
-  overflow: visible;
-}
-
-/* Result cards */
-.problem__result-card {
-  padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-light-dark);
-  border: none;
-  border-left: 2px solid rgba(28, 28, 28, 0.15);
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  border-radius: 0 8px 8px 0;
-  transition:
-    background-color 0.35s ease,
-    border-color     0.35s ease,
-    box-shadow       0.35s ease;
-}
-
-/* Scanning line — sweeps left-to-right on hover */
-.problem__result-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(224, 24, 92, 0.07) 40%,
-    rgba(224, 24, 92, 0.18) 50%,
-    rgba(224, 24, 92, 0.07) 60%,
-    transparent 100%
-  );
-  pointer-events: none;
-  transition: left 0s;
-  will-change: left;
-}
-
-/* Top-right corner bracket — reveals on hover */
-.problem__result-card::after {
-  content: '';
-  position: absolute;
-  top: 7px;
-  right: 10px;
-  width: 10px;
-  height: 10px;
-  border-top: 1.5px solid var(--color-primary);
-  border-right: 1.5px solid var(--color-primary);
-  opacity: 0;
-  transform: translate(4px, -4px);
-  pointer-events: none;
-  transition:
-    opacity   0.25s ease 0.15s,
-    transform 0.3s  cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+  font-size: 0.8125rem;
+  color: rgba(28,28,28,0.46);
+  line-height: 1.55;
 }
 
 @media (hover: hover) {
-  .problem__result-card:hover {
-    background-color: #e4dfd0;
-    border-left-color: var(--color-primary);
-    box-shadow:
-      -2px 0 0 0 var(--color-primary),
-      0 2px 18px rgba(224, 24, 92, 0.08),
-      inset 100px 0 60px -60px rgba(224, 24, 92, 0.04);
+  .problem__item:hover {
+    padding-left: 6px;
   }
-
-  /* Trigger the scan sweep */
-  .problem__result-card:hover::before {
-    left: 140%;
-    transition: left 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Reveal corner bracket */
-  .problem__result-card:hover::after {
-    opacity: 1;
-    transform: translate(0, 0);
+  .problem__item:hover .problem__item-dot {
+    border-color: rgba(224,24,92,0.3);
+    background: rgba(224,24,92,0.06);
   }
 }
 
-.problem__result-text {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--color-dark);
-  line-height: 1.3;
+/* ══════════════════════════════
+   COLONNA DESTRA
+══════════════════════════════ */
+.problem__right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* allinea il top della colonna destra al titolo — aggiustamento visivo */
+  padding-top: 2.1rem;
+}
+
+.problem__right-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(28,28,28,0.36);
+  margin-bottom: 6px;
+}
+
+/* ── prob-card: Stripe/Linear style ── */
+.prob-card {
   position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 1px solid rgba(28,28,28,0.10);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: default;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+/* icona in alto */
+.prob-card__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(224,24,92,0.07);
+  border: 1px solid rgba(224,24,92,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+/* testo principale */
+.prob-card__text {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(28,28,28,0.82);
+  line-height: 1.45;
   margin: 0;
+  letter-spacing: -0.005em;
+  flex: 1;
+}
+
+/* numero indice in basso a destra */
+.prob-card__index {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(28,28,28,0.14);
+  line-height: 1;
+  user-select: none;
+}
+
+/* sottile accent bar sinistra */
+.prob-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2.5px;
+  border-radius: 2px 0 0 2px;
+  background: rgba(224,24,92,0);
+  transition: background 0.18s ease;
+}
+
+@media (hover: hover) {
+  .prob-card:hover {
+    border-color: rgba(224,24,92,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(224,24,92,0.08);
+    transform: translateY(-2px);
+  }
+  .prob-card:hover .prob-card__icon {
+    background: rgba(224,24,92,0.12);
+    border-color: rgba(224,24,92,0.28);
+  }
+  .prob-card:hover::before {
+    background: rgba(224,24,92,0.55);
+  }
 }
 
 /* =====================================================
@@ -1538,6 +1573,116 @@ button, input, textarea, select {
   from { opacity: 0; transform: translateY(28px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* ── Carousel ── */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-dark);
+  user-select: none;
+}
+
+.carousel__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.carousel__slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* frecce */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 239, 224, 0.2);
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-light);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel__btn:hover {
+  background: rgba(224, 24, 92, 0.75);
+  border-color: var(--color-primary);
+}
+
+.carousel__btn--prev { left: 12px; }
+.carousel__btn--next { right: 12px; }
+
+/* dots */
+.carousel__dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(243, 239, 224, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel__dot--active {
+  background: var(--color-primary);
+  transform: scale(1.35);
+}
+
+/* corner brackets decorativi */
+.carousel__corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.carousel__corner--tl { top: 14px; left: 14px; border-top: 1.5px solid var(--color-primary); border-left: 1.5px solid var(--color-primary); }
+.carousel__corner--tr { top: 14px; right: 14px; border-top: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
+.carousel__corner--bl { bottom: 14px; left: 14px; border-bottom: 1.5px solid var(--color-primary); border-left: 1.5px solid var(--color-primary); }
+.carousel__corner--br { bottom: 14px; right: 14px; border-bottom: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
 
 /* =====================================================
    VALUE PROPOSITIONS
