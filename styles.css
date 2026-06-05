@@ -2234,66 +2234,237 @@ button, input, textarea, select {
   gap: var(--space-sm);
 }
 
-/* approach__split grid: see new rule with connector column below */
+/* ── approach split ── */
+.approach__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
 
 .approach__split-card {
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
+  position: relative;
+  padding: 36px 28px 32px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  min-height: 200px;
+  gap: 0;
+  min-height: 380px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
+/* dim sibling on hover */
+.approach__split:has(.approach__split-card--ai:hover) .approach__split-card--human,
+.approach__split:has(.approach__split-card--human:hover) .approach__split-card--ai {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+/* ── AI card ── */
 .approach__split-card--ai {
-  background: linear-gradient(135deg, rgba(224, 24, 92, 0.15) 0%, rgba(224, 24, 92, 0.05) 100%);
-  border: 1px solid rgba(224, 24, 92, 0.2);
+  background: linear-gradient(160deg, rgba(224,24,92,.18) 0%, rgba(224,24,92,.06) 60%, rgba(10,10,10,.2) 100%);
+  border: 1px solid rgba(224, 24, 92, 0.3);
 }
 
+.approach__split-card--ai:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(224,24,92,.25), 0 0 0 1px rgba(224,24,92,.4);
+}
+
+/* pulsing ambient glow */
+.approach__card-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(224,24,92,.22), transparent 65%);
+  pointer-events: none;
+  animation: approach-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes approach-glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+/* scan line */
+.approach__split-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224,24,92,.8), transparent);
+  animation: approach-scan 3.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes approach-scan {
+  0%   { top: 0;    opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Human card ── */
 .approach__split-card--human {
-  background: rgba(243, 239, 224, 0.05);
-  border: 1px solid rgba(243, 239, 224, 0.1);
+  background: linear-gradient(160deg, rgba(243,239,224,.07) 0%, rgba(243,239,224,.02) 100%);
+  border: 1px solid rgba(243, 239, 224, 0.12);
 }
 
+.approach__split-card--human:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(243,239,224,.2);
+}
+
+/* corner brackets */
+.approach__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(243,239,224,.25);
+  border-style: solid;
+  pointer-events: none;
+  transition: border-color 0.3s, width 0.3s, height 0.3s;
+}
+
+.approach__corner--tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
+.approach__corner--br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
+
+.approach__split-card--human:hover .approach__corner {
+  border-color: rgba(243,239,224,.55);
+  width: 24px;
+  height: 24px;
+}
+
+/* ── card icon ── */
+.approach__card-ico {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.approach__split-card--ai .approach__card-ico {
+  background: rgba(224,24,92,.18);
+  border: 1px solid rgba(224,24,92,.35);
+  color: var(--color-primary);
+  box-shadow: 0 0 24px rgba(224,24,92,.25);
+}
+
+.approach__split-card--human .approach__card-ico {
+  background: rgba(243,239,224,.08);
+  border: 1px solid rgba(243,239,224,.18);
+  color: rgba(243,239,224,.8);
+}
+
+.approach__split-card:hover .approach__card-ico {
+  transform: scale(1.1);
+}
+
+/* ── label ── */
 .approach__split-label {
-  font-size: 0.7rem;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .approach__split-card--ai .approach__split-label { color: var(--color-primary); }
-.approach__split-card--human .approach__split-label { color: rgba(243, 239, 224, 0.78); }
+.approach__split-card--human .approach__split-label { color: rgba(243,239,224,.55); }
 
+/* ── title ── */
 .approach__split-title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.15;
   color: var(--color-light);
-  line-height: 1.3;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
+/* ── items list ── */
 .approach__split-items {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: 10px;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .approach__split-item {
-  font-size: 0.8125rem;
-  color: rgba(243, 239, 224, 0.80);
+  font-size: 13px;
+  color: rgba(243,239,224,.65);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
+
+.approach__split-card:hover .approach__split-item {
+  color: rgba(243,239,224,.9);
+}
+
+.approach__split-card:hover .approach__split-item:nth-child(1) { transition-delay: 0s; }
+.approach__split-card:hover .approach__split-item:nth-child(2) { transition-delay: .05s; }
+.approach__split-card:hover .approach__split-item:nth-child(3) { transition-delay: .10s; }
+.approach__split-card:hover .approach__split-item:nth-child(4) { transition-delay: .15s; }
 
 .approach__split-item::before {
   content: '';
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background-color: var(--color-primary);
   flex-shrink: 0;
+  transition: transform 0.25s ease;
 }
+
+.approach__split-card--ai .approach__split-item::before { background: var(--color-primary); }
+.approach__split-card--human .approach__split-item::before { background: rgba(243,239,224,.4); }
+
+.approach__split-card:hover .approach__split-item::before {
+  transform: scale(1.5);
+}
+
+/* ── watermark ── */
+.approach__card-watermark {
+  position: absolute;
+  bottom: -10px;
+  right: 16px;
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -4px;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.4s ease;
+}
+
+.approach__split-card--ai .approach__card-watermark {
+  color: rgba(224,24,92,.1);
+}
+
+.approach__split-card--human .approach__card-watermark {
+  color: rgba(243,239,224,.05);
+}
+
+.approach__split-card:hover .approach__card-watermark {
+  opacity: 2;
+}
+
+/* old human pseudo-elements removed */
+.approach__split-card--human::before,
+.approach__split-card--human::after { display: none; }
 
 /* =====================================================
    BENEFITS SECTION
@@ -2971,75 +3142,6 @@ button, input, textarea, select {
   50%       { opacity: 0.8;  transform: scale(1.08); }
 }
 
-/* --- Approach: coda-gatto connector between split cards --- */
-.approach__split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
-  align-items: stretch;
-}
-
-
-/* AI card scan line */
-.approach__split-card--ai {
-  position: relative;
-  overflow: hidden;
-}
-
-.approach__split-scan {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(224, 24, 92, 0.6), transparent);
-  animation: approach-scan 3.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes approach-scan {
-  0%   { top: 0; opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-
-/* Human card: corner brackets via pseudo-elements */
-.approach__split-card--human {
-  position: relative;
-}
-
-.approach__split-card--human::before,
-.approach__split-card--human::after {
-  content: '';
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: rgba(243, 239, 224, 0.25);
-  border-style: solid;
-  pointer-events: none;
-}
-
-.approach__split-card--human::before {
-  top: 10px;
-  left: 10px;
-  border-width: 1px 0 0 1px;
-}
-
-.approach__split-card--human::after {
-  bottom: 10px;
-  right: 10px;
-  border-width: 0 1px 1px 0;
-}
-
-.approach__split-item {
-  color: rgba(243, 239, 224, 0.88);
-  transition: color var(--transition-fast), transform var(--transition-fast);
-}
-
-.approach__split-card:hover .approach__split-item {
-  color: rgba(243, 239, 224, 0.9);
-}
 
 /* --- Benefits: scan line + icon bounce --- */
 .benefits__scan {
