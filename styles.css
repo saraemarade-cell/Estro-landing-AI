@@ -1115,15 +1115,20 @@ button, input, textarea, select {
 }
 .problem__feat:first-child { border-top: 1px solid rgba(28,28,28,.08); }
 
-/* arrow accent — VI .feat-arr */
-.problem__feat-arr {
-  color: var(--color-primary);
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 2px;
+/* icona bold — cerchio pieno con SVG */
+.problem__feat-ico {
   flex-shrink: 0;
-  transition: transform .2s ease;
-  line-height: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-top: 1px;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 14px rgba(224,24,92,.35);
 }
 
 .problem__feat-body {
@@ -1149,8 +1154,11 @@ button, input, textarea, select {
 }
 
 @media (hover: hover) {
-  .problem__feat:hover { padding-left: 6px; }
-  .problem__feat:hover .problem__feat-arr { transform: translateX(3px); }
+  .problem__feat:hover { padding-left: 4px; }
+  .problem__feat:hover .problem__feat-ico {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(224,24,92,.45);
+  }
 }
 
 /* ══ DESTRA ══ */
