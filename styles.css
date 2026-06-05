@@ -11,8 +11,8 @@
   --color-dark: #1C1C1C;
   --color-primary: #E0185C;
   --color-light: #F3EFE0;
-  --color-dark-80: rgba(28, 28, 28, 0.8);
-  --color-dark-60: rgba(28, 28, 28, 0.6);
+  --color-dark-80: rgba(28, 28, 28, 0.85);
+  --color-dark-60: rgba(28, 28, 28, 0.72);
   --color-dark-10: rgba(28, 28, 28, 0.08);
   --color-primary-hover: #c41250;
   --color-light-dark: #e8e4d6;
@@ -543,7 +543,7 @@ button, input, textarea, select {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.45);
+  color: rgba(243, 239, 224, 0.76);
 }
 
 .hero__meta-rec {
@@ -646,7 +646,7 @@ button, input, textarea, select {
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: rgba(243, 239, 224, 0.55);
+  color: rgba(243, 239, 224, 0.80);
   text-transform: uppercase;
 }
 
@@ -676,7 +676,7 @@ button, input, textarea, select {
 }
 
 .hero__text {
-  color: rgba(243, 239, 224, 0.65);
+  color: rgba(243, 239, 224, 0.85);
   max-width: 520px;
   margin: 0;
 }
@@ -761,7 +761,7 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.35);
+  color: rgba(243, 239, 224, 0.72);
 }
 
 .hero__right-inner {
@@ -887,7 +887,7 @@ button, input, textarea, select {
 
 .form-card--dark .form__input::placeholder,
 .form-card--dark .form__textarea::placeholder {
-  color: rgba(243, 239, 224, 0.5);
+  color: rgba(243, 239, 224, 0.78);
 }
 
 .form__input:focus,
@@ -924,7 +924,7 @@ button, input, textarea, select {
 }
 
 .form-card--dark .form__optional {
-  color: rgba(243, 239, 224, 0.6);
+  color: rgba(243, 239, 224, 0.82);
 }
 
 .form__submit {
@@ -939,7 +939,7 @@ button, input, textarea, select {
 }
 
 .form-card--dark .form__privacy {
-  color: rgba(243, 239, 224, 0.65);
+  color: rgba(243, 239, 224, 0.85);
 }
 
 .form-card--dark .form__error-msg {
@@ -1097,7 +1097,7 @@ button, input, textarea, select {
 .problem__desc {
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(28,28,28,.6);
+  color: rgba(28,28,28,.75);
   margin-bottom: 36px;
   max-width: 44ch;
 }
@@ -1144,7 +1144,7 @@ button, input, textarea, select {
 /* VI .feat-d */
 .problem__feat-d {
   font-size: 14px;
-  color: rgba(28,28,28,.55);
+  color: rgba(28,28,28,.72);
   line-height: 1.58;
 }
 
@@ -1167,7 +1167,7 @@ button, input, textarea, select {
   font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(28,28,28,.36);
+  color: rgba(28,28,28,.62);
   margin-bottom: 4px;
 }
 
@@ -1349,7 +1349,7 @@ button, input, textarea, select {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.5);
+  color: rgba(243, 239, 224, 0.78);
   margin-bottom: 0.25rem;
 }
 
@@ -1539,7 +1539,7 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.88);
   z-index: 4;
   white-space: nowrap;
 }
@@ -1577,7 +1577,7 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.5);
+  color: rgba(243, 239, 224, 0.78);
   margin-bottom: 6px;
 }
 
@@ -1809,7 +1809,7 @@ button, input, textarea, select {
 }
 
 .services__subtitle {
-  color: rgba(243, 239, 224, 0.6);
+  color: rgba(243, 239, 224, 0.82);
   max-width: 520px;
 }
 
@@ -1875,7 +1875,7 @@ button, input, textarea, select {
 
 .service-card__text {
   font-size: 0.9rem;
-  color: rgba(243, 239, 224, 0.6);
+  color: rgba(243, 239, 224, 0.82);
   line-height: 1.65;
 }
 
@@ -2098,7 +2098,7 @@ button, input, textarea, select {
 }
 
 .approach__copy {
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.88);
   margin-bottom: var(--space-md);
 }
 
@@ -2151,7 +2151,7 @@ button, input, textarea, select {
 
 .approach__list-desc {
   font-size: 0.875rem;
-  color: rgba(243, 239, 224, 0.55);
+  color: rgba(243, 239, 224, 0.80);
 }
 
 .approach__closing {
@@ -2197,7 +2197,7 @@ button, input, textarea, select {
 }
 
 .approach__split-card--ai .approach__split-label { color: var(--color-primary); }
-.approach__split-card--human .approach__split-label { color: rgba(243, 239, 224, 0.5); }
+.approach__split-card--human .approach__split-label { color: rgba(243, 239, 224, 0.78); }
 
 .approach__split-title {
   font-family: var(--font-display);
@@ -2214,7 +2214,7 @@ button, input, textarea, select {
 
 .approach__split-item {
   font-size: 0.8125rem;
-  color: rgba(243, 239, 224, 0.55);
+  color: rgba(243, 239, 224, 0.80);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -2406,7 +2406,7 @@ button, input, textarea, select {
 }
 
 .final-cta__copy {
-  color: rgba(243, 239, 224, 0.65);
+  color: rgba(243, 239, 224, 0.85);
   margin-bottom: var(--space-lg);
   font-size: 1.05rem;
   line-height: 1.7;
@@ -2431,7 +2431,7 @@ button, input, textarea, select {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.9375rem;
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.88);
 }
 
 .final-cta__reassurance-item svg {
@@ -2475,7 +2475,7 @@ button, input, textarea, select {
 
 .footer__tagline {
   font-size: 0.9rem;
-  color: rgba(243, 239, 224, 0.55);
+  color: rgba(243, 239, 224, 0.80);
   line-height: 1.65;
   max-width: 280px;
   margin-bottom: var(--space-md);
@@ -2495,7 +2495,7 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(243, 239, 224, 0.6);
+  color: rgba(243, 239, 224, 0.82);
   transition: all var(--transition-fast);
 }
 
@@ -2510,7 +2510,7 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(243, 239, 224, 0.4);
+  color: rgba(243, 239, 224, 0.74);
   margin-bottom: var(--space-sm);
 }
 
@@ -2522,7 +2522,7 @@ button, input, textarea, select {
 
 .footer__col-link {
   font-size: 0.9rem;
-  color: rgba(243, 239, 224, 0.65);
+  color: rgba(243, 239, 224, 0.85);
   transition: color var(--transition-fast);
 }
 
@@ -2539,7 +2539,7 @@ button, input, textarea, select {
 
 .footer__copyright {
   font-size: 0.8125rem;
-  color: rgba(243, 239, 224, 0.35);
+  color: rgba(243, 239, 224, 0.72);
 }
 
 .footer__legal {
@@ -2549,12 +2549,12 @@ button, input, textarea, select {
 
 .footer__legal-link {
   font-size: 0.8125rem;
-  color: rgba(243, 239, 224, 0.35);
+  color: rgba(243, 239, 224, 0.72);
   transition: color var(--transition-fast);
 }
 
 .footer__legal-link:hover {
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.88);
 }
 
 /* =====================================================
@@ -3019,7 +3019,7 @@ button, input, textarea, select {
 }
 
 .approach__split-item {
-  color: rgba(243, 239, 224, 0.7);
+  color: rgba(243, 239, 224, 0.88);
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
