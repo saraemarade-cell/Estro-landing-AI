@@ -150,6 +150,22 @@
     });
   });
 
+  /* --- Solution slideshow auto-rotation --- */
+  (() => {
+    const slides = document.querySelectorAll('.solution__slide');
+    const dots   = document.querySelectorAll('.solution__dot');
+    if (!slides.length) return;
+    let current = 0;
+    const advance = () => {
+      slides[current].classList.remove('solution__slide--active');
+      dots[current]?.classList.remove('solution__dot--active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('solution__slide--active');
+      dots[current]?.classList.add('solution__dot--active');
+    };
+    setInterval(advance, 3500);
+  })();
+
   /* --- Smooth scroll for anchor links --- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
