@@ -1399,6 +1399,63 @@ button, input, textarea, select {
   transform: scale(1.03);
 }
 
+/* ── Slideshow ── */
+.solution__slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.solution__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  /* same edge-fade mask as the original photo */
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 44%, black 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.35) 68%, transparent 85%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 44%, black 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.35) 68%, transparent 85%);
+  opacity: 0;
+  transition: opacity 1s ease, transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1.04);
+  will-change: opacity, transform;
+}
+
+.solution__slide--active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Subtle Ken Burns on next slide before it fades in */
+.solution__frame:hover .solution__slide--active {
+  transform: scale(1.03);
+}
+
+/* Indicator dots */
+.solution__dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 10;
+}
+
+.solution__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(243, 239, 224, 0.28);
+  transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.solution__dot--active {
+  background: var(--color-primary);
+  transform: scale(1.4);
+}
+
 .solution__grid-overlay {
   position: absolute;
   inset: 0;

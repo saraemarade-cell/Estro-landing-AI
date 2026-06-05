@@ -421,15 +421,21 @@
 
             <div class="solution__frame">
 
-              <!-- Photo with mask-based edge blending -->
-              <img
-                class="solution__photo"
-                src="Foto/2-b.webp"
-                alt="Estro AI Creative Production — team al lavoro"
-                width="960"
-                height="960"
-                loading="lazy"
-              />
+              <!-- Slideshow of 4 client images -->
+              <div class="solution__slideshow" aria-label="Case studies visivi">
+                <img class="solution__slide solution__slide--active" src="La risposta/BUSTOMOTOR.webp"  alt="Bustomotor — AI Creative Production" loading="lazy" />
+                <img class="solution__slide" src="La risposta/FUOCOBRAVO.webp"  alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
+                <img class="solution__slide" src="La risposta/MIU MIU.webp"     alt="Miu Miu — AI Creative Production"    loading="lazy" />
+                <img class="solution__slide" src="La risposta/PRADA (1).webp"   alt="Prada — AI Creative Production"      loading="lazy" />
+              </div>
+
+              <!-- Slide indicator dots -->
+              <div class="solution__dots" aria-hidden="true">
+                <span class="solution__dot solution__dot--active"></span>
+                <span class="solution__dot"></span>
+                <span class="solution__dot"></span>
+                <span class="solution__dot"></span>
+              </div>
 
               <!-- Crosshair grid overlay -->
               <div class="solution__grid-overlay" aria-hidden="true"></div>
@@ -1494,6 +1500,47 @@
         el.classList.add('on');
         document.querySelectorAll('.srv-panel').forEach((p, j) => p.classList.toggle('on', j === i));
       };
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('.solution__slide');
+      const dots   = document.querySelectorAll('.solution__dot');
+      if (!slides.length) return;
+      let current = 0;
+      let timer;
+
+      function goTo(n) {
+        slides[current].classList.remove('solution__slide--active');
+        dots[current].classList.remove('solution__dot--active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('solution__slide--active');
+        dots[current].classList.add('solution__dot--active');
+      }
+
+      function next() { goTo(current + 1); }
+
+      function start() { timer = setInterval(next, 3800); }
+      function stop()  { clearInterval(timer); }
+
+      /* Pause on hover, resume on leave */
+      const frame = document.querySelector('.solution__frame');
+      if (frame) {
+        frame.addEventListener('mouseenter', stop);
+        frame.addEventListener('mouseleave', start);
+      }
+
+      /* Pause when not visible */
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(([e]) => {
+          e.isIntersecting ? start() : stop();
+        }, { threshold: 0.2 });
+        const visual = document.querySelector('.solution__slideshow');
+        if (visual) io.observe(visual);
+      } else {
+        start();
+      }
     })();
   </script>
 
