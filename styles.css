@@ -1173,109 +1173,116 @@ button, input, textarea, select {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) + 4px);
-  background: #f8f4ea;
-  border-left: 3px solid var(--color-primary);
-  border-radius: 0 12px 12px 0;
+  gap: var(--space-sm);
+  padding: 20px 20px 18px 20px;
+  background: var(--color-dark);
+  border-radius: 12px;
   overflow: hidden;
   cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* numero grande watermark */
 .prob-card__index {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 5rem;
+  font-weight: 800;
   line-height: 1;
-  color: rgba(224, 24, 92, 0.10);
+  color: rgba(255,255,255,0.04);
   position: absolute;
-  top: 10px;
-  right: 16px;
-  letter-spacing: -0.04em;
+  bottom: -8px;
+  right: 12px;
+  letter-spacing: -0.06em;
   pointer-events: none;
-  transition: color 0.3s ease;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
 .prob-card__body {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-sm);
+  align-items: center;
+  gap: 14px;
   position: relative;
   z-index: 1;
 }
 
 .prob-card__icon {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: rgba(224, 24, 92, 0.08);
-  border: 1px solid rgba(224, 24, 92, 0.18);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(224, 24, 92, 0.15);
+  border: 1px solid rgba(224, 24, 92, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .prob-card__text {
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-dark);
+  color: var(--color-light);
   line-height: 1.35;
   margin: 0;
-  padding-top: 10px;
 }
 
 .prob-card__badge {
-  display: inline-block;
-  margin-top: var(--space-sm);
-  font-size: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-primary);
-  opacity: 0.5;
+  border: 1px solid rgba(224, 24, 92, 0.3);
+  border-radius: 100px;
+  padding: 3px 10px;
   position: relative;
   z-index: 1;
-  transition: opacity 0.3s ease;
 }
 
-/* radial glow — potenziato all'hover */
+.prob-card__badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* fondo glow */
 .prob-card__glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 80% at 0% 50%, rgba(224, 24, 92, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 60% at 10% 50%, rgba(224, 24, 92, 0.12) 0%, transparent 65%);
   pointer-events: none;
   transition: opacity 0.4s ease;
-  opacity: 0;
+  opacity: 1;
 }
 
 @media (hover: hover) {
   .prob-card:hover {
-    transform: translateX(4px);
-    background: #f0ebe0;
-    box-shadow: -4px 0 0 0 var(--color-primary), 0 8px 32px rgba(224, 24, 92, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 0 0 1px rgba(224,24,92,0.3);
   }
 
   .prob-card:hover .prob-card__index {
-    color: rgba(224, 24, 92, 0.18);
+    color: rgba(255,255,255,0.07);
   }
 
   .prob-card:hover .prob-card__icon {
-    background: rgba(224, 24, 92, 0.14);
-    border-color: rgba(224, 24, 92, 0.4);
-  }
-
-  .prob-card:hover .prob-card__badge {
-    opacity: 1;
+    background: rgba(224, 24, 92, 0.25);
+    border-color: rgba(224, 24, 92, 0.6);
+    transform: scale(1.08);
   }
 
   .prob-card:hover .prob-card__glow {
-    opacity: 1;
+    opacity: 1.4;
   }
 }
 
