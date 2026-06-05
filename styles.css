@@ -1113,88 +1113,97 @@ button, input, textarea, select {
 /*
   Problem right column — 3 result cards.
 */
+.problem__subtitle {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: rgba(28, 28, 28, 0.55);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+  max-width: 400px;
+}
+
 .problem__right {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
   position: relative;
-  overflow: visible;
-  justify-content: center;
+  align-content: start;
 }
 
 /* Result cards */
 .problem__result-card {
-  padding: 0.75rem var(--space-md);
+  padding: 1.25rem 1.1rem;
   background-color: var(--color-light-dark);
-  border: none;
-  border-left: 2px solid rgba(28, 28, 28, 0.15);
+  border: 1px solid rgba(28, 28, 28, 0.08);
+  border-radius: 12px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.6rem;
   position: relative;
   overflow: hidden;
-  border-radius: 0 8px 8px 0;
   transition:
-    background-color 0.35s ease,
-    border-color     0.35s ease,
-    box-shadow       0.35s ease;
+    background-color 0.3s ease,
+    border-color     0.3s ease,
+    box-shadow       0.3s ease,
+    transform        0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Scanning line — sweeps left-to-right on hover */
-.problem__result-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(224, 24, 92, 0.07) 40%,
-    rgba(224, 24, 92, 0.18) 50%,
-    rgba(224, 24, 92, 0.07) 60%,
-    transparent 100%
-  );
-  pointer-events: none;
-  transition: left 0s;
-  will-change: left;
+.problem__card-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: rgba(28, 28, 28, 0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+  display: block;
 }
 
-/* Top-right corner bracket — reveals on hover */
+.problem__card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(224, 24, 92, 0.07);
+  border: 1px solid rgba(224, 24, 92, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Top-right corner accent — reveals on hover */
 .problem__result-card::after {
   content: '';
   position: absolute;
-  top: 7px;
-  right: 10px;
-  width: 10px;
-  height: 10px;
+  top: 10px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
   border-top: 1.5px solid var(--color-primary);
   border-right: 1.5px solid var(--color-primary);
   opacity: 0;
   transform: translate(4px, -4px);
   pointer-events: none;
   transition:
-    opacity   0.25s ease 0.15s,
-    transform 0.3s  cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+    opacity   0.25s ease 0.1s,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
 }
 
 @media (hover: hover) {
   .problem__result-card:hover {
-    background-color: #e4dfd0;
-    border-left-color: var(--color-primary);
-    box-shadow:
-      -2px 0 0 0 var(--color-primary),
-      0 2px 18px rgba(224, 24, 92, 0.08),
-      inset 100px 0 60px -60px rgba(224, 24, 92, 0.04);
+    background-color: #e0dbd0;
+    border-color: rgba(224, 24, 92, 0.18);
+    box-shadow: 0 6px 24px rgba(28, 28, 28, 0.1), 0 0 0 1px rgba(224, 24, 92, 0.1);
+    transform: translateY(-3px);
   }
 
-  /* Trigger the scan sweep */
-  .problem__result-card:hover::before {
-    left: 140%;
-    transition: left 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  .problem__result-card:hover .problem__card-icon {
+    background: rgba(224, 24, 92, 0.14);
+    border-color: rgba(224, 24, 92, 0.28);
   }
 
-  /* Reveal corner bracket */
   .problem__result-card:hover::after {
     opacity: 1;
     transform: translate(0, 0);
@@ -1203,13 +1212,14 @@ button, input, textarea, select {
 
 .problem__result-text {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 600;
   color: var(--color-dark);
-  line-height: 1.3;
+  line-height: 1.35;
   position: relative;
   z-index: 1;
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
 /* =====================================================
@@ -3702,9 +3712,20 @@ footer .logo-img-sm {
     font-size: clamp(1.1rem, 5vw, 1.4rem);
   }
 
-  /* Problem result cards */
+  /* Problem result cards: keep 2-col grid but tighter padding */
   .problem__result-card {
-    padding: 0.6rem var(--space-sm);
+    padding: 1rem 0.9rem;
+  }
+
+  .problem__card-num {
+    font-size: 2rem;
+  }
+}
+
+/* On mobile, problem cards go single column */
+@media (max-width: 480px) {
+  .problem__right {
+    grid-template-columns: 1fr;
   }
 }
 
