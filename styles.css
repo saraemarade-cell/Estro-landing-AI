@@ -2261,8 +2261,8 @@ button, input, textarea, select {
 
 /* ── AI card ── */
 .approach__split-card--ai {
-  background: linear-gradient(160deg, rgba(224,24,92,.18) 0%, rgba(224,24,92,.06) 60%, rgba(10,10,10,.2) 100%);
-  border: 1px solid rgba(224, 24, 92, 0.3);
+  background: linear-gradient(160deg, rgba(224,24,92,.22) 0%, rgba(224,24,92,.08) 50%, rgba(28,28,28,.85) 100%);
+  border: 1px solid rgba(224, 24, 92, 0.35);
 }
 
 .approach__split-card--ai:hover {
@@ -2304,13 +2304,13 @@ button, input, textarea, select {
 
 /* ── Human card ── */
 .approach__split-card--human {
-  background: linear-gradient(160deg, rgba(243,239,224,.07) 0%, rgba(243,239,224,.02) 100%);
-  border: 1px solid rgba(243, 239, 224, 0.12);
+  background: linear-gradient(160deg, rgba(28,28,28,.88) 0%, rgba(28,28,28,.82) 100%);
+  border: 1px solid rgba(28, 28, 28, 0.2);
 }
 
 .approach__split-card--human:hover {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 24px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(243,239,224,.2);
+  box-shadow: 0 24px 60px rgba(0,0,0,.25), 0 0 0 1px rgba(28,28,28,.35);
 }
 
 /* corner brackets */
