@@ -2089,48 +2089,6 @@ button, input, textarea, select {
   font-size: 13px;
   color: rgba(243, 239, 224, 0.55);
   line-height: 1.65;
-  margin-bottom: 16px;
-}
-
-.service-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.service-card__tags li {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: rgba(243,239,224,.4);
-  background: rgba(243,239,224,.05);
-  border: 1px solid rgba(243,239,224,.08);
-  border-radius: 100px;
-  padding: 3px 10px;
-  transition: color .25s, border-color .25s, background .25s;
-}
-
-.service-card--featured .service-card__tags li {
-  color: rgba(224,24,92,.7);
-  background: rgba(224,24,92,.06);
-  border-color: rgba(224,24,92,.15);
-}
-
-.service-card:hover .service-card__tags li {
-  color: rgba(243,239,224,.65);
-  border-color: rgba(243,239,224,.14);
-  background: rgba(243,239,224,.08);
-}
-
-.service-card--featured:hover .service-card__tags li {
-  color: var(--color-primary);
-  border-color: rgba(224,24,92,.3);
-  background: rgba(224,24,92,.1);
 }
 
 .services__cta {
