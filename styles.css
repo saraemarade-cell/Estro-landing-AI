@@ -4100,28 +4100,33 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image area: height driven by image, no clipping */
+/* Image area: constrained to leave room for header + tabs + text */
 .cases__panel-media {
   position: static !important;
   width: 100% !important;
   height: auto !important;
+  max-height: calc(100vh - 420px) !important;
+  overflow: hidden !important;
   border-radius: 0 !important;
-  overflow: visible !important;
   background: #0e0e0e !important;
   border: none !important;
   border-bottom: 1px solid rgba(255,255,255,.06) !important;
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex-shrink: 0 !important;
   line-height: 0 !important;
 }
 
-/* Image: fills card width, height auto = natural proportions, no crop */
+/* Image: fills width, height capped by container */
 .cases__panel-img {
   position: static !important;
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  object-fit: unset !important;
+  max-height: calc(100vh - 420px) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
 }
@@ -4129,17 +4134,17 @@ button, input, textarea, select {
   transform: scale(1.015) !important;
 }
 
-/* Text area: full width, dark bg inherited from card */
+/* Text area: compact padding to save vertical space */
 .cases__panel-content {
   flex: 1 !important;
   width: 100% !important;
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 28px !important;
+  padding: 16px 28px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 8px !important;
   transition: none !important;
   box-shadow: none !important;
 }
