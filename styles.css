@@ -4067,7 +4067,7 @@ button, input, textarea, select {
   flex-direction: column !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 340px) !important;
+  max-height: calc(100vh - 260px) !important;
   margin: 0 auto !important;
   background: #1C1C1C !important;
   border: 1px solid rgba(255,255,255,.08) !important;
