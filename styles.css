@@ -420,6 +420,7 @@ button, input, textarea, select {
 /* ---- Left column ---- */
 .hero__left {
   height: 100%;
+  position: relative;
 }
 
 /* ---- Video wrapper: full-column, cover-cropped ---- */
@@ -3653,7 +3654,6 @@ button, input, textarea, select {
   top: auto !important;
   background-color: transparent !important;
 }
-/* hero__text-block is now absolutely positioned inside the video wrapper */
 
 /* ─── LIGHT SECTIONS — VI exact: #f3efe0 ─── */
 .problem,
@@ -4794,14 +4794,14 @@ button, input, textarea, select {
     flex: none;
     border-radius: 0;
   }
-  /* estrai il text-block dal video: diventa elemento sotto */
+  /* text-block between video and form on mobile */
   .hero__text-block {
     position: static !important;
     background: #0e0e0e;
-    padding: 24px 20px 28px;
+    padding: 28px 20px 32px;
     z-index: auto;
   }
-  .hero__text-block-inner { padding: 0; gap: 12px; }
+  .hero__text-block-inner { padding: 0; gap: 14px; }
   .hero__headline { font-size: clamp(22px, 7vw, 36px) !important; line-height: 1.15 !important; }
   .hero__text { font-size: 14px !important; }
   .hero-badge { font-size: 10px; padding: 5px 12px; }
@@ -4825,7 +4825,7 @@ button, input, textarea, select {
   .how-we-work__header { margin-bottom: 32px; }
 
   /* ── Referenze: card a colonna intera, layout orizzontale ── */
-  .ref-main__img { aspect-ratio: 16/9; }
+  .ref-main__img { aspect-ratio: unset; width: 100%; height: auto; object-fit: contain; }
   .ref-tabs {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -4833,20 +4833,20 @@ button, input, textarea, select {
   }
   .ref-tab {
     display: grid;
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 130px 1fr;
     align-items: stretch;
     border-radius: 14px;
     overflow: hidden;
   }
   .ref-tab__img {
     height: auto;
-    min-height: 90px;
+    min-height: 110px;
     border-bottom: none;
     border-right: 1px solid rgba(255,255,255,.06);
     border-radius: 0;
     padding: 14px 16px;
   }
-  .ref-tab__img img { max-width: 88px; max-height: 44px; }
+  .ref-tab__img img { max-width: 110px; max-height: 60px; }
   .ref-tab__desc { display: none; }
   .ref-tab__body { padding: 14px 16px; justify-content: center; }
 
@@ -4890,11 +4890,11 @@ button, input, textarea, select {
     flex-direction: column;
   }
   .ref-tab__img {
-    height: 80px;
+    height: 100px;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
-  .ref-tab__img img { max-width: 110px; max-height: 44px; }
+  .ref-tab__img img { max-width: 150px; max-height: 65px; }
   .ref-tab__desc { display: none; }
 
   /* Sol pillars */
@@ -4923,8 +4923,8 @@ button, input, textarea, select {
   .services__cta .btn,
   .value-props__cta .btn { width: 100%; text-align: center; justify-content: center; }
 
-  /* Main image ratio */
-  .ref-main__img { aspect-ratio: 4/3; }
+  /* Main image no crop */
+  .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
 
   /* No overflow anywhere */
   * { max-height: none; }
@@ -4942,6 +4942,6 @@ button, input, textarea, select {
   .services__cta .btn,
   .value-props__cta .btn { width: 100%; text-align: center; }
 
-  /* Main image ratio */
-  .ref-main__img { aspect-ratio: 4/3; }
+  /* Main image no crop */
+  .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
 }
