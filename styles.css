@@ -2423,33 +2423,34 @@ button, input, textarea, select {
 
 /* ── card icon ── */
 .approach__card-ico {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #E0185C, #8c163f);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 22px -10px rgba(224,24,92,.65), inset 0 1px 0 rgba(255,255,255,.3);
+  color: #fff;
+  border: none;
+  transition: transform .45s cubic-bezier(.34,1.56,.6,1);
   position: relative;
   z-index: 1;
 }
+.approach__card-ico svg { width: 20px; height: 20px; color: #fff; stroke: #fff; }
 
-.approach__split-card--ai .approach__card-ico {
-  background: rgba(224,24,92,.18);
-  border: 1px solid rgba(224,24,92,.35);
-  color: var(--color-primary);
-  box-shadow: 0 0 24px rgba(224,24,92,.25);
-}
-
+/* same variant — both cards get identical icon treatment */
+.approach__split-card--ai .approach__card-ico,
 .approach__split-card--human .approach__card-ico {
-  background: rgba(243,239,224,.1);
-  border: 1px solid rgba(243,239,224,.25);
-  color: rgba(243,239,224,.9);
+  background: linear-gradient(150deg, #E0185C, #8c163f);
+  border: none;
+  box-shadow: 0 10px 22px -10px rgba(224,24,92,.65), inset 0 1px 0 rgba(255,255,255,.3);
+  color: #fff;
 }
 
 .approach__split-card:hover .approach__card-ico {
-  transform: scale(1.1);
+  transform: scale(1.08) rotate(-4deg);
 }
 
 /* ── label ── */
