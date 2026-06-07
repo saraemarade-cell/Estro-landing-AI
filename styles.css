@@ -3715,12 +3715,12 @@ button, input, textarea, select {
 .how-we-work::after {
   content: '';
   position: absolute;
-  bottom: -10%;
-  left: 4%;
-  width: 300px;
-  height: 300px;
+  top: -12%;
+  right: 6%;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(224,24,92,.07), transparent 68%);
+  background: radial-gradient(circle, rgba(224,24,92,.1), transparent 68%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
@@ -4308,3 +4308,7 @@ button, input, textarea, select {
   text-align: center;
 }
 .ff-note a { color: rgba(243,239,224,.5); }
+
+/* ─── Background glow transfer: approach → how-we-work ─── */
+/* Glow moved to .how-we-work::after — remove from approach */
+.approach::before { display: none !important; }
