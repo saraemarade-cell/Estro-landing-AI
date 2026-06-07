@@ -3780,7 +3780,37 @@ button, input, textarea, select {
 }
 
 /* ─── Services section — VI #141414 (--K2) ─── */
-.services { background-color: #141414 !important; }
+/* ─── Services section — VI .sol background exact ─── */
+.services {
+  background: #1C1C1C !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+/* dot grid — VI .sol::before */
+.services::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: radial-gradient(circle, rgba(224,24,92,.022) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+/* left fuchsia glow — VI .sol-glow */
+.services::after {
+  content: '' !important;
+  position: absolute !important;
+  left: -120px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 560px !important;
+  height: 560px !important;
+  background: radial-gradient(circle, rgba(224,24,92,.07), transparent 60%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+.services .container,
+.services__bg-grid { position: relative; z-index: 2; }
 
 /* ─── How-we-work: gattino bg already in .steps-system::before ─── */
 .how-we-work::before { display: none !important; }
