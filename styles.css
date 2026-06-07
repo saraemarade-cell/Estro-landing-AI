@@ -4151,12 +4151,13 @@ button, input, textarea, select {
 /* Brand logo in text area — VI .pf-info-logo */
 .cases__panel-brand-logo {
   display: block !important;
-  height: 44px !important;
+  height: 22px !important;
   width: auto !important;
-  max-width: 160px !important;
+  max-width: 80px !important;
   object-fit: contain !important;
-  object-position: left center !important;
-  filter: brightness(0) invert(1) opacity(.8) !important;
+  object-position: right center !important;
+  filter: brightness(0) invert(1) opacity(.7) !important;
+  margin-left: auto !important;
   margin-bottom: 4px !important;
 }
 
