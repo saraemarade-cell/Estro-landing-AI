@@ -1844,12 +1844,12 @@ button, input, textarea, select {
 }
 
 .value-props__cta {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-top: var(--space-xl);
 }
 .value-props__cta .btn {
-  width: auto;
-  justify-content: center;
+  width: fit-content;
 }
 
 
@@ -1998,12 +1998,12 @@ button, input, textarea, select {
 }
 
 .services__cta {
+  display: flex;
+  justify-content: center;
   margin-top: var(--space-xl);
-  text-align: center;
 }
 .services__cta .btn {
-  width: auto;
-  justify-content: center;
+  width: fit-content;
 }
 
 /* =====================================================
@@ -4930,9 +4930,11 @@ button, input, textarea, select {
   /* Forms */
   .fg-row { grid-template-columns: 1fr; }
 
-  /* Buttons full width */
+  /* Buttons full width on small mobile */
+  .services__cta,
+  .value-props__cta { display: block; }
   .services__cta .btn,
-  .value-props__cta .btn { width: 100%; text-align: center; justify-content: center; }
+  .value-props__cta .btn { width: 100%; justify-content: center; }
 
   /* Main image no crop */
   .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
