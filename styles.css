@@ -4086,33 +4086,43 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image container: full width, fixed height */
+/* Image container: height auto, wraps image naturally */
 .cases__panel-media {
   position: relative !important;
   width: 100% !important;
-  height: 280px !important;
+  height: auto !important;
   border-radius: 0 !important;
   overflow: hidden !important;
   background: #0e0e0e !important;
   border: none !important;
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex-shrink: 0 !important;
 }
 
-/* Image: contain — full image visible, no crop */
+/* Image: natural size, fully visible */
 .cases__panel-img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 340px !important;
   object-fit: contain !important;
-  object-position: center center !important;
   display: block !important;
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
 }
 .cases__panel-inner:hover .cases__panel-img {
   transform: scale(1.015) !important;
+}
+
+/* Card wraps to image width, centered in section */
+.cases__panel-inner {
+  width: fit-content !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-width: 320px !important;
 }
 
 /* Content area: dark bg, white text hierarchy */
