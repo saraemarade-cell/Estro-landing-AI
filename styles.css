@@ -2194,9 +2194,8 @@ button, input, textarea, select {
 
 .how-we-work__closing {
   text-align: center;
-  margin-top: var(--space-xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid rgba(28,28,28,.1);
+  background: #f3efe0;
+  padding: var(--space-lg) 0 var(--space-xl);
 }
 
 .how-we-work__closing-text {
