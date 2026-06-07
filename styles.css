@@ -2007,24 +2007,7 @@ button, input, textarea, select {
   position: relative;
 }
 
-/* gattino favicon al centro della timeline */
-.steps-system::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(700px, 90%);
-  height: min(700px, 90%);
-  background-image: url('gattino-estro-favicon.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  opacity: 0.06;
-  filter: blur(1px) grayscale(1);
-  pointer-events: none;
-  z-index: 0;
-}
+/* gattino rimosso da steps-system — gestito su .how-we-work::before */
 
 /* SVG canvas — absolutely overlaid, pointer-events off so cards stay clickable */
 .steps-flow {
@@ -4312,3 +4295,27 @@ button, input, textarea, select {
 /* ─── Background glow transfer: approach → how-we-work ─── */
 /* Glow moved to .how-we-work::after — remove from approach */
 .approach::before { display: none !important; }
+
+/* ─── Gattino background — how-we-work section ─── */
+/* Override the disabled ::before to show gattino centred on the full section */
+.how-we-work::before {
+  content: '' !important;
+  display: block !important;
+  height: auto !important;
+  background: none !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(820px, 88%) !important;
+  height: min(820px, 88%) !important;
+  background-image: url('gattino-estro-favicon.png') !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  opacity: 0.11 !important;
+  filter: grayscale(1) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  margin-bottom: 0 !important;
+}
