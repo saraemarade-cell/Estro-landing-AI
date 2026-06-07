@@ -306,13 +306,17 @@ button, input, textarea, select {
 }
 
 
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar__cta {
-  padding: 0 22px;
+  padding: 13px 22px;
   font-size: 14px;
   font-weight: 600;
-  height: 48px;
-  min-width: 215px;
-  justify-content: center;
+  height: auto;
 }
 
 .navbar__hamburger {
@@ -381,7 +385,7 @@ button, input, textarea, select {
    HERO SECTION — Art Direction
    ===================================================== */
 .hero {
-  padding-top: 80px;
+  padding-top: 110px;
   padding-bottom: 0;
   background:
     radial-gradient(ellipse at 75% 35%, rgba(224,24,92,.1), transparent 55%),
@@ -3187,6 +3191,10 @@ button, input, textarea, select {
 /* Tablet: ≤ 768px */
 @media (max-width: 768px) {
   .navbar__nav {
+    display: none;
+  }
+
+  .navbar__right {
     display: none;
   }
 
