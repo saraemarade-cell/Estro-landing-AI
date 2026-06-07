@@ -4061,13 +4061,13 @@ button, input, textarea, select {
   display: none !important;
 }
 
-/* Card: exact 1222 × 345.08px, horizontal layout, centered */
+/* Card: vertical layout — image top, dark text bottom */
 .cases__panel-inner {
   display: flex !important;
-  flex-direction: row !important;
-  width: 1222px !important;
-  height: 345px !important;
-  max-width: 100% !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 860px !important;
+  height: auto !important;
   margin: 0 auto !important;
   background: #1C1C1C !important;
   border: 1px solid rgba(255,255,255,.08) !important;
@@ -4101,29 +4101,31 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image area: 725.33 × 345px, image contained within */
+/* Image area: full width, auto height, image contained */
 .cases__panel-media {
   position: relative !important;
-  width: 725px !important;
-  min-width: 725px !important;
-  height: 345px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 320px !important;
   border-radius: 0 !important;
   overflow: hidden !important;
   background: #0e0e0e !important;
   border: none !important;
-  border-right: 1px solid rgba(255,255,255,.06) !important;
+  border-bottom: 1px solid rgba(255,255,255,.06) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
 }
 
-/* Image: contained, proportions intact, no crop */
+/* Image: contained, fully visible, no crop */
 .cases__panel-img {
   position: static !important;
   display: block !important;
-  width: 100% !important;
-  height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 320px !important;
   object-fit: contain !important;
   object-position: center center !important;
   border-radius: 0 !important;
@@ -4133,11 +4135,10 @@ button, input, textarea, select {
   transform: scale(1.015) !important;
 }
 
-/* Text area: remaining width (≈497px), full height */
+/* Text area: full width, dark bg inherited from card */
 .cases__panel-content {
   flex: 1 !important;
-  min-width: 0 !important;
-  height: 100% !important;
+  width: 100% !important;
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
@@ -4145,34 +4146,12 @@ button, input, textarea, select {
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
-  overflow-y: auto !important;
   transition: none !important;
   box-shadow: none !important;
 }
 .cases__panel-content:hover {
   border-color: transparent !important;
   box-shadow: none !important;
-}
-
-/* Responsive: scale down below 1222px */
-@media (max-width: 1280px) {
-  .cases__panel-inner {
-    width: 100% !important;
-    height: auto !important;
-  }
-  .cases__panel-media {
-    width: 59.36% !important;
-    min-width: 0 !important;
-    height: auto !important;
-    min-height: 240px !important;
-  }
-  .cases__panel-img {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-  }
 }
 
 /* VI .pf-info-sector */
