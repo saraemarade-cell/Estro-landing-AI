@@ -4065,8 +4065,7 @@ button, input, textarea, select {
 .cases__panel-inner {
   display: flex !important;
   flex-direction: column !important;
-  width: 320px !important;
-  max-width: 100% !important;
+  width: 100% !important;
   height: auto !important;
   margin: 0 auto !important;
   background: #1C1C1C !important;
