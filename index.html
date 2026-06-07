@@ -19,6 +19,9 @@
 </head>
 <body>
 
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ================================================
        NAVBAR
        ================================================ -->
@@ -1221,6 +1224,19 @@
   })();
   </script>
 
+  <script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function update() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? Math.min(scrollTop / total * 100, 100) : 0) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+  </script>
 
 </body>
 </html>

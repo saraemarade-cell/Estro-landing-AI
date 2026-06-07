@@ -57,6 +57,18 @@ html {
   overflow-x: hidden;
 }
 
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--color-primary);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-light);
@@ -1836,7 +1848,7 @@ button, input, textarea, select {
   margin-top: var(--space-xl);
 }
 .value-props__cta .btn {
-  min-width: 260px;
+  width: auto;
   justify-content: center;
 }
 
@@ -1990,7 +2002,7 @@ button, input, textarea, select {
   text-align: center;
 }
 .services__cta .btn {
-  min-width: 260px;
+  width: auto;
   justify-content: center;
 }
 
