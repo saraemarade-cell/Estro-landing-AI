@@ -742,6 +742,7 @@ button, input, textarea, select {
   align-items: center;
   gap: 0.75rem;
   padding: 18px var(--space-lg) 0;
+  margin-bottom: 20px;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -764,7 +765,7 @@ button, input, textarea, select {
 
 .hero__right-inner {
   flex: 1;
-  padding: 8px var(--space-lg) var(--space-lg);
+  padding: 0 var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
