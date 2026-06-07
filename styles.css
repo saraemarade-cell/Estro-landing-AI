@@ -1334,16 +1334,101 @@ button, input, textarea, select {
   background-color: var(--color-primary);
 }
 
-.solution__closing {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: rgba(243, 239, 224, 0.85);
-  line-height: 1.7;
-  margin-bottom: var(--space-md);
+/* ── Sol pillars — interactive system pillars ── */
+.sol-pillars {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-lg);
 }
 
-.solution__closing strong {
+.sol-pillar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0 16px 0;
+  border: none;
+  border-bottom: 1px solid rgba(243,239,224,.08);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  transition: padding-left .25s ease;
+  color: inherit;
+}
+.sol-pillar:first-child { border-top: 1px solid rgba(243,239,224,.08); }
+
+.sol-pillar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--color-primary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform .3s ease;
+}
+.sol-pillar--active::before,
+.sol-pillar:hover::before { transform: scaleY(1); }
+
+.sol-pillar--active,
+.sol-pillar:hover { padding-left: 14px; }
+
+.sol-pillar__num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: rgba(243,239,224,.25);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  transition: color .25s;
+  min-width: 22px;
+}
+.sol-pillar--active .sol-pillar__num,
+.sol-pillar:hover .sol-pillar__num { color: var(--color-primary); }
+
+.sol-pillar__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sol-pillar__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(243,239,224,.45);
+  transition: color .25s;
+  line-height: 1.2;
+}
+.sol-pillar--active .sol-pillar__title,
+.sol-pillar:hover .sol-pillar__title { color: var(--color-light); }
+
+.sol-pillar__desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(243,239,224,.0);
+  line-height: 1.5;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, color .25s, opacity .25s;
+  opacity: 0;
+}
+.sol-pillar--active .sol-pillar__desc {
+  max-height: 48px;
+  opacity: 1;
+  color: rgba(243,239,224,.55);
+}
+
+.sol-pillar__arrow {
+  font-size: 15px;
+  color: rgba(243,239,224,.15);
+  transition: color .25s, transform .25s;
+  flex-shrink: 0;
+}
+.sol-pillar--active .sol-pillar__arrow,
+.sol-pillar:hover .sol-pillar__arrow {
   color: var(--color-primary);
+  transform: translateX(4px);
 }
 
 .solution__visual {
@@ -1762,6 +1847,34 @@ button, input, textarea, select {
 .carousel__corner--tr { top: 14px; right: 14px; border-top: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
 .carousel__corner--bl { bottom: 14px; left: 14px; border-bottom: 1.5px solid var(--color-primary); border-left: 1.5px solid var(--color-primary); }
 .carousel__corner--br { bottom: 14px; right: 14px; border-bottom: 1.5px solid var(--color-primary); border-right: 1.5px solid var(--color-primary); }
+
+/* slide caption overlay */
+.carousel__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 48px 18px 40px;
+  background: linear-gradient(to top, rgba(14,14,14,.82) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 6;
+  pointer-events: none;
+}
+.carousel__caption-brand {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-light);
+  letter-spacing: .3px;
+}
+.carousel__caption-type {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--color-primary);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
 /* =====================================================
    VALUE PROPOSITIONS
