@@ -2565,33 +2565,33 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 40px;
-  border-radius: 14px;
+  padding: 20px 44px;
+  border-radius: 16px;
   background: #ffffff;
-  border: 1px solid rgba(28,28,28,.14);
+  border: 1.5px solid rgba(28,28,28,.16);
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-  min-width: 180px;
-  height: 80px;
-  box-shadow: 0 2px 8px rgba(28,28,28,.07);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  min-width: 200px;
+  height: 88px;
+  box-shadow: 0 2px 10px rgba(28,28,28,.08);
 }
 
 .cases__tab:hover {
   background: #ffffff;
-  border-color: rgba(28,28,28,.28);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(28,28,28,.12);
+  border-color: rgba(28,28,28,.32);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(28,28,28,.13);
 }
 
 .cases__tab--active {
   background: var(--color-dark);
   border-color: var(--color-dark);
-  box-shadow: 0 8px 24px rgba(28,28,28,.25);
+  box-shadow: 0 8px 28px rgba(28,28,28,.28);
 }
 
 .cases__tab--active:hover {
   background: var(--color-dark);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* text wordmark fallback (e.g. Mestel) */
@@ -2616,26 +2616,29 @@ button, input, textarea, select {
 }
 
 .cases__tab-logo {
-  max-width: 160px;
-  max-height: 54px;
+  max-width: 180px;
+  max-height: 60px;
   width: auto;
   height: auto;
   object-fit: contain;
-  /* colori naturali del logo su sfondo bianco, leggera opacità per stato inattivo */
-  opacity: 0.75;
+  opacity: 0.8;
   filter: none;
-  transition: opacity 0.25s, filter 0.25s;
+  transition: opacity 0.25s, filter 0.25s, transform 0.3s cubic-bezier(.2,.8,.2,1);
 }
 
 .cases__tab:hover .cases__tab-logo {
   opacity: 1;
   filter: none;
+  transform: scale(1.07);
 }
 
 .cases__tab--active .cases__tab-logo {
-  /* sfondo scuro → inverti a bianco */
   opacity: 1;
   filter: brightness(0) invert(1);
+}
+
+.cases__tab--active:hover .cases__tab-logo {
+  transform: scale(1.07);
 }
 
 /* ── panels ── */
@@ -2666,21 +2669,23 @@ button, input, textarea, select {
 
 .cases__panel-media {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/4;
   overflow: hidden;
   background: var(--color-dark);
+  align-self: stretch;
 }
 
 .cases__panel-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
 }
 
 .cases__panel-inner:hover .cases__panel-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .cases__panel-content {
@@ -2688,20 +2693,28 @@ button, input, textarea, select {
   display: flex;
   flex-direction: column;
   gap: 0;
+  position: relative;
 }
 
-/* brand logo in text column */
+/* brand logo: top-right corner of content column */
 .cases__panel-logo {
-  display: block;
-  max-width: 220px;
-  max-height: 70px;
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 160px;
+  max-height: 64px;
   width: auto;
   height: auto;
   object-fit: contain;
-  margin-bottom: 20px;
-  /* pannello su sfondo chiaro → logo a colori naturali, piena opacità */
   opacity: 1;
   filter: none;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.25s;
+  z-index: 2;
+}
+
+.cases__panel-inner:hover .cases__panel-logo {
+  transform: scale(1.06);
+  opacity: 1;
 }
 
 .cases__panel-tag {
@@ -2714,6 +2727,8 @@ button, input, textarea, select {
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
+  /* spazio top per non sovrapporsi al logo in posizione assoluta */
+  margin-top: 80px;
 }
 
 .cases__panel-tag::before {
