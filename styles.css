@@ -4697,14 +4697,14 @@ button, input, textarea, select {
 
 /* text below image */
 .ref-tab__body {
-  padding: 16px 18px 18px;
+  padding: 16px 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .ref-tab__name {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 16px;
   color: rgba(243,239,224,.6);
   letter-spacing: -.2px;
   transition: color .25s;
@@ -4725,8 +4725,15 @@ button, input, textarea, select {
 .ref-tab--active .ref-tab__cat { color: var(--color-primary); }
 
 .ref-tab__meta {
-  font-size: 11px;
-  color: rgba(243,239,224,.3);
-  line-height: 1.5;
+  font-size: 14px;
+  color: rgba(243,239,224,.45);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.ref-tab__desc {
+  font-size: 14px;
+  color: rgba(243,239,224,.32);
+  line-height: 1.55;
   margin: 0;
 }
