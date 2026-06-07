@@ -2565,33 +2565,31 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 44px;
-  border-radius: 16px;
-  background: #ffffff;
-  border: 1.5px solid rgba(28,28,28,.16);
+  padding: 14px 28px;
+  border-radius: 14px;
+  background: rgba(28,28,28,.05);
+  border: 1px solid rgba(28,28,28,.1);
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-  min-width: 200px;
-  height: 88px;
-  box-shadow: 0 2px 10px rgba(28,28,28,.08);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  min-width: 140px;
+  height: 64px;
 }
 
 .cases__tab:hover {
-  background: #ffffff;
-  border-color: rgba(28,28,28,.32);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(28,28,28,.13);
+  background: rgba(28,28,28,.09);
+  border-color: rgba(28,28,28,.2);
+  transform: translateY(-2px);
 }
 
 .cases__tab--active {
   background: var(--color-dark);
   border-color: var(--color-dark);
-  box-shadow: 0 8px 28px rgba(28,28,28,.28);
+  box-shadow: 0 6px 20px rgba(28,28,28,.18);
 }
 
 .cases__tab--active:hover {
   background: var(--color-dark);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* text wordmark fallback (e.g. Mestel) */
@@ -2616,29 +2614,21 @@ button, input, textarea, select {
 }
 
 .cases__tab-logo {
-  max-width: 180px;
-  max-height: 60px;
+  max-width: 130px;
+  max-height: 44px;
   width: auto;
   height: auto;
   object-fit: contain;
-  opacity: 0.8;
-  filter: none;
-  transition: opacity 0.25s, filter 0.25s, transform 0.3s cubic-bezier(.2,.8,.2,1);
+  filter: brightness(0) opacity(0.45);
+  transition: filter 0.25s;
 }
 
 .cases__tab:hover .cases__tab-logo {
-  opacity: 1;
-  filter: none;
-  transform: scale(1.07);
+  filter: brightness(0) opacity(0.7);
 }
 
 .cases__tab--active .cases__tab-logo {
-  opacity: 1;
-  filter: brightness(0) invert(1);
-}
-
-.cases__tab--active:hover .cases__tab-logo {
-  transform: scale(1.07);
+  filter: brightness(0) invert(1) opacity(1);
 }
 
 /* ── panels ── */
@@ -2656,10 +2646,8 @@ button, input, textarea, select {
 }
 
 .cases__panel-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   background: #fff;
   border: 1px solid rgba(28,28,28,.09);
   border-radius: 24px;
@@ -2669,52 +2657,51 @@ button, input, textarea, select {
 
 .cases__panel-media {
   position: relative;
-  aspect-ratio: 3/4;
+  width: 100%;
   overflow: hidden;
   background: var(--color-dark);
-  align-self: stretch;
+  /* contenitore con altezza fissa — l'immagine ci stà tutta orizzontalmente */
+  max-height: 480px;
 }
 
 .cases__panel-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  height: auto;
   display: block;
+  object-fit: contain;
   transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
 }
 
 .cases__panel-inner:hover .cases__panel-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .cases__panel-content {
-  padding: clamp(2rem, 3vw, 3rem) clamp(2rem, 3vw, 3rem) clamp(2rem, 3vw, 3rem) 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 3vw, 3rem);
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
 }
 
-/* brand logo: top-right corner of content column */
+/* brand logo: angolo superiore destro dell'area contenuto */
 .cases__panel-logo {
   position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  right: clamp(1.5rem, 3vw, 2.5rem);
-  max-width: 160px;
-  max-height: 64px;
+  top: clamp(1.5rem, 3vw, 2rem);
+  right: clamp(2rem, 3vw, 3rem);
+  max-width: 140px;
+  max-height: 52px;
   width: auto;
   height: auto;
   object-fit: contain;
   opacity: 1;
   filter: none;
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.25s;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
   z-index: 2;
 }
 
 .cases__panel-inner:hover .cases__panel-logo {
-  transform: scale(1.06);
-  opacity: 1;
+  transform: scale(1.05);
 }
 
 .cases__panel-tag {
@@ -2727,8 +2714,8 @@ button, input, textarea, select {
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
-  /* spazio top per non sovrapporsi al logo in posizione assoluta */
-  margin-top: 80px;
+  /* spazio top per non sovrapporsi al logo assoluto in alto a destra */
+  margin-top: 72px;
 }
 
 .cases__panel-tag::before {
@@ -3058,10 +3045,10 @@ button, input, textarea, select {
   }
 
   .cases__panel-inner {
-    grid-template-columns: 1fr;
+    /* già flex column, nulla da sovrascrivere */
   }
   .cases__panel-media {
-    aspect-ratio: 16/9;
+    max-height: 280px;
   }
   .cases__panel-content {
     padding: 2rem;
