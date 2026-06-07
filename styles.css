@@ -2565,28 +2565,28 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 36px;
+  padding: 18px 40px;
   border-radius: 14px;
   background: #ffffff;
-  border: 1px solid rgba(28,28,28,.15);
+  border: 1px solid rgba(28,28,28,.14);
   cursor: pointer;
   transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-  min-width: 160px;
-  height: 72px;
-  box-shadow: 0 2px 8px rgba(28,28,28,.06);
+  min-width: 180px;
+  height: 80px;
+  box-shadow: 0 2px 8px rgba(28,28,28,.07);
 }
 
 .cases__tab:hover {
   background: #ffffff;
-  border-color: rgba(28,28,28,.3);
+  border-color: rgba(28,28,28,.28);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(28,28,28,.1);
+  box-shadow: 0 8px 24px rgba(28,28,28,.12);
 }
 
 .cases__tab--active {
   background: var(--color-dark);
   border-color: var(--color-dark);
-  box-shadow: 0 6px 20px rgba(28,28,28,.22);
+  box-shadow: 0 8px 24px rgba(28,28,28,.25);
 }
 
 .cases__tab--active:hover {
@@ -2616,20 +2616,25 @@ button, input, textarea, select {
 }
 
 .cases__tab-logo {
-  max-width: 150px;
-  max-height: 48px;
+  max-width: 160px;
+  max-height: 54px;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) opacity(0.75);
-  transition: filter 0.25s;
+  /* colori naturali del logo su sfondo bianco, leggera opacità per stato inattivo */
+  opacity: 0.75;
+  filter: none;
+  transition: opacity 0.25s, filter 0.25s;
 }
 
 .cases__tab:hover .cases__tab-logo {
-  filter: brightness(0) opacity(1);
+  opacity: 1;
+  filter: none;
 }
 
 .cases__tab--active .cases__tab-logo {
+  /* sfondo scuro → inverti a bianco */
+  opacity: 1;
   filter: brightness(0) invert(1);
 }
 
@@ -2688,13 +2693,15 @@ button, input, textarea, select {
 /* brand logo in text column */
 .cases__panel-logo {
   display: block;
-  max-width: 200px;
-  max-height: 64px;
+  max-width: 220px;
+  max-height: 70px;
   width: auto;
   height: auto;
   object-fit: contain;
   margin-bottom: 20px;
-  filter: brightness(0) opacity(0.9);
+  /* pannello su sfondo chiaro → logo a colori naturali, piena opacità */
+  opacity: 1;
+  filter: none;
 }
 
 .cases__panel-tag {
