@@ -4765,21 +4765,40 @@ button, input, textarea, select {
 
   .container { padding: 0 20px; }
 
-  /* Typography scale down */
-  .display-xl { font-size: clamp(28px, 9vw, 52px) !important; }
-  .display-lg { font-size: clamp(24px, 7vw, 40px) !important; }
+  /* Typography */
+  .display-xl { font-size: clamp(26px, 8vw, 44px) !important; }
+  .display-lg { font-size: clamp(22px, 7vw, 36px) !important; }
 
   /* Navbar */
   .navbar { padding: 0; }
   .navbar__inner { padding: 0 20px; height: 58px; }
 
-  /* Hero text */
-  .hero__text-block-inner { padding: 20px 20px 16px; }
-  .hero__headline { font-size: clamp(24px, 8vw, 40px) !important; }
+  /* ── HERO: testo sotto il video, non sovrapposto ── */
+  .hero__left {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__video-wrapper {
+    aspect-ratio: 16/9;
+    min-height: unset;
+    flex: none;
+    border-radius: 0;
+  }
+  /* estrai il text-block dal video: diventa elemento sotto */
+  .hero__text-block {
+    position: static !important;
+    background: #0e0e0e;
+    padding: 24px 20px 28px;
+    z-index: auto;
+  }
+  .hero__text-block-inner { padding: 0; gap: 12px; }
+  .hero__headline { font-size: clamp(22px, 7vw, 36px) !important; line-height: 1.15 !important; }
   .hero__text { font-size: 14px !important; }
   .hero-badge { font-size: 10px; padding: 5px 12px; }
+  /* nascondi overlay gradient sul video (non serve più) */
+  .hero__video-overlay-dark { opacity: 0.3; }
 
-  /* Section headers — left align on mobile */
+  /* Section headers */
   .value-props__header,
   .services__header,
   .benefits__header { text-align: left; }
@@ -4788,45 +4807,60 @@ button, input, textarea, select {
   /* Solution */
   .carousel { max-width: 100%; aspect-ratio: 4/5; }
 
-  /* Services → 1 col */
-  .services__grid { grid-template-columns: 1fr; }
+  /* ── Aree di intervento: 1 colonna ── */
+  .services__grid { grid-template-columns: 1fr !important; }
+  .service-card { padding: 24px 20px 20px; }
 
-  /* How we work steps */
+  /* How we work */
   .how-we-work__header { margin-bottom: 32px; }
 
-  /* Referenze */
+  /* ── Referenze: card a colonna intera, layout orizzontale ── */
+  .ref-main__img { aspect-ratio: 16/9; }
   .ref-tabs {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
+    overflow: visible;
   }
   .ref-tab {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 110px 1fr;
     align-items: stretch;
     border-radius: 14px;
+    overflow: hidden;
   }
   .ref-tab__img {
-    height: 100%;
-    min-height: 100px;
+    height: auto;
+    min-height: 90px;
     border-bottom: none;
     border-right: 1px solid rgba(255,255,255,.06);
     border-radius: 0;
-    padding: 16px 20px;
+    padding: 14px 16px;
   }
-  .ref-tab__img img { max-width: 100px; max-height: 48px; }
+  .ref-tab__img img { max-width: 88px; max-height: 44px; }
+  .ref-tab__desc { display: none; }
   .ref-tab__body { padding: 14px 16px; justify-content: center; }
 
   /* Benefits */
   .benefits__header { text-align: left; }
 
   /* Final CTA */
-  .final-cta__title { font-size: clamp(22px, 7vw, 36px) !important; }
+  .final-cta__title { font-size: clamp(20px, 6.5vw, 32px) !important; }
 
   /* Footer */
   .ft-ghost { display: none; }
   .ft-in { padding: 0 20px; }
   .ft-legal { padding-bottom: 20px; }
   .ft-social { grid-template-columns: repeat(4, 36px); gap: 10px; }
+
+  /* Rimuovi overflow scroll interni */
+  .cases, .services, .value-props, .how-we-work,
+  .solution, .problem, .benefits, .final-cta {
+    overflow: hidden !important;
+  }
+  .cases__panels, .cases__panel-inner, .carousel {
+    overflow: hidden !important;
+    max-height: none !important;
+  }
 }
 
 /* ── 480px ── */
@@ -4836,47 +4870,56 @@ button, input, textarea, select {
   .container { padding: 0 16px; }
 
   /* Hero */
-  .hero__video-wrapper { aspect-ratio: 9/14; }
-  .hero__text-block-inner { padding: 16px 16px 12px; }
-  .hero__headline { font-size: clamp(22px, 8vw, 32px) !important; line-height: 1.15 !important; }
+  .hero__video-wrapper { aspect-ratio: 4/3; }
+  .hero__text-block { padding: 20px 16px 24px; }
+  .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
-  /* Services → 1 col already at 768 */
-
-  /* Referenze: back to stacked vertical on small phones */
+  /* ── Referenze mobile: stack verticale ── */
   .ref-tab {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
   }
   .ref-tab__img {
-    height: 90px;
+    height: 80px;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
-  .ref-tab__img img { max-width: 120px; max-height: 48px; }
+  .ref-tab__img img { max-width: 110px; max-height: 44px; }
+  .ref-tab__desc { display: none; }
 
   /* Sol pillars */
-  .sol-pillar__desc { max-height: none; opacity: 1; color: rgba(243,239,224,.45); }
+  .sol-pillar--active .sol-pillar__desc {
+    max-height: none;
+    opacity: 1;
+  }
 
-  /* Value props cards */
+  /* Cards */
   .value-card { padding: 24px 20px; }
+  .step-card  { padding: 24px 20px; }
 
-  /* Service cards */
-  .service-card { padding: 24px 20px 20px; }
-
-  /* Step cards */
-  .step-card { padding: 24px 20px; }
-
-  /* How we work steps: ensure single col */
-  .steps-system { gap: 12px; }
-
-  /* Benefits: 2-col minimum */
+  /* Benefits: 2 col */
   .benefits__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .benefit-item { padding: 20px 16px; }
+  .benefit-item   { padding: 20px 16px; }
 
   /* Footer */
   .ft-cols { gap: 24px; }
   .ft-legal-links { flex-direction: column; gap: 8px; }
-  .ft-legal-sep { display: none; }
+  .ft-legal-sep   { display: none; }
+
+  /* Forms */
+  .fg-row { grid-template-columns: 1fr; }
+
+  /* Buttons full width */
+  .services__cta .btn,
+  .value-props__cta .btn { width: 100%; text-align: center; justify-content: center; }
+
+  /* Main image ratio */
+  .ref-main__img { aspect-ratio: 4/3; }
+
+  /* No overflow anywhere */
+  * { max-height: none; }
+  .cases__panel-inner { max-height: none !important; }
+}
 
   /* Forms */
   .fg-row { grid-template-columns: 1fr; }
