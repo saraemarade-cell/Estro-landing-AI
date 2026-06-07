@@ -3472,3 +3472,159 @@ button, input, textarea, select {
     transform: none;
   }
 }
+
+/* =====================================================
+   VI DESIGN SYSTEM — exact alignment
+   ===================================================== */
+
+/* ─── Scroll progress bar — VI exact ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-primary), #ff4a82);
+  z-index: 400;
+  transition: width .08s linear;
+  box-shadow: 0 0 12px rgba(224,24,92,.5);
+  pointer-events: none;
+}
+
+/* ─── Reveal animation system — VI .rv / .js-ready / .vs ─── */
+.rv { opacity: 1; transform: none; }
+.js-ready .rv { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.js-ready .rv.vs { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+.d4 { transition-delay: .4s; }
+
+/* ─── Hero glows — VI exact ─── */
+.hero-glow {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, rgba(224,24,92,.12), transparent 60%);
+  pointer-events: none;
+  animation: glowpulse 9s ease-in-out infinite;
+  z-index: 0;
+}
+.hero-glow2 {
+  position: absolute;
+  bottom: 10%;
+  left: -8%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(232,180,74,.05), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes glowpulse {
+  0%, 100% { opacity: .8; transform: scale(1); }
+  50%       { opacity: 1;  transform: scale(1.06); }
+}
+
+/* ─── Hero badge — VI .hero-badge exact ─── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(224,24,92,.12);
+  border: 1px solid rgba(224,24,92,.3);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: blink 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+
+/* ─── Problem/target section — VI gradient background ─── */
+.problem {
+  background:
+    radial-gradient(115% 78% at 100% -5%, rgba(224,24,92,.08), transparent 52%),
+    radial-gradient(95% 88% at -8% 108%, rgba(232,180,74,.18), transparent 56%),
+    linear-gradient(158deg, #F7ECD4 0%, #F0E4C6 52%, #ECE6D8 100%) !important;
+}
+.problem__orb--1,
+.problem__orb--2 { display: none; }
+
+/* ─── Value props section — VI --C2 (#E8E4D5) ─── */
+.value-props {
+  background-color: #E8E4D5 !important;
+}
+.value-props::before { display: none; }
+
+/* ─── Solution section — VI pink dot grid + sol-glow ─── */
+.solution {
+  position: relative;
+  overflow: hidden;
+}
+.solution::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(224,24,92,.022) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+.solution .container { position: relative; z-index: 2; }
+.sol-glow {
+  position: absolute;
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(224,24,92,.07), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Services section — VI #141414 (--K2) ─── */
+.services {
+  background-color: #141414 !important;
+}
+
+/* ─── How-we-work section top accent — remove VI pattern (section is light per user request) ─── */
+.how-we-work::before { display: none; }
+
+/* ─── Benefits section — VI .proc dark ─── */
+.benefits::before { display: none; }
+
+/* ─── Cases section — VI light palette (user request) ─── */
+
+/* ─── Section eyebrow/tag styles — VI .sol-tag / .target-tag ─── */
+.sol-tag-vi {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.sol-tag-vi::before { content: '— '; }
+
+/* ─── Scrollbar — VI exact ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }

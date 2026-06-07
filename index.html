@@ -68,6 +68,9 @@
     <a href="#final-cta" class="btn btn--primary btn--lg">Richiedi consulenza</a>
   </div>
 
+  <!-- Scroll progress bar — VI exact -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <main id="main-content">
 
     <!-- ================================================
@@ -75,6 +78,9 @@
          ================================================ -->
     <!-- Hero: full-bleed layout, no container wrapper so video bleeds edge-to-edge -->
     <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <!-- VI: hero ambient glows -->
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-glow2" aria-hidden="true"></div>
       <div class="hero__inner">
 
         <!-- Left column: video (62%) + text block below -->
@@ -145,7 +151,7 @@
           <!-- Text block below the video, same column -->
           <div class="hero__text-block">
             <div class="hero__text-block-inner">
-              <p class="eyebrow hero__eyebrow">AI Creative Production</p>
+              <div class="hero-badge" aria-label="AI Creative Production"><span class="hero-badge-dot" aria-hidden="true"></span>AI Creative Production</div>
               <h1 class="display-xl hero__headline" id="hero-headline">
                 Un'unica regia per contenuti, campagne e produzione creativa
               </h1>
@@ -406,6 +412,8 @@
          3. SOLUTION
          ================================================ -->
     <section class="section solution" id="solution" aria-labelledby="solution-title">
+      <!-- VI: sol-glow ambient -->
+      <div class="sol-glow" aria-hidden="true"></div>
       <div class="container">
         <div class="solution__inner">
 
@@ -1429,6 +1437,20 @@
   })();
   </script>
 
+  <script>
+  /* ── Scroll progress bar — VI exact ─── */
+  (function () {
+    const bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+    function update() {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+  </script>
 
 </body>
 </html>
