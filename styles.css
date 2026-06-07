@@ -4739,3 +4739,156 @@ button, input, textarea, select {
   line-height: 1.55;
   margin: 0;
 }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — full mobile pass
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1024px ── */
+@media (max-width: 1024px) {
+  :root { --section-padding: 72px; }
+
+  .container { padding: 0 32px; }
+
+  .solution__inner { gap: var(--space-lg); }
+
+  .ref-tabs { gap: 10px; }
+  .ref-tab__img { height: 100px; padding: 16px 24px; }
+  .ref-tab__img img { max-width: 150px; max-height: 60px; }
+
+  .ft-ghost { font-size: clamp(120px, 22vw, 300px); }
+}
+
+/* ── 768px ── */
+@media (max-width: 768px) {
+  :root { --section-padding: 56px; }
+
+  .container { padding: 0 20px; }
+
+  /* Typography scale down */
+  .display-xl { font-size: clamp(28px, 9vw, 52px) !important; }
+  .display-lg { font-size: clamp(24px, 7vw, 40px) !important; }
+
+  /* Navbar */
+  .navbar { padding: 0; }
+  .navbar__inner { padding: 0 20px; height: 58px; }
+
+  /* Hero text */
+  .hero__text-block-inner { padding: 20px 20px 16px; }
+  .hero__headline { font-size: clamp(24px, 8vw, 40px) !important; }
+  .hero__text { font-size: 14px !important; }
+  .hero-badge { font-size: 10px; padding: 5px 12px; }
+
+  /* Section headers — left align on mobile */
+  .value-props__header,
+  .services__header,
+  .benefits__header { text-align: left; }
+  .value-props__subtitle { max-width: 100%; }
+
+  /* Solution */
+  .carousel { max-width: 100%; aspect-ratio: 4/5; }
+
+  /* Services → 1 col */
+  .services__grid { grid-template-columns: 1fr; }
+
+  /* How we work steps */
+  .how-we-work__header { margin-bottom: 32px; }
+
+  /* Referenze */
+  .ref-tabs {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ref-tab {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: stretch;
+    border-radius: 14px;
+  }
+  .ref-tab__img {
+    height: 100%;
+    min-height: 100px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255,255,255,.06);
+    border-radius: 0;
+    padding: 16px 20px;
+  }
+  .ref-tab__img img { max-width: 100px; max-height: 48px; }
+  .ref-tab__body { padding: 14px 16px; justify-content: center; }
+
+  /* Benefits */
+  .benefits__header { text-align: left; }
+
+  /* Final CTA */
+  .final-cta__title { font-size: clamp(22px, 7vw, 36px) !important; }
+
+  /* Footer */
+  .ft-ghost { display: none; }
+  .ft-in { padding: 0 20px; }
+  .ft-legal { padding-bottom: 20px; }
+  .ft-social { grid-template-columns: repeat(4, 36px); gap: 10px; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  :root { --section-padding: 44px; }
+
+  .container { padding: 0 16px; }
+
+  /* Hero */
+  .hero__video-wrapper { aspect-ratio: 9/14; }
+  .hero__text-block-inner { padding: 16px 16px 12px; }
+  .hero__headline { font-size: clamp(22px, 8vw, 32px) !important; line-height: 1.15 !important; }
+
+  /* Services → 1 col already at 768 */
+
+  /* Referenze: back to stacked vertical on small phones */
+  .ref-tab {
+    display: flex;
+    flex-direction: column;
+  }
+  .ref-tab__img {
+    height: 90px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .ref-tab__img img { max-width: 120px; max-height: 48px; }
+
+  /* Sol pillars */
+  .sol-pillar__desc { max-height: none; opacity: 1; color: rgba(243,239,224,.45); }
+
+  /* Value props cards */
+  .value-card { padding: 24px 20px; }
+
+  /* Service cards */
+  .service-card { padding: 24px 20px 20px; }
+
+  /* Step cards */
+  .step-card { padding: 24px 20px; }
+
+  /* How we work steps: ensure single col */
+  .steps-system { gap: 12px; }
+
+  /* Benefits: 2-col minimum */
+  .benefits__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .benefit-item { padding: 20px 16px; }
+
+  /* Footer */
+  .ft-cols { gap: 24px; }
+  .ft-legal-links { flex-direction: column; gap: 8px; }
+  .ft-legal-sep { display: none; }
+
+  /* Forms */
+  .fg-row { grid-template-columns: 1fr; }
+
+  /* Approach split */
+  .approach__split { gap: 16px; }
+
+  /* Buttons */
+  .btn { font-size: 13px; }
+  .services__cta .btn,
+  .value-props__cta .btn { width: 100%; text-align: center; }
+
+  /* Main image ratio */
+  .ref-main__img { aspect-ratio: 4/3; }
+}
