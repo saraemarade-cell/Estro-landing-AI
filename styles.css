@@ -4101,33 +4101,28 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image area: full width, auto height, image contained */
+/* Image area: height driven by image, no clipping */
 .cases__panel-media {
-  position: relative !important;
+  position: static !important;
   width: 100% !important;
-  min-width: 0 !important;
-  height: 320px !important;
+  height: auto !important;
   border-radius: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background: #0e0e0e !important;
   border: none !important;
   border-bottom: 1px solid rgba(255,255,255,.06) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
   flex-shrink: 0 !important;
+  line-height: 0 !important;
 }
 
-/* Image: contained, fully visible, no crop */
+/* Image: fills card width, height auto = natural proportions, no crop */
 .cases__panel-img {
   position: static !important;
   display: block !important;
-  width: auto !important;
+  width: 100% !important;
   height: auto !important;
-  max-width: 100% !important;
-  max-height: 320px !important;
-  object-fit: contain !important;
-  object-position: center center !important;
+  object-fit: unset !important;
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
 }
