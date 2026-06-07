@@ -4105,7 +4105,7 @@ button, input, textarea, select {
   position: static !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 420px) !important;
+  max-height: calc(100vh - 530px) !important;
   overflow: hidden !important;
   border-radius: 0 !important;
   background: #0e0e0e !important;
@@ -4124,7 +4124,7 @@ button, input, textarea, select {
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 420px) !important;
+  max-height: calc(100vh - 530px) !important;
   object-fit: contain !important;
   object-position: center center !important;
   border-radius: 0 !important;
@@ -4235,7 +4235,17 @@ button, input, textarea, select {
   }
 }
 
-/* ─── Cases: responsive tab grid ─── */
+/* ─── Cases section: compact padding to fit in viewport ─── */
+.cases {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+.cases__header {
+  margin-bottom: 24px !important;
+}
+.cases__tabs {
+  margin-bottom: 20px !important;
+}
 @media (max-width: 768px) {
   .cases__tabs {
     max-width: 100% !important;
