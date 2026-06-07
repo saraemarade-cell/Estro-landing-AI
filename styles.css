@@ -3282,7 +3282,7 @@ button, input, textarea, select {
 
   .hero__right {
     order: 2;
-    position: static;
+    position: relative;
     max-height: none;
     overflow-y: visible;
     border-left: none;
@@ -4781,7 +4781,7 @@ button, input, textarea, select {
   .ft-ghost { font-size: clamp(120px, 22vw, 300px); }
 }
 
-/* ── 768px ── */
+/* ── 768px (second pass — hero, referenze, layout) ── */
 @media (max-width: 768px) {
   :root { --section-padding: 56px; }
 
@@ -4795,18 +4795,24 @@ button, input, textarea, select {
   .navbar { padding: 0; }
   .navbar__inner { padding: 0 20px; height: 58px; }
 
-  /* ── HERO: testo sotto il video, non sovrapposto ── */
+  /* ── HERO ── */
+  .hero {
+    min-height: unset;
+    padding-top: 58px;
+  }
   .hero__left {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
   .hero__video-wrapper {
     aspect-ratio: 16/9;
     min-height: unset;
     flex: none;
     border-radius: 0;
+    overflow: hidden;
   }
-  /* text-block between video and form on mobile */
+  /* text-block flows between video and form */
   .hero__text-block {
     position: static !important;
     background: #0e0e0e;
@@ -4817,8 +4823,9 @@ button, input, textarea, select {
   .hero__headline { font-size: clamp(22px, 7vw, 36px) !important; line-height: 1.15 !important; }
   .hero__text { font-size: 14px !important; }
   .hero-badge { font-size: 10px; padding: 5px 12px; }
-  /* nascondi overlay gradient sul video (non serve più) */
   .hero__video-overlay-dark { opacity: 0.3; }
+  /* keep hero__right contained so its absolute bg grid doesn't bleed */
+  .hero__right { position: relative !important; }
 
   /* Section headers */
   .value-props__header,
@@ -4826,8 +4833,8 @@ button, input, textarea, select {
   .benefits__header { text-align: left; }
   .value-props__subtitle { max-width: 100%; }
 
-  /* Solution */
-  .carousel { max-width: 100%; aspect-ratio: 4/5; }
+  /* Solution carousel */
+  .carousel { max-width: 100%; aspect-ratio: 16/9; }
 
   /* ── Aree di intervento: 1 colonna ── */
   .services__grid { grid-template-columns: 1fr !important; }
@@ -4836,13 +4843,10 @@ button, input, textarea, select {
   /* How we work */
   .how-we-work__header { margin-bottom: 32px; }
 
-  /* ── Referenze: card a colonna intera, layout orizzontale ── */
+  /* ── Referenze ── */
+  .ref-main { border-radius: 12px; }
   .ref-main__img { aspect-ratio: unset; width: 100%; height: auto; object-fit: contain; }
-  .ref-tabs {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    overflow: visible;
-  }
+  .ref-tabs { grid-template-columns: 1fr; gap: 10px; }
   .ref-tab {
     display: grid;
     grid-template-columns: 130px 1fr;
@@ -4874,15 +4878,10 @@ button, input, textarea, select {
   .ft-legal { padding-bottom: 20px; }
   .ft-social { grid-template-columns: repeat(4, 36px); gap: 10px; }
 
-  /* Rimuovi overflow scroll interni */
+  /* Prevent internal overflow/scroll */
   .cases, .services, .value-props, .how-we-work,
-  .solution, .problem, .benefits, .final-cta {
-    overflow: hidden !important;
-  }
-  .cases__panels, .cases__panel-inner, .carousel {
-    overflow: hidden !important;
-    max-height: none !important;
-  }
+  .solution, .problem, .benefits, .final-cta { overflow: hidden !important; }
+  .cases__panels, .cases__panel-inner, .carousel { overflow: hidden !important; max-height: none !important; }
 }
 
 /* ── 480px ── */
@@ -4939,21 +4938,5 @@ button, input, textarea, select {
   .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
 
   /* No overflow anywhere */
-  * { max-height: none; }
   .cases__panel-inner { max-height: none !important; }
-}
-
-  /* Forms */
-  .fg-row { grid-template-columns: 1fr; }
-
-  /* Approach split */
-  .approach__split { gap: 16px; }
-
-  /* Buttons */
-  .btn { font-size: 13px; }
-  .services__cta .btn,
-  .value-props__cta .btn { width: 100%; text-align: center; }
-
-  /* Main image no crop */
-  .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
 }
