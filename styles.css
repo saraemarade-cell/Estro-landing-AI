@@ -2651,24 +2651,22 @@ button, input, textarea, select {
   background: #fff;
   border: 1px solid rgba(28,28,28,.09);
   border-radius: 24px;
-  overflow: hidden;
+  /* overflow visibile — l'immagine non deve essere tagliata */
+  overflow: visible;
   box-shadow: 0 4px 32px rgba(28,28,28,.08);
 }
 
 .cases__panel-media {
-  position: relative;
   width: 100%;
-  overflow: hidden;
   background: var(--color-dark);
-  /* contenitore con altezza fissa — l'immagine ci stà tutta orizzontalmente */
-  max-height: 480px;
+  /* nessun max-height né overflow:hidden — l'immagine determina l'altezza */
 }
 
 .cases__panel-img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+  border-radius: 23px 23px 0 0;
   transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
 }
 
@@ -3044,11 +3042,8 @@ button, input, textarea, select {
     display: none; /* path geometry doesn't map to 2-col layout */
   }
 
-  .cases__panel-inner {
-    /* già flex column, nulla da sovrascrivere */
-  }
   .cases__panel-media {
-    max-height: 280px;
+    /* nessun vincolo di altezza — immagine intera su mobile */
   }
   .cases__panel-content {
     padding: 2rem;
