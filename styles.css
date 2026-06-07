@@ -1834,6 +1834,10 @@ button, input, textarea, select {
   text-align: center;
   margin-top: var(--space-xl);
 }
+.value-props__cta .btn {
+  min-width: 260px;
+  justify-content: center;
+}
 
 
 /* =====================================================
@@ -1983,6 +1987,10 @@ button, input, textarea, select {
 .services__cta {
   margin-top: var(--space-xl);
   text-align: center;
+}
+.services__cta .btn {
+  min-width: 260px;
+  justify-content: center;
 }
 
 /* =====================================================
