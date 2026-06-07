@@ -4148,6 +4148,18 @@ button, input, textarea, select {
   box-shadow: none !important;
 }
 
+/* Brand logo in text area — VI .pf-info-logo */
+.cases__panel-brand-logo {
+  display: block !important;
+  height: 44px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  filter: brightness(0) invert(1) opacity(.8) !important;
+  margin-bottom: 4px !important;
+}
+
 /* VI .pf-info-sector */
 .cases__panel-tag {
   font-size: 10px !important;
