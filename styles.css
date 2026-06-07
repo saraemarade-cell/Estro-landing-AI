@@ -408,7 +408,7 @@ button, input, textarea, select {
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 62fr 38fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0;
   align-items: stretch;
   min-height: calc(90vh - 80px);
@@ -417,9 +417,7 @@ button, input, textarea, select {
 
 /* ---- Left column ---- */
 .hero__left {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  height: 100%;
 }
 
 /* ---- Video wrapper: full-column, cover-cropped ---- */

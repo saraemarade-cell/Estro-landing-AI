@@ -83,7 +83,7 @@
       <div class="hero-glow2" aria-hidden="true"></div>
       <div class="hero__inner">
 
-        <!-- Left column: video (62%) + text block below -->
+        <!-- Left column: video full background with text overlay -->
         <div class="hero__left">
 
           <!--
@@ -104,6 +104,9 @@
               loading="eager"
               aria-hidden="true"
             ></iframe>
+
+            <!-- Dark gradient overlay for text readability -->
+            <div class="hero__video-overlay-dark" aria-hidden="true"></div>
 
             <!-- Layer 1: subtle crosshair grid -->
             <div class="hero__grid-layer" aria-hidden="true"></div>
@@ -146,26 +149,20 @@
               </div>
             </div>
 
-          </div>
+            <!-- Text block overlaid at the bottom of the video -->
+            <div class="hero__text-block">
+              <div class="hero__text-block-inner">
+                <div class="hero-badge" aria-label="AI Creative Production"><span class="hero-badge-dot" aria-hidden="true"></span>AI Creative Production</div>
+                <h1 class="display-xl hero__headline" id="hero-headline">
+                  Un'unica regia su creatività, contenuti e produzione
+                </h1>
+                <p class="body-lg hero__text">
+                  L'AI entra nel processo creativo per aumentare velocità e controllo.<br/>
+                  La direzione resta centrale.
+                </p>
+              </div>
+            </div>
 
-          <!-- Text block below the video, same column -->
-          <div class="hero__text-block">
-            <div class="hero__text-block-inner">
-              <div class="hero-badge" aria-label="AI Creative Production"><span class="hero-badge-dot" aria-hidden="true"></span>AI Creative Production</div>
-              <h1 class="display-xl hero__headline" id="hero-headline">
-                Un'unica regia per contenuti, campagne e produzione creativa
-              </h1>
-              <p class="body-lg hero__text">
-                L'AI entra nel processo creativo per aumentare velocità e controllo.<br/>
-                La direzione resta centrale.
-              </p>
-            </div>
-            <!-- Decorative horizontal rule with accent -->
-            <div class="hero__text-rule" aria-hidden="true">
-              <span class="hero__text-rule-line"></span>
-              <span class="hero__text-rule-dot"></span>
-              <span class="hero__text-rule-label">AI × Production</span>
-            </div>
           </div>
 
         </div>
@@ -175,132 +172,44 @@
           <!-- Micro-grid background layer -->
           <div class="hero__right-grid" aria-hidden="true"></div>
           <div class="hero__right-inner animate-on-scroll delay-2">
-            <div class="form-card form-card--dark" role="region" aria-labelledby="hero-form-title">
-              <div class="form-card__header">
-                <h2 class="form-card__title" id="hero-form-title">Richiedi una consulenza</h2>
-                <p class="form-card__subtitle">Analizziamo il tuo contesto. Nessun impegno.</p>
-              </div>
-
-              <form
-                class="contact-form"
-                id="hero-form"
-                novalidate
-                aria-label="Form di contatto"
-              >
-                <div class="form__fields">
-                  <div class="form__row">
-                    <div class="form__group">
-                      <label class="form__label" for="hero-name">Nome e cognome</label>
-                      <input
-                        class="form__input"
-                        type="text"
-                        id="hero-name"
-                        name="name"
-                        placeholder="Mario Rossi"
-                        autocomplete="name"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                    <div class="form__group">
-                      <label class="form__label" for="hero-email">Email</label>
-                      <input
-                        class="form__input"
-                        type="email"
-                        id="hero-email"
-                        name="email"
-                        placeholder="mario@azienda.it"
-                        autocomplete="email"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
+            <div class="hform-wrap">
+              <div class="hform-title">Parliamo del tuo progetto</div>
+              <div class="hform-sub">Nessun impegno · Una conversazione vera</div>
+              <form id="hero-form" novalidate aria-label="Form di contatto">
+                <div class="fg-row">
+                  <div class="fg">
+                    <label for="hero-name">Nome e cognome <span class="req">*</span></label>
+                    <input type="text" id="hero-name" name="name" placeholder="Mario Rossi" required aria-required="true" />
+                    <span class="form__error-msg" role="alert"></span>
                   </div>
-
-                  <div class="form__row">
-                    <div class="form__group">
-                      <label class="form__label" for="hero-phone">Numero di telefono</label>
-                      <input
-                        class="form__input"
-                        type="tel"
-                        id="hero-phone"
-                        name="phone"
-                        placeholder="+39 02 1234567"
-                        autocomplete="tel"
-                        data-type="phone"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                    <div class="form__group">
-                      <label class="form__label" for="hero-company">Azienda</label>
-                      <input
-                        class="form__input"
-                        type="text"
-                        id="hero-company"
-                        name="company"
-                        placeholder="Nome Azienda S.r.l."
-                        autocomplete="organization"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
+                  <div class="fg">
+                    <label for="hero-email">Email <span class="req">*</span></label>
+                    <input type="email" id="hero-email" name="email" placeholder="mario@azienda.it" required aria-required="true" />
+                    <span class="form__error-msg" role="alert"></span>
                   </div>
-
-                  <div class="form__group">
-                    <label class="form__label" for="hero-message">
-                      Messaggio <span class="form__optional">(facoltativo)</span>
-                    </label>
-                    <textarea
-                      class="form__textarea"
-                      id="hero-message"
-                      name="message"
-                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
-                      rows="4"
-                    ></textarea>
-                  </div>
-
-                  <div class="form__group">
-                    <label class="form__label" for="hero-website">
-                      Sito web <span class="form__optional">(facoltativo)</span>
-                    </label>
-                    <input
-                      class="form__input"
-                      type="url"
-                      id="hero-website"
-                      name="website"
-                      placeholder="https://www.tuodominio.it"
-                      autocomplete="url"
-                    />
-                  </div>
-
-                  <div class="form__submit">
-                    <button type="submit" class="btn btn--primary btn--full btn--lg">
-                      Richiedi una consulenza
-                    </button>
-                  </div>
-
-                  <p class="form__privacy">
-                    Inviando accetti la nostra
-                    <a href="#" tabindex="0">Privacy Policy</a>.
-                    I tuoi dati non verranno condivisi.
-                  </p>
                 </div>
-
-                <div class="form__success" aria-live="polite">
-                  <div class="form__success-icon" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  </div>
-                  <p class="form__success-title display-sm">Messaggio ricevuto</p>
-                  <p class="form__success-text">Ti risponderemo entro 24 ore lavorative. A presto.</p>
+                <div class="fg">
+                  <label for="hero-phone">Numero di telefono <span class="req">*</span></label>
+                  <input type="tel" id="hero-phone" name="phone" placeholder="+39 02 1234567" autocomplete="tel" data-type="phone" required aria-required="true" />
+                  <span class="form__error-msg" role="alert"></span>
                 </div>
+                <div class="fg">
+                  <label for="hero-company">Azienda <span class="req">*</span></label>
+                  <input type="text" id="hero-company" name="company" placeholder="Nome azienda" required aria-required="true" />
+                  <span class="form__error-msg" role="alert"></span>
+                </div>
+                <div class="fg">
+                  <label for="hero-website">Sito web (facoltativo)</label>
+                  <input type="url" id="hero-website" name="website" placeholder="www.acme.it" autocomplete="url" />
+                </div>
+                <div class="fg">
+                  <label for="hero-message">Messaggio</label>
+                  <textarea id="hero-message" name="message" placeholder="Descrivici la situazione attuale e cosa vorreste risolvere."></textarea>
+                </div>
+                <button type="submit" class="f-submit-hero">Invia la richiesta <span class="arr">›</span></button>
               </form>
+              <div class="form-success-vi" id="hero-success" role="alert">✓ Ricevuto. Vi contatteremo presto.</div>
+              <div class="hform-note">* Campi obbligatori · <a href="#">Privacy Policy</a></div>
             </div>
           </div><!-- /.hero__right-inner -->
 
@@ -1090,133 +999,41 @@
           </div>
 
           <div class="final-cta__right animate-on-scroll delay-2">
-            <div class="form-card form-card--dark" role="region" aria-labelledby="final-form-title">
-              <div class="form-card__header">
-                <h3 class="form-card__title" id="final-form-title">Richiedi una consulenza strategica</h3>
-                <p class="form-card__subtitle">Analizziamo il tuo contesto insieme.</p>
+            <form class="ff-grid" id="final-form" novalidate aria-label="Form di contatto">
+              <div class="fg">
+                <label for="final-name">Nome e cognome <span class="req">*</span></label>
+                <input type="text" id="final-name" name="name" placeholder="Mario Rossi" required aria-required="true" />
+                <span class="form__error-msg" role="alert"></span>
               </div>
-
-              <form
-                class="contact-form"
-                id="final-form"
-                novalidate
-                aria-label="Form di contatto finale"
-              >
-                <div class="form__fields">
-                  <div class="form__row">
-                    <div class="form__group">
-                      <label class="form__label" for="final-name">Nome e cognome</label>
-                      <input
-                        class="form__input"
-                        type="text"
-                        id="final-name"
-                        name="name"
-                        placeholder="Mario Rossi"
-                        autocomplete="name"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                    <div class="form__group">
-                      <label class="form__label" for="final-email">Email</label>
-                      <input
-                        class="form__input"
-                        type="email"
-                        id="final-email"
-                        name="email"
-                        placeholder="mario@azienda.it"
-                        autocomplete="email"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                  </div>
-
-                  <div class="form__row">
-                    <div class="form__group">
-                      <label class="form__label" for="final-phone">Numero di telefono</label>
-                      <input
-                        class="form__input"
-                        type="tel"
-                        id="final-phone"
-                        name="phone"
-                        placeholder="+39 02 1234567"
-                        autocomplete="tel"
-                        data-type="phone"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                    <div class="form__group">
-                      <label class="form__label" for="final-company">Azienda</label>
-                      <input
-                        class="form__input"
-                        type="text"
-                        id="final-company"
-                        name="company"
-                        placeholder="Nome Azienda S.r.l."
-                        autocomplete="organization"
-                        required
-                        aria-required="true"
-                      />
-                      <span class="form__error-msg" role="alert"></span>
-                    </div>
-                  </div>
-
-                  <div class="form__group">
-                    <label class="form__label" for="final-website">
-                      Sito web <span class="form__optional">(facoltativo)</span>
-                    </label>
-                    <input
-                      class="form__input"
-                      type="url"
-                      id="final-website"
-                      name="website"
-                      placeholder="https://www.tuodominio.it"
-                      autocomplete="url"
-                    />
-                  </div>
-
-                  <div class="form__group">
-                    <label class="form__label" for="final-message">
-                      Messaggio <span class="form__optional">(facoltativo)</span>
-                    </label>
-                    <textarea
-                      class="form__textarea"
-                      id="final-message"
-                      name="message"
-                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
-                      rows="4"
-                    ></textarea>
-                  </div>
-
-                  <div class="form__submit">
-                    <button type="submit" class="btn btn--primary btn--full btn--lg">
-                      Richiedi una consulenza strategica
-                    </button>
-                  </div>
-
-                  <p class="form__privacy">
-                    Inviando accetti la nostra
-                    <a href="#" tabindex="0">Privacy Policy</a>.
-                    I tuoi dati non verranno condivisi.
-                  </p>
-                </div>
-
-                <div class="form__success" aria-live="polite">
-                  <div class="form__success-icon" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  </div>
-                  <p class="form__success-title display-sm" style="color:var(--color-light);">Messaggio ricevuto</p>
-                  <p class="form__success-text" style="color:rgba(243,239,224,0.65);">Ti risponderemo entro 24 ore lavorative. A presto.</p>
-                </div>
-              </form>
-            </div>
+              <div class="fg">
+                <label for="final-email">Email <span class="req">*</span></label>
+                <input type="email" id="final-email" name="email" placeholder="mario@azienda.it" required aria-required="true" />
+                <span class="form__error-msg" role="alert"></span>
+              </div>
+              <div class="fg">
+                <label for="final-phone">Numero di telefono <span class="req">*</span></label>
+                <input type="tel" id="final-phone" name="phone" placeholder="+39 02 1234567" autocomplete="tel" data-type="phone" required aria-required="true" />
+                <span class="form__error-msg" role="alert"></span>
+              </div>
+              <div class="fg">
+                <label for="final-company">Azienda <span class="req">*</span></label>
+                <input type="text" id="final-company" name="company" placeholder="Nome azienda" required aria-required="true" />
+                <span class="form__error-msg" role="alert"></span>
+              </div>
+              <div class="fg full">
+                <label for="final-website">Sito web (facoltativo)</label>
+                <input type="url" id="final-website" name="website" placeholder="www.acme.it" autocomplete="url" />
+              </div>
+              <div class="fg full">
+                <label for="final-message">Messaggio</label>
+                <textarea id="final-message" name="message" placeholder="Descrivici la situazione attuale: quante persone/agenzie gestite, quali canali usate, cosa non funziona come vorreste."></textarea>
+              </div>
+              <div class="fg full">
+                <button type="submit" class="f-submit-main">Scriveteci <span class="arr">›</span></button>
+              </div>
+            </form>
+            <div class="form-success-vi" id="final-success" role="alert">✓ Ricevuto. Vi contatteremo presto.</div>
+            <div class="ff-note">* Campi obbligatori · <a href="#">Privacy Policy</a></div>
           </div>
 
         </div>
