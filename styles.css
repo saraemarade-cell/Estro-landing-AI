@@ -4155,9 +4155,9 @@ button, input, textarea, select {
   width: auto !important;
   max-width: 118px !important;
   object-fit: contain !important;
-  object-position: right center !important;
+  object-position: left center !important;
   filter: brightness(0) invert(1) opacity(.7) !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
   margin-bottom: 4px !important;
 }
 
