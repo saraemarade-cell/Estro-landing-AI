@@ -174,11 +174,6 @@
         <div class="hero__right">
           <!-- Micro-grid background layer -->
           <div class="hero__right-grid" aria-hidden="true"></div>
-          <!-- Accent marker top -->
-          <div class="hero__right-accent" aria-hidden="true">
-            <span class="hero__right-accent-line"></span>
-            <span class="hero__right-accent-label">Consulenza</span>
-          </div>
           <div class="hero__right-inner animate-on-scroll delay-2">
             <div class="form-card form-card--dark" role="region" aria-labelledby="hero-form-title">
               <div class="form-card__header">
@@ -257,17 +252,16 @@
                   </div>
 
                   <div class="form__group">
-                    <label class="form__label" for="hero-message">Messaggio</label>
+                    <label class="form__label" for="hero-message">
+                      Messaggio <span class="form__optional">(facoltativo)</span>
+                    </label>
                     <textarea
                       class="form__textarea"
                       id="hero-message"
                       name="message"
                       placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
                       rows="4"
-                      required
-                      aria-required="true"
                     ></textarea>
-                    <span class="form__error-msg" role="alert"></span>
                   </div>
 
                   <div class="form__group">
@@ -1173,20 +1167,6 @@
                   </div>
 
                   <div class="form__group">
-                    <label class="form__label" for="final-message">Messaggio</label>
-                    <textarea
-                      class="form__textarea"
-                      id="final-message"
-                      name="message"
-                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
-                      rows="4"
-                      required
-                      aria-required="true"
-                    ></textarea>
-                    <span class="form__error-msg" role="alert"></span>
-                  </div>
-
-                  <div class="form__group">
                     <label class="form__label" for="final-website">
                       Sito web <span class="form__optional">(facoltativo)</span>
                     </label>
@@ -1198,6 +1178,19 @@
                       placeholder="https://www.tuodominio.it"
                       autocomplete="url"
                     />
+                  </div>
+
+                  <div class="form__group">
+                    <label class="form__label" for="final-message">
+                      Messaggio <span class="form__optional">(facoltativo)</span>
+                    </label>
+                    <textarea
+                      class="form__textarea"
+                      id="final-message"
+                      name="message"
+                      placeholder="Descrivi brevemente il tuo progetto o la sfida che vuoi affrontare…"
+                      rows="4"
+                    ></textarea>
                   </div>
 
                   <div class="form__submit">
