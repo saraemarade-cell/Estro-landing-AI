@@ -316,43 +316,19 @@
 
             <p class="body-lg solution__copy animate-on-scroll delay-1">
               Non gestiamo singole produzioni.<br/>
-              Governiamo l'intero sistema creativo:
+              Costruiamo e guidiamo un sistema integrato:
             </p>
 
-            <div class="sol-pillars animate-on-scroll delay-2">
-              <button class="sol-pillar sol-pillar--active" data-slide="0">
-                <span class="sol-pillar__num">01</span>
-                <div class="sol-pillar__body">
-                  <span class="sol-pillar__title">Direzione creativa</span>
-                  <span class="sol-pillar__desc">Brief strutturati, decisioni rapide. Nessun vuoto di regia.</span>
-                </div>
-                <span class="sol-pillar__arrow" aria-hidden="true">→</span>
-              </button>
-              <button class="sol-pillar" data-slide="1">
-                <span class="sol-pillar__num">02</span>
-                <div class="sol-pillar__body">
-                  <span class="sol-pillar__title">AI Production</span>
-                  <span class="sol-pillar__desc">Velocità industriale con qualità creativa sotto controllo.</span>
-                </div>
-                <span class="sol-pillar__arrow" aria-hidden="true">→</span>
-              </button>
-              <button class="sol-pillar" data-slide="2">
-                <span class="sol-pillar__num">03</span>
-                <div class="sol-pillar__body">
-                  <span class="sol-pillar__title">Output multicanale</span>
-                  <span class="sol-pillar__desc">Ogni formato, ogni piattaforma. Un'unica voce di brand.</span>
-                </div>
-                <span class="sol-pillar__arrow" aria-hidden="true">→</span>
-              </button>
-              <button class="sol-pillar" data-slide="3">
-                <span class="sol-pillar__num">04</span>
-                <div class="sol-pillar__body">
-                  <span class="sol-pillar__title">Coerenza di brand</span>
-                  <span class="sol-pillar__desc">Standard mantenuti nel tempo, a qualsiasi scala di produzione.</span>
-                </div>
-                <span class="sol-pillar__arrow" aria-hidden="true">→</span>
-              </button>
-            </div>
+            <ul class="solution__list animate-on-scroll delay-2" aria-label="Componenti del sistema">
+              <li class="solution__list-item">Direzione creativa</li>
+              <li class="solution__list-item">Produzione (AI + tradizionale)</li>
+              <li class="solution__list-item">Output coordinati su ogni canale</li>
+            </ul>
+
+            <p class="solution__closing animate-on-scroll delay-2">
+              Tutto sotto <strong>controllo</strong>.<br/>
+              Tutto <strong>coerente</strong>.
+            </p>
 
             <div class="animate-on-scroll delay-3">
               <a href="#final-cta" class="btn btn--outline-light">Parliamone</a>
@@ -366,31 +342,15 @@
             <div class="carousel__track">
               <div class="carousel__slide carousel__slide--active">
                 <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
-                <div class="carousel__caption">
-                  <span class="carousel__caption-brand">Bustomotor</span>
-                  <span class="carousel__caption-type">Direzione creativa</span>
-                </div>
               </div>
               <div class="carousel__slide">
                 <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
-                <div class="carousel__caption">
-                  <span class="carousel__caption-brand">Fuoco Bravo</span>
-                  <span class="carousel__caption-type">AI Production</span>
-                </div>
               </div>
               <div class="carousel__slide">
                 <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
-                <div class="carousel__caption">
-                  <span class="carousel__caption-brand">Miu Miu</span>
-                  <span class="carousel__caption-type">Output multicanale</span>
-                </div>
               </div>
               <div class="carousel__slide">
                 <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
-                <div class="carousel__caption">
-                  <span class="carousel__caption-brand">Prada</span>
-                  <span class="carousel__caption-type">Coerenza di brand</span>
-                </div>
               </div>
             </div>
 
@@ -1131,48 +1091,6 @@
   <script src="main.js"></script>
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-  /* ── Solution carousel + pillar sync ─────────────────── */
-  (function () {
-    const carousel = document.getElementById('solution-carousel');
-    if (!carousel) return;
-
-    const slides  = Array.from(carousel.querySelectorAll('.carousel__slide'));
-    const dots    = Array.from(carousel.querySelectorAll('.carousel__dot'));
-    const prev    = carousel.querySelector('.carousel__btn--prev');
-    const next    = carousel.querySelector('.carousel__btn--next');
-    const pillars = Array.from(document.querySelectorAll('.sol-pillar'));
-
-    let current = 0;
-    let autoTimer;
-
-    function goTo(i) {
-      slides[current].classList.remove('carousel__slide--active');
-      dots[current].classList.remove('carousel__dot--active');
-      dots[current].setAttribute('aria-selected', 'false');
-      if (pillars[current]) pillars[current].classList.remove('sol-pillar--active');
-
-      current = ((i % slides.length) + slides.length) % slides.length;
-
-      slides[current].classList.add('carousel__slide--active');
-      dots[current].classList.add('carousel__dot--active');
-      dots[current].setAttribute('aria-selected', 'true');
-      if (pillars[current]) pillars[current].classList.add('sol-pillar--active');
-    }
-
-    function resetAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(() => goTo(current + 1), 4500);
-    }
-
-    prev.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-    next.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
-    pillars.forEach((p, i) => p.addEventListener('click', () => { goTo(i); resetAuto(); }));
-
-    resetAuto();
-  })();
   </script>
   <script>
   /* ── Timeline flow system ─────────────────────────────── */
