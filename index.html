@@ -816,75 +816,62 @@
     <section class="section cases" id="trust" aria-labelledby="cases-title">
       <div class="container">
 
-        <div class="pf-hdr animate-on-scroll">
-          <p class="pf-tag">Referenze</p>
+        <header class="cases__header animate-on-scroll">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Referenze</p>
           <h2 class="display-lg cases__title" id="cases-title">Esperienza con <em class="approach__em">aziende strutturate</em></h2>
           <p class="cases__subtitle">Lavoriamo con realtà che hanno bisogno di processo, non solo di prodotto.</p>
+        </header>
+
+        <!-- Main image -->
+        <div class="ref-main animate-on-scroll delay-1">
+          <img class="ref-main__img" id="refMainImg"
+               src="esperienza/Bannermestel.webp"
+               alt="Mestel — AI Creative Production" loading="lazy" />
         </div>
 
-        <!-- Main preview viewport -->
-        <div class="pf-viewport animate-on-scroll delay-1">
-          <div class="pf-screen">
-            <div class="pf-screen-bar" aria-hidden="true">
-              <div class="cd cdr"></div><div class="cd cdy"></div><div class="cd cdg"></div>
-              <div class="pf-url" id="caseUrl">estro.agency / referenze / mestel</div>
-            </div>
-            <div class="pf-img-wrap">
-              <img class="pf-main-img" id="caseImg"
-                   src="esperienza/Bannermestel.webp"
-                   alt="Anteprima caso — Mestel" loading="lazy" />
-            </div>
-          </div>
-        </div>
+        <!-- Square tabs -->
+        <div class="ref-tabs animate-on-scroll delay-2" role="tablist">
 
-        <!-- Project cards -->
-        <div class="pj-grid animate-on-scroll delay-2" role="list">
+          <button class="ref-tab ref-tab--active" role="tab" aria-selected="true"
+                  data-src="esperienza/Bannermestel.webp"
+                  data-alt="Mestel — AI Creative Production">
+            <div class="ref-tab__img">
+              <img src="LOGHI/MESTEL.webp" alt="Mestel logo" loading="lazy" />
+            </div>
+            <div class="ref-tab__body">
+              <p class="ref-tab__name">Mestel</p>
+              <p class="ref-tab__cat">AI Creative Production</p>
+              <p class="ref-tab__meta">Prototipazione · Render · Varianti</p>
+            </div>
+          </button>
 
-          <div class="pj act" role="listitem" tabindex="0"
-               data-src="esperienza/Bannermestel.webp"
-               data-url="estro.agency / referenze / mestel"
-               data-alt="Mestel — AI Creative Production">
-            <div class="pj-thumb pj-mestel">
-              <img src="esperienza/Bannermestel.webp" alt="Mestel" loading="lazy" />
+          <button class="ref-tab" role="tab" aria-selected="false"
+                  data-src="esperienza/bannerprada.webp"
+                  data-alt="Prada — AI Campagne Foto & Video">
+            <div class="ref-tab__img">
+              <img src="LOGHI/prada (2).webp" alt="Prada logo" loading="lazy" />
             </div>
-            <div class="pj-body">
-              <div class="pj-cat">AI Creative Production</div>
-              <div class="pj-name">Mestel</div>
-              <div class="pj-meta">Prototipazione · Render · Varianti</div>
+            <div class="ref-tab__body">
+              <p class="ref-tab__name">Prada</p>
+              <p class="ref-tab__cat">AI Campagne Foto &amp; Video</p>
+              <p class="ref-tab__meta">Campagne · Advertising · Digital</p>
             </div>
-          </div>
+          </button>
 
-          <div class="pj" role="listitem" tabindex="0"
-               data-src="esperienza/bannerprada.webp"
-               data-url="estro.agency / referenze / prada"
-               data-alt="Prada — AI Campagne Foto & Video">
-            <div class="pj-thumb pj-prada">
-              <img src="esperienza/bannerprada.webp" alt="Prada" loading="lazy" />
+          <button class="ref-tab" role="tab" aria-selected="false"
+                  data-src="esperienza/Bannerbravo--.webp"
+                  data-alt="Bravo — Approccio ibrido AI + Produzione">
+            <div class="ref-tab__img">
+              <img src="LOGHI/bravo (1).webp" alt="Bravo logo" loading="lazy" />
             </div>
-            <div class="pj-body">
-              <div class="pj-cat">AI Campagne Foto &amp; Video</div>
-              <div class="pj-name">Prada</div>
-              <div class="pj-meta">Campagne · Advertising · Digital</div>
+            <div class="ref-tab__body">
+              <p class="ref-tab__name">Bravo</p>
+              <p class="ref-tab__cat">Approccio ibrido AI + Produzione</p>
+              <p class="ref-tab__meta">Shooting · AI · Realismo</p>
             </div>
-          </div>
-
-          <div class="pj" role="listitem" tabindex="0"
-               data-src="esperienza/Bannerbravo--.webp"
-               data-url="estro.agency / referenze / bravo"
-               data-alt="Bravo — Approccio ibrido AI + Produzione">
-            <div class="pj-thumb pj-bravo">
-              <img src="esperienza/Bannerbravo--.webp" alt="Bravo" loading="lazy" />
-            </div>
-            <div class="pj-body">
-              <div class="pj-cat">Approccio ibrido AI + Produzione</div>
-              <div class="pj-name">Bravo</div>
-              <div class="pj-meta">Shooting · AI · Realismo</div>
-            </div>
-          </div>
+          </button>
 
         </div>
-
-        <p class="pf-hint">Seleziona un caso per vedere l'anteprima</p>
 
       </div>
     </section>
@@ -1207,32 +1194,26 @@
   })();
   </script>
   <script>
-  /* ── Referenze case switcher ─────────────────────────── */
+  /* ── Referenze tab switcher ──────────────────────────── */
   (function () {
-    const items   = document.querySelectorAll('.pj[data-src]');
-    const mainImg = document.getElementById('caseImg');
-    const urlEl   = document.getElementById('caseUrl');
-    if (!items.length || !mainImg) return;
+    const tabs    = document.querySelectorAll('.ref-tab');
+    const mainImg = document.getElementById('refMainImg');
+    if (!tabs.length || !mainImg) return;
 
-    function activate(item) {
-      items.forEach(i => i.classList.remove('act'));
-      item.classList.add('act');
+    function activate(tab) {
+      tabs.forEach(t => { t.classList.remove('ref-tab--active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('ref-tab--active');
+      tab.setAttribute('aria-selected', 'true');
 
       mainImg.style.opacity = '0';
       setTimeout(() => {
-        mainImg.src = item.dataset.src;
-        mainImg.alt = item.dataset.alt || '';
-        if (urlEl) urlEl.textContent = item.dataset.url || '';
+        mainImg.src = tab.dataset.src;
+        mainImg.alt = tab.dataset.alt || '';
         mainImg.style.opacity = '1';
       }, 220);
     }
 
-    items.forEach(item => {
-      item.addEventListener('click', () => activate(item));
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(item); }
-      });
-    });
+    tabs.forEach(tab => tab.addEventListener('click', () => activate(tab)));
   })();
   </script>
 
