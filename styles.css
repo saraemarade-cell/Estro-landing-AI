@@ -4048,36 +4048,27 @@ button, input, textarea, select {
   color: #1C1C1C !important;
 }
 
-/* ─── Cases card — image defines card width ─── */
+/* ─── Cases card — fixed dimensions 1222 × 345px ─── */
 
-/* Panel container: grid stack — all panels occupy same space,
-   width = max of all images (widest defines the column) */
 .cases__panels {
-  display: grid !important;
-  grid-template-areas: 'panel' !important;
-  justify-items: center !important;
+  display: block !important;
 }
-/* All panels stacked in the same grid cell */
 .cases__panel {
-  grid-area: panel !important;
-  display: flex !important;
-  justify-content: center !important;
+  display: block !important;
   width: 100% !important;
 }
-/* Hidden panels take up space but are invisible — keeps grid width stable */
 .cases__panel[hidden] {
-  visibility: hidden !important;
-  pointer-events: none !important;
-  height: 0 !important;
-  overflow: hidden !important;
+  display: none !important;
 }
 
-/* Outer card: inline-flex so it hugs image width */
+/* Card: exact 1222 × 345.08px, horizontal layout, centered */
 .cases__panel-inner {
-  display: inline-flex !important;
-  flex-direction: column !important;
-  width: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  width: 1222px !important;
+  height: 345px !important;
   max-width: 100% !important;
+  margin: 0 auto !important;
   background: #1C1C1C !important;
   border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: 28px !important;
@@ -4086,8 +4077,7 @@ button, input, textarea, select {
   transition: border-color .35s, box-shadow .35s, transform .35s cubic-bezier(.2,.8,.2,1) !important;
   gap: 0 !important;
   transform: none !important;
-  margin: 0 !important;
-  min-width: 0 !important;
+  position: relative !important;
 }
 .cases__panel-inner:hover {
   border-color: rgba(224,24,92,.28) !important;
@@ -4111,29 +4101,31 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image container: block, driven by image natural size */
+/* Image area: 725.33 × 345px, image contained within */
 .cases__panel-media {
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
+  position: relative !important;
+  width: 725px !important;
+  min-width: 725px !important;
+  height: 345px !important;
   border-radius: 0 !important;
   overflow: hidden !important;
   background: #0e0e0e !important;
   border: none !important;
-  display: block !important;
+  border-right: 1px solid rgba(255,255,255,.06) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex-shrink: 0 !important;
-  line-height: 0 !important;
 }
 
-/* Image: natural dimensions, fully visible, no crop */
+/* Image: contained, proportions intact, no crop */
 .cases__panel-img {
   position: static !important;
   display: block !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 90vw !important;
-  max-height: 440px !important;
-  object-fit: unset !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
 }
@@ -4141,24 +4133,46 @@ button, input, textarea, select {
   transform: scale(1.015) !important;
 }
 
-/* Content area: same width as card (= image width) */
+/* Text area: remaining width (≈497px), full height */
 .cases__panel-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+  height: 100% !important;
   background: transparent !important;
   border: none !important;
-  border-top: 1px solid rgba(255,255,255,.06) !important;
   border-radius: 0 !important;
   padding: 28px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
-  flex: 1 !important;
+  overflow-y: auto !important;
   transition: none !important;
   box-shadow: none !important;
-  width: auto !important;
 }
 .cases__panel-content:hover {
-  border-color: rgba(255,255,255,.06) !important;
+  border-color: transparent !important;
   box-shadow: none !important;
+}
+
+/* Responsive: scale down below 1222px */
+@media (max-width: 1280px) {
+  .cases__panel-inner {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .cases__panel-media {
+    width: 59.36% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 240px !important;
+  }
+  .cases__panel-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
 }
 
 /* VI .pf-info-sector */
