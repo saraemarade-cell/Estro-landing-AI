@@ -3056,7 +3056,7 @@ button, input, textarea, select {
 /* Social icons — VI exact: 38×38px, radius 10px */
 .ft-social {
   display: grid;
-  grid-template-columns: repeat(2, 38px);
+  grid-template-columns: repeat(4, 38px);
   gap: 12px;
   width: fit-content;
 }
