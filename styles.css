@@ -4664,35 +4664,34 @@ button, input, textarea, select {
   transform: translateY(-3px);
 }
 
-/* square image area */
+/* logo area — fixed height, logo contenuto */
 .ref-tab__img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100px;
   background: #111;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 28px;
+  padding: 20px 28px;
   border-bottom: 1px solid rgba(255,255,255,.06);
   overflow: hidden;
 }
 .ref-tab__img img {
-  max-width: 75%;
-  max-height: 75%;
+  max-width: 110px;
+  max-height: 44px;
   width: auto;
   height: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: 0.55;
-  transition: opacity .25s, filter .25s;
+  opacity: 0.45;
+  transition: opacity .25s;
 }
 .ref-tab:hover .ref-tab__img img,
 .ref-tab--active .ref-tab__img img {
-  opacity: 1;
-  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 .ref-tab--active .ref-tab__img {
-  background: rgba(224,24,92,.06);
+  background: rgba(224,24,92,.05);
 }
 
 /* text below image */
