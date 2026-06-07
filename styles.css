@@ -3698,7 +3698,7 @@ button, input, textarea, select {
 .how-we-work::after {
   content: '';
   position: absolute;
-  top: -12%;
+  top: -4%;
   right: 6%;
   width: 340px;
   height: 340px;
