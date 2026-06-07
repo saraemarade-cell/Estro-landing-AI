@@ -3958,9 +3958,9 @@ button, input, textarea, select {
   z-index: 2 !important;
 }
 
-/* ─── CASES / REFERENZE — VI .pf-tabs exact ─── */
+/* ─── CASES / REFERENZE — VI .pf-tabs verbatim ─── */
 
-/* Tab bar container — VI .pf-tabs grid */
+/* VI .pf-tabs: full-width grid, no outer container */
 .cases__tabs {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
@@ -3971,12 +3971,12 @@ button, input, textarea, select {
   border-radius: 0 !important;
   padding: 0 !important;
   width: 100% !important;
-  max-width: 600px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-/* Individual tab — VI .pf-tab exact */
+/* VI .pf-tab verbatim */
 .cases__tab {
   background: rgba(255,255,255,.03) !important;
   border: 1px solid rgba(255,255,255,.08) !important;
@@ -3986,36 +3986,41 @@ button, input, textarea, select {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0 !important;
+  gap: 8px !important;
   cursor: pointer !important;
   transition: all .28s !important;
   position: relative !important;
   overflow: hidden !important;
+  font-family: var(--font-body) !important;
   min-width: 0 !important;
   height: auto !important;
-  font-family: var(--font-body) !important;
+  box-shadow: none !important;
+  text-align: center !important;
 }
-/* VI .pf-tab::after — bottom fuchsia underline */
+
+/* VI .pf-tab::after — fuchsia bottom underline, grows on interaction */
 .cases__tab::after {
   content: '' !important;
   position: absolute !important;
   left: 50% !important;
   bottom: 0 !important;
+  top: auto !important;
   transform: translateX(-50%) !important;
   width: 0 !important;
   height: 2px !important;
   background: #E0185C !important;
   transition: width .3s !important;
-  top: auto !important;
   opacity: 1 !important;
 }
+
+/* VI .pf-tab:hover */
 .cases__tab:hover {
   background: rgba(255,255,255,.06) !important;
   border-color: rgba(255,255,255,.14) !important;
 }
 .cases__tab:hover::after { width: 40% !important; }
 
-/* Active tab — VI .pf-tab.on */
+/* VI .pf-tab.on */
 .cases__tab--active {
   background: rgba(224,24,92,.07) !important;
   border-color: rgba(224,24,92,.3) !important;
@@ -4023,7 +4028,7 @@ button, input, textarea, select {
 }
 .cases__tab--active::after { width: 70% !important; }
 
-/* Tab name text — VI .pf-tab-name (no logo variant: font-size 14px) */
+/* VI .pf-tab-name — no-logo variant: 14px / letter-spacing -0.2px */
 .cases__tab-name {
   font-family: var(--font-display) !important;
   font-size: 14px !important;
@@ -4031,6 +4036,7 @@ button, input, textarea, select {
   color: rgba(243,239,224,.4) !important;
   transition: color .25s !important;
   display: block !important;
+  line-height: 1 !important;
 }
 .cases__tab:hover .cases__tab-name,
 .cases__tab--active .cases__tab-name {
