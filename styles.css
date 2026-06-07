@@ -1169,70 +1169,98 @@ button, input, textarea, select {
   margin-bottom: 4px;
 }
 
-/* consequence cards — white on cream, elevated */
+/* consequence cards — VI .pcard exact aesthetic */
 .prob-card {
   position: relative;
-  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  background: linear-gradient(158deg, #FFFDF6, #F1EBD8);
   border: 1px solid rgba(28,28,28,.1);
-  border-radius: 20px;
-  padding: 24px 24px 22px;
+  border-radius: 16px;
+  padding: 20px 18px;
   overflow: hidden;
   cursor: default;
-  box-shadow: 0 2px 12px rgba(28,28,28,.06);
-  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  box-shadow: 0 10px 24px -16px rgba(28,28,28,.5);
+  transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .32s, box-shadow .4s;
+}
+
+/* top row: number + arrow */
+.prob-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prob-card__arr {
+  font-size: 15px;
+  color: rgba(28,28,28,.18);
+  line-height: 1;
+  transition: all .3s;
+}
+
+/* fuchsia radial wash — appears on hover */
+.prob-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(130% 100% at 14% 0%, rgba(224,24,92,.1), transparent 55%);
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
 }
 
 /* watermark number */
 .prob-card__n {
-  position: absolute;
-  bottom: 14px;
-  right: 18px;
   font-family: var(--font-body);
-  font-weight: 900;
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: -3px;
-  color: rgba(28,28,28,.05);
-  pointer-events: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(28,28,28,.3);
+  transition: color .3s;
   user-select: none;
+  line-height: 1;
 }
 
-/* icon */
+/* icon — neutral by default, fuchsia on hover */
 .prob-card__ico {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
-  background: rgba(224,24,92,.08);
-  border: 1px solid rgba(224,24,92,.18);
+  background: rgba(28,28,28,.05);
+  border: 1px solid rgba(28,28,28,.07);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
-  margin-bottom: 16px;
-  transition: background .25s ease, border-color .25s ease;
+  color: rgba(28,28,28,.5);
+  transition: all .4s cubic-bezier(.34,1.56,.6,1);
 }
+.prob-card__ico svg { width: 20px; height: 20px; color: rgba(28,28,28,.5); transition: color .35s; }
 
 /* card title */
 .prob-card__t {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--color-dark);
-  line-height: 1.45;
-  letter-spacing: -.2px;
+  letter-spacing: -.3px;
+  line-height: 1.2;
   margin: 0;
 }
 
 @media (hover: hover) {
   .prob-card:hover {
-    border-color: rgba(224,24,92,.25);
-    box-shadow: 0 6px 24px rgba(224,24,92,.1);
-    transform: translateY(-2px);
-  }
-  .prob-card:hover .prob-card__ico {
-    background: rgba(224,24,92,.14);
+    transform: translateY(-5px);
     border-color: rgba(224,24,92,.3);
+    box-shadow: 0 26px 44px -22px rgba(224,24,92,.45);
   }
+  .prob-card:hover::before { opacity: 1; }
+  .prob-card:hover .prob-card__n { color: var(--color-primary); }
+  .prob-card:hover .prob-card__ico {
+    background: rgba(224,24,92,.12);
+    border-color: rgba(224,24,92,.3);
+    transform: scale(1.08) rotate(-3deg);
+  }
+  .prob-card:hover .prob-card__ico svg { color: var(--color-primary); }
+  .prob-card:hover .prob-card__arr { color: var(--color-primary); transform: translateX(3px); }
 }
 
 /* =====================================================
@@ -2563,6 +2591,7 @@ button, input, textarea, select {
   background-color: var(--color-light);
   position: relative;
   overflow: hidden;
+  overflow-x: clip;
 }
 
 .cases__header {
@@ -2739,6 +2768,22 @@ button, input, textarea, select {
   background: #0e0e0e;
   border-radius: 27px 27px 0 0;
   overflow: hidden;
+  position: relative;
+}
+
+/* company logo badge in panel corner */
+.cases__panel-logo {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  max-width: 110px;
+  max-height: 36px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(.8);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .cases__panel-img {
@@ -3984,6 +4029,24 @@ button, input, textarea, select {
   font-weight: 500 !important;
 }
 .cases__panel-list li::before { display: none; }
+
+/* ─── Cases: no horizontal overflow on any viewport ─── */
+@media (max-width: 768px) {
+  .cases__tabs {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .cases__tab {
+    min-width: 100px !important;
+    flex: 1 1 calc(33% - 8px) !important;
+    height: 70px !important;
+  }
+  .cases__tab-logo {
+    max-width: 90px !important;
+    max-height: 36px !important;
+  }
+}
 
 /* ─── Benefits (dark section) fuchsia effects ─── */
 .benefits::before { display: none !important; }
