@@ -3960,28 +3960,28 @@ button, input, textarea, select {
 
 /* ─── CASES / REFERENZE — VI .pf-tabs verbatim ─── */
 
-/* VI .pf-tabs: full-width grid, no outer container */
+/* Tabs: hug-content flex row, centered */
 .cases__tabs {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
   gap: 10px !important;
   margin-bottom: 30px !important;
   background: none !important;
   border: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
-  width: 100% !important;
+  width: fit-content !important;
   max-width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* VI .pf-tab verbatim */
+/* VI .pf-tab — hug content width */
 .cases__tab {
   background: rgba(255,255,255,.03) !important;
   border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: 18px !important;
-  padding: 18px 14px !important;
+  padding: 18px 24px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -3992,7 +3992,8 @@ button, input, textarea, select {
   position: relative !important;
   overflow: hidden !important;
   font-family: var(--font-body) !important;
-  min-width: 0 !important;
+  width: auto !important;
+  flex: none !important;
   height: auto !important;
   box-shadow: none !important;
   text-align: center !important;
@@ -4047,45 +4048,58 @@ button, input, textarea, select {
   color: #1C1C1C !important;
 }
 
-/* ─── Cases card — VI .pf-grid / .pf-img / .pf-info exact ─── */
+/* ─── Cases card — vertical layout: image top, dark content bottom ─── */
 
-/* VI .pf-grid: 2-column grid, image left / info right */
+/* Outer card: dark, rounded, clips both image and content */
 .cases__panel-inner {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 22px !important;
-  align-items: stretch !important;
-  background: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important;
-  transform: none !important;
-  transition: none !important;
-}
-.cases__panel-inner:hover {
-  border-color: transparent !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-/* disable old ::before accent line */
-.cases__panel-inner::before { display: none !important; }
-
-/* VI .pf-img: image container, clips the photo */
-.cases__panel-media {
-  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #1C1C1C !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: 28px !important;
   overflow: hidden !important;
-  background: rgba(255,255,255,.03) !important;
-  border: 1px solid rgba(255,255,255,.07) !important;
-  height: 420px !important;
-  align-self: stretch !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12) !important;
+  transition: border-color .35s, box-shadow .35s, transform .35s cubic-bezier(.2,.8,.2,1) !important;
+  gap: 0 !important;
+  transform: none !important;
+}
+.cases__panel-inner:hover {
+  border-color: rgba(224,24,92,.28) !important;
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.3),
+    0 0 0 1px rgba(224,24,92,.12),
+    0 4px 16px rgba(0,0,0,.2) !important;
+  transform: translateY(-4px) !important;
+}
+/* pink accent line top on hover */
+.cases__panel-inner::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important; left: 8% !important; right: 8% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(224,24,92,.6), transparent) !important;
+  opacity: 0 !important;
+  transition: opacity .35s !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+}
+.cases__panel-inner:hover::before { opacity: 1 !important; }
+
+/* Image container: full width, fixed height */
+.cases__panel-media {
+  position: relative !important;
+  width: 100% !important;
+  height: 280px !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  background: #0e0e0e !important;
+  border: none !important;
+  display: block !important;
+  flex-shrink: 0 !important;
 }
 
-/* VI .pf-img img: covers the container */
+/* Image: cover fill */
 .cases__panel-img {
   position: absolute !important;
   inset: 0 !important;
@@ -4096,26 +4110,27 @@ button, input, textarea, select {
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
 }
-.cases__panel-media:hover .cases__panel-img {
+.cases__panel-inner:hover .cases__panel-img {
   transform: scale(1.015) !important;
 }
 
-/* VI .pf-info: dark info card on the right */
+/* Content area: dark bg, white text hierarchy */
 .cases__panel-content {
-  background: rgba(255,255,255,.04) !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  border-radius: 28px !important;
+  background: transparent !important;
+  border: none !important;
+  border-top: 1px solid rgba(255,255,255,.06) !important;
+  border-radius: 0 !important;
   padding: 28px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
   flex: 1 !important;
-  border-top: none !important;
-  transition: border-color .28s, box-shadow .28s !important;
+  transition: none !important;
+  box-shadow: none !important;
 }
 .cases__panel-content:hover {
-  border-color: rgba(224,24,92,.28) !important;
-  box-shadow: 0 24px 48px rgba(0,0,0,.25) !important;
+  border-color: rgba(255,255,255,.06) !important;
+  box-shadow: none !important;
 }
 
 /* VI .pf-info-sector */
@@ -4180,13 +4195,10 @@ button, input, textarea, select {
   margin-bottom: 0 !important;
 }
 
-/* Responsive: stack on tablet */
-@media (max-width: 900px) {
-  .cases__panel-inner {
-    grid-template-columns: 1fr !important;
-  }
+/* Responsive: reduce image height on mobile */
+@media (max-width: 600px) {
   .cases__panel-media {
-    height: 260px !important;
+    height: 200px !important;
   }
 }
 
