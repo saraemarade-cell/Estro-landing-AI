@@ -2736,27 +2736,6 @@ button, input, textarea, select {
   border-top: 1px solid rgba(243,239,224,.06);
 }
 
-/* brand logo: angolo superiore destro */
-.cases__panel-logo {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2rem);
-  right: clamp(2rem, 3vw, 3rem);
-  max-width: 140px;
-  max-height: 52px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  /* logo a colori naturali su sfondo scuro */
-  filter: brightness(0) invert(1) opacity(0.85);
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), filter 0.3s ease;
-  z-index: 2;
-}
-
-.cases__panel-inner:hover .cases__panel-logo {
-  transform: scale(1.06);
-  filter: brightness(0) invert(1) opacity(1);
-}
-
 .cases__panel-tag {
   font-size: 9px;
   font-weight: 600;
@@ -2767,7 +2746,6 @@ button, input, textarea, select {
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
-  margin-top: 68px;
 }
 
 .cases__panel-tag::before {
