@@ -1339,7 +1339,7 @@ button, input, textarea, select {
   font-weight: 500;
   color: rgba(243, 239, 224, 0.85);
   line-height: 1.7;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .solution__closing strong {
