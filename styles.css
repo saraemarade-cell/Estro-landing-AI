@@ -4067,7 +4067,7 @@ button, input, textarea, select {
   flex-direction: column !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 400px) !important;
+  max-height: calc(100vh - 340px) !important;
   margin: 0 auto !important;
   background: #1C1C1C !important;
   border: 1px solid rgba(255,255,255,.08) !important;
@@ -4142,10 +4142,10 @@ button, input, textarea, select {
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 14px 24px !important;
+  padding: 10px 20px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 4px !important;
   transition: none !important;
   box-shadow: none !important;
   overflow: hidden !important;
@@ -4164,8 +4164,8 @@ button, input, textarea, select {
   object-fit: contain !important;
   object-position: left center !important;
   filter: brightness(0) invert(1) opacity(.7) !important;
-  margin-left: 0 !important;
-  margin-bottom: 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* VI .pf-info-sector */
