@@ -68,9 +68,6 @@
     <a href="#final-cta" class="btn btn--primary btn--lg">Richiedi consulenza <span class="arr">›</span></a>
   </div>
 
-  <!-- Scroll progress bar — VI exact -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
   <main id="main-content">
 
     <!-- ================================================
@@ -1443,20 +1440,6 @@
   })();
   </script>
 
-  <script>
-  /* ── Scroll progress bar — VI exact ─── */
-  (function () {
-    const bar = document.getElementById('scrollProgress');
-    if (!bar) return;
-    function update() {
-      const scrolled = window.scrollY;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  })();
-  </script>
 
 </body>
 </html>

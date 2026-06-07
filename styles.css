@@ -260,7 +260,7 @@ button, input, textarea, select {
   z-index: 100;
   background-color: transparent;
   transition: background-color var(--transition-base), box-shadow var(--transition-base);
-  padding: 1.25rem 0;
+  padding: 14px 0;
 }
 
 .navbar.scrolled {
@@ -737,7 +737,7 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.25rem var(--space-lg) 0;
+  padding: 18px var(--space-lg) 0;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -760,7 +760,7 @@ button, input, textarea, select {
 
 .hero__right-inner {
   flex: 1;
-  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  padding: 8px var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2902,7 +2902,7 @@ button, input, textarea, select {
    ===================================================== */
 /* ═══ FOOTER — VI v6 exact ═══ */
 .footer {
-  background-color: var(--color-dark);
+  background-color: #0e0e0e;
   color: var(--color-light);
   padding: 80px 0 0;
   border-top: 1px solid rgba(255,255,255,.06);
@@ -3477,19 +3477,7 @@ button, input, textarea, select {
    VI DESIGN SYSTEM — exact alignment
    ===================================================== */
 
-/* ─── Scroll progress bar — VI exact ─── */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0;
-  background: linear-gradient(90deg, var(--color-primary), #ff4a82);
-  z-index: 400;
-  transition: width .08s linear;
-  box-shadow: 0 0 12px rgba(224,24,92,.5);
-  pointer-events: none;
-}
+
 
 /* ─── Scrollbar — VI exact ─── */
 ::-webkit-scrollbar { width: 4px; }
@@ -3563,6 +3551,7 @@ button, input, textarea, select {
   letter-spacing: 2.8px;
   text-transform: uppercase;
   margin-bottom: 20px;
+  width: fit-content;
 }
 .hero-badge-dot {
   width: 6px;
@@ -3879,7 +3868,7 @@ button, input, textarea, select {
   border-radius: 18px !important;
   padding: 18px 14px !important;
   min-width: 140px !important;
-  height: 70px !important;
+  height: 84px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -3916,8 +3905,8 @@ button, input, textarea, select {
 
 /* Tab logos — VI .pf-tab-logo */
 .cases__tab-logo {
-  max-width: 110px !important;
-  max-height: 36px !important;
+  max-width: 160px !important;
+  max-height: 52px !important;
   width: auto !important;
   height: auto !important;
   object-fit: contain !important;
@@ -4013,3 +4002,21 @@ button, input, textarea, select {
   pointer-events: none;
   z-index: 0;
 }
+
+/* ─── Final CTA (dark) fuchsia glow — VI dati-glow pattern ─── */
+.final-cta {
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(224,24,92,.09), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+.final-cta .container { position: relative; z-index: 1; }
