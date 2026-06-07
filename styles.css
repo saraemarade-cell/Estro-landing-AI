@@ -408,7 +408,7 @@ button, input, textarea, select {
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 62fr 38fr;
+  grid-template-columns: 68fr 32fr;
   gap: 0;
   align-items: stretch;
   min-height: calc(90vh - 80px);
@@ -3180,7 +3180,7 @@ button, input, textarea, select {
 /* Tablet: ≤ 1024px */
 @media (max-width: 1024px) {
   .hero__inner {
-    grid-template-columns: 55fr 45fr;
+    grid-template-columns: 62fr 38fr;
   }
 
   .hero__right-inner {
