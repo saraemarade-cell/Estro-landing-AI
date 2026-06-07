@@ -2195,7 +2195,7 @@ button, input, textarea, select {
 .how-we-work__closing {
   text-align: center;
   background: #f3efe0;
-  padding: var(--space-lg) 0 var(--space-xl);
+  padding: 0 0 var(--space-xl);
 }
 
 .how-we-work__closing-text {
@@ -3465,9 +3465,12 @@ button, input, textarea, select {
 /* --- How We Work: brand seal in closing + animated connector --- */
 .how-we-work__brand-seal {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
+  max-width: 64px;
+  max-height: 64px;
   object-fit: contain;
+  object-position: center;
   margin: 0 auto var(--space-sm);
   opacity: 0.55;
   filter: grayscale(0.2);
@@ -3823,7 +3826,8 @@ button, input, textarea, select {
 .services .container,
 .services__bg-grid { position: relative; z-index: 2; }
 
-/* ─── How-we-work: gattino bg already in .steps-system::before ─── */
+/* ─── How-we-work: no bottom padding — closing bridge sits flush below ─── */
+.how-we-work { padding-bottom: 0 !important; }
 .how-we-work::before { display: none !important; }
 
 /* ─── VALUE CARDS — VI .ic exact ─── */
