@@ -2623,9 +2623,10 @@ button, input, textarea, select {
 .cases__subtitle {
   font-size: 1.05rem;
   color: rgba(28,28,28,.6);
-  max-width: 520px;
+  max-width: 700px;
   margin: 0 auto;
   line-height: 1.7;
+  white-space: nowrap;
 }
 
 /* ── tab bar ── */
@@ -3957,41 +3958,44 @@ button, input, textarea, select {
   z-index: 2 !important;
 }
 
-/* ─── CASES / REFERENZE — VI .pf-tabs + .pf-panel exact ─── */
+/* ─── CASES / REFERENZE — VI .pf-tabs exact ─── */
 
-/* Tab bar container — keep dark container, adapt VI tab styles */
+/* Tab bar container — VI .pf-tabs grid */
 .cases__tabs {
-  background: #1C1C1C !important;
-  border: 1px solid rgba(243,239,224,.08) !important;
-  border-radius: 20px !important;
-  padding: 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 10px !important;
-  width: fit-content !important;
+  margin-bottom: 30px !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 600px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* Individual tab — VI .pf-tab */
+/* Individual tab — VI .pf-tab exact */
 .cases__tab {
   background: rgba(255,255,255,.03) !important;
   border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: 18px !important;
   padding: 18px 14px !important;
-  min-width: 140px !important;
-  height: 84px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+  gap: 0 !important;
   cursor: pointer !important;
   transition: all .28s !important;
   position: relative !important;
   overflow: hidden !important;
+  min-width: 0 !important;
+  height: auto !important;
+  font-family: var(--font-body) !important;
 }
-/* VI .pf-tab::after — bottom fuchsia line */
+/* VI .pf-tab::after — bottom fuchsia underline */
 .cases__tab::after {
   content: '' !important;
   position: absolute !important;
@@ -4000,12 +4004,15 @@ button, input, textarea, select {
   transform: translateX(-50%) !important;
   width: 0 !important;
   height: 2px !important;
-  background: var(--color-primary) !important;
+  background: #E0185C !important;
   transition: width .3s !important;
   top: auto !important;
   opacity: 1 !important;
 }
-.cases__tab:hover { background: rgba(255,255,255,.06) !important; border-color: rgba(255,255,255,.14) !important; }
+.cases__tab:hover {
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
+}
 .cases__tab:hover::after { width: 40% !important; }
 
 /* Active tab — VI .pf-tab.on */
@@ -4016,18 +4023,19 @@ button, input, textarea, select {
 }
 .cases__tab--active::after { width: 70% !important; }
 
-/* Tab logos — VI .pf-tab-logo */
-.cases__tab-logo {
-  max-width: 160px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  filter: brightness(0) invert(1) opacity(.55) !important;
-  transition: filter .3s !important;
+/* Tab name text — VI .pf-tab-name (no logo variant: font-size 14px) */
+.cases__tab-name {
+  font-family: var(--font-display) !important;
+  font-size: 14px !important;
+  letter-spacing: -.2px !important;
+  color: rgba(243,239,224,.4) !important;
+  transition: color .25s !important;
+  display: block !important;
 }
-.cases__tab:hover .cases__tab-logo { filter: brightness(0) invert(1) opacity(.85) !important; }
-.cases__tab--active .cases__tab-logo { filter: brightness(0) invert(1) !important; }
+.cases__tab:hover .cases__tab-name,
+.cases__tab--active .cases__tab-name {
+  color: #F3EFE0 !important;
+}
 
 /* Panel card — VI .pf-info style */
 .cases__panel-inner {
@@ -4098,21 +4106,17 @@ button, input, textarea, select {
 }
 .cases__panel-list li::before { display: none; }
 
-/* ─── Cases: no horizontal overflow on any viewport ─── */
+/* ─── Cases: responsive tab grid ─── */
 @media (max-width: 768px) {
   .cases__tabs {
-    width: 100% !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    max-width: 100% !important;
+    gap: 6px !important;
   }
   .cases__tab {
-    min-width: 100px !important;
-    flex: 1 1 calc(33% - 8px) !important;
-    height: 70px !important;
+    padding: 14px 10px !important;
   }
-  .cases__tab-logo {
-    max-width: 90px !important;
-    max-height: 36px !important;
+  .cases__subtitle {
+    white-space: normal !important;
   }
 }
 
