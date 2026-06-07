@@ -1078,7 +1078,7 @@ button, input, textarea, select {
   margin-bottom: 20px;
 }
 .problem__tag::before {
-  content: "";
+  content: none;
   width: 28px;
   height: 1px;
   background: var(--color-primary);
