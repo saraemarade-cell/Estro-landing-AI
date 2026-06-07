@@ -4099,13 +4099,14 @@ button, input, textarea, select {
   flex-shrink: 0 !important;
 }
 
-/* Image: cover fill */
+/* Image: contain — full image visible, no crop */
 .cases__panel-img {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   display: block !important;
   border-radius: 0 !important;
   transition: transform 0.8s cubic-bezier(.2,.8,.2,1) !important;
