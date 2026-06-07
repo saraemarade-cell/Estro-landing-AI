@@ -4067,6 +4067,7 @@ button, input, textarea, select {
   flex-direction: column !important;
   width: 100% !important;
   height: auto !important;
+  max-height: calc(100vh - 400px) !important;
   margin: 0 auto !important;
   background: #1C1C1C !important;
   border: 1px solid rgba(255,255,255,.08) !important;
@@ -4100,12 +4101,11 @@ button, input, textarea, select {
 }
 .cases__panel-inner:hover::before { opacity: 1 !important; }
 
-/* Image area: constrained to leave room for header + tabs + text */
+/* Image area: flex-shrink allows it to compress when card hits max-height */
 .cases__panel-media {
   position: static !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 420px) !important;
   overflow: hidden !important;
   border-radius: 0 !important;
   background: #0e0e0e !important;
@@ -4114,17 +4114,18 @@ button, input, textarea, select {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-shrink: 0 !important;
+  flex-shrink: 1 !important;
+  min-height: 0 !important;
   line-height: 0 !important;
 }
 
-/* Image: fills width, height capped by container */
+/* Image: scales down with container */
 .cases__panel-img {
   position: static !important;
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  max-height: calc(100vh - 420px) !important;
+  max-height: 100% !important;
   object-fit: contain !important;
   object-position: center center !important;
   border-radius: 0 !important;
@@ -4134,19 +4135,20 @@ button, input, textarea, select {
   transform: scale(1.015) !important;
 }
 
-/* Text area: compact padding to save vertical space */
+/* Text area: compact, fixed height, no overflow */
 .cases__panel-content {
-  flex: 1 !important;
+  flex-shrink: 0 !important;
   width: 100% !important;
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 16px 28px !important;
+  padding: 14px 24px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 6px !important;
   transition: none !important;
   box-shadow: none !important;
+  overflow: hidden !important;
 }
 .cases__panel-content:hover {
   border-color: transparent !important;
