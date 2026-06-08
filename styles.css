@@ -4848,8 +4848,8 @@ button, input, textarea, select {
   .benefits__header { text-align: left; }
   .value-props__subtitle { max-width: 100%; }
 
-  /* Solution carousel */
-  .carousel { max-width: 100%; aspect-ratio: 16/9; }
+  /* Solution carousel — vertical images on mobile */
+  .carousel { max-width: 100%; aspect-ratio: 3/4; }
 
   /* ── Aree di intervento: 1 colonna ── */
   .services__grid { grid-template-columns: 1fr !important; }
@@ -4860,7 +4860,7 @@ button, input, textarea, select {
 
   /* ── Referenze ── */
   .ref-main { border-radius: 12px; }
-  .ref-main__img { aspect-ratio: unset; width: 100%; height: auto; object-fit: contain; }
+  .ref-main__img { aspect-ratio: 16/9; width: 100%; height: auto; object-fit: cover; object-position: center; }
   .ref-tabs { grid-template-columns: 1fr; gap: 10px; }
   .ref-tab {
     display: grid;
@@ -4950,9 +4950,6 @@ button, input, textarea, select {
   .value-props__cta { display: block; }
   .services__cta .btn,
   .value-props__cta .btn { width: 100%; justify-content: center; }
-
-  /* Main image no crop */
-  .ref-main__img { aspect-ratio: unset; height: auto; object-fit: contain; }
 
   /* No overflow anywhere */
   .cases__panel-inner { max-height: none !important; }
