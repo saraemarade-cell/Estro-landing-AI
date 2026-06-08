@@ -1074,42 +1074,79 @@ button, input, textarea, select {
 /* header full-width centrato */
 .problem__header {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  max-width: 720px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
 }
 .problem__header .problem__desc {
   max-width: 100%;
   margin-bottom: 0;
+  font-size: 17px;
+  color: rgba(28,28,28,.6);
 }
 .problem__header .problem__tag {
   display: block;
   text-align: center;
 }
 
+/* divisore decorativo */
+.problem__header::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--color-primary);
+  margin: 28px auto 0;
+  border-radius: 2px;
+}
+
 /* 3 card in griglia */
 .problem__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .problem__cards .problem__feat {
   flex-direction: column;
-  gap: 20px;
-  padding: 28px 24px;
-  border: 1px solid rgba(28,28,28,.08);
-  border-radius: 16px;
-  background: rgba(28,28,28,.03);
-  transition: border-color .25s, box-shadow .25s, transform .25s;
+  gap: 0;
+  padding: 32px 28px 32px;
+  border: 1px solid rgba(28,28,28,.1);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(28,28,28,.06);
+  transition: border-color .25s, box-shadow .3s, transform .3s;
 }
-.problem__cards .problem__feat:first-child { border-top: 1px solid rgba(28,28,28,.08); }
+.problem__cards .problem__feat:first-child { border-top: 3px solid var(--color-primary); }
 .problem__cards .problem__feat:hover {
-  border-color: rgba(224,24,92,.25);
-  box-shadow: 0 8px 28px rgba(224,24,92,.08);
-  transform: translateY(-3px);
-  padding-left: 24px;
+  box-shadow: 0 16px 48px rgba(224,24,92,.12);
+  transform: translateY(-5px);
+  padding-left: 28px;
+}
+.problem__cards .problem__feat-ico {
+  margin-bottom: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(224,24,92,.08);
+  color: var(--color-primary);
+}
+.problem__cards .problem__feat-ico svg { stroke: var(--color-primary); }
+.problem__cards .problem__feat-t {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.3px;
+  margin-bottom: 10px;
+  display: block;
+  color: var(--color-dark);
+}
+.problem__cards .problem__feat-d {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(28,28,28,.6);
+  display: block;
 }
 
 /* ══ SINISTRA ══ */
@@ -1138,11 +1175,11 @@ button, input, textarea, select {
 .problem__title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(28px, 3.2vw, 44px);
-  line-height: 1.06;
-  letter-spacing: -1px;
+  font-size: clamp(32px, 3.8vw, 54px);
+  line-height: 1.04;
+  letter-spacing: -1.5px;
   color: var(--color-dark);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* body copy — VI .sl-desc */
