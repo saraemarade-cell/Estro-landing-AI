@@ -3236,22 +3236,36 @@ button, input, textarea, select {
     display: flex;
   }
 
-  /* Mobile: single column, video on top */
+  /* Mobile: stack hero__left (video+text) above hero__right (form).
+     Using flex instead of grid so hero__left auto-sizes to ALL its content. */
   .hero__inner {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column;
     min-height: unset;
+    min-width: 0;
+    width: 100%;
   }
 
   .hero__left {
     order: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero__right {
+    order: 2;
+    min-width: 0;
+    width: 100%;
   }
 
   .hero__video-wrapper {
     /* 16:9 on mobile — natural video ratio, no cover needed */
     aspect-ratio: 16/9;
+    height: auto;
     min-height: unset;
     flex: none;
     border-radius: 0;
+    width: 100%;
   }
 
   .hero__video-iframe {
@@ -4807,6 +4821,7 @@ button, input, textarea, select {
   }
   .hero__video-wrapper {
     aspect-ratio: 16/9;
+    height: auto;
     min-height: unset;
     flex: none;
     border-radius: 0;
@@ -4891,7 +4906,7 @@ button, input, textarea, select {
   .container { padding: 0 16px; }
 
   /* Hero */
-  .hero__video-wrapper { aspect-ratio: 4/3; }
+  .hero__video-wrapper { aspect-ratio: 4/3; height: auto; }
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
