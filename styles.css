@@ -5008,28 +5008,29 @@ button, input, textarea, select {
 
 /* ── 4. Sezione La risposta — ritmo e proporzioni ── */
 .solution__inner {
-  gap: clamp(3rem, 5vw, 5rem) !important;
+  gap: clamp(2.5rem, 4vw, 4rem) !important;
   align-items: center !important;
 }
 .solution__title {
   font-size: clamp(1.7rem, 3.2vw, 2.8rem) !important;
   line-height: 1.1 !important;
   letter-spacing: -0.025em !important;
-  margin-bottom: var(--space-md) !important;
+  margin-bottom: var(--space-sm) !important;
 }
 .solution__copy {
-  font-size: 1rem !important;
-  line-height: 1.8 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
   color: rgba(243,239,224,.72) !important;
+  margin-bottom: var(--space-sm) !important;
 }
 .solution__list-item {
-  padding: 14px 0 !important;
-  gap: 14px !important;
+  padding: 10px 0 !important;
+  gap: 12px !important;
 }
 .solution__closing {
-  margin-top: var(--space-lg) !important;
-  padding-top: var(--space-md) !important;
-  font-size: 1rem !important;
+  margin-top: var(--space-md) !important;
+  padding-top: var(--space-sm) !important;
+  font-size: 0.9375rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.01em !important;
   opacity: 0.9;
