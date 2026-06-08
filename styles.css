@@ -2252,10 +2252,9 @@ button, input, textarea, select {
 .approach .container { position: relative; z-index: 1; }
 
 .approach__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  align-items: center;
+  display: block;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .approach__title {
