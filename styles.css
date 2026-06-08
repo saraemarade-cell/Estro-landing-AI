@@ -4962,3 +4962,299 @@ button, input, textarea, select {
   /* No overflow anywhere */
   .cases__panel-inner { max-height: none !important; }
 }
+
+/* =====================================================
+   PREMIUM REFINEMENT PASS — estetica, ritmo, profondità
+   ===================================================== */
+
+/* ── 1. CSS Variables upgrade ── */
+:root {
+  --transition-spring: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-sm: 0 1px 3px rgba(28,28,28,.06), 0 1px 2px rgba(28,28,28,.04);
+  --shadow-md: 0 4px 16px rgba(28,28,28,.08), 0 1px 4px rgba(28,28,28,.04);
+  --shadow-lg: 0 12px 40px rgba(28,28,28,.12), 0 4px 12px rgba(28,28,28,.06);
+  --shadow-xl: 0 24px 64px rgba(28,28,28,.16), 0 8px 24px rgba(28,28,28,.08);
+  --shadow-primary: 0 16px 40px rgba(224,24,92,.28), 0 4px 12px rgba(224,24,92,.14);
+}
+
+/* ── 2. Bottoni — micro-interazioni più sofisticate ── */
+.btn {
+  transition: transform var(--transition-spring), box-shadow 0.3s ease, background-color 0.2s ease !important;
+  letter-spacing: 0.01em;
+}
+.btn--primary {
+  box-shadow: 0 2px 8px rgba(224,24,92,.2), inset 0 1px 0 rgba(255,255,255,.15);
+}
+.btn--primary:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: var(--shadow-primary) !important;
+}
+.btn--primary:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(224,24,92,.25) !important;
+}
+.btn--lg {
+  padding: 16px 32px !important;
+  font-size: 14.5px !important;
+  letter-spacing: 0.02em;
+}
+
+/* ── 3. Eyebrow — coerenza e respiro ── */
+.eyebrow {
+  letter-spacing: 0.16em !important;
+  font-size: 0.7rem !important;
+  opacity: 0.9;
+}
+
+/* ── 4. Sezione La risposta — ritmo e proporzioni ── */
+.solution__inner {
+  gap: clamp(3rem, 5vw, 5rem) !important;
+  align-items: center !important;
+}
+.solution__title {
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+  margin-bottom: var(--space-md) !important;
+}
+.solution__copy {
+  font-size: 1rem !important;
+  line-height: 1.8 !important;
+  color: rgba(243,239,224,.72) !important;
+}
+.solution__list-item {
+  padding: 14px 0 !important;
+  gap: 14px !important;
+}
+.solution__closing {
+  margin-top: var(--space-lg) !important;
+  padding-top: var(--space-md) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  opacity: 0.9;
+}
+
+/* ── 5. Value-card / "Cosa cambia" — grid gap più generoso ── */
+.grid-3 {
+  gap: 22px !important;
+}
+.value-card__text {
+  font-size: 0.9375rem !important;
+  line-height: 1.7 !important;
+  color: rgba(28,28,28,.68) !important;
+}
+.value-card__title {
+  font-size: 1.05rem !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 8px !important;
+}
+.value-props__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
+.value-props__subtitle {
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+  margin-top: 0.75rem;
+  color: rgba(28,28,28,.58) !important;
+  max-width: 520px;
+}
+.value-props__cta,
+.services__cta {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem) !important;
+}
+
+/* ── 6. Service cards — più corpo, più raffinatezza ── */
+.service-card {
+  min-height: 300px !important;
+  padding: 36px 30px 32px !important;
+  border-radius: 22px !important;
+  transition: border-color 0.4s ease, transform var(--transition-spring), box-shadow 0.4s ease !important;
+}
+.service-card__title {
+  font-size: 16px !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.3 !important;
+  margin-bottom: 14px !important;
+}
+.service-card__text {
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  color: rgba(243,239,224,.58) !important;
+}
+.service-card__icon {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 15px !important;
+  margin-bottom: 28px !important;
+}
+.services__grid {
+  gap: 18px !important;
+}
+.services__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
+.services__title {
+  letter-spacing: -0.025em;
+}
+
+/* ── 7. Approccio ibrido — ora testo singolo, più impatto ── */
+.approach__inner {
+  max-width: 800px !important;
+}
+.approach__title {
+  font-size: clamp(1.9rem, 3.5vw, 3.2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: var(--space-lg) !important;
+}
+.approach__copy {
+  font-size: 1.05rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: var(--space-lg) !important;
+}
+.approach__list {
+  gap: 12px !important;
+  margin-bottom: var(--space-xl) !important;
+}
+.approach__list-item {
+  padding: 18px 20px;
+  background: rgba(28,28,28,.04);
+  border: 1px solid rgba(28,28,28,.07);
+  border-radius: 14px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
+  gap: 18px !important;
+}
+.approach__list-item:hover {
+  background: rgba(224,24,92,.05);
+  border-color: rgba(224,24,92,.18);
+  transform: translateX(4px);
+}
+.approach__list-label {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+.approach__list-desc {
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: rgba(28,28,28,.58) !important;
+}
+.approach__closing {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  color: rgba(28,28,28,.85) !important;
+  border-top: 1px solid rgba(28,28,28,.1) !important;
+  padding-top: var(--space-lg) !important;
+}
+
+/* ── 8. Benefits — più profondità, meno piatto ── */
+.benefits__grid {
+  gap: 14px !important;
+}
+.benefit-item {
+  padding: 28px 20px !important;
+  border-radius: 18px !important;
+  background: rgba(243,239,224,.04) !important;
+  border: 1px solid rgba(243,239,224,.08) !important;
+  gap: 16px !important;
+  transition: transform var(--transition-spring), background 0.3s, box-shadow 0.3s !important;
+}
+.benefit-item:hover {
+  transform: translateY(-5px) !important;
+  background: rgba(243,239,224,.08) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,.28), 0 0 0 1px rgba(224,24,92,.15) !important;
+}
+.benefit-item__icon {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 16px !important;
+  background: rgba(224,24,92,.1) !important;
+  box-shadow: 0 8px 20px -8px rgba(224,24,92,.4);
+  transition: transform var(--transition-spring);
+}
+.benefit-item:hover .benefit-item__icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+.benefit-item__text {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  font-weight: 500 !important;
+  color: rgba(243,239,224,.88) !important;
+  letter-spacing: 0.005em;
+}
+
+/* ── 9. Referenze — main image più impattante ── */
+.ref-main {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-xl) !important;
+  transition: box-shadow 0.4s ease !important;
+}
+.ref-main:hover {
+  box-shadow: 0 32px 80px rgba(28,28,28,.2) !important;
+}
+.ref-tab {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform var(--transition-spring) !important;
+}
+.ref-tab:hover,
+.ref-tab--active {
+  transform: translateY(-3px) !important;
+}
+.cases__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
+.cases__title {
+  letter-spacing: -0.025em !important;
+}
+
+/* ── 10. Final CTA — più impatto visivo ── */
+.final-cta__title {
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
+}
+.final-cta__copy {
+  font-size: 1.05rem !important;
+  line-height: 1.8 !important;
+  color: rgba(243,239,224,.78) !important;
+}
+.final-cta__reassurance-item {
+  font-size: 0.9375rem !important;
+  line-height: 1.5 !important;
+  color: rgba(243,239,224,.82) !important;
+  padding: 4px 0;
+}
+.final-cta__divider {
+  width: 40px !important;
+  height: 2px !important;
+  margin-bottom: var(--space-xl) !important;
+  opacity: 0.8;
+}
+
+/* ── 11. Spacing sezioni — ritmo verticale più generoso ── */
+.section {
+  padding-top: clamp(72px, 8vw, 120px) !important;
+  padding-bottom: clamp(72px, 8vw, 120px) !important;
+}
+
+/* ── 12. Animate-on-scroll — transizione più elegante ── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+.animate-on-scroll.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── 13. display-lg refinement ── */
+.display-lg {
+  font-size: clamp(1.9rem, 3.8vw, 3rem) !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.1 !important;
+}
+
