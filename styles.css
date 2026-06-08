@@ -1082,7 +1082,8 @@ button, input, textarea, select {
   margin-bottom: 0;
 }
 .problem__header .problem__tag {
-  justify-content: center;
+  display: block;
+  text-align: center;
 }
 
 /* 3 card in griglia */
