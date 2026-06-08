@@ -1088,16 +1088,6 @@ button, input, textarea, select {
   text-align: center;
 }
 
-/* divisore decorativo */
-.problem__header::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--color-primary);
-  margin: 28px auto 0;
-  border-radius: 2px;
-}
 
 /* ══ SINISTRA ══ */
 
