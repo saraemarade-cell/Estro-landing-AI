@@ -232,39 +232,45 @@
           </p>
         </header>
 
-        <ul class="problem__cards" aria-label="Driver del problema">
+        <div class="grid-3" role="list">
 
-          <li class="problem__feat animate-on-scroll delay-2">
-            <div class="problem__feat-ico" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <article class="value-card value-card--feat animate-on-scroll delay-1" role="listitem">
+            <span class="value-card__num" aria-hidden="true">01</span>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
             </div>
-            <div class="problem__feat-body">
-              <span class="problem__feat-t">Output moltiplicato, coerenza dimezzata</span>
-              <span class="problem__feat-d">Ogni canale richiede formati e cadenze diverse. La brand identity si frantuma senza una regia centralizzata.</span>
-            </div>
-          </li>
+            <h3 class="value-card__title">Output moltiplicato, coerenza dimezzata</h3>
+            <span class="value-card__strength">Brand identity a rischio</span>
+            <p class="value-card__text">
+              Ogni canale richiede formati e cadenze diverse. La brand identity si frantuma senza una regia centralizzata.
+            </p>
+          </article>
 
-          <li class="problem__feat animate-on-scroll delay-2">
-            <div class="problem__feat-ico" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 8 12 12 14 14"/></svg>
+          <article class="value-card animate-on-scroll delay-2" role="listitem">
+            <span class="value-card__num" aria-hidden="true">02</span>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 8 12 12 14 14"/></svg>
             </div>
-            <div class="problem__feat-body">
-              <span class="problem__feat-t">Time-to-market impossibile da rispettare</span>
-              <span class="problem__feat-d">I cicli di revisione si allungano mentre il mercato accelera. Approvazioni e brief bloccano la produzione.</span>
-            </div>
-          </li>
+            <h3 class="value-card__title">Time-to-market impossibile da rispettare</h3>
+            <span class="value-card__strength">Cicli di revisione infiniti</span>
+            <p class="value-card__text">
+              I cicli di revisione si allungano mentre il mercato accelera. Approvazioni e brief bloccano la produzione.
+            </p>
+          </article>
 
-          <li class="problem__feat animate-on-scroll delay-3">
-            <div class="problem__feat-ico" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <article class="value-card animate-on-scroll delay-3" role="listitem">
+            <span class="value-card__num" aria-hidden="true">03</span>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <div class="problem__feat-body">
-              <span class="problem__feat-t">Strumenti AI adottati senza metodo</span>
-              <span class="problem__feat-d">Tool isolati moltiplicano il rumore. Senza processo, l'AI genera costo aggiuntivo, non valore.</span>
-            </div>
-          </li>
+            <h3 class="value-card__title">Strumenti AI adottati senza metodo</h3>
+            <span class="value-card__strength">Costo aggiuntivo, zero valore</span>
+            <p class="value-card__text">
+              Tool isolati moltiplicano il rumore. Senza processo, l'AI genera costo aggiuntivo, non valore.
+            </p>
+          </article>
 
-        </ul>
+        </div>
 
       </div>
     </section>

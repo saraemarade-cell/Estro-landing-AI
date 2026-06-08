@@ -1099,56 +1099,6 @@ button, input, textarea, select {
   border-radius: 2px;
 }
 
-/* 3 card in griglia */
-.problem__cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.problem__cards .problem__feat {
-  flex-direction: column;
-  gap: 0;
-  padding: 32px 28px 32px;
-  border: 1px solid rgba(28,28,28,.1);
-  border-top: 3px solid var(--color-primary);
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: 0 4px 24px rgba(28,28,28,.06);
-  transition: border-color .25s, box-shadow .3s, transform .3s;
-}
-.problem__cards .problem__feat:first-child { border-top: 3px solid var(--color-primary); }
-.problem__cards .problem__feat:hover {
-  box-shadow: 0 16px 48px rgba(224,24,92,.12);
-  transform: translateY(-5px);
-  padding-left: 28px;
-}
-.problem__cards .problem__feat-ico {
-  margin-bottom: 20px;
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: rgba(224,24,92,.08);
-  color: var(--color-primary);
-}
-.problem__cards .problem__feat-ico svg { stroke: var(--color-primary); }
-.problem__cards .problem__feat-t {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -.3px;
-  margin-bottom: 10px;
-  display: block;
-  color: var(--color-dark);
-}
-.problem__cards .problem__feat-d {
-  font-size: 14px;
-  line-height: 1.65;
-  color: rgba(28,28,28,.6);
-  display: block;
-}
-
 /* ══ SINISTRA ══ */
 
 /* eyebrow — VI .sl-tag / .hero-eye con linea */
