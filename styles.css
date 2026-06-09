@@ -5542,3 +5542,90 @@ button, input, textarea, select {
   .approach-card { padding: 1.5rem; }
   .approach-card__index { font-size: 3.5rem; }
 }
+
+/* ══════════════════════════════════════════════════════
+   APPROACH CARDS — animazioni tech
+   1. Scan line: banda luminosa che scorre dall'alto in basso
+   2. Border glow: il top accent pulsa periodicamente
+   3. Icon pulse: il tile icona emette un glow ciclico
+   ══════════════════════════════════════════════════════ */
+
+/* ── Variabili RGB per keyframes condivisi ── */
+.approach-card--real { --ac: 230, 54, 118; }
+.approach-card--ai   { --ac: 0, 212, 255;  }
+
+/* ── 1. Scan line via ::after ── */
+.approach-card::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent            0%,
+    rgba(var(--ac), .04)  35%,
+    rgba(var(--ac), .13)  50%,
+    rgba(var(--ac), .04)  65%,
+    transparent           100%
+  );
+  transform: translateY(-80px);
+  pointer-events: none;
+  animation: approach-scan 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  z-index: 1;
+}
+
+/* Sfasa la card AI di 2.5s */
+.approach-card--ai::after { animation-delay: 2.5s; }
+
+@keyframes approach-scan {
+  0%    { transform: translateY(-80px); opacity: 0; }
+  8%    { opacity: 1; }
+  88%   { opacity: .7; }
+  100%  { transform: translateY(520px); opacity: 0; }
+}
+
+/* ── 2. Border glow pulse (box-shadow sulla card intera) ── */
+.approach-card--real {
+  animation: glow-real 4s ease-in-out infinite;
+}
+.approach-card--ai {
+  animation: glow-ai 4s ease-in-out 1.8s infinite;
+}
+
+@keyframes glow-real {
+  0%, 100% { box-shadow: 0 1px 0 0 #e63676 inset, 0 16px 48px rgba(0,0,0,.5); }
+  50%      { box-shadow: 0 1px 0 0 #e63676 inset, 0 16px 48px rgba(0,0,0,.5),
+                         0 0 32px rgba(230,54,118,.18), 0 0 0 1px rgba(230,54,118,.12); }
+}
+@keyframes glow-ai {
+  0%, 100% { box-shadow: 0 1px 0 0 #00d4ff inset, 0 16px 48px rgba(0,0,0,.5); }
+  50%      { box-shadow: 0 1px 0 0 #00d4ff inset, 0 16px 48px rgba(0,0,0,.5),
+                         0 0 32px rgba(0,212,255,.15), 0 0 0 1px rgba(0,212,255,.10); }
+}
+
+/* ── 3. Icon pulse ── */
+.approach-card--real .approach-card__icon-wrap {
+  animation: icon-real 4s ease-in-out infinite;
+}
+.approach-card--ai .approach-card__icon-wrap {
+  animation: icon-ai 4s ease-in-out 1.8s infinite;
+}
+
+@keyframes icon-real {
+  0%, 100% { box-shadow: none; }
+  50%      { box-shadow: 0 0 18px rgba(230,54,118,.45), 0 0 6px rgba(230,54,118,.25); }
+}
+@keyframes icon-ai {
+  0%, 100% { box-shadow: none; }
+  50%      { box-shadow: 0 0 18px rgba(0,212,255,.40), 0 0 6px rgba(0,212,255,.22); }
+}
+
+/* Pausa hover: interrompe scan e glow per non distrarre */
+.approach-card:hover,
+.approach-card:hover .approach-card__icon-wrap {
+  animation-play-state: paused;
+}
+.approach-card:hover::after {
+  animation-play-state: paused;
+}
