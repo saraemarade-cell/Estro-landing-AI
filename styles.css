@@ -4344,7 +4344,7 @@ button, input, textarea, select {
   gap: 10px;
 }
 .fg label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: rgba(243,239,224,.45);
   letter-spacing: .3px;
