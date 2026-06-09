@@ -1876,6 +1876,7 @@ button, input, textarea, select {
 
 .services__header {
   margin-bottom: var(--space-xl);
+  text-align: center;
 }
 
 .services__title {
@@ -4852,7 +4853,6 @@ button, input, textarea, select {
 
   /* Section headers */
   .value-props__header,
-  .services__header,
   .benefits__header { text-align: left; }
   .value-props__subtitle { max-width: 100%; }
 
