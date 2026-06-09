@@ -2269,7 +2269,7 @@ button, input, textarea, select {
 
 .approach__title {
   color: var(--color-dark);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 .approach__em {
   font-style: normal;
