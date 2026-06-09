@@ -430,8 +430,9 @@ button, input, textarea, select {
 .hero {
   padding: 0;
   background: var(--color-dark);
-  height: 100vh;
-  min-height: 600px;
+  margin-top: 58px;
+  height: calc(100vh - 58px);
+  min-height: 540px;
   position: relative;
   overflow: hidden;
 }
@@ -451,22 +452,22 @@ button, input, textarea, select {
   inset: 0;
   z-index: 2;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 0;
-  padding: 0 48px 60px;
+  gap: 48px;
+  padding: 40px 48px;
   box-sizing: border-box;
 }
 
-/* ---- Left column: text overlay bottom-left ---- */
+/* ---- Left column: title/subtitle centered-left ---- */
 .hero__left {
   flex: 1 1 0;
   min-width: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-right: 40px;
+  justify-content: center;
+  padding-right: 0;
 }
 
 /* ---- Video wrapper: full-viewport background ---- */
@@ -703,12 +704,12 @@ button, input, textarea, select {
   pointer-events: none;
 }
 
-/* ---- Text block: bottom-left overlay ---- */
+/* ---- Text block: centered on left half ---- */
 .hero__text-block {
   position: relative;
   z-index: 4;
   padding: 0;
-  max-width: 620px;
+  max-width: 580px;
 }
 
 .hero__text-block-inner {
@@ -778,7 +779,7 @@ button, input, textarea, select {
   border-radius: 16px;
   overflow-y: auto;
   max-height: calc(100vh - 140px);
-  align-self: flex-end;
+  align-self: center;
 }
 
 /* Micro-grid behind the form */
@@ -4861,7 +4862,9 @@ button, input, textarea, select {
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
+    margin-top: 58px;
+    height: calc(100vh - 58px);
+    min-height: 500px;
   }
   .hero__left {
     flex: 1;
