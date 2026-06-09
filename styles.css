@@ -274,7 +274,7 @@ button, input, textarea, select {
   z-index: 100;
   background-color: transparent;
   transition: background-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
-  padding: 18px 0;
+  padding: 14px 0;
 }
 
 .navbar.scrolled {
@@ -290,7 +290,7 @@ button, input, textarea, select {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 0 48px;
+  padding: 0 32px;
 }
 
 .navbar__logo {
