@@ -1352,12 +1352,13 @@ button, input, textarea, select {
 }
 
 .solution__list-item::before {
-  content: '';
+  display: none;
+}
+
+.solution__list-icon {
   flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
+  color: var(--color-primary);
+  opacity: 0.9;
 }
 
 .solution__closing {
