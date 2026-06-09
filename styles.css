@@ -273,30 +273,37 @@ button, input, textarea, select {
   right: 0;
   z-index: 100;
   background-color: transparent;
-  transition: background-color var(--transition-base), box-shadow var(--transition-base);
-  padding: 14px 0;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
+  padding: 18px 0;
 }
 
 .navbar.scrolled {
-  background: rgba(28,28,28,.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(11,11,12,.72);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 10px 0;
 }
 
 .navbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .navbar__logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  transition: transform .5s cubic-bezier(0.22,1,0.36,1);
+}
+
+.navbar__logo:hover {
+  transform: rotate(-4deg) scale(1.04);
 }
 
 .navbar__logo img {
-  height: 42px;
+  height: 30px;
   width: auto;
   object-fit: contain;
 }
@@ -304,19 +311,40 @@ button, input, textarea, select {
 .navbar__nav {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 4px;
 }
 
 .navbar__link {
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(243,239,224,.6);
-  transition: color .2s;
-  letter-spacing: .2px;
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: rgba(243,239,224,.7);
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: color .2s, background .2s;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 14px;
+  right: 14px;
+  height: 1.5px;
+  background: var(--color-light);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .3s cubic-bezier(0.22,1,0.36,1);
 }
 
 .navbar__link:hover {
   color: var(--color-light);
+  background: rgba(243,239,224,.06);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
 }
 
 
