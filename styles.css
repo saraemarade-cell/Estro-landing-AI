@@ -4807,6 +4807,9 @@ button, input, textarea, select {
 
   .container { padding: 0 32px; }
 
+  /* Hero: navbar is smaller, reduce dead space */
+  .hero { padding-top: 80px; }
+
   .solution__inner { gap: var(--space-lg); }
 
   .ref-tabs { gap: 10px; }
@@ -4831,6 +4834,8 @@ button, input, textarea, select {
   .navbar__inner { display: contents; }
 
   /* ── HERO ── */
+  .hero { padding-top: 58px; min-height: auto; }
+  .hero__inner { min-height: unset; }
   .hero__left {
     display: flex;
     flex-direction: column;
@@ -4923,6 +4928,7 @@ button, input, textarea, select {
   .container { padding: 0 16px; }
 
   /* Hero */
+  .hero { padding-top: 52px; }
   .hero__video-wrapper { aspect-ratio: 4/3; height: auto; }
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
