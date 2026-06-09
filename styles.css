@@ -5437,7 +5437,6 @@ button, input, textarea, select {
 .approach-card--real .approach-card__icon-wrap { color: var(--color-primary); background: rgba(230,54,118,.1); border-color: rgba(230,54,118,.2); }
 .approach-card--real .approach-card__badge { color: var(--color-primary); border-color: rgba(230,54,118,.25); background: rgba(230,54,118,.07); }
 .approach-card--real .approach-card__dot { background: var(--color-primary); }
-.approach-card--real .approach-card__index { -webkit-text-stroke: 1px rgba(230,54,118,.25); }
 
 /* ── Variante AI: accent cyan elettrico ── */
 .approach-card--ai::before {
@@ -5456,22 +5455,24 @@ button, input, textarea, select {
 .approach-card--ai .approach-card__icon-wrap { color: #00d4ff; background: rgba(0,212,255,.08); border-color: rgba(0,212,255,.2); }
 .approach-card--ai .approach-card__badge { color: #00d4ff; border-color: rgba(0,212,255,.25); background: rgba(0,212,255,.07); }
 .approach-card--ai .approach-card__dot { background: #00d4ff; }
-.approach-card--ai .approach-card__index { -webkit-text-stroke: 1px rgba(0,212,255,.2); }
 
 /* ── Elementi interni ── */
 .approach-card__top {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1.5rem;
 }
 
 .approach-card__index {
-  font-size: 4.5rem;
-  font-weight: 800;
+  position: absolute;
+  bottom: -10px;
+  right: 16px;
+  font-family: var(--font-display);
+  font-size: 96px;
   line-height: 1;
-  color: transparent;
-  letter-spacing: -0.04em;
+  letter-spacing: -6px;
+  color: rgba(243, 239, 224, 0.04);
+  pointer-events: none;
   user-select: none;
 }
 
@@ -5540,7 +5541,7 @@ button, input, textarea, select {
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .approach-card { padding: 1.5rem; }
-  .approach-card__index { font-size: 3.5rem; }
+  .approach-card__index { font-size: 72px; }
 }
 
 /* ══════════════════════════════════════════════════════
