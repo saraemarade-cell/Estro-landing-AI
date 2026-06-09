@@ -5282,26 +5282,39 @@ button, input, textarea, select {
    spuntano sopra il bordo superiore della carta frontale.
    ─────────────────────────────────────────────────────── */
 
-/* Container: altezza = carte + spazio peek in alto */
+/* ──────────────────────────────────────────────────
+   PITCH DECK — deck di carte impilate
+   Ogni carta è posizionata con `bottom` esplicito
+   così la sua sommità sporge chiaramente sopra
+   quella frontale, creando una scia visibile.
+
+   Card --1 = frontale (z 4, bottom 0)
+   Card --2 = +90px sopra (z 3)
+   Card --3 = +180px sopra (z 2)
+   Card --4 = +270px sopra (z 1)
+
+   Peek verificato (carta 280px larga → h ≈ 373px):
+     --2 peek: ~55px    --3 peek: ~115px    --4 peek: ~175px
+   ────────────────────────────────────────────────── */
+
 .pitch-deck {
   position: relative;
   width: 100%;
-  max-width: 460px;
-  /* altezza frontale (aspect 3/4 di 460px = 613px) + 90px peek */
-  height: calc(460px * 4 / 3 + 90px);
+  max-width: 300px;
+  /* h = altezza carta (400px @ 300px wide) + offset max (270) + margine (20) */
+  height: 690px;
   margin: 0 auto;
 }
 
-/* Base comune a tutte le carte */
 .pitch-deck__card {
   position: absolute;
   left: 0; right: 0;
-  bottom: 0;                   /* tutte ancorate in basso */
   border-radius: 16px;
   overflow: hidden;
   transform-origin: bottom center;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s ease;
 }
 
 .pitch-deck__card img {
@@ -5312,59 +5325,65 @@ button, input, textarea, select {
   object-position: center top;
 }
 
-/* ── Carta frontale — in primo piano, nessun offset ── */
+/* ── Carta frontale ── */
 .pitch-deck__card--1 {
+  bottom: 0;
   z-index: 4;
-  box-shadow: 0 24px 64px rgba(0,0,0,.55), 0 6px 20px rgba(0,0,0,.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.25);
 }
 
-/* ── Carta 2 — scala 94%, sale di 30px ── */
+/* ── Carta 2: 90px sopra, scala 95% ── */
 .pitch-deck__card--2 {
+  bottom: 90px;
   z-index: 3;
-  transform: scale(0.94) translateY(-32px);
-  opacity: 0.85;
-  box-shadow: 0 16px 48px rgba(0,0,0,.42);
+  transform: scale(0.95);
+  opacity: 0.88;
+  box-shadow: 0 14px 44px rgba(0,0,0,.42);
 }
 
-/* ── Carta 3 — scala 88%, sale di 60px ── */
+/* ── Carta 3: 180px sopra, scala 90% ── */
 .pitch-deck__card--3 {
+  bottom: 180px;
   z-index: 2;
-  transform: scale(0.88) translateY(-68px);
-  opacity: 0.68;
-  box-shadow: 0 12px 36px rgba(0,0,0,.35);
+  transform: scale(0.90);
+  opacity: 0.72;
+  box-shadow: 0 10px 32px rgba(0,0,0,.35);
 }
 
-/* ── Carta 4 — scala 82%, sale di 90px ── */
+/* ── Carta 4: 270px sopra, scala 85% ── */
 .pitch-deck__card--4 {
+  bottom: 270px;
   z-index: 1;
-  transform: scale(0.82) translateY(-108px);
-  opacity: 0.48;
-  box-shadow: 0 8px 24px rgba(0,0,0,.28);
+  transform: scale(0.85);
+  opacity: 0.55;
+  box-shadow: 0 6px 22px rgba(0,0,0,.28);
 }
 
 /* hover: lift della carta frontale */
 .pitch-deck:hover .pitch-deck__card--1 {
-  transform: translateY(-12px);
-  box-shadow: 0 36px 80px rgba(0,0,0,.6), 0 10px 28px rgba(0,0,0,.28);
+  transform: translateY(-10px);
+  box-shadow: 0 32px 72px rgba(0,0,0,.60), 0 10px 26px rgba(0,0,0,.28);
 }
 
-/* ── Responsive ── */
+/* ── Responsive 768px ── */
 @media (max-width: 768px) {
   .pitch-deck {
     max-width: 100%;
-    height: calc((100vw - 96px) * 4 / 3 + 72px);
+    /* card w = 100vw-96px, h = w*4/3, + 270px offset + 20 margine */
+    height: calc((100vw - 96px) * 4 / 3 + 290px);
   }
-  .pitch-deck__card--2 { transform: scale(0.94) translateY(-26px); }
-  .pitch-deck__card--3 { transform: scale(0.88) translateY(-54px); }
-  .pitch-deck__card--4 { transform: scale(0.82) translateY(-86px); }
+  .pitch-deck__card--2 { bottom: 80px; }
+  .pitch-deck__card--3 { bottom: 160px; }
+  .pitch-deck__card--4 { bottom: 240px; }
 }
 
+/* ── Responsive 480px ── */
 @media (max-width: 480px) {
   .pitch-deck {
-    height: calc((100vw - 32px) * 4 / 3 + 60px);
+    height: calc((100vw - 32px) * 4 / 3 + 250px);
   }
   .pitch-deck__card img { aspect-ratio: 4/3; }
-  .pitch-deck__card--2 { transform: scale(0.94) translateY(-22px); }
-  .pitch-deck__card--3 { transform: scale(0.88) translateY(-44px); }
-  .pitch-deck__card--4 { transform: scale(0.82) translateY(-68px); }
+  .pitch-deck__card--2 { bottom: 70px; }
+  .pitch-deck__card--3 { bottom: 140px; }
+  .pitch-deck__card--4 { bottom: 210px; }
 }
