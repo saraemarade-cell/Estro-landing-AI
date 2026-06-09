@@ -247,27 +247,21 @@
             </div>
           </div>
 
-          <!-- ── Deck carousel ── -->
-          <div class="deck-carousel" id="solution-carousel" aria-label="Case studies visivi">
-            <div class="deck-carousel__stage">
-              <div class="deck-card" data-index="0">
+          <!-- ── Ring Carousel ── -->
+          <div class="ring-carousel" id="solution-carousel" aria-label="Case studies visivi">
+            <div class="ring-carousel__stage">
+              <div class="ring-card" data-index="0">
                 <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
               </div>
-              <div class="deck-card" data-index="1">
+              <div class="ring-card" data-index="1">
                 <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
               </div>
-              <div class="deck-card" data-index="2">
+              <div class="ring-card" data-index="2">
                 <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
               </div>
-              <div class="deck-card" data-index="3">
+              <div class="ring-card" data-index="3">
                 <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
               </div>
-            </div>
-            <div class="deck-carousel__dots" role="tablist" aria-label="Navigazione case study">
-              <button class="deck-dot" data-goto="0" role="tab" aria-label="Bustomotor"></button>
-              <button class="deck-dot" data-goto="1" role="tab" aria-label="Fuoco Bravo"></button>
-              <button class="deck-dot" data-goto="2" role="tab" aria-label="Miu Miu"></button>
-              <button class="deck-dot" data-goto="3" role="tab" aria-label="Prada"></button>
             </div>
           </div>
 
@@ -997,76 +991,146 @@
   </script>
 
   <script>
-  /* ── Deck Carousel ───────────────────────────────────── */
+  /* ── Ring Carousel ───────────────────────────────────────
+     Una card featured in cima, le altre 3 orbitano lente
+     in un'ellisse in basso. Click su una card in orbita →
+     vola in su e diventa featured. Tutto via rAF + lerp,
+     nessuna transizione CSS sulle posizioni.
+  ──────────────────────────────────────────────────────── */
   (function () {
     var el = document.getElementById('solution-carousel');
     if (!el) return;
 
-    var cards = Array.from(el.querySelectorAll('.deck-card'));
-    var dots  = Array.from(el.querySelectorAll('.deck-dot'));
-    var n     = cards.length;
+    var stage  = el.querySelector('.ring-carousel__stage');
+    var cards  = Array.from(el.querySelectorAll('.ring-card'));
+    var N      = cards.length; // 4
     var active = 0;
-    var timer;
+    var ringAngle = 0;          // cresce continuamente → orbita
+    var paused = false;
+    var raf;
+    var autoTimer;
 
-    function render(prevActive) {
-      cards.forEach(function (card, i) {
-        var pos = (i - active + n) % n;
-        card.setAttribute('data-pos', pos);
-        /* snap direction hint for the exit animation */
-        if (i === prevActive && prevActive !== undefined) {
-          card.classList.add('deck-card--exit');
-          setTimeout(function () { card.classList.remove('deck-card--exit'); }, 50);
+    /* ── Dimensioni derivate dal container ── */
+    var SW, SH, FW, FH, FX, FY, OCX, OCY, ORX, ORY;
+
+    function measure() {
+      SW = stage.offsetWidth  || 320;
+      SH = stage.offsetHeight || 520;
+      FW = Math.round(SW * 0.72);       // featured width
+      FH = Math.round(FW * 4 / 3);     // 3:4
+      FX = SW / 2;
+      FY = FH / 2 + 16;                // top margin 16px
+      OCX = SW / 2;
+      OCY = SH - 68;                   // ellisse in basso
+      ORX = SW * 0.36;                 // semiasse orizz
+      ORY = SW * 0.10;                 // semiasse vert (piatto)
+    }
+
+    /* ── Stato interpolato per ogni card ── */
+    var cur = cards.map(function () {
+      return { x: 0, y: 0, w: 60, h: 80, op: 0.7 };
+    });
+
+    function lerp(a, b, k) { return a + (b - a) * k; }
+
+    /* ── Target position per ogni card nel frame corrente ── */
+    function targets() {
+      var res = [];
+      var slot = 0;
+      for (var i = 0; i < N; i++) {
+        if (i === active) {
+          res.push({ x: FX, y: FY, w: FW, h: FH, op: 1, z: 10, featured: true });
+        } else {
+          var a = ringAngle + (2 * Math.PI / (N - 1)) * slot;
+          var depth = (Math.sin(a) + 1) / 2; // 0=retro, 1=fronte
+          var ow = 64 + 20 * depth;
+          res.push({
+            x:  OCX + ORX * Math.cos(a),
+            y:  OCY + ORY * Math.sin(a),
+            w:  ow,
+            h:  ow * 4 / 3,
+            op: 0.45 + 0.50 * depth,
+            z:  Math.round(1 + 3 * depth),
+            featured: false
+          });
+          slot++;
         }
-      });
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle('active', i === active);
-        dot.setAttribute('aria-selected', i === active ? 'true' : 'false');
-      });
+      }
+      return res;
     }
 
-    function goTo(idx) {
-      var prev = active;
-      active = ((idx % n) + n) % n;
-      render(prev);
+    var K_SLOW = 0.06; // lerp lento per orbita
+    var K_FAST = 0.10; // lerp più reattivo per featured
+
+    function tick() {
+      if (!paused) ringAngle += 0.007; // ~900 frame/giro ≈ 15 sec
+
+      var tgt = targets();
+
+      for (var i = 0; i < N; i++) {
+        var k = tgt[i].featured ? K_FAST : K_SLOW;
+        cur[i].x  = lerp(cur[i].x,  tgt[i].x,  k);
+        cur[i].y  = lerp(cur[i].y,  tgt[i].y,  k);
+        cur[i].w  = lerp(cur[i].w,  tgt[i].w,  k);
+        cur[i].h  = lerp(cur[i].h,  tgt[i].h,  k);
+        cur[i].op = lerp(cur[i].op, tgt[i].op, k);
+
+        var c = cards[i];
+        c.style.left    = (cur[i].x - cur[i].w / 2) + 'px';
+        c.style.top     = (cur[i].y - cur[i].h / 2) + 'px';
+        c.style.width   = cur[i].w + 'px';
+        c.style.height  = cur[i].h + 'px';
+        c.style.opacity = cur[i].op;
+        c.style.zIndex  = tgt[i].z;
+        c.classList.toggle('ring-card--featured', tgt[i].featured);
+      }
+
+      raf = requestAnimationFrame(tick);
     }
 
-    function next() { goTo(active + 1); }
+    /* ── Inizializza senza salto (parte già nelle posizioni corrette) ── */
+    function init() {
+      measure();
+      var tgt = targets();
+      for (var i = 0; i < N; i++) {
+        cur[i] = { x: tgt[i].x, y: tgt[i].y, w: tgt[i].w, h: tgt[i].h, op: tgt[i].op };
+      }
+      tick();
+    }
 
-    /* Click on a background card → bring it front */
+    /* ── Auto-avanzamento ── */
+    function startAuto() {
+      autoTimer = setInterval(function () {
+        active = (active + 1) % N;
+      }, 4500);
+    }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+    el.addEventListener('mouseenter', function () { paused = true;  clearInterval(autoTimer); });
+    el.addEventListener('mouseleave', function () { paused = false; startAuto(); });
+
+    /* ── Click su card in orbita → featured ── */
     cards.forEach(function (card, i) {
       card.addEventListener('click', function () {
-        var pos = parseInt(card.getAttribute('data-pos'), 10);
-        if (pos !== 0) { goTo(i); resetTimer(); }
+        if (i !== active) { active = i; resetAuto(); }
       });
     });
 
-    /* Dot navigation */
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        goTo(parseInt(dot.dataset.goto, 10));
-        resetTimer();
-      });
-    });
-
-    /* Auto-advance */
-    function startTimer() { timer = setInterval(next, 4200); }
-    function resetTimer()  { clearInterval(timer); startTimer(); }
-
-    el.addEventListener('mouseenter', function () { clearInterval(timer); });
-    el.addEventListener('mouseleave', startTimer);
-
-    /* Touch/swipe */
-    var touchStartX = 0;
-    el.addEventListener('touchstart', function (e) {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
+    /* ── Swipe su mobile ── */
+    var tx0 = 0;
+    el.addEventListener('touchstart', function (e) { tx0 = e.touches[0].clientX; }, { passive: true });
     el.addEventListener('touchend', function (e) {
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40) { goTo(active + (dx < 0 ? 1 : -1)); resetTimer(); }
+      if (Math.abs(e.changedTouches[0].clientX - tx0) > 40) {
+        active = (active + (e.changedTouches[0].clientX < tx0 ? 1 : -1) + N) % N;
+        resetAuto();
+      }
     }, { passive: true });
 
-    render();
-    startTimer();
+    /* ── Resize ── */
+    window.addEventListener('resize', function () { measure(); }, { passive: true });
+
+    init();
+    startAuto();
   })();
   </script>
 

@@ -5277,177 +5277,81 @@ button, input, textarea, select {
 
 
 /* ══════════════════════════════════════════════════════
-   DECK CAROUSEL — mazzo di carte rotante
-   4 card sempre visibili, fan aperto verso destra.
-   La card frontale (data-pos="0") è dritta e grande;
-   quelle dietro ruotano progressivamente con
-   transform-origin: bottom center.
-   JS aggiorna data-pos su ogni card al click/auto-tick.
+   RING CAROUSEL — orbita circolare con featured card
+   Le card girano in un'ellisse in basso; al click una
+   vola in cima e diventa grande. Tutto JS-driven via rAF.
    ══════════════════════════════════════════════════════ */
 
-/* ── Container principale ── */
-.deck-carousel {
+.ring-carousel {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 340px;
   margin: 0 auto;
-  /* overflow visibile per mostrare il fan */
 }
 
-/* ── Stage: contiene le card in posizione assoluta ── */
-.deck-carousel__stage {
+.ring-carousel__stage {
   position: relative;
-  /* larghezza card + spazio fan a destra */
-  width: 260px;
-  /* altezza = card height (3/4 di 260px = ~347px) + margine superiore fan */
-  height: 430px;
-  /* le card ruotando sporgono a destra dello stage: ok, overflow visibile */
+  width: 100%;
+  height: 520px;
+  /* le card in orbita escono lateralmente: ok, overflow visibile */
   overflow: visible;
 }
 
-/* ── Card base ── */
-.deck-card {
+/* ── Card base: posizionata da JS via left/top/width/height ── */
+.ring-card {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 260px;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  /* pivot in fondo al centro: le card si aprono a ventaglio verso l'alto */
-  transform-origin: 50% 100%;
+  /* nessuna CSS transition sulla posizione: è il rAF che interpola */
+  box-shadow:
+    0 8px 28px rgba(0,0,0,.45),
+    0 2px 8px  rgba(0,0,0,.22);
+  /* transition solo su border-radius e box-shadow per il salto featured */
   transition:
-    transform  0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity    0.65s ease,
-    box-shadow 0.65s ease;
+    border-radius  0.5s ease,
+    box-shadow     0.5s ease;
   will-change: transform, opacity;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
-.deck-card img {
+.ring-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
   pointer-events: none;
   border-radius: inherit;
 }
 
-/* ── Slot 0: card frontale (attiva) ── */
-.deck-card[data-pos="0"] {
-  transform: rotate(0deg) scale(1) translateY(0);
-  z-index: 4;
-  opacity: 1;
-  box-shadow:
-    0 24px 64px rgba(0,0,0,.60),
-    0  6px 20px rgba(0,0,0,.28);
+/* ── Card featured: più bordi arrotondati, ombra prominente ── */
+.ring-card--featured {
+  border-radius: 20px;
   cursor: default;
-}
-
-/* ── Slot 1: prima card dietro ── */
-.deck-card[data-pos="1"] {
-  transform: rotate(8deg) scale(0.93);
-  z-index: 3;
-  opacity: 0.88;
   box-shadow:
-    0 16px 44px rgba(0,0,0,.44),
-    0  4px 14px rgba(0,0,0,.22);
-}
-.deck-card[data-pos="1"]:hover {
-  transform: rotate(7deg) scale(0.95);
-  opacity: 1;
+    0 28px 72px rgba(0,0,0,.65),
+    0  8px 24px rgba(0,0,0,.32);
 }
 
-/* ── Slot 2: seconda card dietro ── */
-.deck-card[data-pos="2"] {
-  transform: rotate(15deg) scale(0.86);
-  z-index: 2;
-  opacity: 0.70;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.36);
-}
-.deck-card[data-pos="2"]:hover {
-  transform: rotate(13deg) scale(0.88);
-  opacity: 0.85;
+/* ── Hover sulle card in orbita ── */
+.ring-card:not(.ring-card--featured):hover {
+  filter: brightness(1.18);
 }
 
-/* ── Slot 3: card più in fondo ── */
-.deck-card[data-pos="3"] {
-  transform: rotate(22deg) scale(0.79);
-  z-index: 1;
-  opacity: 0.50;
-  box-shadow:
-    0  6px 18px rgba(0,0,0,.28);
-}
-.deck-card[data-pos="3"]:hover {
-  transform: rotate(20deg) scale(0.81);
-  opacity: 0.65;
+/* ── Ellisse decorativa opzionale (anello visivo) ── */
+.ring-carousel__track {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.06);
+  pointer-events: none;
 }
 
-/* ── Hover generale sul carousel: lieve lift della card attiva ── */
-.deck-carousel:hover .deck-card[data-pos="0"] {
-  transform: rotate(0deg) scale(1) translateY(-8px);
-  box-shadow:
-    0 32px 72px rgba(0,0,0,.65),
-    0  8px 24px rgba(0,0,0,.30);
-}
-
-/* ── Dot navigation ── */
-.deck-carousel__dots {
-  display: flex;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-top: 20px;
-  padding-left: 4px;
-}
-
-.deck-dot {
-  width: 28px;
-  height: 4px;
-  border-radius: 2px;
-  border: none;
-  padding: 0;
-  background: rgba(255,255,255,0.22);
-  cursor: pointer;
-  transition: background 0.3s ease, width 0.3s ease;
-}
-
-.deck-dot.active {
-  width: 44px;
-  background: var(--color-accent, #e63676);
-}
-
-.deck-dot:hover:not(.active) {
-  background: rgba(255,255,255,0.45);
-}
-
-/* ── Responsive 768px ── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .deck-carousel {
-    max-width: 100%;
-  }
-  .deck-carousel__stage {
-    width: 220px;
-    height: 370px;
-    margin: 0 auto;
-  }
-  .deck-card {
-    width: 220px;
-  }
+  .ring-carousel { max-width: 100%; }
+  .ring-carousel__stage { height: 460px; }
 }
 
-/* ── Responsive 480px ── */
 @media (max-width: 480px) {
-  .deck-carousel__stage {
-    width: 200px;
-    height: 340px;
-  }
-  .deck-card {
-    width: 200px;
-  }
-  .deck-card[data-pos="1"] { transform: rotate(7deg) scale(0.93); }
-  .deck-card[data-pos="2"] { transform: rotate(13deg) scale(0.86); }
-  .deck-card[data-pos="3"] { transform: rotate(19deg) scale(0.79); }
+  .ring-carousel__stage { height: 400px; }
 }
