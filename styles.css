@@ -5052,6 +5052,18 @@ button, input, textarea, select {
 .grid-3 {
   gap: 22px !important;
 }
+
+/* ── Approccio ibrido — 2 card centrate ── */
+.approach__cards {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .approach__cards {
+    grid-template-columns: 1fr;
+  }
+}
 .value-card__text {
   font-size: 0.9375rem !important;
   line-height: 1.7 !important;
