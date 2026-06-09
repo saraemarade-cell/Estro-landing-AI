@@ -4734,8 +4734,8 @@ button, input, textarea, select {
   overflow: hidden;
 }
 .ref-tab__img img {
-  max-width: 260px;
-  max-height: 100px;
+  max-width: 85%;
+  max-height: 130px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -4807,8 +4807,8 @@ button, input, textarea, select {
   .solution__inner { gap: var(--space-lg); }
 
   .ref-tabs { gap: 10px; }
-  .ref-tab__img { height: 100px; padding: 16px 24px; }
-  .ref-tab__img img { max-width: 150px; max-height: 60px; }
+  .ref-tab__img { height: 110px; padding: 16px 24px; }
+  .ref-tab__img img { max-width: 80%; max-height: 80px; }
 
   .ft-ghost { font-size: clamp(120px, 22vw, 300px); }
 }
@@ -4894,7 +4894,7 @@ button, input, textarea, select {
     border-radius: 0;
     padding: 14px 16px;
   }
-  .ref-tab__img img { max-width: 160px; max-height: 90px; }
+  .ref-tab__img img { max-width: 80%; max-height: 110px; }
   .ref-tab__desc { display: none; }
   .ref-tab__body { padding: 14px 16px; justify-content: center; }
 
@@ -4937,7 +4937,7 @@ button, input, textarea, select {
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
-  .ref-tab__img img { max-width: 180px; max-height: 100px; }
+  .ref-tab__img img { max-width: 80%; max-height: 120px; }
   .ref-tab__desc { display: none; }
 
   /* Sol pillars */
