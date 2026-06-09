@@ -473,35 +473,53 @@
         <div class="grid-2 approach__cards" role="list">
 
           <!-- Card 1 — Produzione reale -->
-          <article class="value-card animate-on-scroll delay-1" role="listitem">
-            <span class="value-card__num" aria-hidden="true">01</span>
-            <div class="value-card__icon" aria-hidden="true">
-              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="19" x2="12" y2="22"></line>
-              </svg>
+          <article class="approach-card approach-card--real animate-on-scroll delay-1" role="listitem">
+            <div class="approach-card__grid" aria-hidden="true"></div>
+            <div class="approach-card__top">
+              <span class="approach-card__index">01</span>
+              <div class="approach-card__icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="9" y="2" width="6" height="11" rx="3"></rect>
+                  <path d="M5 10a7 7 0 0 0 14 0"></path>
+                  <line x1="12" y1="19" x2="12" y2="22"></line>
+                </svg>
+              </div>
             </div>
-            <h3 class="value-card__title">Produzione reale</h3>
-            <span class="value-card__strength">Precisione quando serve</span>
-            <p class="value-card__text">
-              Shooting, video complesso, regia — dove l'AI non basta.
-              Qualità artigianale senza compromessi.
+            <div class="approach-card__badge">Produzione tradizionale</div>
+            <h3 class="approach-card__title">Reale quando conta</h3>
+            <p class="approach-card__text">
+              Shooting, video complesso, regia sul campo.
+              Dove la macchina non arriva, arriva l'uomo.
             </p>
+            <ul class="approach-card__list" aria-label="Caratteristiche">
+              <li><span class="approach-card__dot"></span>Riprese in location</li>
+              <li><span class="approach-card__dot"></span>Regia e direzione artistica</li>
+              <li><span class="approach-card__dot"></span>Post-produzione tradizionale</li>
+            </ul>
           </article>
 
           <!-- Card 2 — AI -->
-          <article class="value-card animate-on-scroll delay-2" role="listitem">
-            <span class="value-card__num" aria-hidden="true">02</span>
-            <div class="value-card__icon" aria-hidden="true">
-              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
+          <article class="approach-card approach-card--ai animate-on-scroll delay-2" role="listitem">
+            <div class="approach-card__grid" aria-hidden="true"></div>
+            <div class="approach-card__top">
+              <span class="approach-card__index">02</span>
+              <div class="approach-card__icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
             </div>
-            <h3 class="value-card__title">Intelligenza artificiale</h3>
-            <span class="value-card__strength">Velocità e iterazione</span>
-            <p class="value-card__text">
-              Immagini, concept, varianti, prototipi — rapidi e scalabili.
-              Più iterazioni in meno tempo, a costi contenuti.
+            <div class="approach-card__badge">Intelligenza artificiale</div>
+            <h3 class="approach-card__title">AI dove accelera</h3>
+            <p class="approach-card__text">
+              Immagini, concept, varianti, prototipi — scalabili e veloci.
+              Iterazioni in ore, non in settimane.
             </p>
+            <ul class="approach-card__list" aria-label="Caratteristiche">
+              <li><span class="approach-card__dot"></span>Generazione immagini e video</li>
+              <li><span class="approach-card__dot"></span>Prototipazione rapida</li>
+              <li><span class="approach-card__dot"></span>Varianti e A/B illimitati</li>
+            </ul>
           </article>
 
         </div>

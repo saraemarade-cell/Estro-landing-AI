@@ -5376,3 +5376,169 @@ button, input, textarea, select {
 @media (max-width: 480px) {
   .ring-carousel__stage { height: 480px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   APPROACH CARDS — tech aesthetic
+   Card 01: produzione reale (accent: brand pink)
+   Card 02: AI (accent: electric cyan #00d4ff)
+   ══════════════════════════════════════════════════════ */
+
+.approach-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 2rem 2rem 2rem;
+  overflow: hidden;
+  background: #0e0a12;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+
+/* Tech grid background */
+.approach-card__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 39px, rgba(255,255,255,0.025) 40px),
+    repeating-linear-gradient(90deg,  transparent, transparent 39px, rgba(255,255,255,0.025) 40px);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Top gradient accent line */
+.approach-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Glow on hover */
+.approach-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Variante produzione reale: accent brand pink ── */
+.approach-card--real::before {
+  background: linear-gradient(90deg, var(--color-primary), transparent 70%);
+}
+.approach-card--real {
+  box-shadow: 0 1px 0 0 var(--color-primary) inset,
+              0 16px 48px rgba(0,0,0,.5);
+}
+.approach-card--real:hover {
+  box-shadow: 0 1px 0 0 var(--color-primary) inset,
+              0 24px 64px rgba(230,54,118,.18),
+              0 0 0 1px rgba(230,54,118,.15);
+  border-color: rgba(230,54,118,.22);
+}
+.approach-card--real .approach-card__icon-wrap { color: var(--color-primary); background: rgba(230,54,118,.1); border-color: rgba(230,54,118,.2); }
+.approach-card--real .approach-card__badge { color: var(--color-primary); border-color: rgba(230,54,118,.25); background: rgba(230,54,118,.07); }
+.approach-card--real .approach-card__dot { background: var(--color-primary); }
+.approach-card--real .approach-card__index { -webkit-text-stroke: 1px rgba(230,54,118,.25); }
+
+/* ── Variante AI: accent cyan elettrico ── */
+.approach-card--ai::before {
+  background: linear-gradient(90deg, #00d4ff, transparent 70%);
+}
+.approach-card--ai {
+  box-shadow: 0 1px 0 0 #00d4ff inset,
+              0 16px 48px rgba(0,0,0,.5);
+}
+.approach-card--ai:hover {
+  box-shadow: 0 1px 0 0 #00d4ff inset,
+              0 24px 64px rgba(0,212,255,.15),
+              0 0 0 1px rgba(0,212,255,.15);
+  border-color: rgba(0,212,255,.22);
+}
+.approach-card--ai .approach-card__icon-wrap { color: #00d4ff; background: rgba(0,212,255,.08); border-color: rgba(0,212,255,.2); }
+.approach-card--ai .approach-card__badge { color: #00d4ff; border-color: rgba(0,212,255,.25); background: rgba(0,212,255,.07); }
+.approach-card--ai .approach-card__dot { background: #00d4ff; }
+.approach-card--ai .approach-card__index { -webkit-text-stroke: 1px rgba(0,212,255,.2); }
+
+/* ── Elementi interni ── */
+.approach-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.approach-card__index {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.approach-card__icon-wrap {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.approach-card__badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  margin-bottom: 0.75rem;
+}
+
+.approach-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-light, #f3efe0);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.approach-card__text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(243,239,224,0.55);
+  margin-bottom: 1.25rem;
+}
+
+.approach-card__list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 1.25rem;
+}
+
+.approach-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(243,239,224,0.65);
+  letter-spacing: 0.01em;
+}
+
+.approach-card__dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .approach-card { padding: 1.5rem; }
+  .approach-card__index { font-size: 3.5rem; }
+}
