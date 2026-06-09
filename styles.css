@@ -5285,14 +5285,14 @@ button, input, textarea, select {
 .ring-carousel {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .ring-carousel__stage {
   position: relative;
   width: 100%;
-  height: 640px;
+  height: 620px;
   /* le card in orbita escono lateralmente: ok, overflow visibile */
   overflow: visible;
 }
