@@ -1887,6 +1887,8 @@ button, input, textarea, select {
 .services__subtitle {
   color: rgba(243, 239, 224, 0.65);
   max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services__grid {
