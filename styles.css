@@ -5274,3 +5274,91 @@ button, input, textarea, select {
   line-height: 1.2;
   filter: none;
 }
+
+/* ── Pitch deck stack ── */
+.pitch-deck {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  /* peek alto: 30px × 3 carte = 90px + altezza carta frontale */
+  padding-top: 90px;
+}
+
+.pitch-deck__card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pitch-deck__card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Carta 4 — più in fondo, in cima */
+.pitch-deck__card--4 {
+  top: 0;
+  left: 5%;
+  right: 5%;
+  z-index: 1;
+  opacity: 0.55;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+}
+/* Carta 3 */
+.pitch-deck__card--3 {
+  top: 30px;
+  left: 3%;
+  right: 3%;
+  z-index: 2;
+  opacity: 0.72;
+  box-shadow: 0 12px 40px rgba(0,0,0,.38);
+}
+/* Carta 2 */
+.pitch-deck__card--2 {
+  top: 60px;
+  left: 1.5%;
+  right: 1.5%;
+  z-index: 3;
+  opacity: 0.88;
+  box-shadow: 0 16px 50px rgba(0,0,0,.42);
+}
+/* Carta 1 — frontale */
+.pitch-deck__card--1 {
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 6px 20px rgba(0,0,0,.3);
+}
+
+/* hover: lift della carta frontale */
+.pitch-deck:hover .pitch-deck__card--1 {
+  transform: translateY(-10px);
+  box-shadow: 0 36px 80px rgba(0,0,0,.55), 0 10px 28px rgba(0,0,0,.3);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pitch-deck {
+    max-width: 100%;
+    padding-top: 72px;
+  }
+  .pitch-deck__card--3 { top: 24px; }
+  .pitch-deck__card--2 { top: 48px; }
+  .pitch-deck__card--1 { top: 72px; }
+}
+@media (max-width: 480px) {
+  .pitch-deck { padding-top: 60px; }
+  .pitch-deck__card--3 { top: 20px; }
+  .pitch-deck__card--2 { top: 40px; }
+  .pitch-deck__card--1 { top: 60px; }
+  .pitch-deck__card img { aspect-ratio: 4/3; }
+}
