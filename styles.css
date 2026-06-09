@@ -5285,14 +5285,14 @@ button, input, textarea, select {
 .ring-carousel {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 460px;
   margin: 0 auto;
 }
 
 .ring-carousel__stage {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 640px;
   /* le card in orbita escono lateralmente: ok, overflow visibile */
   overflow: visible;
 }
@@ -5349,9 +5349,9 @@ button, input, textarea, select {
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .ring-carousel { max-width: 100%; }
-  .ring-carousel__stage { height: 460px; }
+  .ring-carousel__stage { height: 560px; }
 }
 
 @media (max-width: 480px) {
-  .ring-carousel__stage { height: 400px; }
+  .ring-carousel__stage { height: 480px; }
 }

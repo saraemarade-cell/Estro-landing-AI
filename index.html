@@ -1014,15 +1014,15 @@
     var SW, SH, FW, FH, FX, FY, OCX, OCY, ORX, ORY;
 
     function measure() {
-      SW = stage.offsetWidth  || 320;
-      SH = stage.offsetHeight || 520;
-      FW = Math.round(SW * 0.72);       // featured width
+      SW = stage.offsetWidth  || 460;
+      SH = stage.offsetHeight || 640;
+      FW = Math.round(SW * 0.88);       // featured width
       FH = Math.round(FW * 4 / 3);     // 3:4
       FX = SW / 2;
       FY = FH / 2 + 16;                // top margin 16px
       OCX = SW / 2;
-      OCY = SH - 68;                   // ellisse in basso
-      ORX = SW * 0.36;                 // semiasse orizz
+      OCY = SH - 72;                   // ellisse in basso
+      ORX = SW * 0.38;                 // semiasse orizz
       ORY = SW * 0.10;                 // semiasse vert (piatto)
     }
 
@@ -1043,7 +1043,7 @@
         } else {
           var a = ringAngle + (2 * Math.PI / (N - 1)) * slot;
           var depth = (Math.sin(a) + 1) / 2; // 0=retro, 1=fronte
-          var ow = 64 + 20 * depth;
+          var ow = 88 + 28 * depth;
           res.push({
             x:  OCX + ORX * Math.cos(a),
             y:  OCY + ORY * Math.sin(a),
