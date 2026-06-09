@@ -5275,115 +5275,179 @@ button, input, textarea, select {
   filter: none;
 }
 
-/* ── Pitch deck stack ──
-   Tutte le carte ancorate al bottom del container.
-   La carta frontale (--1) è la più grande in primo piano (z-index 4).
-   Le carte dietro sono scalate e traslate verso l'alto, così
-   spuntano sopra il bordo superiore della carta frontale.
-   ─────────────────────────────────────────────────────── */
 
-/* ──────────────────────────────────────────────────
-   PITCH DECK — deck di carte impilate
-   Ogni carta è posizionata con `bottom` esplicito
-   così la sua sommità sporge chiaramente sopra
-   quella frontale, creando una scia visibile.
+/* ══════════════════════════════════════════════════════
+   DECK CAROUSEL — mazzo di carte rotante
+   4 card sempre visibili, fan aperto verso destra.
+   La card frontale (data-pos="0") è dritta e grande;
+   quelle dietro ruotano progressivamente con
+   transform-origin: bottom center.
+   JS aggiorna data-pos su ogni card al click/auto-tick.
+   ══════════════════════════════════════════════════════ */
 
-   Card --1 = frontale (z 4, bottom 0)
-   Card --2 = +90px sopra (z 3)
-   Card --3 = +180px sopra (z 2)
-   Card --4 = +270px sopra (z 1)
-
-   Peek verificato (carta 280px larga → h ≈ 373px):
-     --2 peek: ~55px    --3 peek: ~115px    --4 peek: ~175px
-   ────────────────────────────────────────────────── */
-
-.pitch-deck {
+/* ── Container principale ── */
+.deck-carousel {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  /* h = altezza carta (400px @ 300px wide) + offset max (270) + margine (20) */
-  height: 690px;
+  max-width: 420px;
   margin: 0 auto;
+  /* overflow visibile per mostrare il fan */
 }
 
-.pitch-deck__card {
+/* ── Stage: contiene le card in posizione assoluta ── */
+.deck-carousel__stage {
+  position: relative;
+  /* larghezza card + spazio fan a destra */
+  width: 260px;
+  /* altezza = card height (3/4 di 260px = ~347px) + margine superiore fan */
+  height: 430px;
+  /* le card ruotando sporgono a destra dello stage: ok, overflow visibile */
+  overflow: visible;
+}
+
+/* ── Card base ── */
+.deck-card {
   position: absolute;
-  left: 0; right: 0;
-  border-radius: 16px;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  border-radius: 18px;
   overflow: hidden;
-  transform-origin: bottom center;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.5s ease;
+  cursor: pointer;
+  /* pivot in fondo al centro: le card si aprono a ventaglio verso l'alto */
+  transform-origin: 50% 100%;
+  transition:
+    transform  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity    0.65s ease,
+    box-shadow 0.65s ease;
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-.pitch-deck__card img {
+.deck-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center top;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
-/* ── Carta frontale ── */
-.pitch-deck__card--1 {
-  bottom: 0;
+/* ── Slot 0: card frontale (attiva) ── */
+.deck-card[data-pos="0"] {
+  transform: rotate(0deg) scale(1) translateY(0);
   z-index: 4;
-  box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.25);
+  opacity: 1;
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.60),
+    0  6px 20px rgba(0,0,0,.28);
+  cursor: default;
 }
 
-/* ── Carta 2: 90px sopra, scala 95% ── */
-.pitch-deck__card--2 {
-  bottom: 90px;
+/* ── Slot 1: prima card dietro ── */
+.deck-card[data-pos="1"] {
+  transform: rotate(8deg) scale(0.93);
   z-index: 3;
-  transform: scale(0.95);
   opacity: 0.88;
-  box-shadow: 0 14px 44px rgba(0,0,0,.42);
+  box-shadow:
+    0 16px 44px rgba(0,0,0,.44),
+    0  4px 14px rgba(0,0,0,.22);
+}
+.deck-card[data-pos="1"]:hover {
+  transform: rotate(7deg) scale(0.95);
+  opacity: 1;
 }
 
-/* ── Carta 3: 180px sopra, scala 90% ── */
-.pitch-deck__card--3 {
-  bottom: 180px;
+/* ── Slot 2: seconda card dietro ── */
+.deck-card[data-pos="2"] {
+  transform: rotate(15deg) scale(0.86);
   z-index: 2;
-  transform: scale(0.90);
-  opacity: 0.72;
-  box-shadow: 0 10px 32px rgba(0,0,0,.35);
+  opacity: 0.70;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.36);
+}
+.deck-card[data-pos="2"]:hover {
+  transform: rotate(13deg) scale(0.88);
+  opacity: 0.85;
 }
 
-/* ── Carta 4: 270px sopra, scala 85% ── */
-.pitch-deck__card--4 {
-  bottom: 270px;
+/* ── Slot 3: card più in fondo ── */
+.deck-card[data-pos="3"] {
+  transform: rotate(22deg) scale(0.79);
   z-index: 1;
-  transform: scale(0.85);
-  opacity: 0.55;
-  box-shadow: 0 6px 22px rgba(0,0,0,.28);
+  opacity: 0.50;
+  box-shadow:
+    0  6px 18px rgba(0,0,0,.28);
+}
+.deck-card[data-pos="3"]:hover {
+  transform: rotate(20deg) scale(0.81);
+  opacity: 0.65;
 }
 
-/* hover: lift della carta frontale */
-.pitch-deck:hover .pitch-deck__card--1 {
-  transform: translateY(-10px);
-  box-shadow: 0 32px 72px rgba(0,0,0,.60), 0 10px 26px rgba(0,0,0,.28);
+/* ── Hover generale sul carousel: lieve lift della card attiva ── */
+.deck-carousel:hover .deck-card[data-pos="0"] {
+  transform: rotate(0deg) scale(1) translateY(-8px);
+  box-shadow:
+    0 32px 72px rgba(0,0,0,.65),
+    0  8px 24px rgba(0,0,0,.30);
+}
+
+/* ── Dot navigation ── */
+.deck-carousel__dots {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 20px;
+  padding-left: 4px;
+}
+
+.deck-dot {
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  padding: 0;
+  background: rgba(255,255,255,0.22);
+  cursor: pointer;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+
+.deck-dot.active {
+  width: 44px;
+  background: var(--color-accent, #e63676);
+}
+
+.deck-dot:hover:not(.active) {
+  background: rgba(255,255,255,0.45);
 }
 
 /* ── Responsive 768px ── */
 @media (max-width: 768px) {
-  .pitch-deck {
+  .deck-carousel {
     max-width: 100%;
-    /* card w = 100vw-96px, h = w*4/3, + 270px offset + 20 margine */
-    height: calc((100vw - 96px) * 4 / 3 + 290px);
   }
-  .pitch-deck__card--2 { bottom: 80px; }
-  .pitch-deck__card--3 { bottom: 160px; }
-  .pitch-deck__card--4 { bottom: 240px; }
+  .deck-carousel__stage {
+    width: 220px;
+    height: 370px;
+    margin: 0 auto;
+  }
+  .deck-card {
+    width: 220px;
+  }
 }
 
 /* ── Responsive 480px ── */
 @media (max-width: 480px) {
-  .pitch-deck {
-    height: calc((100vw - 32px) * 4 / 3 + 250px);
+  .deck-carousel__stage {
+    width: 200px;
+    height: 340px;
   }
-  .pitch-deck__card img { aspect-ratio: 4/3; }
-  .pitch-deck__card--2 { bottom: 70px; }
-  .pitch-deck__card--3 { bottom: 140px; }
-  .pitch-deck__card--4 { bottom: 210px; }
+  .deck-card {
+    width: 200px;
+  }
+  .deck-card[data-pos="1"] { transform: rotate(7deg) scale(0.93); }
+  .deck-card[data-pos="2"] { transform: rotate(13deg) scale(0.86); }
+  .deck-card[data-pos="3"] { transform: rotate(19deg) scale(0.79); }
 }

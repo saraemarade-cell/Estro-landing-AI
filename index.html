@@ -247,19 +247,27 @@
             </div>
           </div>
 
-          <!-- ── Pitch deck stack ── -->
-          <div class="pitch-deck" aria-label="Case studies visivi" id="solution-carousel">
-            <div class="pitch-deck__card pitch-deck__card--4">
-              <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
+          <!-- ── Deck carousel ── -->
+          <div class="deck-carousel" id="solution-carousel" aria-label="Case studies visivi">
+            <div class="deck-carousel__stage">
+              <div class="deck-card" data-index="0">
+                <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
+              </div>
+              <div class="deck-card" data-index="1">
+                <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
+              </div>
+              <div class="deck-card" data-index="2">
+                <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
+              </div>
+              <div class="deck-card" data-index="3">
+                <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
+              </div>
             </div>
-            <div class="pitch-deck__card pitch-deck__card--3">
-              <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
-            </div>
-            <div class="pitch-deck__card pitch-deck__card--2">
-              <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
-            </div>
-            <div class="pitch-deck__card pitch-deck__card--1">
-              <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
+            <div class="deck-carousel__dots" role="tablist" aria-label="Navigazione case study">
+              <button class="deck-dot" data-goto="0" role="tab" aria-label="Bustomotor"></button>
+              <button class="deck-dot" data-goto="1" role="tab" aria-label="Fuoco Bravo"></button>
+              <button class="deck-dot" data-goto="2" role="tab" aria-label="Miu Miu"></button>
+              <button class="deck-dot" data-goto="3" role="tab" aria-label="Prada"></button>
             </div>
           </div>
 
@@ -985,6 +993,80 @@
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+  </script>
+
+  <script>
+  /* ── Deck Carousel ───────────────────────────────────── */
+  (function () {
+    var el = document.getElementById('solution-carousel');
+    if (!el) return;
+
+    var cards = Array.from(el.querySelectorAll('.deck-card'));
+    var dots  = Array.from(el.querySelectorAll('.deck-dot'));
+    var n     = cards.length;
+    var active = 0;
+    var timer;
+
+    function render(prevActive) {
+      cards.forEach(function (card, i) {
+        var pos = (i - active + n) % n;
+        card.setAttribute('data-pos', pos);
+        /* snap direction hint for the exit animation */
+        if (i === prevActive && prevActive !== undefined) {
+          card.classList.add('deck-card--exit');
+          setTimeout(function () { card.classList.remove('deck-card--exit'); }, 50);
+        }
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === active);
+        dot.setAttribute('aria-selected', i === active ? 'true' : 'false');
+      });
+    }
+
+    function goTo(idx) {
+      var prev = active;
+      active = ((idx % n) + n) % n;
+      render(prev);
+    }
+
+    function next() { goTo(active + 1); }
+
+    /* Click on a background card → bring it front */
+    cards.forEach(function (card, i) {
+      card.addEventListener('click', function () {
+        var pos = parseInt(card.getAttribute('data-pos'), 10);
+        if (pos !== 0) { goTo(i); resetTimer(); }
+      });
+    });
+
+    /* Dot navigation */
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(dot.dataset.goto, 10));
+        resetTimer();
+      });
+    });
+
+    /* Auto-advance */
+    function startTimer() { timer = setInterval(next, 4200); }
+    function resetTimer()  { clearInterval(timer); startTimer(); }
+
+    el.addEventListener('mouseenter', function () { clearInterval(timer); });
+    el.addEventListener('mouseleave', startTimer);
+
+    /* Touch/swipe */
+    var touchStartX = 0;
+    el.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    el.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) { goTo(active + (dx < 0 ? 1 : -1)); resetTimer(); }
+    }, { passive: true });
+
+    render();
+    startTimer();
   })();
   </script>
 
