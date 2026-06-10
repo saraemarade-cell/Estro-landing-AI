@@ -3062,6 +3062,17 @@ footer .logo-img-sm {
 
 /* Tablet: ≤ 768px */
 @media (max-width: 768px) {
+  /* Always show solid navbar on mobile — same appearance as scrolled state */
+  .navbar {
+    background-color: var(--color-light);
+    box-shadow: 0 2px 20px rgba(28, 28, 28, 0.08);
+  }
+
+  /* Hamburger lines must be dark on the light background */
+  .navbar__hamburger span {
+    background-color: var(--color-dark);
+  }
+
   .navbar__nav {
     display: none;
   }
