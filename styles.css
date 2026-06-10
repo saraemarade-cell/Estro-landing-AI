@@ -4940,12 +4940,12 @@ button, input, textarea, select {
     flex-direction: column;
   }
   .ref-tab__img {
-    height: 80px;
+    height: 100px;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.06);
     padding: 12px;
   }
-  .ref-tab__img img { max-width: 80%; max-height: 50px; }
+  .ref-tab__img img { max-width: 85%; max-height: 70px; }
   .ref-tab__desc { display: none; }
   .ref-tab__body { padding: 10px 12px; }
   .ref-tab__name { font-size: 12px; }
