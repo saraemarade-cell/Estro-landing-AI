@@ -4838,6 +4838,7 @@ button, input, textarea, select {
     border-color: rgba(255,255,255,.06);
   }
   .navbar__inner { display: contents; }
+  .navbar__logo img { height: 32px; }
 
   /* ── HERO ── */
   .hero { padding-top: 58px; min-height: auto; }
