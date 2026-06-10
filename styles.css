@@ -4933,18 +4933,24 @@ button, input, textarea, select {
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
-  /* ── Referenze mobile: stack verticale ── */
+  /* ── Referenze mobile: 2 colonne ── */
+  .ref-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
   .ref-tab {
     display: flex !important;
     flex-direction: column;
   }
   .ref-tab__img {
-    height: 100px;
+    height: 80px;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.06);
+    padding: 12px;
   }
-  .ref-tab__img img { max-width: 80%; max-height: 120px; }
+  .ref-tab__img img { max-width: 80%; max-height: 50px; }
   .ref-tab__desc { display: none; }
+  .ref-tab__body { padding: 10px 12px; }
+  .ref-tab__name { font-size: 12px; }
+  .ref-tab__cat { font-size: 11px; }
+  .ref-tab__meta { display: none; }
 
   /* Sol pillars */
   .sol-pillar--active .sol-pillar__desc {
