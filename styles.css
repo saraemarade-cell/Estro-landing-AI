@@ -154,6 +154,23 @@ button, input, textarea, select {
   color: var(--color-primary);
 }
 
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(224,24,92,0.10);
+  border: 1px solid rgba(224,24,92,0.22);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+
 /* --- Layout Utilities --- */
 .container {
   width: 100%;
