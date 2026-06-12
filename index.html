@@ -270,34 +270,32 @@
           <!-- ── Ring Carousel ── -->
           <div class="ring-carousel" id="solution-carousel" aria-label="Case studies visivi">
             <div class="ring-carousel__stage">
-              <div class="ring-card" data-index="0">
+              <div class="ring-card" data-index="0" data-brand="Bustomotor">
                 <img src="La risposta/BUSTOMOTOR.webp" alt="Bustomotor — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Bustomotor</span>
               </div>
-              <div class="ring-card" data-index="1">
+              <div class="ring-card" data-index="1" data-brand="Fuoco Bravo">
                 <img src="La risposta/FUOCOBRAVO.webp" alt="Fuoco Bravo — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Fuoco Bravo</span>
               </div>
-              <div class="ring-card" data-index="2">
+              <div class="ring-card" data-index="2" data-brand="Miu Miu">
                 <img src="La risposta/MIU MIU.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Miu Miu</span>
               </div>
-              <div class="ring-card" data-index="3">
+              <div class="ring-card" data-index="3" data-brand="Prada">
                 <img src="La risposta/PRADA (1).webp" alt="Prada — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Prada</span>
               </div>
-              <div class="ring-card" data-index="4">
+              <div class="ring-card" data-index="4" data-brand="Papaya">
                 <img src="La risposta/papayaai.webp" alt="Papaya AI — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Papaya</span>
               </div>
-              <div class="ring-card" data-index="5">
+              <div class="ring-card" data-index="5" data-brand="Miu Miu">
                 <img src="La risposta/miu miu.webp" alt="Miu Miu — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Miu Miu</span>
               </div>
-              <div class="ring-card" data-index="6">
+              <div class="ring-card" data-index="6" data-brand="Coswell">
                 <img src="La risposta/coswellai.webp" alt="Coswell AI — AI Creative Production" loading="lazy" />
-                <span class="ring-card__brand">Coswell</span>
               </div>
+            </div>
+            <!-- Brand label: aggiornata via JS alla card in primo piano -->
+            <div class="ring-brand-label" id="ring-brand-label" aria-live="polite">
+              <span class="ring-brand-label__dot"></span>
+              <span class="ring-brand-label__text">Bustomotor</span>
             </div>
           </div>
 
@@ -1139,7 +1137,19 @@
         c.style.height  = cur[i].h + 'px';
         c.style.opacity = cur[i].op;
         c.style.zIndex  = tgt[i].z;
+        var wasFeatured = c.classList.contains('ring-card--featured');
         c.classList.toggle('ring-card--featured', tgt[i].featured);
+        if (!wasFeatured && tgt[i].featured) {
+          var lbl = document.getElementById('ring-brand-label');
+          if (lbl) {
+            var txt = lbl.querySelector('.ring-brand-label__text');
+            var brand = c.dataset.brand || '';
+            if (txt && brand && txt.textContent !== brand) {
+              txt.style.opacity = '0'; txt.style.transform = 'translateY(6px)';
+              setTimeout(function(b){ txt.textContent = b; txt.style.opacity = '1'; txt.style.transform = 'translateY(0)'; }.bind(null, brand), 220);
+            }
+          }
+        }
       }
 
       raf = requestAnimationFrame(tick);

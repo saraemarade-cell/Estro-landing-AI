@@ -5387,28 +5387,35 @@ button, input, textarea, select {
   border-radius: inherit;
 }
 
-/* ── Brand wordmark overlay ── */
-.ring-card__brand {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 36px 16px 14px;
-  background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,0));
-  font-family: var(--font-display);
-  font-size: clamp(15px, 1.4vw, 22px);
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 1px 10px rgba(0,0,0,.55);
-  pointer-events: none;
-  z-index: 2;
+/* ── Brand label esterno al carosello ── */
+.ring-brand-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  min-height: 36px;
 }
-.ring-card--featured .ring-card__brand {
-  font-size: clamp(20px, 2vw, 30px);
-  padding-bottom: 18px;
+.ring-brand-label__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.7); }
+}
+.ring-brand-label__text {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-light);
+  transition: opacity .25s, transform .25s;
 }
 
 /* ── Card featured: più bordi arrotondati, ombra prominente ── */
