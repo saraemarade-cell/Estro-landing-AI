@@ -4407,10 +4407,11 @@ button, input, textarea, select {
 .fg textarea:focus { border-color: #E0185C; background: rgba(224,24,92,.04); }
 .fg textarea { resize: vertical; min-height: 68px; }
 .hform-wrap {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;
+  padding: 32px;
+  backdrop-filter: blur(12px);
 }
 .hform-title {
   font-family: var(--font-display);
