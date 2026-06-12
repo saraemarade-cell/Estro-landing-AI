@@ -82,64 +82,59 @@
       <!-- VI: hero ambient glows -->
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-glow2" aria-hidden="true"></div>
+
+      <!-- Video: fullscreen background behind text AND form -->
+      <div class="hero__video-wrapper" aria-label="Showreel AI — Estro Creative Production">
+
+        <!-- Layer 0: Vimeo iframe (background) -->
+        <iframe
+          class="hero__video-iframe"
+          src="https://player.vimeo.com/video/1199764296?h=25ca32c137&autoplay=1&muted=1&loop=1&background=1&quality=auto"
+          title="Showreel AI — Estro"
+          allow="autoplay; fullscreen; picture-in-picture"
+          frameborder="0"
+          loading="eager"
+          aria-hidden="true"
+        ></iframe>
+
+        <!-- Dark gradient overlay for text readability -->
+        <div class="hero__video-overlay-dark" aria-hidden="true"></div>
+
+        <!-- Layer 1: subtle crosshair grid -->
+        <div class="hero__grid-layer" aria-hidden="true"></div>
+
+        <!-- Layer 2: scanning line (continuous sweep) -->
+        <div class="hero__scan-line" aria-hidden="true"></div>
+
+        <!-- Layer 3: corner brackets (production frame corners) -->
+        <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+        <div class="hero__corner hero__corner--tr" aria-hidden="true"></div>
+        <div class="hero__corner hero__corner--bl" aria-hidden="true"></div>
+        <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+
+        <!-- Layer 4: top meta bar -->
+        <div class="hero__meta-top" aria-hidden="true">
+          <span class="hero__meta-label">AI CREATIVE PRODUCTION</span>
+          <span class="hero__meta-rec">
+            <span class="hero__meta-rec-dot"></span>REC
+          </span>
+        </div>
+
+        <!-- Layer 5: right-side coordinate ruler -->
+        <div class="hero__ruler" aria-hidden="true">
+          <span class="hero__ruler-tick"></span>
+          <span class="hero__ruler-tick"></span>
+          <span class="hero__ruler-tick"></span>
+          <span class="hero__ruler-tick"></span>
+          <span class="hero__ruler-tick"></span>
+        </div>
+
+      </div>
+
       <div class="hero__inner">
 
-        <!-- Left column: video full background with text overlay -->
+        <!-- Left column: text overlay -->
         <div class="hero__left">
-
-          <!--
-            VIDEO: "ESTRO x ELMEC • Neutral To Be Colourful" (YouTube ID: JHJbEeBElqA)
-            Source: Estro - Elmec x Estro.html → elementor-widget-video
-            Cover technique: max(100%, calc(100vh×16/9)) × max(100%, calc(100vw×9/16))
-            ensures correct cover for any container proportion without knowing exact dimensions.
-          -->
-          <div class="hero__video-wrapper" aria-label="Showreel AI — Estro Creative Production">
-
-            <!-- Layer 0: Vimeo iframe (background) -->
-            <iframe
-              class="hero__video-iframe"
-              src="https://player.vimeo.com/video/1199764296?h=25ca32c137&autoplay=1&muted=1&loop=1&background=1&quality=auto"
-              title="Showreel AI — Estro"
-              allow="autoplay; fullscreen; picture-in-picture"
-              frameborder="0"
-              loading="eager"
-              aria-hidden="true"
-            ></iframe>
-
-            <!-- Dark gradient overlay for text readability -->
-            <div class="hero__video-overlay-dark" aria-hidden="true"></div>
-
-            <!-- Layer 1: subtle crosshair grid -->
-            <div class="hero__grid-layer" aria-hidden="true"></div>
-
-            <!-- Layer 2: scanning line (continuous sweep) -->
-            <div class="hero__scan-line" aria-hidden="true"></div>
-
-            <!-- Layer 3: corner brackets (production frame corners) -->
-            <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
-            <div class="hero__corner hero__corner--tr" aria-hidden="true"></div>
-            <div class="hero__corner hero__corner--bl" aria-hidden="true"></div>
-            <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
-
-            <!-- Layer 4: top meta bar -->
-            <div class="hero__meta-top" aria-hidden="true">
-              <span class="hero__meta-label">AI CREATIVE PRODUCTION</span>
-              <span class="hero__meta-rec">
-                <span class="hero__meta-rec-dot"></span>REC
-              </span>
-            </div>
-
-            <!-- Layer 5: right-side coordinate ruler -->
-            <div class="hero__ruler" aria-hidden="true">
-              <span class="hero__ruler-tick"></span>
-              <span class="hero__ruler-tick"></span>
-              <span class="hero__ruler-tick"></span>
-              <span class="hero__ruler-tick"></span>
-              <span class="hero__ruler-tick"></span>
-            </div>
-
-
-          </div>
 
           <!-- Text block: overlaid on video (desktop), below video (mobile) -->
           <div class="hero__text-block">

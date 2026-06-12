@@ -3277,8 +3277,12 @@ button, input, textarea, select {
     display: flex;
   }
 
-  /* Mobile: stack hero__left (video+text) above hero__right (form).
-     Using flex instead of grid so hero__left auto-sizes to ALL its content. */
+  /* Mobile: video fullscreen background, inner stacks text + form vertically */
+  .hero {
+    flex-direction: column;
+    min-height: 100svh;
+  }
+
   .hero__inner {
     display: flex !important;
     flex-direction: column;
@@ -3300,21 +3304,21 @@ button, input, textarea, select {
   }
 
   .hero__video-wrapper {
-    position: relative;
-    aspect-ratio: 16/9;
-    height: auto;
-    min-height: unset;
+    position: absolute;
+    inset: 0;
+    aspect-ratio: unset;
+    height: 100%;
+    width: 100%;
     flex: none;
     border-radius: 0;
-    width: 100%;
   }
 
   .hero__video-iframe {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: none;
+    width: max(100%, calc(100vh * 16 / 9));
+    height: max(100%, calc(100vw * 9 / 16));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     min-width: unset;
     min-height: unset;
   }
@@ -3341,6 +3345,9 @@ button, input, textarea, select {
     overflow-y: visible;
     border-left: none;
     border-top: 1px solid rgba(243, 239, 224, 0.06);
+    background: rgba(11,11,12,.82);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
   }
 
   .hero__right-inner {
@@ -4857,8 +4864,8 @@ button, input, textarea, select {
   .navbar__inner { display: contents; }
   .navbar__logo img { height: 32px; }
 
-  /* ── HERO ── */
-  .hero { padding-top: 58px; min-height: auto; }
+  /* ── HERO mobile: video fullscreen background, text + form on top ── */
+  .hero { padding-top: 58px; min-height: 100svh; }
   .hero__inner { min-height: unset; }
   .hero__left {
     display: flex;
@@ -4866,18 +4873,18 @@ button, input, textarea, select {
     height: auto;
   }
   .hero__video-wrapper {
-    position: relative;
-    aspect-ratio: 16/9;
-    height: auto;
-    min-height: unset;
+    position: absolute;
+    inset: 0;
+    aspect-ratio: unset;
+    height: 100%;
+    width: 100%;
     flex: none;
     border-radius: 0;
     overflow: hidden;
   }
-  /* text-block flows between video and form */
   .hero__text-block {
     position: static !important;
-    background: #0e0e0e;
+    background: transparent;
     padding: 28px 20px 32px;
     z-index: auto;
   }
@@ -4885,8 +4892,7 @@ button, input, textarea, select {
   .hero__headline { font-size: clamp(22px, 7vw, 36px) !important; line-height: 1.15 !important; }
   .hero__text { font-size: 14px !important; }
   .hero-badge { font-size: 10px; padding: 5px 12px; }
-  .hero__video-overlay-dark { opacity: 0.3; }
-  /* keep hero__right contained so its absolute bg grid doesn't bleed */
+  .hero__video-overlay-dark { opacity: 0.6; }
   .hero__right { position: relative !important; }
 
   /* Section headers */
@@ -4953,7 +4959,7 @@ button, input, textarea, select {
 
   /* Hero */
   .hero { padding-top: 52px; }
-  .hero__video-wrapper { aspect-ratio: 4/3; height: auto; }
+  .hero__video-wrapper { position: absolute; inset: 0; aspect-ratio: unset; height: 100%; }
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
