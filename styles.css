@@ -528,12 +528,12 @@ button, input, textarea, select {
 }
 
 .hero__corner--tl {
-  top: 20px; left: 20px;
+  top: 90px; left: 20px;
   border-top:  1.5px solid var(--color-primary);
   border-left: 1.5px solid var(--color-primary);
 }
 .hero__corner--tr {
-  top: 20px; right: 20px;
+  top: 90px; right: 20px;
   border-top:   1.5px solid var(--color-primary);
   border-right: 1.5px solid var(--color-primary);
 }
@@ -551,7 +551,7 @@ button, input, textarea, select {
 /* ---- Layer 4: top meta bar ---- */
 .hero__meta-top {
   position: absolute;
-  top: 20px;
+  top: 90px;
   left: 40px;
   right: 40px;
   z-index: 4;
@@ -4893,6 +4893,7 @@ button, input, textarea, select {
   .hero__text { font-size: 14px !important; }
   .hero-badge { font-size: 10px; padding: 5px 12px; }
   .hero__video-overlay-dark { opacity: 0.6; }
+  .hero__meta-top { display: none; }
   .hero__right { position: relative !important; }
 
   /* Section headers */
