@@ -5392,15 +5392,26 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 22px;
-  min-height: 36px;
+  gap: 14px;
+  margin-top: 48px;
+  min-height: 44px;
+}
+.ring-brand-label::before,
+.ring-brand-label::after {
+  content: '';
+  height: 1px;
+  width: clamp(28px, 5vw, 64px);
+  background: linear-gradient(to right, transparent, rgba(243,239,224,.35));
+}
+.ring-brand-label::after {
+  background: linear-gradient(to left, transparent, rgba(243,239,224,.35));
 }
 .ring-brand-label__dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--color-primary);
+  box-shadow: 0 0 12px rgba(224,24,92,.8);
   flex-shrink: 0;
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
@@ -5410,11 +5421,15 @@ button, input, textarea, select {
 }
 .ring-brand-label__text {
   font-family: var(--font-display);
-  font-size: clamp(18px, 2vw, 26px);
+  font-size: clamp(17px, 1.8vw, 24px);
   font-weight: 700;
-  letter-spacing: .18em;
+  letter-spacing: .26em;
+  text-indent: .26em;
   text-transform: uppercase;
-  color: var(--color-light);
+  background: linear-gradient(180deg, #fff 0%, rgba(243,239,224,.55) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   transition: opacity .25s, transform .25s;
 }
 
