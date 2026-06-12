@@ -462,7 +462,7 @@ button, input, textarea, select {
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 68fr 32fr;
+  grid-template-columns: 62fr 38fr;
   gap: 0;
   align-items: stretch;
   min-height: calc(90vh - 80px);
@@ -759,9 +759,9 @@ button, input, textarea, select {
   top: 80px;
   display: flex;
   flex-direction: column;
-  background: rgba(11,11,12,.82);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  background: rgba(11,11,12,.55);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
   border-left: 1px solid rgba(243, 239, 224, 0.08);
   overflow-y: auto;
   max-height: calc(90vh - 80px);
@@ -3723,7 +3723,6 @@ button, input, textarea, select {
   max-height: none !important;
   position: relative !important;
   top: auto !important;
-  background-color: transparent !important;
 }
 
 /* ─── LIGHT SECTIONS — VI exact: #f3efe0 ─── */
@@ -4408,11 +4407,10 @@ button, input, textarea, select {
 .fg textarea:focus { border-color: #E0185C; background: rgba(224,24,92,.04); }
 .fg textarea { resize: vertical; min-height: 68px; }
 .hform-wrap {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 28px;
-  padding: 32px;
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 .hform-title {
   font-family: var(--font-display);
