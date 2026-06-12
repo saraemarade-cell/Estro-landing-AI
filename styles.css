@@ -5387,6 +5387,30 @@ button, input, textarea, select {
   border-radius: inherit;
 }
 
+/* ── Brand wordmark overlay ── */
+.ring-card__brand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 16px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,0));
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.4vw, 22px);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0,0,0,.55);
+  pointer-events: none;
+  z-index: 2;
+}
+.ring-card--featured .ring-card__brand {
+  font-size: clamp(20px, 2vw, 30px);
+  padding-bottom: 18px;
+}
+
 /* ── Card featured: più bordi arrotondati, ombra prominente ── */
 .ring-card--featured {
   border-radius: 20px;
