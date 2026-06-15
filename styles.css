@@ -5355,24 +5355,27 @@ button, input, textarea, select {
 .logo-wall {
   background: var(--color-dark);
   border-bottom: 1px solid rgba(255,255,255,.06);
-  padding: 28px 0;
+  padding: 20px 0;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
-.logo-wall__track { overflow: hidden; }
 .logo-wall__row {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: logo-scroll 24s linear infinite;
 }
+.logo-wall__row--fwd { animation: logo-fwd 32s linear infinite; }
+.logo-wall__row--rev { animation: logo-rev 32s linear infinite; }
 .logo-wall__logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
-  padding: 0 44px;
+  height: 56px;
+  padding: 0 36px;
   flex-shrink: 0;
   transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
@@ -5380,26 +5383,30 @@ button, input, textarea, select {
 .logo-wall__logo img {
   height: 100%;
   width: auto;
-  max-width: 160px;
+  max-width: 140px;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: .65;
+  opacity: .6;
   transition: opacity .3s, filter .3s;
 }
 .logo-wall__logo:hover img {
   opacity: 1;
   filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(224,24,92,.5));
 }
-@keyframes logo-scroll {
+@keyframes logo-fwd {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+@keyframes logo-rev {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 @media (prefers-reduced-motion: reduce) {
   .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 768px) {
   .services-strip__tx { font-size: 13px; }
-  .logo-wall__logo { height: 48px; padding: 0 28px; }
+  .logo-wall__logo { height: 40px; padding: 0 20px; }
 }
 
 /* ── 12. Animate-on-scroll — transizione più elegante ── */
