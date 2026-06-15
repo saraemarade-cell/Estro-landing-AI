@@ -5317,18 +5317,20 @@ button, input, textarea, select {
 }
 .services-strip__track {
   display: flex;
+  flex-wrap: nowrap;
   width: max-content;
   animation: strip-scroll 28s linear infinite;
 }
 .services-strip__item {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 42px;
-  padding: 0 42px;
+  gap: clamp(10px, 2vw, 42px);
+  padding: 0 clamp(10px, 2vw, 42px);
 }
 .services-strip__tx {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: clamp(10px, 1.35vw, 18px);
   font-weight: 700;
   color: #fff;
   letter-spacing: .06em;
@@ -5348,7 +5350,7 @@ button, input, textarea, select {
   100% { transform: translateX(-50%); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .services-strip__track { animation: none; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 8px 20px; }
+  .services-strip__track { animation: none; flex-wrap: nowrap; overflow-x: auto; }
 }
 
 /* ── Logo wall ── */
@@ -5403,7 +5405,7 @@ button, input, textarea, select {
   .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 768px) {
-  .services-strip__tx { font-size: 14px; }
+  .services-strip__tx { font-size: clamp(10px, 1.35vw, 18px); }
   .logo-wall__logo { height: 72px; padding: 0 24px; }
   .logo-wall__logo img { max-width: 140px; }
   .logo-wall__row--fwd { animation-duration: 50s; }
