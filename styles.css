@@ -5327,7 +5327,7 @@ button, input, textarea, select {
 }
 .services-strip__tx {
   font-family: var(--font-display);
-  font-size: clamp(10px, 1.35vw, 18px);
+  font-size: clamp(9px, 1.06vw, 15.23px);
   font-weight: 700;
   color: #fff;
   letter-spacing: .06em;
@@ -5395,7 +5395,7 @@ button, input, textarea, select {
   .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 768px) {
-  .services-strip__tx { font-size: clamp(10px, 1.35vw, 18px); }
+  .services-strip__tx { font-size: clamp(9px, 1.06vw, 15.23px); }
   .logo-wall__logo { height: 72px; padding: 0 24px; }
   .logo-wall__logo img { max-width: 140px; }
   .logo-wall__row--fwd { animation-duration: 50s; }
