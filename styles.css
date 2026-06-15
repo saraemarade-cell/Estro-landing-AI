@@ -5318,15 +5318,12 @@ button, input, textarea, select {
 .services-strip__track {
   display: flex;
   flex-wrap: nowrap;
-  width: max-content;
-  animation: strip-scroll 28s linear infinite;
-}
-.services-strip__item {
-  display: flex;
-  flex-wrap: nowrap;
   align-items: center;
-  gap: clamp(10px, 2vw, 42px);
-  padding: 0 clamp(10px, 2vw, 42px);
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 clamp(16px, 3vw, 48px);
+  gap: clamp(10px, 2vw, 36px);
+  animation: none;
 }
 .services-strip__tx {
   font-family: var(--font-display);
@@ -5344,13 +5341,6 @@ button, input, textarea, select {
   border-radius: 50%;
   background: rgba(255,255,255,.5);
   flex-shrink: 0;
-}
-@keyframes strip-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .services-strip__track { animation: none; flex-wrap: nowrap; overflow-x: auto; }
 }
 
 /* ── Logo wall ── */
