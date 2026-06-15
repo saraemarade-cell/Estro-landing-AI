@@ -766,7 +766,8 @@
 
           <button class="ref-tab" role="tab" aria-selected="false"
                   data-src="esperienza/ariston_ai_banner case.webp"
-                  data-alt="Ariston — AI Creative Production">
+                  data-alt="Ariston — AI Creative Production"
+                  data-fit="contain">
             <div class="ref-tab__img" style="background-color:#c8102e;">
               <img src="LOGHI/Ariston Logo Payoff_w.webp" alt="Ariston logo" loading="lazy" style="filter:none;" />
             </div>
@@ -1130,6 +1131,8 @@
       setTimeout(() => {
         mainImg.src = tab.dataset.src;
         mainImg.alt = tab.dataset.alt || '';
+        mainImg.style.objectFit = tab.dataset.fit === 'contain' ? 'contain' : 'cover';
+        mainImg.style.background = tab.dataset.fit === 'contain' ? '#c8102e' : '';
         mainImg.style.opacity = '1';
       }, 220);
     }
