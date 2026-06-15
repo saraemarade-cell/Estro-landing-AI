@@ -5321,26 +5321,28 @@ button, input, textarea, select {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 clamp(16px, 3vw, 48px);
-  gap: clamp(10px, 2vw, 36px);
+  padding: 0 clamp(12px, 2vw, 40px);
+  gap: 0;
   animation: none;
 }
 .services-strip__tx {
   font-family: var(--font-display);
-  font-size: clamp(9px, 1.06vw, 15.23px);
+  font-size: clamp(7px, 0.98vw, 14.1px);
   font-weight: 700;
   color: #fff;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 1;
+  flex-shrink: 0;
 }
 .services-strip__sep {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: rgba(255,255,255,.5);
   flex-shrink: 0;
+  margin: 0 clamp(6px, 1.1vw, 18px);
 }
 
 /* ── Logo wall ── */
