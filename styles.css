@@ -5312,7 +5312,7 @@ button, input, textarea, select {
   background: var(--color-primary);
   border-top: 1px solid rgba(255,255,255,.12);
   border-bottom: 1px solid rgba(255,255,255,.12);
-  padding: 16px 0;
+  padding: 18px 0;
   overflow: hidden;
 }
 .services-strip__track {
@@ -5323,15 +5323,15 @@ button, input, textarea, select {
 .services-strip__item {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 0 40px;
+  gap: 42px;
+  padding: 0 42px;
 }
 .services-strip__tx {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #fff;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 1;
@@ -5355,13 +5355,11 @@ button, input, textarea, select {
 .logo-wall {
   background: var(--color-dark);
   border-bottom: 1px solid rgba(255,255,255,.06);
-  padding: 20px 0;
+  padding: 24px 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  gap: 0;
 }
 .logo-wall__row {
   display: flex;
@@ -5374,24 +5372,24 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  padding: 0 36px;
+  height: 96px;
+  padding: 0 52px;
   flex-shrink: 0;
-  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
 }
-.logo-wall__logo:hover { transform: translateY(-3px); }
+.logo-wall__logo:hover { transform: translateY(-4px); }
 .logo-wall__logo img {
   height: 100%;
   width: auto;
-  max-width: 140px;
+  max-width: 220px;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: .6;
-  transition: opacity .3s, filter .3s;
+  opacity: .78;
+  transition: opacity .35s, filter .35s;
 }
 .logo-wall__logo:hover img {
   opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(224,24,92,.5));
+  filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(224,24,92,.45));
 }
 @keyframes logo-fwd {
   0%   { transform: translateX(0); }
@@ -5405,8 +5403,9 @@ button, input, textarea, select {
   .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 768px) {
-  .services-strip__tx { font-size: 13px; }
-  .logo-wall__logo { height: 40px; padding: 0 20px; }
+  .services-strip__tx { font-size: 14px; }
+  .logo-wall__logo { height: 72px; padding: 0 24px; }
+  .logo-wall__logo img { max-width: 140px; }
 }
 
 /* ── 12. Animate-on-scroll — transizione più elegante ── */
