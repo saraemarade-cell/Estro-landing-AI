@@ -5366,8 +5366,8 @@ button, input, textarea, select {
   align-items: center;
   width: max-content;
 }
-.logo-wall__row--fwd { animation: logo-fwd 32s linear infinite; }
-.logo-wall__row--rev { animation: logo-rev 32s linear infinite; }
+.logo-wall__row--fwd { animation: logo-fwd 55s linear infinite; }
+.logo-wall__row--rev { animation: logo-rev 48s linear infinite; }
 .logo-wall__logo {
   display: flex;
   align-items: center;
@@ -5406,6 +5406,8 @@ button, input, textarea, select {
   .services-strip__tx { font-size: 14px; }
   .logo-wall__logo { height: 72px; padding: 0 24px; }
   .logo-wall__logo img { max-width: 140px; }
+  .logo-wall__row--fwd { animation-duration: 50s; }
+  .logo-wall__row--rev { animation-duration: 50s; }
 }
 
 /* ── 12. Animate-on-scroll — transizione più elegante ── */
