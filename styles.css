@@ -421,7 +421,7 @@ button, input, textarea, select {
   padding-top: 110px;
   padding-bottom: 0;
   background: var(--color-dark);
-  min-height: 90vh;
+  min-height: calc(100vh - 120px);
   display: flex;
   align-items: stretch;
   position: relative;
@@ -5305,6 +5305,101 @@ button, input, textarea, select {
 .section {
   padding-top: clamp(72px, 8vw, 120px) !important;
   padding-bottom: clamp(72px, 8vw, 120px) !important;
+}
+
+/* ── Services strip ── */
+.services-strip {
+  background: var(--color-primary);
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding: 16px 0;
+  overflow: hidden;
+}
+.services-strip__track {
+  display: flex;
+  width: max-content;
+  animation: strip-scroll 28s linear infinite;
+}
+.services-strip__item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 40px;
+}
+.services-strip__tx {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+.services-strip__sep {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+@keyframes strip-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-strip__track { animation: none; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 8px 20px; }
+}
+
+/* ── Logo wall ── */
+.logo-wall {
+  background: var(--color-dark);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 28px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.logo-wall__track { overflow: hidden; }
+.logo-wall__row {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: logo-scroll 24s linear infinite;
+}
+.logo-wall__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 44px;
+  flex-shrink: 0;
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.logo-wall__logo:hover { transform: translateY(-3px); }
+.logo-wall__logo img {
+  height: 100%;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: .65;
+  transition: opacity .3s, filter .3s;
+}
+.logo-wall__logo:hover img {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(224,24,92,.5));
+}
+@keyframes logo-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 768px) {
+  .services-strip__tx { font-size: 13px; }
+  .logo-wall__logo { height: 48px; padding: 0 28px; }
 }
 
 /* ── 12. Animate-on-scroll — transizione più elegante ── */
