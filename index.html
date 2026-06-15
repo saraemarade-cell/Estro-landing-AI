@@ -1113,7 +1113,7 @@
     var K_FAST = 0.10; // lerp più reattivo per featured
 
     function tick() {
-      if (!paused) ringAngle += 0.007; // ~900 frame/giro ≈ 15 sec
+      // ring non ruota autonomamente — avanza solo al cambio di active
 
       var tgt = targets();
 
@@ -1160,11 +1160,13 @@
       tick();
     }
 
-    /* ── Auto-avanzamento ── */
+    /* ── Auto-avanzamento: step angolare preciso ad ogni cambio ── */
+    var ringStep = (2 * Math.PI) / N;
     function startAuto() {
       autoTimer = setInterval(function () {
         active = (active + 1) % N;
-      }, 4500);
+        ringAngle -= ringStep; // ruota il ring di un posto ad ogni cambio
+      }, 3500);
     }
     function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
