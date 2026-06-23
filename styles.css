@@ -5778,7 +5778,7 @@ button, input, textarea, select {
   position: relative;
   overflow: hidden;
   padding: clamp(72px, 9vw, 120px) 0;
-  background: #111;
+  background: var(--color-light);
 }
 .angelica-case__bg {
   position: absolute;
@@ -5790,13 +5790,13 @@ button, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.12;
-  filter: saturate(0.5);
+  opacity: 0.08;
+  filter: saturate(0.3);
 }
 .angelica-case__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(17,17,17,1) 38%, rgba(17,17,17,0.4) 100%);
+  background: linear-gradient(100deg, rgba(243,239,224,1) 38%, rgba(243,239,224,0.5) 100%);
 }
 .angelica-case__inner {
   position: relative;
@@ -5821,14 +5821,14 @@ button, input, textarea, select {
   font-size: clamp(2.4rem, 4.2vw, 4.8rem);
   font-weight: 900;
   line-height: 1.02;
-  color: #fff;
+  color: var(--color-dark);
   margin: 0 0 20px;
   letter-spacing: -0.01em;
 }
 .angelica-case__body {
   font-size: clamp(0.9rem, 1.05vw, 1rem);
   line-height: 1.7;
-  color: rgba(255,255,255,0.62);
+  color: rgba(28,28,28,0.65);
   max-width: 440px;
   margin: 0 0 28px;
 }
@@ -5843,47 +5843,11 @@ button, input, textarea, select {
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.75);
-  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(28,28,28,0.7);
+  border: 1px solid rgba(28,28,28,0.22);
   border-radius: 100px;
   padding: 7px 16px;
   letter-spacing: 0.02em;
-}
-/* CTA button — pill with arrow dot */
-.angelica-case__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  background: var(--color-primary);
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  border-radius: 100px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 24px rgba(224,24,92,0.35);
-}
-.angelica-case__cta > span:not(.angelica-case__cta-dot) {
-  padding: 14px 20px 14px 24px;
-}
-.angelica-case__cta-dot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: rgba(0,0,0,0.18);
-  font-size: 1.3rem;
-  line-height: 1;
-  flex-shrink: 0;
-  border-radius: 0 100px 100px 0;
-}
-.angelica-case__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(224,24,92,0.55);
 }
 /* visual — larger column */
 .angelica-case__visual {
@@ -5930,7 +5894,7 @@ button, input, textarea, select {
     gap: 40px;
   }
   .angelica-case__overlay {
-    background: rgba(17,17,17,0.88);
+    background: rgba(243,239,224,0.92);
   }
   .angelica-case__video-frame {
     aspect-ratio: 16/9;
