@@ -2670,6 +2670,7 @@ button, input, textarea, select {
   position: relative;
   overflow: hidden;
   overflow-x: clip;
+  padding-top: clamp(40px, 5vw, 72px);
 }
 
 .cases__header {
@@ -5777,7 +5778,7 @@ button, input, textarea, select {
 .angelica-case {
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 9vw, 120px) 0;
+  padding: clamp(72px, 9vw, 120px) 0 0;
   background: var(--color-light);
 }
 .angelica-case__bg {
