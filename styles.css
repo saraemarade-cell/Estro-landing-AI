@@ -5781,7 +5781,7 @@ button, input, textarea, select {
 }
 .angelica-case__inner {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 4fr 8fr;
   gap: clamp(32px, 5vw, 80px);
   align-items: center;
 }
@@ -5893,7 +5893,7 @@ button, input, textarea, select {
    ================================================ */
 .laptop-mockup {
   width: 100%;
-  max-width: 580px;
+  max-width: 780px;
   margin: 0 auto;
   perspective: 1200px;
 }
