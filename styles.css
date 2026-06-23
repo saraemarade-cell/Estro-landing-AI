@@ -5777,8 +5777,8 @@ button, input, textarea, select {
 .angelica-case {
   position: relative;
   overflow: hidden;
-  padding: clamp(80px, 10vw, 140px) 0;
-  background: #0a0a0a;
+  padding: clamp(72px, 9vw, 120px) 0;
+  background: #111;
 }
 .angelica-case__bg {
   position: absolute;
@@ -5790,120 +5790,116 @@ button, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.22;
-  filter: saturate(0.7);
+  opacity: 0.12;
+  filter: saturate(0.5);
 }
 .angelica-case__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, rgba(10,10,10,0.97) 40%, rgba(10,10,10,0.55) 100%);
+  background: linear-gradient(100deg, rgba(17,17,17,1) 38%, rgba(17,17,17,0.4) 100%);
 }
 .angelica-case__inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 100px);
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(32px, 5vw, 80px);
   align-items: center;
 }
-.angelica-case__label {
+/* eyebrow — small fuchsia label like "— UN PROGETTO, DALLA STRATEGIA AL DIGITALE" */
+.angelica-case__eyebrow {
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-bottom: 24px;
-}
-.angelica-case__logo {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-  display: block;
-  margin-bottom: 28px;
+  margin: 0 0 20px;
 }
 .angelica-case__headline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.12;
+  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.02;
   color: #fff;
-  margin-bottom: 20px;
-}
-.angelica-case__headline em {
-  font-style: normal;
-  color: var(--color-primary);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
 }
 .angelica-case__body {
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
   line-height: 1.7;
-  color: rgba(255,255,255,0.68);
-  max-width: 500px;
-  margin-bottom: 40px;
+  color: rgba(255,255,255,0.62);
+  max-width: 440px;
+  margin: 0 0 28px;
 }
-.angelica-case__stats {
+/* pill tags */
+.angelica-case__tags {
   display: flex;
-  gap: 32px;
-  margin-bottom: 44px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
 }
-.angelica-case__stat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.angelica-case__stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1;
-}
-.angelica-case__stat-label {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.angelica-case__tag {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 100px;
+  padding: 7px 16px;
+  letter-spacing: 0.02em;
 }
+/* CTA button — pill with arrow dot */
 .angelica-case__cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   background: var(--color-primary);
   color: #fff;
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-decoration: none;
-  padding: 15px 28px;
   border-radius: 100px;
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 24px rgba(224,24,92,0.35);
+}
+.angelica-case__cta > span:not(.angelica-case__cta-dot) {
+  padding: 14px 20px 14px 24px;
+}
+.angelica-case__cta-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(0,0,0,0.18);
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  border-radius: 0 100px 100px 0;
 }
 .angelica-case__cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(224,24,92,0.55);
 }
+/* visual — larger column */
 .angelica-case__visual {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
 }
 .angelica-case__video-frame {
   width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 20px;
+  aspect-ratio: 16/10;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(8px);
   position: relative;
   background-image: url("reference/bannerangelica.webp");
   background-size: cover;
   background-position: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
 }
 .angelica-case__video-placeholder {
   position: absolute;
@@ -5912,41 +5908,40 @@ button, input, textarea, select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  background: rgba(0,0,0,0.48);
+  gap: 14px;
+  background: rgba(0,0,0,0.35);
   cursor: pointer;
   transition: background 0.2s;
 }
 .angelica-case__video-placeholder:hover {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.2);
 }
 .angelica-case__video-placeholder span {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 @media (max-width: 900px) {
   .angelica-case__inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
   .angelica-case__overlay {
-    background: linear-gradient(180deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.82) 100%);
+    background: rgba(17,17,17,0.88);
   }
-  .angelica-case__stats {
-    gap: 20px;
+  .angelica-case__video-frame {
+    aspect-ratio: 16/9;
   }
 }
 @media (max-width: 600px) {
-  .angelica-case__stats {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px 28px;
+  .angelica-case__headline {
+    font-size: clamp(2rem, 10vw, 3rem);
   }
-  .angelica-case__logo {
-    height: 36px;
+  .angelica-case__cta-dot {
+    width: 40px;
+    height: 40px;
   }
 }
