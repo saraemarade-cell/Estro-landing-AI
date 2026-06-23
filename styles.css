@@ -5864,7 +5864,6 @@ button, input, textarea, select {
   background-image: url("reference/bannerangelica.webp");
   background-size: cover;
   background-position: center;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
 }
 .angelica-case__video-placeholder {
   position: absolute;
