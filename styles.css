@@ -5388,7 +5388,7 @@ button, input, textarea, select {
   align-items: center;
   width: max-content;
 }
-.logo-wall__row--fwd { animation: logo-fwd 30s linear infinite; }
+.logo-wall__row--fwd { animation: logo-rev 30s linear infinite; }
 .logo-wall__row--rev { animation: logo-rev 30s linear infinite; }
 .logo-wall__logo {
   display: flex;
