@@ -3346,9 +3346,9 @@ button, input, textarea, select {
     overflow-y: visible;
     border-left: none;
     border-top: 1px solid rgba(243, 239, 224, 0.06);
-    background: rgba(11,11,12,.82);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    background: rgba(11,11,12,.45);
+    backdrop-filter: blur(12px) saturate(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
   }
 
   .hero__right-inner {
@@ -4931,7 +4931,8 @@ button, input, textarea, select {
     padding: 14px 16px;
   }
   .ref-tab__img img { max-width: 80%; max-height: 110px; }
-  .ref-tab__desc { display: none; }
+  .ref-tab__desc { display: block; font-size: 12px; }
+  .ref-tab__meta { font-size: 12px; }
   .ref-tab__body { padding: 14px 16px; justify-content: center; }
 
   /* Benefits */
@@ -4964,24 +4965,26 @@ button, input, textarea, select {
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
-  /* ── Referenze mobile: 2 colonne ── */
-  .ref-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
+  /* ── Referenze mobile: 1 colonna su schermi piccoli ── */
+  .ref-tabs { grid-template-columns: 1fr; gap: 8px; }
   .ref-tab {
-    display: flex !important;
-    flex-direction: column;
+    display: grid !important;
+    grid-template-columns: 100px 1fr;
+    flex-direction: unset;
   }
   .ref-tab__img {
-    height: 100px;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    height: auto;
+    min-height: 90px;
+    border-right: 1px solid rgba(255,255,255,.06);
+    border-bottom: none;
     padding: 12px;
   }
-  .ref-tab__img img { max-width: 85%; max-height: 70px; }
-  .ref-tab__desc { display: none; }
-  .ref-tab__body { padding: 10px 12px; }
-  .ref-tab__name { font-size: 12px; }
-  .ref-tab__cat { font-size: 11px; }
-  .ref-tab__meta { display: none; }
+  .ref-tab__img img { max-width: 85%; max-height: 60px; }
+  .ref-tab__desc { display: block; font-size: 11px; line-height: 1.5; }
+  .ref-tab__body { padding: 10px 12px; justify-content: flex-start; }
+  .ref-tab__name { font-size: 13px; }
+  .ref-tab__cat { font-size: 10px; }
+  .ref-tab__meta { display: block; font-size: 11px; }
 
   /* Sol pillars */
   .sol-pillar--active .sol-pillar__desc {
@@ -5309,6 +5312,9 @@ button, input, textarea, select {
 }
 
 /* ── Services strip ── */
+.services-strip__dup,
+.services-strip__sep--mobile-only { display: none; }
+
 .services-strip {
   background: var(--color-primary);
   border-top: 1px solid rgba(255,255,255,.12);
@@ -5398,7 +5404,21 @@ button, input, textarea, select {
   .logo-wall__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 768px) {
-  .services-strip__tx { font-size: clamp(9px, 1.06vw, 15.23px); }
+  .services-strip { overflow: hidden; }
+  .services-strip__track {
+    justify-content: flex-start;
+    width: max-content;
+    animation: services-scroll 28s linear infinite;
+    padding: 0;
+    gap: 0;
+  }
+  .services-strip__tx { font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+  .services-strip__dup,
+  .services-strip__sep--mobile-only { display: inline-flex; }
+  @keyframes services-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
   .logo-wall__logo { height: 72px; padding: 0 24px; }
   .logo-wall__logo img { max-width: 140px; }
   .logo-wall__row--fwd { animation-duration: 50s; }
