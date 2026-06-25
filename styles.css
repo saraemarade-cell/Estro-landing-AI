@@ -5424,19 +5424,17 @@ button, input, textarea, select {
 @media (max-width: 768px) {
   .services-strip { overflow: hidden; }
   .services-strip__track {
-    justify-content: flex-start;
-    width: max-content;
-    animation: services-scroll 28s linear infinite;
-    padding: 0;
-    gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    animation: none;
+    padding: 0 12px;
+    gap: 6px 0;
   }
-  .services-strip__tx { font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+  .services-strip__tx { font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+  .services-strip__sep { margin: 0 6px; }
   .services-strip__dup,
-  .services-strip__sep--mobile-only { display: inline-flex; }
-  @keyframes services-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  .services-strip__sep--mobile-only { display: none; }
   .logo-wall__logo { height: 72px; padding: 0 24px; }
   .logo-wall__logo img { max-width: 140px; }
   .logo-wall__row--fwd { animation-duration: 50s; }
