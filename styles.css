@@ -4889,7 +4889,7 @@ button, input, textarea, select {
     justify-content: flex-end;
     min-height: calc(100svh - 58px);
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 20px;
     position: relative;
     z-index: 1;
   }
@@ -4978,7 +4978,7 @@ button, input, textarea, select {
   /* Hero */
   .hero { padding-top: 52px; }
   .hero__video-wrapper { top: -52px !important; height: 100svh !important; }
-  .hero__left { min-height: calc(100svh - 52px) !important; padding-top: 0 !important; }
+  .hero__left { min-height: calc(100svh - 52px) !important; padding-top: 0 !important; padding-bottom: 20px !important; }
   .hero__text-block { padding: 32px 16px 28px !important; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
