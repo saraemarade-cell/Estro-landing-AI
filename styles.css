@@ -4931,25 +4931,23 @@ button, input, textarea, select {
   /* ── Referenze ── */
   .ref-main { border-radius: 12px; }
   .ref-main__img { aspect-ratio: 16/9; width: 100%; height: auto; object-fit: cover; object-position: center; }
-  .ref-tabs { grid-template-columns: 1fr; gap: 10px; }
+  .ref-tabs { grid-template-columns: 1fr 1fr; gap: 10px; }
   .ref-tab {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
     border-radius: 14px;
     overflow: hidden;
   }
   .ref-tab__img {
-    height: auto;
-    min-height: 110px;
-    border-bottom: none;
-    border-right: 1px solid rgba(255,255,255,.06);
-    border-radius: 0;
-    padding: 14px 16px;
+    height: 100px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    border-right: none;
+    padding: 14px 20px;
   }
-  .ref-tab__img img { max-width: 80%; max-height: 110px; }
-  .ref-tab__desc { display: block; font-size: 12px; }
-  .ref-tab__meta { font-size: 12px; }
+  .ref-tab__img img { max-width: 80%; max-height: 60px; }
+  .ref-tab__desc { display: block; font-size: 11px; }
+  .ref-tab__meta { font-size: 11px; }
+  .ref-tab__body { padding: 12px 14px; justify-content: flex-start; }
   .ref-tab__body { padding: 14px 16px; justify-content: center; }
 
   /* Benefits */
@@ -4983,25 +4981,23 @@ button, input, textarea, select {
   .hero__text-block { padding: 20px 16px 24px; }
   .hero__headline { font-size: clamp(20px, 7.5vw, 28px) !important; }
 
-  /* ── Referenze mobile: 1 colonna su schermi piccoli ── */
-  .ref-tabs { grid-template-columns: 1fr; gap: 8px; }
+  /* ── Referenze mobile piccolo: 2 colonne verticali ── */
+  .ref-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
   .ref-tab {
-    display: grid !important;
-    grid-template-columns: 100px 1fr;
-    flex-direction: unset;
+    display: flex !important;
+    flex-direction: column;
   }
   .ref-tab__img {
-    height: auto;
-    min-height: 90px;
-    border-right: 1px solid rgba(255,255,255,.06);
-    border-bottom: none;
-    padding: 12px;
+    height: 80px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    padding: 10px 12px;
   }
-  .ref-tab__img img { max-width: 85%; max-height: 60px; }
-  .ref-tab__desc { display: block; font-size: 11px; line-height: 1.5; }
-  .ref-tab__body { padding: 10px 12px; justify-content: flex-start; }
-  .ref-tab__name { font-size: 13px; }
-  .ref-tab__cat { font-size: 10px; }
+  .ref-tab__img img { max-width: 85%; max-height: 50px; }
+  .ref-tab__name { font-size: 12px; }
+  .ref-tab__cat { font-size: 9px; }
+  .ref-tab__meta { font-size: 10px; }
+  .ref-tab__desc { font-size: 10px; line-height: 1.45; }
   .ref-tab__meta { display: block; font-size: 11px; }
 
   /* Sol pillars */
