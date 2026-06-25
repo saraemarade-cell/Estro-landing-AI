@@ -718,6 +718,19 @@ button, input, textarea, select {
 /* hide headline line-break on desktop — only active on mobile */
 .hero__headline .hero__br { display: none; }
 
+/* gradient scuro che sale da sotto sul testo hero */
+.hero__left::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(8,8,10,0.72) 0%, rgba(8,8,10,0.0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero__text {
   color: rgba(243, 239, 224, 0.85);
   max-width: 520px;
