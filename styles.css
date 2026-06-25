@@ -5371,7 +5371,7 @@ button, input, textarea, select {
   border-radius: 50%;
   background: rgba(255,255,255,.7);
   flex-shrink: 0;
-  margin: 0 8px;
+  margin: 0 24px;
 }
 
 /* ── Logo wall ── */
@@ -5394,8 +5394,8 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  padding: 0 40px;
+  height: 96px;
+  padding: 0 52px;
   flex-shrink: 0;
 }
 .logo-wall__logo img {
