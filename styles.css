@@ -718,17 +718,14 @@ button, input, textarea, select {
 /* hide headline line-break on desktop — only active on mobile */
 .hero__headline .hero__br { display: none; }
 
-/* gradient scuro che sale da sotto sul testo hero */
-.hero__left::after {
+/* gradient scuro full-bleed sul video — nessun bordo visibile */
+.hero__video-wrapper::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(to top, rgba(8,8,10,0.42) 0%, rgba(8,8,10,0.15) 40%, rgba(8,8,10,0.0) 70%);
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,10,0.52) 0%, rgba(8,8,10,0.18) 35%, rgba(8,8,10,0.0) 65%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero__text {
