@@ -4539,7 +4539,7 @@ button, input, textarea, select {
   transform: translate(-50%, -50%) !important;
   width: min(820px, 88%) !important;
   height: min(820px, 88%) !important;
-  background-image: url('gattino-estro-favicon.png') !important;
+  background-image: url('gattinoestrofavicon.png') !important;
   background-repeat: no-repeat !important;
   background-size: contain !important;
   background-position: center center !important;
