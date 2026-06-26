@@ -150,6 +150,46 @@
     });
   });
 
+  /* ── VI form system: hero-form + final-form ── */
+  ['hero-form', 'final-form'].forEach(formId => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const successId = formId === 'hero-form' ? 'hero-success' : 'final-success';
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!validateForm(form)) return;
+
+      const btn = form.querySelector('[type="submit"]');
+      const originalHTML = btn.innerHTML;
+      btn.textContent = 'Invio in corso…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        const success = document.getElementById(successId);
+        if (success) success.style.display = 'block';
+      }, 1200);
+    });
+
+    // Live validation
+    form.querySelectorAll('input, textarea').forEach(field => {
+      field.addEventListener('blur', () => {
+        if (field.hasAttribute('required') && !field.value.trim()) {
+          showError(field, 'Questo campo è obbligatorio.');
+        } else if (field.type === 'email' && field.value && !validateEmail(field.value)) {
+          showError(field, 'Inserisci un indirizzo email valido.');
+        } else {
+          clearError(field);
+        }
+      });
+      field.addEventListener('input', () => {
+        if (field.classList.contains('error') && field.value.trim()) clearError(field);
+      });
+    });
+  });
+
   /* --- Carousel ── */
   (() => {
     const carousel = document.getElementById('solution-carousel');
@@ -195,6 +235,33 @@
     carousel.addEventListener('mouseleave', resetTimer);
 
     resetTimer();
+  })();
+
+  /* --- Case study tabs --- */
+  (() => {
+    const tabs = document.querySelectorAll('.cases__tab');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.case;
+
+        tabs.forEach(t => {
+          t.classList.remove('cases__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('cases__tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        document.querySelectorAll('.cases__panel').forEach(panel => {
+          if (panel.id === 'case-' + target) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
   })();
 
   /* --- Smooth scroll for anchor links --- */
